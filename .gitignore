@@ -1,0 +1,23 @@
+# Artefatos de analise (grandes e/ou material de terceiros)
+apk/
+apktool_out/
+build/
+decompiled/
+tools/jadx/
+tools/*.jar
+tools/*.zip
+*.apk
+*.dex
+*.aab
+
+# Capturas de tela e dumps
+evidence/*.png
+
+# Cache de ferramentas
+.ruff_cache/
+__pycache__/
+*.pyc
+
+# Sistema
+Thumbs.db
+.DS_Store

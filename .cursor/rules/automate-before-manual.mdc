@@ -1,0 +1,16 @@
+---
+description: Try PAT/SSH/API/MCP before asking the user for manual browser or terminal steps
+alwaysApply: true
+---
+
+# Automate before manual
+
+Before asking the user to click, log in, configure DNS, or run something in their terminal:
+
+1. **Read skill** `automate-before-manual` (`.agents/skills/`) — if the user says lazy or "you do it", also follow `dont-be-lazy`.
+2. **Try automation** — `gh`, scripts in `docs/` and `scripts/`, MCP (`GetDynamicTools`), official APIs.
+3. **Secrets vault** (relative to project root): `../secrets/github/pat.txt`, `../secrets/vps/ssh/`, `../secrets/projects/<app>.env`. Check `AGENTS.md` or `secrets.local.md` if the layout differs.
+4. **Scope before asking** — state which role/scope unlocks full automation (GitHub repo scope, Azure Contributor, etc.).
+5. **Escalate once** — only for OAuth, 2FA, captcha, or billing; then use `dont-be-lazy` browser fallback.
+
+Never send a manual checklist without trying API, vault, and MCP first.

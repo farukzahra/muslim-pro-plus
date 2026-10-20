@@ -1,0 +1,1984 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="12061001"
+    android:versionName="12.6.10"
+    android:allowBackup="false"
+    android:compileSdkVersion="32"
+    android:compileSdkVersionCodename="12"
+    package="com.bitsmedia.android.muslimpro"
+    platformBuildVersionCode="32"
+    platformBuildVersionName="12">
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="30"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA"/>
+    <permission
+        android:name="com.bitsmedia.android.muslimpro.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="com.bitsmedia.android.muslimpro.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="com.samsung.android.iap.permission.BILLING"/>
+    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+    <uses-feature
+        android:glEsVersion="0x20000"
+        android:required="true"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE"/>
+        </intent>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="http"/>
+        </intent>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT"/>
+        </intent>
+        <package android:name="com.google.android.apps.maps"/>
+        <package android:name="com.facebook.katana"/>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_APP_BADGE"/>
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE"/>
+    <application
+        android:theme="@style/Theme.MuslimPro.Default"
+        android:label="@string/_res_0x7f1404ac"
+        android:icon="@mipmap/ic_launcher"
+        android:name="o.setOnParticleSystemUpdateListener"
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/_res_0x7f170003"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:appComponentFactory="o.launchSuggestion">
+        <activity
+            android:name="o.Geometry"
+            android:exported="false"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.ProductAttribute.Size"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/home_actionbar_icon"/>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/_res_0x7f060527"/>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="reminders"/>
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="02p1b0Lv5c1MaAcffMUy3CgiubD1WCB6w7hyy8xyhichK83B_5mnB7OT7Da_Td4BpbT6BlDg1-Zypa4r3d8b1Z"/>
+        <meta-data
+            android:name="com.facebook.sdk.AutoInitEnabled"
+            android:value="false"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
+            android:value="true"/>
+        <activity
+            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+            android:launchMode="standard"/>
+        <activity
+            android:label="@string/_res_0x7f140004"
+            android:name="o.access$getWidgetUpdateHandler$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.access$setAppResumeTime$cp"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1400df"
+            android:name="o.startListeningToCompass"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.toggleKhatamStartCardVisibility$lambda17$lambda16"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.$r8$lambda$cpfMLHajN0BiKjioi1YcbOF4Luc"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140120"
+            android:name="o.toggleKhatamProgressCardVisibility"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.$r8$lambda$r_RshOCBQWPUfdsqO_O-qRBbOvM"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Splash"
+            android:label="@string/_res_0x7f1404ac"
+            android:name="com.bitsmedia.android.muslimpro.core.activities.SplashActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.TranslucentStatusBar.Default"
+            android:label="@string/_res_0x7f1404ac"
+            android:name="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="layoutDirection|screenSize|uiMode|orientation|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="https"
+                    android:host="go.muslimpro.com"
+                    android:pathPrefix="/"/>
+                <data
+                    android:scheme="http"
+                    android:host="go.muslimpro.com"
+                    android:pathPrefix="/"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="o.getSummary"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1405eb"
+            android:name="o.access$setAppResumeTime$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140807"
+            android:name="com.bitsmedia.android.muslimpro.core.screens.settings.SettingsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="settings"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f140807"
+            android:name="o.setUserID"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.settings.SettingsActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f14080d"
+            android:name="o.ErrorsJsonAdapter"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f140808"
+            android:name="o.access$setScheduleAdAfterAppResume$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f14051e"
+            android:name="o.access$getShouldResumeDataSync$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="com.bitsmedia.android.muslimpro.core.screens.sura.view.SuraActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140721"
+            android:name="o.setTestMode"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140149"
+            android:name="o.getRangesFromListOfHighlights"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140149"
+            android:name="o.getTextTypeFromShortText"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.getRangesFromListOfHighlights">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.getRangesFromListOfHighlights"/>
+        </activity>
+        <activity
+            android:name="com.bitsmedia.android.muslimpro.core.screens.places.PlacesActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/_res_0x7f170006"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="places"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="placedetails"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.getCategory"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustPan|stateUnchanged">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.TranslucentStatusBar.Default"
+            android:name="o.C$r8$lambda$P06O4g5MQKdNJ33vuRg2hDwlFE"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.getCategory"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.launchDua"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:name="o.access$getValidatedIdentifiers$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:name="o.AppEvent.SerializationProxyV2"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:name="o.validateParameters"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:name="o.isImplicit"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.FullScreenAd"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.Default"
+            android:name="o.launchAdhanPromotionVideo"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.Default"
+            android:label="@string/_res_0x7f140001"
+            android:name="o.access$playName"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.launchAppLanguageSettings"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.Default"
+            android:name="o.launchContent"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.launchAppLanguageSettings"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.TranslucentStatusBar.Default"
+            android:name="o.access$setNamesPlayer$p"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.access$playName"/>
+        <activity
+            android:label="@string/_res_0x7f140859"
+            android:name="o.getDays"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f140859"
+            android:name="com.bitsmedia.android.muslimpro.core.screens.hisnul.views.HisnulChaptersActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.getDays">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.getDays"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f14068c"
+            android:name="o.access$setWidgetUpdateHandler$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1407c7"
+            android:name="o.getSectionSubTitle"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.settings.SettingsActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140864"
+            android:name="o.hideProgress"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.sura.view.SuraActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f14080f"
+            android:name="o.calculateChecksum"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:name="o.checkQuranUpdate"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:name="o.fetchRemoteConfigSettings"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.sura.view.SuraActivity"/>
+        </activity>
+        <activity
+            android:name="o.handleAppResume"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.settings.SettingsActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140455"
+            android:name="o.AdService"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f1407fc"
+            android:name="o.addKeyword"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1404c3"
+            android:name="o.Summary"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.sura.view.SuraActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1404c3"
+            android:name="o.getReciterId"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.Summary"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140687"
+            android:name="o.clearTestDevices"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140399"
+            android:name="com.bitsmedia.android.muslimpro.core.screens.tasbih.view.TasbihActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140190"
+            android:name="o.getNextPrayerImageResId"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.settings.SettingsActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f14009a"
+            android:name="o.access$getLocationDisabledPopupShown$cp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.Zendesk.Default"
+            android:name="o.insert"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:name="o.AppLovinMediationProvider"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.insert"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f140516"
+            android:name="o.InitSettingsBuilder"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140210"
+            android:name="o.getLastPrayerTimestamp"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustPan|stateAlwaysVisible">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.InitSettingsBuilder"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140387"
+            android:name="o.showFirstInitializationDialog"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140071"
+            android:name="o.GlUtil$GlException"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.settings.SettingsActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1401c6"
+            android:name="o.onComplete"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:label="@string/_res_0x7f140873"
+            android:name="o.getUserSegment"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140318"
+            android:name="o.setWebsite"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:label="@string/_res_0x7f140809"
+            android:name="o.performMigration"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.setUserID"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f14005a"
+            android:name="o.HajjUmrahArticle.Creator"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.ErrorsJsonAdapter"/>
+        </activity>
+        <activity
+            android:name="o.buildInitSettings"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.$r8$lambda$P06O4g5MQKdNJ33vuRg2hD-wlFE"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140263"
+            android:name="o.isMixedAudience"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.$r8$lambda$P06O4g5MQKdNJ33vuRg2hD-wlFE"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f14000c"
+            android:name="o.Adhan"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustResize|stateUnchanged">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.places.PlacesActivity"/>
+        </activity>
+        <activity
+            android:label=""
+            android:name="o.UploadObject"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.Adhan"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f1403e2"
+            android:name="o.FastingData"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.$r8$lambda$P06O4g5MQKdNJ33vuRg2hD-wlFE"/>
+        </activity>
+        <activity
+            android:label="@string/_res_0x7f140091"
+            android:name="o.HalalPlaceFeedbackOption"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:label="@string/_res_0x7f140372"
+            android:name="o.TajweedSwitchPreference"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:label="@string/_res_0x7f1402fc"
+            android:name="o.NativeBannerAdViewApi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:label="@string/_res_0x7f14061d"
+            android:name="o.getFBLoginASID"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.CustomPreference"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:name="o.getFeaturedImage"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.createNativeAdViewAttributesApi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateVisible"
+            android:parentActivityName="o.getCategory">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.getCategory"/>
+        </activity>
+        <activity
+            android:name="o.getPortraitInlineAdaptiveBannerAdSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.insert"/>
+        </activity>
+        <activity
+            android:name="o.onLoginStatusChanged"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.AdService"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.AdSettings.IntegrationErrorMode"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f1404ac"
+            android:name="o.fromGeometry"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysVisible"/>
+        <activity
+            android:label="@string/_res_0x7f1405e6"
+            android:name="o.getManufacturer"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="layoutDirection|screenSize|uiMode|orientation|keyboardHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.$r8$lambda$cpfMLHajN0BiKjioi1YcbOF4Luc"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.Default"
+            android:label="@string/_res_0x7f14085f"
+            android:name="o.AdLoader"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.AyaBackgroundDTO"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.FacebookServiceException"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.onLoggingImpression"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.FacebookServiceException"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.onInterstitialDismissed"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar"
+            android:name="o.launchLoginPage"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.C$r8$lambda$r_RshOCBQWPUfdsqO_OqRBbOvM"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.$r8$lambda$cpfMLHajN0BiKjioi1YcbOF4Luc"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.C$r8$lambda$cpfMLHajN0BiKjioi1YcbOF4Luc"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:name="o.onPreviousClicked"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.setUserID">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.setUserID"/>
+        </activity>
+        <activity
+            android:name="o.AdRequest.Builder"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:name="o.getTranslationHighlights"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:name="o.getTimes"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.setUserID"/>
+        </activity>
+        <activity
+            android:name="o.C$default$withBid"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:label="@string/_res_0x7f1403a8"
+            android:name="o.CacheDataSink$CacheDataSinkException"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName=".core.screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.main.MainActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:label="@string/_res_0x7f1405d7"
+            android:name="o.access$getMap$p"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.hisnul.views.HisnulChaptersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.hisnul.views.HisnulChaptersActivity"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.S2SRewardedVideoAdExtendedListener"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.RewardedInterstitialAdExtendedListener"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.getTypeface"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName="o.RewardedInterstitialAdExtendedListener"/>
+        <activity
+            android:name="o.NativeBannerAdView.Type"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.RewardedInterstitialAdExtendedListener"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.main.MainActivity"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.getAvailableSuras"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName="o.getRangesFromListOfHighlights">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="o.getRangesFromListOfHighlights"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.getAutoplayOnMobile"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:label="@string/_res_0x7f1400bc"
+            android:name="o.CctBackendFactory"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".core.screens.tasbih.view.TasbihActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bitsmedia.android.muslimpro.core.screens.tasbih.view.TasbihActivity"/>
+        </activity>
+        <activity
+            android:name="o.shareMeccaLive"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"
+            android:parentActivityName="o.access$setNamesPlayer$p"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.Default"
+            android:name="o.isInitialized"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.setCTABorderColor"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.Default"
+            android:name="o.getApp_version"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:theme="@style/Theme.MuslimPro.NoActionBar.TranslucentStatusBar.Default"
+            android:name="o.setProperties"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="uiMode"/>
+        <activity
+            android:theme="@android:style/Theme.NoDisplay"
+            android:name="com.bitsmedia.android.muslimpro.core.activities.LinkDispatcherActivity"
+            android:launchMode="singleInstance"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:host="www.muslimpro.com"/>
+                <data android:pathPrefix="/"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="muslimpro"/>
+                <data android:host="hajjumrah"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="muslimpro"/>
+                <data android:host="makkah"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="article"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="virtual_tour"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="tasbih"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="image"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="video"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="qibla"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="timeline"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="more"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="shahadah"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="calendar"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="prayers"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="login"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="zakat"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="inspiration"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="tracker"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="quran"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="playlist"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="message"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="khatamcomplete"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="khatamdelete"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="khatamleave"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="khatam"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="names"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="99names"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="name"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="duas"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="community"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="makkah"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="premium"/>
+            </intent-filter>
+            <intent-filter android:label="@string/_res_0x7f1404ac">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="halal"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="storyly"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="muslimpro"
+                    android:host="story"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.PrayerTimeNotificationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.ADHAN_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.ADHAN_RESTART"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.PRE_ADHAN_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.QURAN_QUOTE_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.FASTING_TRACKER_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.REENGAGEMENT_REMINDER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.REENGAGEMENT_REMINDER_FRIDAY"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.BIRTHDAY_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.HOLIDAY_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.DHIKR_REMINDER_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.STREAK_REWARDS_REMINDER_NOTIFICATION"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.bitsmedia.android.muslimpro.STREAK_REWARDS_MISSING_NOTIFICATION"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.MPDownloadBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.MPMediaControlBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="o.adjustDropDownSizeAndPosition"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.provider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/_res_0x7f170004"/>
+        </provider>
+        <service android:name="o.setAvatarBackgroundColor$storyly_release"/>
+        <service android:name="o.C$r8$lambda$lvm0tgv8qDcBueh8uFuPvS55Rw0"/>
+        <service android:name="o.isVideoAutoplayOnMobile"/>
+        <service android:name="o.jsonToBundle"/>
+        <service android:name="o.AnalyticsUserIDStore$$ExternalSyntheticLambda0"/>
+        <service android:name="o.LoginOption"/>
+        <service android:name="o.PrayerTimesFragment"/>
+        <service android:name="com.bitsmedia.android.muslimpro.core.MPFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="o.toJson"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:exported="false"
+            android:configChanges="smallestScreenSize|screenSize|uiMode|screenLayout|orientation|keyboardHidden|keyboard"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/_res_0x7f0c001a"/>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.widget.BigTimeWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/_res_0x7f170015"/>
+        </receiver>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.widget.HorizontalShortcutWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/_res_0x7f170017"/>
+        </receiver>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.widget.HorizontalPrayerTimeWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/_res_0x7f170016"/>
+        </receiver>
+        <receiver android:name="com.bitsmedia.android.muslimpro.core.widget.VerticalPrayerTimeWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.ACTION_APPWIDGET_OPTIONS_CHANGED"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/_res_0x7f170018"/>
+        </receiver>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/_res_0x7f1405ac"/>
+        <meta-data
+            android:name="google_analytics_automatic_screen_reporting_enabled"
+            android:value="false"/>
+        <activity
+            android:theme="@style/_res_0x7f150277"
+            android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/_res_0x7f1404ac"
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="screenSize|screenLayout|orientation|keyboardHidden|keyboard"/>
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="@string/_res_0x7f1405ae"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="fbconnect"
+                    android:host="cct.com.bitsmedia.android.muslimpro"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.applovin.adview.AppLovinInterstitialActivity"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="genericidp"
+                    android:host="firebase.auth"
+                    android:path="/"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="recaptcha"
+                    android:host="firebase.auth"
+                    android:path="/"/>
+            </intent-filter>
+        </activity>
+        <service
+            android:name="o.brg"
+            android:exported="false"
+            android:directBootAware="true">
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.inappmessaging.display.FirebaseInAppMessagingDisplayRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.functions.FunctionsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.dynamiclinks.internal.FirebaseDynamicLinkRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.inappmessaging.FirebaseInAppMessagingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <activity android:name="o.zzoy"/>
+        <activity
+            android:name="zendesk.support.request.RequestActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:label="@string/_res_0x7f1407d9"
+            android:name="zendesk.support.requestlist.RequestListActivity"/>
+        <receiver
+            android:name="zendesk.support.DeepLinkingBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="zendesk.support"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="zendesk.support.SupportSdkStartupProvider"
+            android:enabled="true"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.zendesk.support.SupportSdkStartupProvider"/>
+        <activity
+            android:label="@string/_res_0x7f1408af"
+            android:name="zendesk.support.guide.ViewArticleActivity"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:label="@string/_res_0x7f14083c"
+            android:name="zendesk.support.guide.HelpCenterActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <provider
+            android:name="zendesk.support.guide.GuideSdkStartupProvider"
+            android:enabled="true"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.zendesk.support.GuideSdkStartupProvider"/>
+        <activity
+            android:name="zendesk.messaging.MessagingActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:theme="@style/_res_0x7f150159"
+            android:label="@string/_res_0x7f140767"
+            android:name="com.google.android.libraries.places.widget.AutocompleteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:theme="@style/_res_0x7f15054e"
+            android:name="o.zzls"
+            android:configChanges="screenSize|orientation"/>
+        <provider
+            android:name="o.zznh"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.imagepicker.provider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/_res_0x7f170001"/>
+        </provider>
+        <receiver
+            android:name="o.access$602"
+            android:process=":remote"/>
+        <provider
+            android:name="com.facebook.internal.MediaBrowserCompat$ItemReceiver"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.FacebookInitProvider"/>
+        <receiver
+            android:name="o.zzov"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="o.zzop.IconCompatParcelizer"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="o.Cache.CacheResponseBody"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+            android:exported="true"
+            android:visibleToInstantApps="true"/>
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="o.diw"
+            android:exported="false"
+            android:directBootAware="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="o.toSha1ByteString$okhttp"
+            android:exported="false"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.facebook.ads.AudienceNetworkActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation|keyboardHidden"/>
+        <provider
+            android:name="com.facebook.ads.AudienceNetworkContentProvider"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.AudienceNetworkContentProvider"/>
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false"/>
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false"/>
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.firebaseinitprovider"
+            android:initOrder="100"
+            android:directBootAware="true"/>
+        <provider
+            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.mobileadsinitprovider"
+            android:initOrder="100"/>
+        <service
+            android:name="com.google.android.gms.ads.AdService"
+            android:enabled="true"
+            android:exported="false"/>
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false"/>
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false"/>
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="true"
+            android:exported="false"/>
+        <provider
+            android:name="com.applovin.sdk.AppLovinInitProvider"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.applovincontentprovider"
+            android:initOrder="101"
+            android:grantUriPermissions="true"/>
+        <activity
+            android:name="com.applovin.adview.AppLovinFullscreenActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:configChanges="smallestScreenSize|screenSize|uiMode|screenLayout|orientation|keyboardHidden|keyboard|locale"
+            android:hardwareAccelerated="true"/>
+        <activity
+            android:name="com.applovin.sdk.AppLovinWebViewActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/_res_0x7f150537"
+            android:name="com.applovin.mediation.MaxDebuggerActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/_res_0x7f150537"
+            android:name="com.applovin.mediation.MaxDebuggerDetailActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/_res_0x7f150537"
+            android:name="com.applovin.mediation.MaxDebuggerMultiAdActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/_res_0x7f150537"
+            android:name="com.applovin.mediation.MaxDebuggerAdUnitsListActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/_res_0x7f150537"
+            android:name="com.applovin.mediation.MaxDebuggerAdUnitDetailActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/_res_0x7f150537"
+            android:name="com.applovin.mediation.MaxDebuggerTestLiveNetworkActivity"
+            android:configChanges="screenSize|uiMode|orientation|keyboardHidden"/>
+        <service
+            android:name="o.setNativeAdListener"
+            android:exported="false"
+            android:stopWithTask="false"/>
+        <service
+            android:name="o.WorkDatabase"
+            android:exported="false"
+            android:stopWithTask="false"/>
+        <provider
+            android:name="o.gdw"
+            android:readPermission="true"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.belvedere2.attachments"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/_res_0x7f170000"/>
+        </provider>
+        <provider
+            android:name="o.SavedStateHandleController"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.androidx-startup">
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup"/>
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"/>
+            <meta-data
+                android:name="net.danlew.android.joda.JodaTimeInitializer"
+                android:value="androidx.startup"/>
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup"/>
+        </provider>
+        <service
+            android:name="o.onChildAttachedToWindow"
+            android:enabled="@bool/_res_0x7f050003"
+            android:exported="false"
+            android:directBootAware="false"/>
+        <service
+            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="@bool/_res_0x7f050005"
+            android:exported="true"
+            android:directBootAware="false"/>
+        <service
+            android:name="o.isScrap"
+            android:enabled="@bool/_res_0x7f050004"
+            android:exported="false"
+            android:directBootAware="false"/>
+        <receiver
+            android:name="androidx.work.impl.utils.ForceStopRunnable.BroadcastReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:directBootAware="false"/>
+        <receiver
+            android:name="o.onAnimation$MediaBrowserCompat$CustomActionResultReceiver"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="o.onAnimation.write"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="o.onAnimation.read"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="o.onAnimation.RemoteActionCompatParcelizer"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="o.createPayloadsIfNeeded"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+            android:enabled="@bool/_res_0x7f050003"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+            android:permission="android.permission.DUMP"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="o.zzaew"
+            android:configChanges="screenSize|orientation"/>
+        <service
+            android:name="o.setLayoutTransition"
+            android:exported="false"
+            android:directBootAware="true"/>
+        <service
+            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+            android:exported="false">
+            <meta-data
+                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+                android:value="cct"/>
+        </service>
+        <service
+            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"/>
+        <receiver
+            android:name="o.getPlaceFromIntent"
+            android:exported="false"/>
+        <provider
+            android:name="o.eiw"
+            android:exported="false"
+            android:authorities="com.bitsmedia.android.muslimpro.com.squareup.picasso"/>
+        <meta-data
+            android:name="com.google.android.play.billingclient.version"
+            android:value="4.1.0"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.android.billingclient.api.ProxyBillingActivity"
+            android:exported="false"
+            android:configChanges="screenSize|screenLayout|orientation|keyboardHidden|keyboard"/>
+    </application>
+</manifest>

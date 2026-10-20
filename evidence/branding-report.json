@@ -1,0 +1,5292 @@
+{
+ "brand": [
+  {
+   "idx": 21,
+   "text": "\"%s\" düyməsinə klikləməklə, Muslim Pro-nun [Şərtləri və qaydaları] və [Məxfilik siyasəti] və mənim haqqımda şəxsi məlumat toplaması ilə razıyam."
+  },
+  {
+   "idx": 22,
+   "text": "\"%s\" düğmesine tıklayarak, Muslim Pro [Hüküm ve Koşullar]'ını ve [Gizlilik Politika]'sını, ve hakkımda hassas kişisel verilerin toplanmasını kabul ediyorum."
+  },
+  {
+   "idx": 24,
+   "text": "\"%s\" ボタンをクリックすることにより、Muslim Pro の新しい [利用規約] と [プライバシーポリシー] に同意し、個人情報の収集に同意します。"
+  },
+  {
+   "idx": 49,
+   "text": "#muslimpro dan Ramazan Geri Sayımı"
+  },
+  {
+   "idx": 50,
+   "text": "#muslimpro থেকে রমজান কাউন্টডাউন"
+  },
+  {
+   "idx": 51,
+   "text": "#muslimpro で面白いビデオを見つけました：%s"
+  },
+  {
+   "idx": 52,
+   "text": "#muslimpro で面白い記事を見つけました：%s"
+  },
+  {
+   "idx": 53,
+   "text": "#muslimpro'ya yeni bir dua isteği gönderdim, siz de duanızı esirgemeyin: %s"
+  },
+  {
+   "idx": 54,
+   "text": "#muslimpro-ya yeni bir dua istəyi göndərdim, duanızı əsigəməyin: %s"
+  },
+  {
+   "idx": 55,
+   "text": "#muslimproで、ちょうどこんな面白い製品を見つけたところです：%s"
+  },
+  {
+   "idx": 56,
+   "text": "#muslimproでこの祈祷リクエストを見つけました。%2$sで%1$sのためのドゥーアを作成しましょう。"
+  },
+  {
+   "idx": 57,
+   "text": "#muslimproで新しい祈祷を提案しました。以下でドゥーア作成を支援できます： %s"
+  },
+  {
+   "idx": 58,
+   "text": "#muslimproの断食カウントダウン"
+  },
+  {
+   "idx": 446,
+   "text": "%1$s: %2$s, %3$s, %4$s, %5$s, %6$s #muslimpro\n%7$s"
+  },
+  {
+   "idx": 447,
+   "text": "%1$s: ‏%2$s,‏ %3$s,‏ %4$s,‏ %5$s,‏ %6$s ‎#muslimpro\n%7$s"
+  },
+  {
+   "idx": 678,
+   "text": "%s cihazınızda çalışıyor ve Muslim Pro bildirimlerinin düzgün çalışmasına engel olabilir. Muslim Pro uygulamasını korunan uygulamalar listesine eklediğinizden emin olun."
+  },
+  {
+   "idx": 685,
+   "text": "%s e posta adresiyle eşleşen bir Muslim Pro hesabı bulunmamaktadır. Şimdi kaydolmak ister misiniz?"
+  },
+  {
+   "idx": 686,
+   "text": "%s e-poçt ünvanına bağlı bir MuslimPro hesabı yoxdur. İndi qeydiyyatdan keçmək istəyirsiniz?"
+  },
+  {
+   "idx": 687,
+   "text": "%s e-poçtunuz Muslim Pro hesabından ayrıldı, çünki e-poçtunuzu təsdiqləməmisiniz."
+  },
+  {
+   "idx": 689,
+   "text": "%s ena doga e kaɓirgol maa tee ena waawi haɗde tintine Muslim Pro yaltude no haaniri. Waɗ feere ɓeydaa Muslim Pro e doggol jaaɓɗe curaaɗe."
+  },
+  {
+   "idx": 693,
+   "text": "%s está sendo executado no seu dispositivo e pode impedir as notificações do Muslim Pro de funcionarem corretamente. Certifique-se de que você adicionou o Muslim Pro à lista das aplicações protegidas."
+  },
+  {
+   "idx": 699,
+   "text": "%s hazırda cihazınızda aktivdir və Muslim Pro bildirişlərinin normal işləməsinə mane ola bilər. Muslim Pro-nun qorunan proqramlar siyahısında olduğuna əmin olun."
+  },
+  {
+   "idx": 709,
+   "text": "%s is actief op je apparaat en voorkomt mogelijk dat meldingen van Muslim Pro werken. Voeg Muslim Pro toe aan de lijst met beschermde apps."
+  },
+  {
+   "idx": 710,
+   "text": "%s is running on your device and may prevent Muslim Pro notifications to work properly. Make sure to add Muslim Pro to the list of protected apps."
+  },
+  {
+   "idx": 722,
+   "text": "%s kører på din enhed og kan forhindre Muslim Pro meddelelser at fungere korrekt. Sørg for at tilføje Muslim Pro på listen over beskyttede apps."
+  },
+  {
+   "idx": 723,
+   "text": "%s läuft auf Ihrem Gerät und verhindert u.U. die korrekte Ausführung der Muslim-Pro-Notifikationen. Vergessen Sie nicht, Muslim Pro zur Liste der geschützten Anwendungen hinzuzufügen."
+  },
+  {
+   "idx": 754,
+   "text": "%s se está ejecutando en su dispositivo y puede impedir que las notificaciones de Muslim Pro funcionen correctamente. Asegúrese de añadir Muslim Pro a la lista de aplicaciones protegidas."
+  },
+  {
+   "idx": 755,
+   "text": "%s sedang berjalan di peranti anda dan mungkin menghalang pemberitahuan Muslim Pro daripada berfungsi dengan baik. Pastikan anda memasukkan Muslim Pro ke dalam senarai aplikasi yang dilindungi."
+  },
+  {
+   "idx": 791,
+   "text": "%s è in esecuzione sul tuo dispositivo e potrebbe impedire che le notifiche di Muslim Pro funzionino correttamente. Assicurati di aggiungere Muslim Pro alla lista delle applicazioni protette."
+  },
+  {
+   "idx": 815,
+   "text": "%s сейчас работает на Вашем устройстве и может может мешать работе уведомлений Muslim Pro. Убедитесь, что приложение Muslim Pro добавлено в список защищенных приложений."
+  },
+  {
+   "idx": 829,
+   "text": "%s ئۈسكۈنىڭىزدە مەشغۇلات قىلىۋاتىدۇ، ھەمدە Muslim Pro ئۇختۇرۇشلىرىنىڭ نورمال ئىشلىشىگە توسقۇنلىق قىلىشى مۇمكىن. Muslim Pro نى قوغدىلىدىغان ئەپلەرنىڭ قاتارىغا قوشقانلىقىڭىزنى جەزىملەشتۈرۈڭ."
+  },
+  {
+   "idx": 909,
+   "text": "%s पर Muslim Pro का एक नया संस्करण उपलब्ध है। इसे मुफ्त मे डाउनलोड करने के लिए यहाँ टैप करें।"
+  },
+  {
+   "idx": 966,
+   "text": "%s กำลังทำงานในอุปกรณ์ของคุณ และอาจทำให้การแจ้งเตือนของ Muslim Pro ไม่สามารถทำงานได้อย่างถูกต้อง กรุณาเพิ่ม Muslim Pro ในรายการแอพที่ได้รับความคุ้มครอง"
+  },
+  {
+   "idx": 985,
+   "text": "%s 正在您的设备上运行，可能会阻止 Muslim Pro 通知功能的正常运行。请务必将 Muslim Pro 添加到受保护的应用程序列表中。"
+  },
+  {
+   "idx": 1319,
+   "text": "2010-%s कॉपीराइट Muslim Pro लिमिटेड"
+  },
+  {
+   "idx": 1320,
+   "text": "2021'in sonun da cep telefonu ile yapılan kayıtları durduracağız. Muslim Pro hesabınızı korumak için lütfen e-posta ve şifrenizle güncelleme yapın."
+  },
+  {
+   "idx": 1444,
+   "text": "A danndiino keɓe maa Muslim Pro e ɗee konte, aɗa yiɗi artirde-ɗe?"
+  },
+  {
+   "idx": 1445,
+   "text": "A danndiino keɓe maa Muslim Pro kisa, jooni aɗa sokli seŋaade walla winnditaade ngam danndude e sannginde keɓe e kaɓirɗi maa."
+  },
+  {
+   "idx": 1471,
+   "text": "A new version of Muslim Pro is available on %s. Tap here to download it for free now."
+  },
+  {
+   "idx": 1480,
+   "text": "A sua última tentativa de atualização para o Muslim Pro Premium falhou. Toque aqui agora para tentar novamente."
+  },
+  {
+   "idx": 1489,
+   "text": "A wayrii huutoraade Muslim Pro seeɗa! Hoto yejjit resande Alla seeɗa e yaajeende maa ñalnde fof."
+  },
+  {
+   "idx": 1569,
+   "text": "Abilita le notifiche di Muslim Pro dalle Impostazioni del tuo dispositivo per ricevere notifiche adhan."
+  },
+  {
+   "idx": 1589,
+   "text": "Acabei de encontrar esta imagem interessante no #muslimpro: %s"
+  },
+  {
+   "idx": 1590,
+   "text": "Acabei de encontrar este artigo interessante no #muslimpro: %s"
+  },
+  {
+   "idx": 1591,
+   "text": "Acabei de encontrar este pedido de oração em #muslimpro, vamos todos fazer duas at %s"
+  },
+  {
+   "idx": 1592,
+   "text": "Acabei de encontrar este pedido de oração em #muslimpro, vamos todos fazer duas para %1$s at %2$s"
+  },
+  {
+   "idx": 1593,
+   "text": "Acabei de encontrar este vídeo interessante no #muslimpro: %s"
+  },
+  {
+   "idx": 1594,
+   "text": "Acabei de publicar uma nova oração em #muslimpro, pode ajudar-me a fazer duas aqui: %s"
+  },
+  {
+   "idx": 1595,
+   "text": "Acabo de encontrar esta imagen interesante en #muslimpro: %s"
+  },
+  {
+   "idx": 1596,
+   "text": "Acabo de encontrar esta petición de oración en #muslimpro. Hagamos todos duas en %s"
+  },
+  {
+   "idx": 1597,
+   "text": "Acabo de encontrar esta petición de oración en #muslimpro. Hagamos todos duas por %1$s en %2$s"
+  },
+  {
+   "idx": 1598,
+   "text": "Acabo de encontrar este interesante artículo en #muslimpro: %s"
+  },
+  {
+   "idx": 1599,
+   "text": "Acabo de encontrar este interesante producto en #muslimpro: %s"
+  },
+  {
+   "idx": 1600,
+   "text": "Acabo de encontrar este interesante video en #muslimpro: %s"
+  },
+  {
+   "idx": 1601,
+   "text": "Acabo de enviar una nueva oración en #muslimpro. Puedes ayudarme a hacer duas aquí: %s"
+  },
+  {
+   "idx": 1604,
+   "text": "Accedi a Muslim Pro"
+  },
+  {
+   "idx": 1605,
+   "text": "Accedi a Muslim Pro & ottienilo gratis"
+  },
+  {
+   "idx": 1636,
+   "text": "Activa las notificaciones de Muslim Pro desde la configuraciones de tu dispositivo para recibir las notificaciones de adhan."
+  },
+  {
+   "idx": 1654,
+   "text": "Activez les notifications Muslim Pro depuis les paramètres de votre appareil afin de recevoir les notifications de l'Adhan."
+  },
+  {
+   "idx": 1702,
+   "text": "Adakah anda tahu bahawa anda boleh menggunakan Muslim Pro di [%1$s]? Tekan di sini untuk menggunakan [%2$s]."
+  },
+  {
+   "idx": 1733,
+   "text": "Adhan notifications from Muslim Pro seems to be delayed by the system. Tap here to learn more."
+  },
+  {
+   "idx": 1744,
+   "text": "Adhan-Benachrichtigungen von Muslim Pro scheinen vom System verzögert zu werden. Tippen Sie hier, um mehr zu erfahren."
+  },
+  {
+   "idx": 1746,
+   "text": "Adhan-meldingen van Muslim Pro worden vertraagd door het systeem. Tik hier voor meer informatie."
+  },
+  {
+   "idx": 1748,
+   "text": "Adhan-notifikationer fra Muslim Pro ser ud til at være forsinkede. Tryk her for at lære mere."
+  },
+  {
+   "idx": 1828,
+   "text": "Aftellen naar ramadan van #muslimpro"
+  },
+  {
+   "idx": 1954,
+   "text": "Aktifkan pemberitahuan Muslim Pro dari Pengaturan perangkat Anda untuk menerima pemberitahuan azan."
+  },
+  {
+   "idx": 1995,
+   "text": "Al hacer clic en el botón \"%s\", acepto los nuevos [Términos y condiciones] y la [Política de privacidad] de Muslim Pro, y la recopilación de datos personales confidenciales relacionados conmigo."
+  },
+  {
+   "idx": 2151,
+   "text": "Alaa konte Muslim Pro jahdoowo e ñiiɓirde iimeel %s. Aɗa yiɗi winnditaade jooni?"
+  },
+  {
+   "idx": 2296,
+   "text": "Als het gebruik van Muslim Pro je bevalt, zou je dan een momentje de tijd willen nemen om het te beoordelen? Het duurt nog geen minuut. Bedankt voor je steun!"
+  },
+  {
+   "idx": 2394,
+   "text": "Anda cukup lama tidak menggunakan Muslim Pro! Jangan lupa meluangkan waktu untuk Allah setiap hari."
+  },
+  {
+   "idx": 2419,
+   "text": "Anda sebelum ini telah menyandarkan data Muslim Pro anda, kini anda perlu melog masuk atau mendaftar untuk menyimpan dan menyegerakkan data merentasi peranti."
+  },
+  {
+   "idx": 2420,
+   "text": "Anda sebelum ini telah menyimpan data Muslim Pro untuk akaun ini, adakah anda ingin mengembalikannya?"
+  },
+  {
+   "idx": 2421,
+   "text": "Anda sebelumnya telah mem-backup data Muslim Pro Anda, kini Anda perlu masuk atau mendaftar untuk menyimpan dan mensinkronisasi data di perangkat Anda."
+  },
+  {
+   "idx": 2423,
+   "text": "Anda sudah lama tidak menggunakan Muslim Pro! Jangan lupa luangkan sedikit masa untuk Allah setiap hari."
+  },
+  {
+   "idx": 2524,
+   "text": "Antes de acostarte esta noche, recita Al-Ikhlas, Al-Falaq y An-Nas. Descubre otras súplicas en Muslim Pro."
+  },
+  {
+   "idx": 2525,
+   "text": "Antes de dormir esta noite, recite Al-Ikhlas, Al-Falaq e An-Nas. Descubra outras dua's em Muslim Pro."
+  },
+  {
+   "idx": 2535,
+   "text": "Ao clicar no botão \"%s\", concordo com os [Termos e Condições] e com a [Política de Privacidade] do Muslim Pro, bem como com a recolha de dados pessoais sensíveis sobre a minha pessoa."
+  },
+  {
+   "idx": 2566,
+   "text": "Apakah Anda sudah mengucapkan \"Alhamdulillah\" hari ini? Muslim Pro membantu Anda meluangkan waktu untuk Allah dalam kehidupan Anda yang sibuk."
+  },
+  {
+   "idx": 2567,
+   "text": "Apakah Anda tahu bahwa Anda dapat menggunakan Muslim Pro di [%1$s]? Sentuh di sini untuk menggunakan [%2$s]."
+  },
+  {
+   "idx": 2580,
+   "text": "Aperte aqui para habilitar as notificações do Muslim Pro nas Configurações de seu dispositivo para receber as notificações de Azan."
+  },
+  {
+   "idx": 2584,
+   "text": "Aplicación Muslim Pro"
+  },
+  {
+   "idx": 2586,
+   "text": "Aplikasi %s sedang berjalan di perangkat Anda dan mungkin dapat menghambat pemberitahuan dari Muslim Pro. Pastikan untuk memasukkan Muslim Pro dalam daftar aplikasi yang dilindungi/diproteksi."
+  },
+  {
+   "idx": 2588,
+   "text": "Aplikasi Muslim Pro"
+  },
+  {
+   "idx": 2601,
+   "text": "App Muslim Pro"
+  },
+  {
+   "idx": 2618,
+   "text": "Application mobile Muslim Pro"
+  },
+  {
+   "idx": 2624,
+   "text": "Appuyez ici pour activer les notifications Muslim Pro depuis les réglages de votre appareil et recevoir les notifications de l'Adhan."
+  },
+  {
+   "idx": 2729,
+   "text": "As notificações do Azan enviadas pela aplicação Muslim Pro parecem estar a sofrer atrasos causados pelo sistema. Toque aqui para saber mais."
+  },
+  {
+   "idx": 2782,
+   "text": "Assalamu'alaikum! Saya baru saja mengklaim hadiah trial Premium gratis dari Check-in harian di Muslim Pro, dengan ini saya bagikan informasi ini kepada keluarga & kerabat sekalian.\n%s"
+  },
+  {
+   "idx": 2792,
+   "text": "At Muslim Pro, we're encouraging the community to start a daily habit & simultaneously grow your spritual maturity. Be rewarded by consecutively checking in whilst working your ibadah goals.\n\nStart your habit today."
+  },
+  {
+   "idx": 2811,
+   "text": "Ative as notificações do Muslim Pro nas Configurações de seu dispositivo para receber as notificações do Azan."
+  },
+  {
+   "idx": 2927,
+   "text": "Avaliar Muslim Pro"
+  },
+  {
+   "idx": 2931,
+   "text": "Avant de vous coucher ce soir, pensez à réciter Al-Ikhlas, Al-Falaq et An-Nas. Découvrez d'autres dua's sur Muslim Pro."
+  },
+  {
+   "idx": 2937,
+   "text": "Avez-vous dit \"Alhamdulillah\" aujourd'hui? Muslim Pro vous aide à consacrer un peu de temps à Allah dans votre vie bien remplie."
+  },
+  {
+   "idx": 2938,
+   "text": "Avez-vous essayé la fonction \"Daily Streak\" sur Muslim Pro ? Développez vos habitudes & spirituelles et recevez une récompense à la fin de chaque niveau!\n%s"
+  },
+  {
+   "idx": 3034,
+   "text": "Azan bildirişləri almaq üçün bura toxunaraq cihaz tənzimləmələrindən Muslim Pro bildirişlərini aktivləşdirməlisiniz."
+  },
+  {
+   "idx": 3035,
+   "text": "Azan bildirişləri almaq üçün cihaz tənzimləmələrindən Muslim Pro bildirişlərini aktivləşdirin."
+  },
+  {
+   "idx": 3118,
+   "text": "Aɗa yiɗi Muslim Pro?"
+  },
+  {
+   "idx": 3176,
+   "text": "Bagikan Muslim Pro"
+  },
+  {
+   "idx": 3179,
+   "text": "Bagikan aplikasi Muslim Pro"
+  },
+  {
+   "idx": 3215,
+   "text": "Bantu berikan akses Premium Muslim Pro kepada sebanyak mungkin keluarga & dan teman Anda"
+  },
+  {
+   "idx": 3287,
+   "text": "Bedetider er udregnet efter dine indstillinger i Muslim Pro appen. Gennemse venligst dine indstillinger og henvend dig til din lokale Moske for verifikation."
+  },
+  {
+   "idx": 3298,
+   "text": "Before sleeping tonight, recite Al-Ikhlas, Al-Falaq and An-Nas. Discover other dua's on Muslim Pro."
+  },
+  {
+   "idx": 3301,
+   "text": "Begynd at bruge Muslim Pro"
+  },
+  {
+   "idx": 3305,
+   "text": "Bei Muslim Pro Anmelden"
+  },
+  {
+   "idx": 3306,
+   "text": "Bei Muslim Pro Einloggen"
+  },
+  {
+   "idx": 3307,
+   "text": "Bei Muslim Pro ermutigen wir die Gemeinschaft, eine tägliche Gewohnheit zu beginnen & gleichzeitig Ihre geistige Reife zu steigern. Sie werden belohnt, indem Sie sich regelmäßig anmelden und gleichzeitig auf Ihre Ibadah-Ziele hinarbeiten.\n\nBeginnen Sie heute mit Ihrer guten Gewohnheit."
+  },
+  {
+   "idx": 3315,
+   "text": "Bekijk Mekka live met Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 3318,
+   "text": "Bekijk deze locatie op Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 3372,
+   "text": "Beoordeel Muslim Pro"
+  },
+  {
+   "idx": 3412,
+   "text": "Beri 5 bintang untuk Muslim Pro"
+  },
+  {
+   "idx": 3414,
+   "text": "Beri Peringkat untuk Muslim Pro"
+  },
+  {
+   "idx": 3701,
+   "text": "Bu Ramazan, değerli kullanıcılarımıza Muslim Pro Premium'un bir promosyonunu takdim etmek istiyoruz."
+  },
+  {
+   "idx": 3702,
+   "text": "Bu Ramazan, əziz müştərilərimizə Muslim Pro Premiumun xüsusi həvəsləndirici təklifini təqdim etmək istəyirik."
+  },
+  {
+   "idx": 3719,
+   "text": "Bu dua isteğini #muslimpro'da buldum, %1$s için dua edelim %2$s"
+  },
+  {
+   "idx": 3720,
+   "text": "Bu dua isteğini #muslimpro'da buldum, Allah rızası için dua edelim %s"
+  },
+  {
+   "idx": 3721,
+   "text": "Bu dua istəyini #muslimpro-da tapdım, %1$s üçün dua edək: %2$s"
+  },
+  {
+   "idx": 3722,
+   "text": "Bu dua istəyini #muslimpro-da tapdım, gəl birlikdə dua edək: %s"
+  },
+  {
+   "idx": 3731,
+   "text": "Bu gün Cümədir, Muslim Pro-nu açaraq Cümə namazının vaxtını öyrənin."
+  },
+  {
+   "idx": 3738,
+   "text": "Bu gün “Əlhəmdülillah” demisiniz? Muslim Pro gərgin həyatınızda Allaha bir az vaxt ayırmağınıza kömək edir."
+  },
+  {
+   "idx": 3741,
+   "text": "Bu hesabın Muslim Pro ile bağlantısı kesilsin mi?"
+  },
+  {
+   "idx": 3742,
+   "text": "Bu hesabın MuslimPro ilə bağlantısı kəsilsin?"
+  },
+  {
+   "idx": 3743,
+   "text": "Bu hesap için Muslim Pro verilerinizi daha önceden kaydetmiştiniz, onları geri yüklemek ister misiniz?"
+  },
+  {
+   "idx": 3745,
+   "text": "Bu ilginç görüntüyü #muslimpro üzerinde yeni buldum: %s"
+  },
+  {
+   "idx": 3746,
+   "text": "Bu ilginç videoyu #muslimpro üzerinde yeni buldum: %s"
+  },
+  {
+   "idx": 3747,
+   "text": "Bu ilginç ürünü #muslimpro üzerinde yeni buldum: %s"
+  },
+  {
+   "idx": 3757,
+   "text": "Bu maraqlı fotonu #muslimpro-da tapmışam: %s"
+  },
+  {
+   "idx": 3758,
+   "text": "Bu maraqlı məhsulu #muslimpro-da tapmışam: %s"
+  },
+  {
+   "idx": 3759,
+   "text": "Bu maraqlı məqaləni #muslimpro-da tapmışam: %s"
+  },
+  {
+   "idx": 3760,
+   "text": "Bu maraqlı videonu #muslimpro-da tapmışam: %s"
+  },
+  {
+   "idx": 3762,
+   "text": "Bu mekana Muslim Pro'da bak, %1$s %2$s"
+  },
+  {
+   "idx": 3766,
+   "text": "Bu məkana Muslim Pro-da bax, %1$s %2$s"
+  },
+  {
+   "idx": 3822,
+   "text": "Buat kata sandi akun Muslim Pro?"
+  },
+  {
+   "idx": 3829,
+   "text": "Bugün \"Elhamdülillah\" dediniz mi? Muslim Pro, yoğun hayatınızda Allah'a vakit ayırmanıza yardımcı olur."
+  },
+  {
+   "idx": 3866,
+   "text": "Bunyikan Muslim Pro?"
+  },
+  {
+   "idx": 3887,
+   "text": "By clicking the \"%s\" button, I agree to the new Muslim Pro [T&C's] and [Privacy Policy], and to the collection of sensitive personal data about me."
+  },
+  {
+   "idx": 3931,
+   "text": "C'est vendredi! Lancez l'application Muslim Pro pour consulter l'horaire de la prière du vendredi (El Joumou'a)."
+  },
+  {
+   "idx": 4116,
+   "text": "Cesseremo le registrazioni tramite numeri di telefono per la fine del 2021. Sei gentilmente pregato di aggiornare con la tua email e password per mantenere il tuo profilo di Muslim Pro."
+  },
+  {
+   "idx": 4159,
+   "text": "Check out this place on Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 4167,
+   "text": "Chez Muslim Pro, nous encourageons la communauté à démarrer une habitude quotidienne & mûrir votre maturité spirituelle simultanément. Soyez récompensé en vous connectant tout en travaillant vers vos objectifs de Ibadah.\n\n Commencez votre habitude dès maintenant"
+  },
+  {
+   "idx": 4210,
+   "text": "Cipta Kata Laluan Akaun Muslim Pro"
+  },
+  {
+   "idx": 4212,
+   "text": "Cipta pelan membaca Al-Quran anda sendiri. Cubalah ciri Khatam baharu Muslim Pro sekarang: %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 4246,
+   "text": "Clica aquí para activar las notificaciones de Muslim Pro desde la Configuración de tu dispositivo para recivir notificaciones de adhan."
+  },
+  {
+   "idx": 4247,
+   "text": "Cliccando sul pulsante \"%s\", accetto i nuovi[T&C's] di Muslim Pro e [l'Informativa sulla privacy], e alla raccolta di dati personali sensibili su di me."
+  },
+  {
+   "idx": 4278,
+   "text": "Collega al tuo Profilo di Muslim Pro"
+  },
+  {
+   "idx": 4297,
+   "text": "Comece a usar o Muslim Pro"
+  },
+  {
+   "idx": 4335,
+   "text": "Compartilhar Muslim Pro"
+  },
+  {
+   "idx": 4341,
+   "text": "Compartir Muslim Pro"
+  },
+  {
+   "idx": 4345,
+   "text": "Compartir la aplicación Muslim Pro"
+  },
+  {
+   "idx": 4374,
+   "text": "Compte à rebours du Ramadan de #muslimpro"
+  },
+  {
+   "idx": 4390,
+   "text": "Condividi Muslim Pro"
+  },
+  {
+   "idx": 4395,
+   "text": "Condividi l'App di Muslim Pro"
+  },
+  {
+   "idx": 4453,
+   "text": "Consulte este espaço no Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 4464,
+   "text": "Contagem para o Ramadan do #muslimpro"
+  },
+  {
+   "idx": 4472,
+   "text": "Conteo regresivo para el Ramadán desde #muslimpro"
+  },
+  {
+   "idx": 4541,
+   "text": "Countdown Ramadan da #muslimpro"
+  },
+  {
+   "idx": 4542,
+   "text": "Countdown Ramadan dari #muslimpro"
+  },
+  {
+   "idx": 4549,
+   "text": "Crea il tuo piano di lettura del Corano. Prova ora la nuova funzionalità Khatam di Muslim Pro: %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 4550,
+   "text": "Crea tu propio plan de lectura para el Corán. Prueba la novedad para Khatam de Muslim Pro. %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 4563,
+   "text": "Creare una password del profilo di Muslim Pro?"
+  },
+  {
+   "idx": 4567,
+   "text": "Create a Muslim Pro account password?"
+  },
+  {
+   "idx": 4570,
+   "text": "Create your own Quran reading plan. Try Muslim Pro's new Khatam feature now: %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 4589,
+   "text": "Créez un mot de passe pour votre compte Muslim Pro?"
+  },
+  {
+   "idx": 4591,
+   "text": "Créez votre propre programme de lecture du Coran. Essayez maintenant la nouvelle fonctionnalité Khatam de Muslim Pro:%s\n#GiftOfQuran"
+  },
+  {
+   "idx": 4692,
+   "text": "Daftar dengan Muslim Pro"
+  },
+  {
+   "idx": 4717,
+   "text": "Dahulukan pembayaran dengan menghadiahkan akses Premium Muslim Pro dengan seberapa ramai keluarga & rakan-rakan"
+  },
+  {
+   "idx": 4720,
+   "text": "Dai un'occhiata a questo posto su Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 4733,
+   "text": "Dalam bulan Ramadhan ini, kami ingin menawarkan promosi Muslim Pro Premium kepada pengguna kami yang dihargai."
+  },
+  {
+   "idx": 4819,
+   "text": "Dayakan pemberitahuan Muslim Pro melalui Tetapan peranti anda untuk menerima pemberitahuan azan."
+  },
+  {
+   "idx": 4918,
+   "text": "De gebedstijden zijn berekend in overeenstemming met uw instellingen in de Muslim Pro app. Bekijk uw instellingen nog eens en neem voor verificatie contact op met uw lokale Moskee."
+  },
+  {
+   "idx": 4934,
+   "text": "Deel Muslim Pro"
+  },
+  {
+   "idx": 4955,
+   "text": "Del Muslim Pro"
+  },
+  {
+   "idx": 4974,
+   "text": "Demp Muslim Pro gedurende:"
+  },
+  {
+   "idx": 4976,
+   "text": "Dempen Muslim Pro opheffen?"
+  },
+  {
+   "idx": 4988,
+   "text": "Dengan meng-klik tombol \"%s\", saya setuju dengan [Syarat & Ketentuan] dan [Kebijakan privasi] Muslim Pro, serta dengan pengumpulan informasi pribadi dan sensitif mengenai diri saya."
+  },
+  {
+   "idx": 4989,
+   "text": "Dengan mengklik butang \"%s\", saya bersetuju dengan [T & S] dan [Dasar Privasi] Muslim Pro yang baru, dan pengumpulan data peribadi sensitif mengenai saya."
+  },
+  {
+   "idx": 5003,
+   "text": "Denne Ramadan vil vi gerne tilbyde en kampagne af Muslim Pro Premium til vores værdsatte brugere."
+  },
+  {
+   "idx": 5055,
+   "text": "Der er ingen Muslim Pro-konto forbundet med e-mailadressen %s. Vil du tilmelde dig nu?"
+  },
+  {
+   "idx": 5137,
+   "text": "Desvincular esta conta do Muslim Pro?"
+  },
+  {
+   "idx": 5139,
+   "text": "Det er fredag, åben Muslim Pro for at se tidspunktet til Jumuah bønnen."
+  },
+  {
+   "idx": 5179,
+   "text": "Deze Ramadan willen we een promotie van Muslim Pro Premium aanbieden aan onze gewaardeerde gebruikers."
+  },
+  {
+   "idx": 5180,
+   "text": "Deze account van Muslim Pro ontkoppelen?"
+  },
+  {
+   "idx": 5216,
+   "text": "Di Muslim Pro, kami mendorong komunitas muslim untuk memulai kebiasaan sehari-hari & sekaligus meningkatkan ketakwaan & keimanan Anda. Dapatkan hadiah dengan Check-in secara berurutan sambil mengerjakan tujuan ibadah Anda.\n\nMulai kebiasaan Anda hari ini."
+  },
+  {
+   "idx": 5217,
+   "text": "Di Muslim Pro, kami menggalakkan pengguna untuk memulakan tabiat harian & pada masa yang sama meningkatkan ibadah anda. Dapatkan ganjaran dengan mendaftar masuk secara berturut-turut sambil berusaha mencapai matlamat ibadah anda."
+  },
+  {
+   "idx": 5236,
+   "text": "Did you know that you can use Muslim Pro in [%1$s]? Tap here to use [%2$s]."
+  },
+  {
+   "idx": 5241,
+   "text": "Did you say \"Alhamdulillah\" today? Muslim Pro helps you spare some time for Allah in your busy life."
+  },
+  {
+   "idx": 5331,
+   "text": "Diesen Ramadan möchten wir unseren geschätzten Nutzern eine Werbeaktion von Muslim Pro anbieten."
+  },
+  {
+   "idx": 5335,
+   "text": "Dieses Konto von Muslim Pro entkoppeln?"
+  },
+  {
+   "idx": 5362,
+   "text": "Din e-mail er %s er blevet fraforbundet din Muslim Pro-konto, da du ikke bekræftede e-mailen."
+  },
+  {
+   "idx": 5396,
+   "text": "Disattiva audio Muslim Pro per:"
+  },
+  {
+   "idx": 5421,
+   "text": "Dissocier ce compte de Muslim Pro ?"
+  },
+  {
+   "idx": 5471,
+   "text": "Dobaade e butoŋ \"%s\" oo firti ko mi jaɓii [T&C's] e [Dawirgol Suturo] Muslim Pro kese ɗee, kam e doɓindagol keɓe sirluuje keeriiɗe baɗte am."
+  },
+  {
+   "idx": 5490,
+   "text": "Door op '%s' te drukken, ga ik akkoord met de [voorwaarden] en het [privacybeleid] van Muslim Pro, en met het verzamelen van gevoelige persoonlijke gegevens over mij."
+  },
+  {
+   "idx": 5573,
+   "text": "Du har ikke brugt Muslim Pro i et stykke tid! Husk at brug lidt tid på Allah hver dag."
+  },
+  {
+   "idx": 5579,
+   "text": "Du har tidligere gemt Muslim Pro-data på denne konto, kunne du tænke dig at gendanne disse?"
+  },
+  {
+   "idx": 5580,
+   "text": "Du har tidligere sikkerhedskopieret dine Muslim Pro-data, du skal nu logge på, eller oprette dig, for at gemme og synkronisere dine data på tværs af alle dine enheder."
+  },
+  {
+   "idx": 5713,
+   "text": "E kaa Koorka, amin njiɗi hokkude huutorɓe amen tedduɓe beeɓnol Muslim Pro Premium."
+  },
+  {
+   "idx": 5724,
+   "text": "E-mail Anda %s telah terputus dari akun Muslim Pro karena Anda tidak melakukan verifikasi e-mail."
+  },
+  {
+   "idx": 5730,
+   "text": "E-mel anda %s telah dinyahpautkan dengan akaun Muslim Pro anda kerana anda tidak mengesahkan e-mel."
+  },
+  {
+   "idx": 5742,
+   "text": "E-postayı doğrulamadığınız için %s e-postanızın Muslim Pro hesabınızla bağlantısı kesildi."
+  },
+  {
+   "idx": 5755,
+   "text": "Echa un vistazo a este lugar en Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 5829,
+   "text": "Eine neue Version von Muslim Pro ist im %s verfügbar. Tippen Sie hier, um sie jetzt gratis herunterzuladen."
+  },
+  {
+   "idx": 6044,
+   "text": "Empezar a usar Muslim Pro"
+  },
+  {
+   "idx": 6050,
+   "text": "En cliquant sur le bouton \"%s\", j'accepte les [CGU] et la [Politique de Confidentialité] de Muslim Pro, et que des données sensibles me concernant soient collectées."
+  },
+  {
+   "idx": 6061,
+   "text": "En ny version af Muslim Pro er tilgængelig i %s. Tryk her for at downloade den gratis nu."
+  },
+  {
+   "idx": 6085,
+   "text": "Enable Muslim Pro notifications from your device Settings in order to receive adhan notifications."
+  },
+  {
+   "idx": 6108,
+   "text": "Enlace a su cuenta de Muslim Pro"
+  },
+  {
+   "idx": 6148,
+   "text": "Envia Muslim Pro a un amigo"
+  },
+  {
+   "idx": 6155,
+   "text": "Enviar Muslim Pro a um amigo"
+  },
+  {
+   "idx": 6164,
+   "text": "Envoyer Muslim Pro à un ami"
+  },
+  {
+   "idx": 6186,
+   "text": "Er is een nieuwe versie van Muslim Pro beschikbaar in de %s. Druk hier om het gratis te downloaden."
+  },
+  {
+   "idx": 6189,
+   "text": "Er is geen Muslim Pro-account gekoppeld aan het e-mailadres %s. Wilt u zich nu aanmelden?"
+  },
+  {
+   "idx": 6260,
+   "text": "Erstellen Sie Ihr Passwort für Ihr Muslim Pro Konto"
+  },
+  {
+   "idx": 6262,
+   "text": "Erstellen Sie Ihren eigenen Koran-Leseplan. Jetzt die neue Khatam-Funktion von Muslim Pro testen:%s\n #GiftOfQuran"
+  },
+  {
+   "idx": 6266,
+   "text": "Es gibt kein Muslim Pro Konto, das mit der E-Mail-Adresse %s verbunden ist. Möchten Sie sich jetzt anmelden?"
+  },
+  {
+   "idx": 6271,
+   "text": "Es ist Freitag, starten Sie Muslim Pro, um die Zeit des Jumuah-Gebets nachzusehen."
+  },
+  {
+   "idx": 6280,
+   "text": "Es viernes, enciende Muslim Pro para ver a qué hora es el rezo Yumu'ah."
+  },
+  {
+   "idx": 6384,
+   "text": "Etagol maa cakkitiingol ƴellitinde Muslim Pro woorii. Tappu ɗoo ngam fuɗɗitaade jooni."
+  },
+  {
+   "idx": 6406,
+   "text": "Evaluez Muslim Pro"
+  },
+  {
+   "idx": 6458,
+   "text": "Ezan bildirimlerini alabilmek için buraya tıklayıp cihazınızın Ayarlar menüsünden Muslim Pro bildirimlerini aktifleştirmelisiniz."
+  },
+  {
+   "idx": 6459,
+   "text": "Ezan bildirimlerini alabilmek için cihazınızın Ayarlar menüsünden Muslim Pro bildirimlerine izin verin."
+  },
+  {
+   "idx": 6469,
+   "text": "Eğer Muslim Pro uygulamasını beğendiyseniz, onu değerlendirmek için zaman ayırabilir misiniz? Desteğiniz için teşekkür ederiz!"
+  },
+  {
+   "idx": 6536,
+   "text": "Faites-en profiter votre famille & vos amis en leur offrant l'accès Premium de Muslim Pro."
+  },
+  {
+   "idx": 6613,
+   "text": "Faz tempo que você não usa Muslim Pro! Não se esqueça de tirar tempo para Allah todo dia."
+  },
+  {
+   "idx": 6752,
+   "text": "Fjern linket til denne konto fra Muslim Pro?"
+  },
+  {
+   "idx": 6788,
+   "text": "For at modtage adhan-meddelelser skal man aktivere Muslim Pro meddelelser i enhedens Indstillinger."
+  },
+  {
+   "idx": 6789,
+   "text": "For at modtage adhan-meddelelser skal man trykke her for at aktivere Muslim Pro meddelelser i enhedens Indstillinger."
+  },
+  {
+   "idx": 6899,
+   "text": "Fuɗɗo huutoraade Muslim Pro"
+  },
+  {
+   "idx": 6910,
+   "text": "Før sengetid i aften, recitere Al-Ikhlas, Al-Falaq og An-Nas. Oplev andre dua på Muslim Pro."
+  },
+  {
+   "idx": 6926,
+   "text": "Ga Muslim Pro gebruiken"
+  },
+  {
+   "idx": 7029,
+   "text": "Gebetszeiten werden gemäß Ihren Einstellungen in der Muslim Pro-App berechnet. Überprüfen Sie Ihre Einstellungen und wenden Sie sich an Ihre Moschee."
+  },
+  {
+   "idx": 7070,
+   "text": "Gefällt Ihnen Muslim Pro?"
+  },
+  {
+   "idx": 7278,
+   "text": "Gosta do Muslim Pro?"
+  },
+  {
+   "idx": 7328,
+   "text": "Guarda la Mecca dal vivo con Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 7446,
+   "text": "Ha creado una copia de seguridad de sus datos de Muslim Pro con anterioridad. Ahora debe iniciar sesión o registrarse para guardar y sincronizar los datos en sus dispositivos."
+  },
+  {
+   "idx": 7448,
+   "text": "Ha fallado su último intento para actualizar a Muslim Pro Premium. Toque aquí para intentarlo de nuevo."
+  },
+  {
+   "idx": 7449,
+   "text": "Ha guardado datos de Muslim Pro para esta cuenta con anterioridad, ¿desea restaurarlos?"
+  },
+  {
+   "idx": 7472,
+   "text": "Haben Sie schon die Daily Streak-Funktion von Muslim Pro ausprobiert? Steigere deine spirituelle Gewohnheit & schalte eine Belohnung am Ende jedes Levels frei!\n%s"
+  },
+  {
+   "idx": 7488,
+   "text": "Hade maa lelaade jamma hannde, janngu Al-Ikhlas, Al-Falaq e An-Nas. Yiytu duwawuuji goɗɗi e Muslim Pro."
+  },
+  {
+   "idx": 7503,
+   "text": "Hai effettuato il salvataggio dei tuoi dati di Muslim Pro in precedenza, ora devi accedere o iscriverti per salvare e sincronizzare i dati sui tuoi dispositivi."
+  },
+  {
+   "idx": 7516,
+   "text": "Hai provato la funzionalità delle Serie Giornaliere su Muslim Pro. Sviluppa la tua abitudine spirituale e rivendica una ricompensa alla fine di ogni livello!\n%s"
+  },
+  {
+   "idx": 7593,
+   "text": "Hannde ko Aljumaa, hurmin Muslim Pro ngam anndude waktu njuulu Jumaa."
+  },
+  {
+   "idx": 7594,
+   "text": "Hannde ko maanditaare maa Muslim Pro"
+  },
+  {
+   "idx": 7597,
+   "text": "Hantar Muslim Pro kepada rakan"
+  },
+  {
+   "idx": 7648,
+   "text": "Hari ini hari Jumaat, lancarkan Muslim Pro untuk periksa waktu solat Jumaat."
+  },
+  {
+   "idx": 7654,
+   "text": "Hari lahir Islam saya jatuh pada %s. Muat turun apl Muslim Pro untuk ketahui hari anda."
+  },
+  {
+   "idx": 7680,
+   "text": "Have you tried the Daily Streak feature on Muslim Pro. Grow your spiritual habit & claim a reward at the end of each level!\n%s"
+  },
+  {
+   "idx": 7683,
+   "text": "Hay disponible una nueva versión de Muslim Pro en %s. Pulse aquí para descargarla ya de forma gratuita."
+  },
+  {
+   "idx": 7692,
+   "text": "Hayırlı Cumalar! Muslim Pro'yu başlatarak Cuma namazı saatini kontrol edin."
+  },
+  {
+   "idx": 7704,
+   "text": "He creado un plan de lectura para el Corán en Muslim Pro. Únete a mi para finalizar el Corán juntos & ganar insignias exclusivas: %1$s\nUsa este código de acceso para unirte: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 7705,
+   "text": "Heb je vandaag \"Alhamdulillah\" gezegd? Muslim Pro helpt je om in je drukke leven tijd vrij te maken voor Allah."
+  },
+  {
+   "idx": 7765,
+   "text": "Hentikan Meredam Muslim Pro?"
+  },
+  {
+   "idx": 7829,
+   "text": "Het is vrijdag, start Muslim Pro om te tijd voor het Jumuah-gebed te checken."
+  },
+  {
+   "idx": 7837,
+   "text": "Heute schon \"Alhamdulillah\" gesagt? Muslim Pro hilft Ihnen dabei, sich im Alltag Zeit für Allah zu nehmen."
+  },
+  {
+   "idx": 7863,
+   "text": "Hicri Təqvimlə doğum günüm %s. Muslim Pro tətbiqini yüklə, sən də hicri doğum gününü öyrən."
+  },
+  {
+   "idx": 7867,
+   "text": "Hicri takvime göre doğum günüm %s. Muslim Pro uygulamasını yükleyip sen de kendi doğum gününü öğren."
+  },
+  {
+   "idx": 7930,
+   "text": "Hitungan hari menuju Ramadan dari #muslimpro"
+  },
+  {
+   "idx": 7945,
+   "text": "Ho appena inviato una nuova preghiera a #muslimpro, puoi aiutarmi a creare delle dua qui: %s"
+  },
+  {
+   "idx": 7946,
+   "text": "Ho appena ottenuto questo distintivo in Muslim Pro leggendo il Corano! #GiftOfQuran"
+  },
+  {
+   "idx": 7947,
+   "text": "Ho appena trovato questa immagine interessante su #muslimpro: %s"
+  },
+  {
+   "idx": 7948,
+   "text": "Ho appena trovato questa richiesta di preghiera su #muslimpro, creiamo tutti delle dua per %1$s su %2$s"
+  },
+  {
+   "idx": 7949,
+   "text": "Ho appena trovato questa richiesta di preghiera su #muslimpro, creiamo tutti delle dua su %s"
+  },
+  {
+   "idx": 7950,
+   "text": "Ho appena trovato questo interessante articolo su #muslimpro: %s"
+  },
+  {
+   "idx": 7951,
+   "text": "Ho appena trovato questo interessante elemento su #muslimpro: %s"
+  },
+  {
+   "idx": 7952,
+   "text": "Ho appena trovato questo interessante video su #muslimpro: %s"
+  },
+  {
+   "idx": 7954,
+   "text": "Ho creato un gruppo di lettura del Corano in Muslim Pro. Unisciti a me per finire insieme il Corano e guadagnare distintivi esclusivi: %1$s\nUsa questo codice d'accesso per unirti a: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 8039,
+   "text": "Hurmin tintine Muslim Pro e Teelte kaɓirgol maa ngam heɓde tintine noddinaali."
+  },
+  {
+   "idx": 8059,
+   "text": "Hvis du nyder at bruge Muslim Pro, vil du bruge et øjeblik på at vurdere den? Det tager ikke mere end et minut. Tak for din støtte!"
+  },
+  {
+   "idx": 8130,
+   "text": "I have just found this interesting article on #muslimpro: %s"
+  },
+  {
+   "idx": 8131,
+   "text": "I have just found this interesting image on #muslimpro: %s"
+  },
+  {
+   "idx": 8132,
+   "text": "I have just found this interesting product on #muslimpro: %s"
+  },
+  {
+   "idx": 8133,
+   "text": "I have just found this interesting video on #muslimpro: %s"
+  },
+  {
+   "idx": 8134,
+   "text": "I have just found this prayer request on #muslimpro, let's all make duas at %s"
+  },
+  {
+   "idx": 8135,
+   "text": "I have just found this prayer request on #muslimpro, let's all make duas for %1$s at %2$s"
+  },
+  {
+   "idx": 8136,
+   "text": "I have just submitted a new prayer on #muslimpro, you can help me make duas here: %s"
+  },
+  {
+   "idx": 8146,
+   "text": "I tempi di preghiera vengono calcolati in base alle impostazioni su Muslim Pro. Per accertarti controlla le impostazioni e rivolgiti alla Moschea più vicina."
+  },
+  {
+   "idx": 8149,
+   "text": "I want to receive Muslim Pro's latest updates and exclusive insights"
+  },
+  {
+   "idx": 8151,
+   "text": "I've created a Quran reading group in Muslim Pro. Join me to finish the Quran together & earn exclusive badges: %1$s\nUse this access code to join: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 8152,
+   "text": "I've just earned this badge in Muslim Pro by reading Quran! #GiftOfQuran"
+  },
+  {
+   "idx": 8164,
+   "text": "Ich habe bereits ein Muslim Pro Account?"
+  },
+  {
+   "idx": 8166,
+   "text": "Ich habe eben diese Gebetsanfrage auf #muslimpro gefunden, wir sollten alle Bittgebete auf %s machen"
+  },
+  {
+   "idx": 8167,
+   "text": "Ich habe eben diese Gebetsanfrage auf #muslimpro gefunden, wir sollten alle Bittgebete für %1$s auf %2$s machen"
+  },
+  {
+   "idx": 8168,
+   "text": "Ich habe ein neues Gebet auf #muslimpro vorgeschlagen, Sie können mir hier dabei helfen, Bittgebete zu machen: %s"
+  },
+  {
+   "idx": 8169,
+   "text": "Ich habe eine Koran-Lesegruppe in Muslim Pro erstellt. Schließe dich mir an, um gemeinsam den Koran zu lesen & exklusive Abzeichen freizuschlaten: %1$s\nVerwenden Sie diesen Zugangscode, um beizutreten: %2$s\n #GiftOfQuran"
+  },
+  {
+   "idx": 8170,
+   "text": "Ich habe gerade diesen interessanten Artikel auf #muslimpro gefunden: %s"
+  },
+  {
+   "idx": 8171,
+   "text": "Ich habe gerade dieses interessante Bild auf #muslimpro gefunden: %s"
+  },
+  {
+   "idx": 8172,
+   "text": "Ich habe gerade dieses interessante Video auf #muslimpro gefunden: %s"
+  },
+  {
+   "idx": 8173,
+   "text": "Ich habe mir gerade diese Auszeichnung in Muslim Pro durch das Lesen des Korans verdient! #GiftOfQuran"
+  },
+  {
+   "idx": 8174,
+   "text": "Ich habe noch kein Muslim Pro Account."
+  },
+  {
+   "idx": 8176,
+   "text": "Ich möchte die neuesten Updates und exklusiven Einblicke von Muslim Pro erhalten"
+  },
+  {
+   "idx": 8227,
+   "text": "If you enjoy using Muslim Pro, would you mind taking a moment to rate it? It won't take more than a minute. Thanks for your support!"
+  },
+  {
+   "idx": 8244,
+   "text": "Ihr letzter Versuch, auf Muslim Pro Premium upzugraden, ist gescheitert. Tippen Sie hier, um es jetzt erneut zu versuchen."
+  },
+  {
+   "idx": 8249,
+   "text": "Ihre E-Mail-Adresse %s ist nicht länger mit Ihrem Muslim Pro-Konto verlinkt, weil Sie Ihre E-Mail-Adresse nicht bestätigt haben."
+  },
+  {
+   "idx": 8261,
+   "text": "Iimeel maa %s seŋtaama e konte maa Muslim Pro sabu e ƴeewtaaki oo iimeel."
+  },
+  {
+   "idx": 8268,
+   "text": "Ik heb net dit gebedsverzoek gevonden op #muslimpro, laten we allemaal duas maken in %s"
+  },
+  {
+   "idx": 8269,
+   "text": "Ik heb net dit gebedsverzoek gevonden op #muslimpro, laten we allemaal duas maken voor %1$s in %2$s"
+  },
+  {
+   "idx": 8270,
+   "text": "Ik heb net een nieuw gebed op #muslimpro ingediend, je kan me hier helpen duas te maken: %s"
+  },
+  {
+   "idx": 8271,
+   "text": "Ik heb zojuist deze interessante afbeelding gevonden op #muslimpro: %s"
+  },
+  {
+   "idx": 8272,
+   "text": "Ik heb zojuist deze interessante video gevonden op #muslimpro: %s"
+  },
+  {
+   "idx": 8273,
+   "text": "Ik heb zojuist dit interessante artikel gevonden op #muslimpro: %s"
+  },
+  {
+   "idx": 8274,
+   "text": "Ik heb zojuist dit interessante product gevonden op #muslimpro: %s"
+  },
+  {
+   "idx": 8343,
+   "text": "Il mio compleanno musulmano cade di %s. Scarica l'app Muslim Pro per scoprire quando è il tuo."
+  },
+  {
+   "idx": 8350,
+   "text": "Il n’y a pas de compte Muslim Pro associé à l'adresse email %s. Souhaitez-vous créer un compte maintenant ?"
+  },
+  {
+   "idx": 8371,
+   "text": "Il tuo ultimo tentativo di passare a Muslim Pro Premium è fallito. Tocca qui per provare di nuovo."
+  },
+  {
+   "idx": 8499,
+   "text": "In precedenza, hai salvato i dati di Muslim Pro per quest'account: desideri ripristinarli?"
+  },
+  {
+   "idx": 8609,
+   "text": "Inicia Sesión a Muslim Pro"
+  },
+  {
+   "idx": 8614,
+   "text": "Inicia sesión en Muslim Pro y consíguelo GRATIS"
+  },
+  {
+   "idx": 8623,
+   "text": "Inizia a usare Muslim Pro"
+  },
+  {
+   "idx": 8635,
+   "text": "Inscreva-se no Muslim Pro e obtenha-o GRATUITAMENTE"
+  },
+  {
+   "idx": 8710,
+   "text": "Invia Muslim Pro to a un amico"
+  },
+  {
+   "idx": 8758,
+   "text": "It's Friday, launch Muslim Pro to check the time of the Jumuah prayer."
+  },
+  {
+   "idx": 8773,
+   "text": "J'ai créé un groupe de lecture du Coran dans Muslim Pro. Rejoignez-moi pour finir le Coran ensemble & gagner des badges exclusifs:%1$s\n Utilisez ce code d'accès pour rejoindre: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 8775,
+   "text": "J'ai soumis une nouvelle prière sur #muslimpro, vous pouvez m'aider à faire des dou'a : %s"
+  },
+  {
+   "idx": 8790,
+   "text": "Jaaɓngal cinnde Muslim Pro"
+  },
+  {
+   "idx": 8833,
+   "text": "Je hebt Muslim Pro al een tijdje niet gebruikt! Vergeet niet om elke dag wat tijd aan Allah te besteden."
+  },
+  {
+   "idx": 8837,
+   "text": "Je laatste poging om te upgraden naar Muslim Pro Premium is niet geslaagd. Druk hier om het nu opnieuw te proberen."
+  },
+  {
+   "idx": 8839,
+   "text": "Je souhaite recevoir les dernières mises à jour et les informations exclusives de Muslim Pro."
+  },
+  {
+   "idx": 8841,
+   "text": "Je viens de gagner ce badge dans Muslim Pro en lisant le Coran! #GiftOfQuran"
+  },
+  {
+   "idx": 8842,
+   "text": "Je viens de trouver cet article intéressant sur #muslimpro: %s"
+  },
+  {
+   "idx": 8843,
+   "text": "Je viens de trouver cet article intéressant sur #muslimpro : %s"
+  },
+  {
+   "idx": 8844,
+   "text": "Je viens de trouver cette demande de prière sur #muslimpro, faisons tous des dou'a pour %1$s sur %2$s"
+  },
+  {
+   "idx": 8845,
+   "text": "Je viens de trouver cette demande de prière sur #muslimpro, faisons tous des dou'a sur %s"
+  },
+  {
+   "idx": 8846,
+   "text": "Je viens de trouver cette image intéressante sur #muslimpro : %s"
+  },
+  {
+   "idx": 8847,
+   "text": "Je viens de trouver cette vidéo intéressante sur #muslimpro : %s"
+  },
+  {
+   "idx": 8855,
+   "text": "Jeg har lige fundet denne interessante artikel på #muslimpro: %s"
+  },
+  {
+   "idx": 8856,
+   "text": "Jeg har lige fundet denne interessante video på #muslimpro: %s"
+  },
+  {
+   "idx": 8857,
+   "text": "Jeg har lige fundet dette interessante billede på #muslimpro: %s"
+  },
+  {
+   "idx": 8858,
+   "text": "Jeg har lige fundet dette interessante produkt på #muslimpro: %s"
+  },
+  {
+   "idx": 8859,
+   "text": "Jeg har netop sendt en ny bøn på #muslimpro, hjælp mig med at udføre duas her: %s"
+  },
+  {
+   "idx": 8860,
+   "text": "Jeg har netop set denne bønne anmodning på #muslimpro, lad os alle udføre duas for %1$s i %2$s"
+  },
+  {
+   "idx": 8861,
+   "text": "Jeg har netop set denne bønne anmodning på #muslimpro, lad os alle udføre duas i %s"
+  },
+  {
+   "idx": 8908,
+   "text": "Jika anda menyukai Muslim Pro, maukah anda memberikan rating kepada aplikasi ini? Rating hanya memakan waktu kurang dari 1 menit. Terimakasih untuk dukungan anda!"
+  },
+  {
+   "idx": 8909,
+   "text": "Jika anda suka Muslim Pro, bolehkah luangkan sedikit masa untuk beri penarafan? Tak sampai seminit pun. Terima kasih atas sokongan anda!"
+  },
+  {
+   "idx": 8933,
+   "text": "Jokkondir e Konte maa Muslim Pro"
+  },
+  {
+   "idx": 9084,
+   "text": "Kami akan menghentikan pendaftaran melalui nombor telefon bimbit pada akhir 2021. Sila kemas kini dengan e-mel anda & amp; kata laluan untuk mengekalkan akaun Muslim Pro anda."
+  },
+  {
+   "idx": 9085,
+   "text": "Kami akan menghentikan pendaftaran melalui nomor ponsel pada akhir tahun 2021. Harap perbarui kata sandi email & untuk mempertahankan akun Muslim Pro Anda."
+  },
+  {
+   "idx": 9258,
+   "text": "Kendi Kuran okuma planınızı oluşturun. Muslim Pro'nun yeni Khatam özelliğini şimdi deneyin: %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 9270,
+   "text": "Ketik di sini untuk mendayakan pemberitahuan Muslim Pro melalui Tetapan peranti anda bagi menerima pemberitahuan azan."
+  },
+  {
+   "idx": 9339,
+   "text": "Kirimkan Muslim Pro ke teman"
+  },
+  {
+   "idx": 9353,
+   "text": "Klik hier om Muslim Pro notificaties aan te zetten in je apparaatinstellingen om azan-notificaties te ontvangen."
+  },
+  {
+   "idx": 9409,
+   "text": "Kongsi Aplikasi Muslim Pro"
+  },
+  {
+   "idx": 9411,
+   "text": "Kongsi Muslim Pro"
+  },
+  {
+   "idx": 9436,
+   "text": "Konto mit Muslim Pro Profil verknüpfen"
+  },
+  {
+   "idx": 9590,
+   "text": "Kəbədən canlı yayımı Muslim Pro ilə izləyin: %s #muslimpro"
+  },
+  {
+   "idx": 9638,
+   "text": "L'application %s est installée sur votre appareil et peut empêcher le bon fonctionnement des notifications Muslim Pro. Merci d'ajouter Muslim Pro à la liste des applications protégées."
+  },
+  {
+   "idx": 9723,
+   "text": "La Sua email %s è stata scollegata dal Suo account Muslim Pro perché non ha verificato l'email."
+  },
+  {
+   "idx": 9907,
+   "text": "Las horas del rezo se calculan en función de la configuración de su aplicación Muslim Pro. Por favor, revise su configuración y diríjase a su mezquita local para verificarla."
+  },
+  {
+   "idx": 9910,
+   "text": "Las notificaciones de Adhan de Muslim Pro parecen estar retrasadas por el sistema. Toque aquí para obtener más información."
+  },
+  {
+   "idx": 10015,
+   "text": "Le notifiche Adhan per Muslim Pro sembrano essere ritardate dal sistema. Tocca qui per saperne di più."
+  },
+  {
+   "idx": 10088,
+   "text": "Lepaskan akun ini dari Muslim Pro?"
+  },
+  {
+   "idx": 10116,
+   "text": "Les horaires ci-dessous sont calculés sur la base des paramètres de votre appli Muslim Pro. Merci de valider ces réglages auprès de votre Mosquée."
+  },
+  {
+   "idx": 10121,
+   "text": "Les notifications pour l'Adhan de Muslim Pro semble être retardées par votre téléphone. Cliquez-ici pour en savoir plus."
+  },
+  {
+   "idx": 10158,
+   "text": "Lier à votre compte Muslim Pro"
+  },
+  {
+   "idx": 10181,
+   "text": "Like Muslim Pro?"
+  },
+  {
+   "idx": 10192,
+   "text": "Link to your Muslim Pro Account"
+  },
+  {
+   "idx": 10248,
+   "text": "Log In to Muslim Pro"
+  },
+  {
+   "idx": 10257,
+   "text": "Log Masuk Ke Muslim Pro"
+  },
+  {
+   "idx": 10265,
+   "text": "Log in op Muslim Pro & krijg het GRATIS"
+  },
+  {
+   "idx": 10268,
+   "text": "Log ind på Muslim Pro og få den GRATIS"
+  },
+  {
+   "idx": 10276,
+   "text": "Log masuk ke Muslim Pro & dapatkannya secara percuma"
+  },
+  {
+   "idx": 10313,
+   "text": "Lollin Muslim Pro"
+  },
+  {
+   "idx": 10471,
+   "text": "Ma min ndartin binnditagol huutoraade tonngooɗe cinnde ɗoo e maayirɗe 2021. Tiiɗno hesɗitin iimeel maa & finnde maa ngam tabitinde konte maa Muslim Pro."
+  },
+  {
+   "idx": 10496,
+   "text": "Maanditaare am Lislaam hawrata ko %s. Aawto jaaɓngal Muslim Pro ngam anndude nde maa."
+  },
+  {
+   "idx": 10653,
+   "text": "Masuk ke Muslim Pro"
+  },
+  {
+   "idx": 10701,
+   "text": "Mbar a wiyi \"Alhamdilillah\" hannde? Muslim Pro ena wallu maa siiftorde Alla e ñalɗi maa jinnduɗi."
+  },
+  {
+   "idx": 10760,
+   "text": "Mein muslimischer Geburtstag fällt auf den %s. Laden Sie die Muslim Pro App herunter, um herauszufinden, wann Ihrer ist."
+  },
+  {
+   "idx": 10784,
+   "text": "Melden Sie sich bei Muslim Pro an und erhalten Sie ihn GRATIS"
+  },
+  {
+   "idx": 10867,
+   "text": "Menyukai Muslim Pro?"
+  },
+  {
+   "idx": 10953,
+   "text": "Meu aniversário islâmico cai em %s. Baixe o aplicativo Muslim Pro para saber quando é o seu."
+  },
+  {
+   "idx": 10970,
+   "text": "Mi cumpleaños islámico es el %s. Descargue la app Muslim Pro para saber cuándo es el suyo."
+  },
+  {
+   "idx": 10972,
+   "text": "Mi hawrii e faggoore waɗnde faayiida e #muslimpro: %s"
+  },
+  {
+   "idx": 10973,
+   "text": "Mi hawrii e natal baɗngal faayiida e #muslimpro: %s"
+  },
+  {
+   "idx": 10974,
+   "text": "Mi hawrii e widewoo baɗɗo faayiida e #muslimpro: %s"
+  },
+  {
+   "idx": 10975,
+   "text": "Mi hawrii e winndannde waɗnde faayiida e #muslimpro: %s"
+  },
+  {
+   "idx": 10976,
+   "text": "Mi heɓii ɗee bajje e Muslim Pro sabu tarde Ğur'aana! #GiftOfQuran"
+  },
+  {
+   "idx": 10979,
+   "text": "Mi naatnii duwaawu hesu to #muslimpro, aɗa waawi wallude mi e duwaawuuji ɗoo: %s"
+  },
+  {
+   "idx": 10982,
+   "text": "Mi sosii dental tafsiro Ǧur'aana e Muslim Pro. Ar yantu e am ngam njoofnen Ǧur'aana oo & keɓen bajje keeriiɗe: %1$s\nHuutoro oo kod ngam naatde: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 10983,
+   "text": "Mi tawii ndee ɗaɓɓannde duwaawu to #muslimpro, ngaree ene fof nduwano-ɗen %1$s to %2$s"
+  },
+  {
+   "idx": 10984,
+   "text": "Mi tawii ndee ɗaɓɓannde duwaawu to #muslimpro, ngaree ene fof nduwo-ɗen to %s"
+  },
+  {
+   "idx": 10996,
+   "text": "Mijn Islamitische verjaardag valt op %s. Download de Muslim Pro app en ontdek wanneer de jouwe is."
+  },
+  {
+   "idx": 11007,
+   "text": "Min muslimske fødselsdag er den %s. Hent Muslim Pro appen til at se hvornår din er."
+  },
+  {
+   "idx": 11048,
+   "text": "Mit dem Anklicken der Schaltfläche „%s“ erkläre ich mich mit den neuen [AGB] und der [Datenschutzerklärung] sowie mit der Erhebung vertraulicher personenbezogener Daten über mich durch Muslim Pro einverstanden."
+  },
+  {
+   "idx": 11057,
+   "text": "Miɗo yiɗi heɓde kesɗitine cakkitiiɗe Muslim Pro kañum e peeje keeriiɗe"
+  },
+  {
+   "idx": 11113,
+   "text": "Mon anniversaire tombe le %s dans le calendrier Musulman. Téléchargez Muslim Pro pour calculer le votre."
+  },
+  {
+   "idx": 11203,
+   "text": "Mula gunakan Muslim Pro"
+  },
+  {
+   "idx": 11207,
+   "text": "Mulai gunakan Muslim Pro"
+  },
+  {
+   "idx": 11227,
+   "text": "Muslim Pro"
+  },
+  {
+   "idx": 11228,
+   "text": "Muslim Pro & への登録で無料でもらえます"
+  },
+  {
+   "idx": 11229,
+   "text": "Muslim Pro - Gebet-Benachrichtigungen"
+  },
+  {
+   "idx": 11230,
+   "text": "Muslim Pro Azan bildirişləri sistem tərəfindən gecikdirilirmiş olaraq görünür. Daha çox məlumat üçün toxunun."
+  },
+  {
+   "idx": 11231,
+   "text": "Muslim Pro Hesabınıza Bağlantı"
+  },
+  {
+   "idx": 11232,
+   "text": "Muslim Pro Mobil app"
+  },
+  {
+   "idx": 11233,
+   "text": "Muslim Pro Premium'a son yükseltme denemeniz başarısız oldu. Şimdi tekrar denemek için buraya dokunun."
+  },
+  {
+   "idx": 11234,
+   "text": "Muslim Pro ajusta-se automaticamente ao Horário de Verão. Não tem que fazer nada, os seus momentos de oração estarão sempre corretos."
+  },
+  {
+   "idx": 11235,
+   "text": "Muslim Pro an einen Freund senden"
+  },
+  {
+   "idx": 11236,
+   "text": "Muslim Pro app"
+  },
+  {
+   "idx": 11237,
+   "text": "Muslim Pro automatically adjusts to Daylight Saving Time changes. There is nothing for you to do, your prayer times are always accurate."
+  },
+  {
+   "idx": 11238,
+   "text": "Muslim Pro bewerten"
+  },
+  {
+   "idx": 11239,
+   "text": "Muslim Pro da oturum açın ve ÜCRETSIZ sahip olun"
+  },
+  {
+   "idx": 11240,
+   "text": "Muslim Pro dilaraskan secara automatik mengikut perubahan Waktu Jimat Siang. Anda tidak perlu melakukan apa-apa, waktu solat anda sentiasa tepat."
+  },
+  {
+   "idx": 11241,
+   "text": "Muslim Pro doğru Namaz vaxtlarını hesablaması üçün mövqeyinizi bilməlidir"
+  },
+  {
+   "idx": 11242,
+   "text": "Muslim Pro fonnditat bayle Waktuuji Ceeɗu e jaajol. Alaa ko waɗɗi-maa wadde, waktuuji amen njuulu fof ko celluɗi."
+  },
+  {
+   "idx": 11243,
+   "text": "Muslim Pro hesabıyla kaydolun"
+  },
+  {
+   "idx": 11244,
+   "text": "Muslim Pro hesap şifresi oluştur?"
+  },
+  {
+   "idx": 11245,
+   "text": "Muslim Pro justerer automatisk Sommertidsændringer. Du behøver ikke selv gøre det, dine bønnetider er altid nøjagtige."
+  },
+  {
+   "idx": 11246,
+   "text": "Muslim Pro mobil tətbiqi"
+  },
+  {
+   "idx": 11247,
+   "text": "Muslim Pro mobil uygulaması"
+  },
+  {
+   "idx": 11248,
+   "text": "Muslim Pro mobile app"
+  },
+  {
+   "idx": 11249,
+   "text": "Muslim Pro məlumatlarını ehtiyatlamısınız. Bərpa etmək istəyirsiniz?"
+  },
+  {
+   "idx": 11250,
+   "text": "Muslim Pro məlumatlarını ehtiyatlamısınız. Daxil olaraq və ya üzv olaraq məlumatları sinxronlaşdıra bilərsiniz."
+  },
+  {
+   "idx": 11251,
+   "text": "Muslim Pro nicht länger stumm schalten?"
+  },
+  {
+   "idx": 11252,
+   "text": "Muslim Pro otomatis menyesuaikan dengan perubahan Daylight Saving Time. Anda tidak perlu melakukan apapun, waktu shalat Anda selalu akurat."
+  },
+  {
+   "idx": 11253,
+   "text": "Muslim Pro passt sich automatisch an Sommerzeitwechsel an. Sie müssen nichts tun, Ihre Gebetszeiten sind immer korrekt."
+  },
+  {
+   "idx": 11254,
+   "text": "Muslim Pro past zich automatisch aan zomer-/wintertijd veranderingen aan. U hoeft niets te doen, uw gebedstijden zijn altijd juist."
+  },
+  {
+   "idx": 11255,
+   "text": "Muslim Pro s'adapte automatiquement au changement d'heure : vous n'avez rien à faire, les horaires de prière restent exactes."
+  },
+  {
+   "idx": 11256,
+   "text": "Muslim Pro se ajusta automáticamente a los cambios de horario en verano. No hay nada pendiente sus tiempos de oración siempre son precisos."
+  },
+  {
+   "idx": 11257,
+   "text": "Muslim Pro si adatta automaticamente alle variazioni dell'ora legale. Non devi fare nulla, i tuoi momenti di preghiera saranno sempre precisi."
+  },
+  {
+   "idx": 11258,
+   "text": "Muslim Pro stumm schalten für:"
+  },
+  {
+   "idx": 11259,
+   "text": "Muslim Pro teilen"
+  },
+  {
+   "idx": 11260,
+   "text": "Muslim Pro verilerinizi daha önceden kaydetmiştiniz, giriş yaparak veya kaydolarak verilerinizi cihazlarınız arasında senkronize edebilirsiniz."
+  },
+  {
+   "idx": 11261,
+   "text": "Muslim Pro автоматически регулирует переход на летнее время. Вам не нужно ничего делать, ваше время для молитвы всегда будет точным."
+  },
+  {
+   "idx": 11262,
+   "text": "Muslim Pro ئارقىلىق مەككىدىكى نەق مەيدان كۆرۈنۈشلەرنى كۆرۈڭ: %s #muslimpro"
+  },
+  {
+   "idx": 11263,
+   "text": "Muslim Pro ئەزان ئۇقتۇرۇشلىرى سىستېما تەرىپىدىن كېچىكتۈرۈلگەندەك تۇرىدۇ. بۇ يەرنى چېكىپ تېخىمۇ كۆپ مەلۇماتقا ئىگە بولۇڭ."
+  },
+  {
+   "idx": 11264,
+   "text": "Muslim Pro يازلىق ۋاقت ئۆزگىرىشىگە ئۆزلىكىدىن تەڭشىلىدۇ. سىز ھىچنىمە قىلمىسىڭىزمۇ بولىدۇ،ناماز ۋاقتلىرى ھەرۋاقت توغرا."
+  },
+  {
+   "idx": 11265,
+   "text": "Muslim Pro يانفۇن ئەپى"
+  },
+  {
+   "idx": 11266,
+   "text": "Muslim Pro अपने आप से डेलाइट सेविंग समय परिवर्तनों में समायोजित हो जाता है। आपको यहाँ कुछ भी नही करना है, आपकी प्रार्थना का समय हमेशा सटीक होता है।"
+  },
+  {
+   "idx": 11267,
+   "text": "Muslim Pro ऐप में प्रार्थना के समय की गणना आपकी सेटिंग्स के अनुसार की जाती है। कृपया अपनी सेटिंग्स की समीक्षा करें और इसे अपने स्थानीय मस्जिद से सत्यापित करें।"
+  },
+  {
+   "idx": 11268,
+   "text": "Muslim Pro का उपयोग करना शुरू करें"
+  },
+  {
+   "idx": 11269,
+   "text": "Muslim Pro का मूल्यांकन करें"
+  },
+  {
+   "idx": 11270,
+   "text": "Muslim Pro की अज़ान सूचनाओं को सिस्टम द्वारा विलंबित किया जाना प्रतीत होता है। और जानने के लिए यहाँ टैप करें।"
+  },
+  {
+   "idx": 11271,
+   "text": "Muslim Pro के साथ आप मक्का का सीधा प्रसारण देख सकते हैं: %s #muslimpro"
+  },
+  {
+   "idx": 11272,
+   "text": "Muslim Pro को अनम्यूट करें?"
+  },
+  {
+   "idx": 11273,
+   "text": "Muslim Pro को म्यूट करें:"
+  },
+  {
+   "idx": 11274,
+   "text": "Muslim Pro पर इस जगह को देखें, %1$s %2$s"
+  },
+  {
+   "idx": 11275,
+   "text": "Muslim Pro पसंद आया"
+  },
+  {
+   "idx": 11276,
+   "text": "Muslim Pro प्रीमियम पर अपग्रेड करने का आपका पिछला प्रयास विफल रहा। पुन: प्रयास करने के लिए अब यहाँ टैप करें।"
+  },
+  {
+   "idx": 11277,
+   "text": "Muslim Pro में साइन इन करें और इसे मुफ़्त में पाएं"
+  },
+  {
+   "idx": 11278,
+   "text": "Muslim Pro จะปรับตามเวลาออมแสงโดยอัตโนมัติ คุณไม่ต้องทำอะไร เวลาละหมาดของคุณจะถูกต้องเสมอ"
+  },
+  {
+   "idx": 11279,
+   "text": "Muslim Pro เวอร์ชั่นใหม่พร้อมแล้วบน %s แตะที่นี่เพื่อดาวน์โหลดแอปฟรี เดี๋ยวนี้"
+  },
+  {
+   "idx": 11280,
+   "text": "Muslim Pro でこのお店をチェックして %1$s %2$s"
+  },
+  {
+   "idx": 11281,
+   "text": "Muslim Pro 会自动将时间根据夏令时调整。无需进行任何操作，您的祷告时间都会是准确的。"
+  },
+  {
+   "idx": 11282,
+   "text": "Muslim Pro'da Daily Streak özelliğini denediniz mi? Manevi alışkanlığınızı geliştirin & her seviyenin sonunda bir ödül talep et!\n%s"
+  },
+  {
+   "idx": 11283,
+   "text": "Muslim Pro'da Oturum Açın"
+  },
+  {
+   "idx": 11284,
+   "text": "Muslim Pro'da bir Kuran okuma grubu oluşturdum. Kuran'ı birlikte bitirmek için bana katılın & özel rozetler kazanın: %1$s \nKatılmak için bu erişim kodunu kullanın: %2$s\n #GiftOfQuran"
+  },
+  {
+   "idx": 11285,
+   "text": "Muslim Pro'da bu rozeti Kuran okuyarak kazandım! #GiftOfQuran"
+  },
+  {
+   "idx": 11286,
+   "text": "Muslim Pro'da, topluluğu günlük bir alışkanlık başlatmaya teşvik ediyoruz & aynı zamanda ruhsal olgunluğunuzu da büyütün. İbadet hedeflerinizi yerine getirirken arka arkaya kayıt yaparak ödüllendirin.\n\nAlışkanlığınıza bugün başlayın."
+  },
+  {
+   "idx": 11287,
+   "text": "Muslim Pro'dan ezan bildirimleri sistem tarafından geciktiriliyor gibi gözüküyor. Daha fazla öğrenmek için buraya basın."
+  },
+  {
+   "idx": 11288,
+   "text": "Muslim Pro'nun Premium erişimini olabildiğince çok aile ve arkadaşa hediye ederek ileride ödeyin"
+  },
+  {
+   "idx": 11289,
+   "text": "Muslim Pro'nun en son güncellemelerini ve özel içeriklerini almak istiyorum"
+  },
+  {
+   "idx": 11290,
+   "text": "Muslim Pro'nun sesini açmak istermisiniz?"
+  },
+  {
+   "idx": 11291,
+   "text": "Muslim Pro'nun yeni bir sürümü %s'da. Şimdi ücretsiz indirmek için buraya dokunun."
+  },
+  {
+   "idx": 11292,
+   "text": "Muslim Pro'yla Kabe'den canlı yayını izleyin! %s #muslimpro"
+  },
+  {
+   "idx": 11293,
+   "text": "Muslim Pro'yu Beğendiniz mi?"
+  },
+  {
+   "idx": 11294,
+   "text": "Muslim Pro'yu Oyla"
+  },
+  {
+   "idx": 11295,
+   "text": "Muslim Pro'yu Paylaş"
+  },
+  {
+   "idx": 11296,
+   "text": "Muslim Pro'yu [%1$s] olarak kullanabileceğinizi biliyor muydunuz? [%2$s] kullanmak için buraya dokunun."
+  },
+  {
+   "idx": 11297,
+   "text": "Muslim Pro'yu bir an önce kullanmaya başlayın"
+  },
+  {
+   "idx": 11298,
+   "text": "Muslim Pro'yu kullanmayalı uzun zaman oldu! Her gün Allah'a vakit ayırmayı unutmayın."
+  },
+  {
+   "idx": 11299,
+   "text": "Muslim Pro'yu paylaş"
+  },
+  {
+   "idx": 11300,
+   "text": "Muslim Pro'yu şu kadar süre sessize al:"
+  },
+  {
+   "idx": 11301,
+   "text": "Muslim Pro, Yay Saatı tənzimləmələrini avtomatik edir. Bir şey etməniz lazım deyil. Namaz vaxtları hər zaman doğrudur."
+  },
+  {
+   "idx": 11302,
+   "text": "Muslim Pro, Yaz Saati Uygulaması zaman ayarlarını otomatik olarak yapar. Hiçbir şey yapmanıza gerek yoktur, namaz vakitleri her zaman doğrudur."
+  },
+  {
+   "idx": 11303,
+   "text": "Muslim Pro-App"
+  },
+  {
+   "idx": 11304,
+   "text": "Muslim Pro-da hesabınızı açın və PULSUZ əldə edin"
+  },
+  {
+   "idx": 11305,
+   "text": "Muslim Pro-nu Paylaş"
+  },
+  {
+   "idx": 11306,
+   "text": "Muslim Pro-nu [%1$s] dilində istifadə edə biləcəyinizi bilirdiniz? [%2$s] dilində istifadə etmək üçün bura toxunun."
+  },
+  {
+   "idx": 11307,
+   "text": "Muslim Pro-nu bir dostuna göndər"
+  },
+  {
+   "idx": 11308,
+   "text": "Muslim Pro-nu bu müddətdə səssiz et:"
+  },
+  {
+   "idx": 11309,
+   "text": "Muslim Pro-nu bəyənirsiniz?"
+  },
+  {
+   "idx": 11310,
+   "text": "Muslim Pro-nu istifadə etməyə başlayın"
+  },
+  {
+   "idx": 11311,
+   "text": "Muslim Pro-nu qiymətləndirin"
+  },
+  {
+   "idx": 11312,
+   "text": "Muslim Pro-nun Premium versiyasını son satın alma cəhdi uğursuz oldu. Təkrar cəhd üçün bura toxunun."
+  },
+  {
+   "idx": 11313,
+   "text": "Muslim Pro-nun səsi açılsın?"
+  },
+  {
+   "idx": 11314,
+   "text": "Muslim Pro-nun yeni versiyası artıq %s-dadır. Pulsuz yükləmək üçün toxunun."
+  },
+  {
+   "idx": 11315,
+   "text": "Muslim Proنى ئىشلىتىشنى باشلاڭ"
+  },
+  {
+   "idx": 11316,
+   "text": "Muslim Proنى ئۈنسىزلەشتۈرۈش سۈلۈكى:"
+  },
+  {
+   "idx": 11317,
+   "text": "Muslim Proنى ئۈنلەش؟"
+  },
+  {
+   "idx": 11318,
+   "text": "Muslim Proنى باھالاش"
+  },
+  {
+   "idx": 11319,
+   "text": "Muslim Proنى ياقتۇردىڭىزمۇ؟"
+  },
+  {
+   "idx": 11320,
+   "text": "Muslim Proنى ھەمبەھىرلەڭ"
+  },
+  {
+   "idx": 11321,
+   "text": "Muslim Proنىڭ يېڭى نەشرى %sدە ئېلان قىلىندى. بۇ يەرنى چېكىپ ھەقسىز چۈشۈرۋېلىڭ."
+  },
+  {
+   "idx": 11322,
+   "text": "Muslim Proでメッカのライブ映像を見る：%s #muslimpro"
+  },
+  {
+   "idx": 11323,
+   "text": "Muslim Proは、サマータイムへの変更が自動的に可能です。何にもすることなく、いつでも正確な時間に礼拝ができます。"
+  },
+  {
+   "idx": 11324,
+   "text": "Muslim Proは気に入りましたか？"
+  },
+  {
+   "idx": 11325,
+   "text": "Muslim Proをお使いいただきありがとうございます。もしよろしければ、ほんの少しだけお時間をいただき評価をお願いできませんか？ご協力感謝いたします！"
+  },
+  {
+   "idx": 11326,
+   "text": "Muslim Proを使用開始"
+  },
+  {
+   "idx": 11327,
+   "text": "Muslim Proを共有"
+  },
+  {
+   "idx": 11328,
+   "text": "Muslim Proを友達に送る"
+  },
+  {
+   "idx": 11329,
+   "text": "Muslim Proを評価"
+  },
+  {
+   "idx": 11330,
+   "text": "Muslim Proモバイルアプリ"
+  },
+  {
+   "idx": 11331,
+   "text": "Muslim Pro手机应用"
+  },
+  {
+   "idx": 11332,
+   "text": "Muslim Pro的新版本可以在%s下载了。点击这里现在免费下载。"
+  },
+  {
+   "idx": 11334,
+   "text": "MuslimPro"
+  },
+  {
+   "idx": 11335,
+   "text": "MuslimProFr"
+  },
+  {
+   "idx": 11336,
+   "text": "MuslimProId"
+  },
+  {
+   "idx": 11342,
+   "text": "Mute Muslim Pro for:"
+  },
+  {
+   "idx": 11351,
+   "text": "Muumɗin Muslim Pro:"
+  },
+  {
+   "idx": 11352,
+   "text": "Muumɗitin Muslim Pro?"
+  },
+  {
+   "idx": 11360,
+   "text": "My Muslim birthday falls on %s. Download the Muslim Pro app to find out when is yours."
+  },
+  {
+   "idx": 11565,
+   "text": "Namaz vakitleri, Muslim Pro uygulamasında seçtiğiniz ayarlara göre gösterilir. Lütfen yerel caminize danışarak ayarlarınızı teyit ettirin."
+  },
+  {
+   "idx": 11569,
+   "text": "Namaz vaxtları, Muslim Pro tətbiqində seçdiyiniz tənzimləmələrə görə göstərilir. Zəhmət olmasa, yerli məscidinizlə əlaqə yaradıb, vaxtları dəqiqləşdirin."
+  },
+  {
+   "idx": 11637,
+   "text": "Nedtælling til Ramadan fra #muslimpro"
+  },
+  {
+   "idx": 11664,
+   "text": "Neldu Muslim Pro to sehil"
+  },
+  {
+   "idx": 11696,
+   "text": "Neste Ramadan, gostaríamos de oferecer uma promoção do Muslim Pro Premium aos nossos estimados utilizadores."
+  },
+  {
+   "idx": 11763,
+   "text": "Nilai Muslim Pro"
+  },
+  {
+   "idx": 11805,
+   "text": "No existe ninguna cuenta de Muslim Pro asociada con la dirección de E-Mail %s. ¿Le gustaría registrarse ahora?"
+  },
+  {
+   "idx": 11926,
+   "text": "Non c'è nessun account Muslim Pro associato a questo indirizzo email %s. Vuoi registrarti ora?"
+  },
+  {
+   "idx": 11950,
+   "text": "Non usi Muslim Pro da tanto! Non dimenticare di dedicare un po' del tuo tempo ad Allah ogni giorno."
+  },
+  {
+   "idx": 11971,
+   "text": "Nosotros estaremos dejando los registros vía números de teléfono al final de 2021. Amablemente actualiza con tu correo electrónico & contraseña para mantener tu cuenta de Muslim Pro."
+  },
+  {
+   "idx": 12013,
+   "text": "Notifikasi Azan untuk Muslim Pro ditunda oleh sistem. Tap di sini untuk pelajari selengkapnya"
+  },
+  {
+   "idx": 12032,
+   "text": "Nous cesserons les inscriptions via numéro de téléphone d'ici la fin de l'année 2021. Veuillez mettre à jour votre email & mot de passe afin de maintenir votre compte Muslim Pro."
+  },
+  {
+   "idx": 12107,
+   "text": "Nyahpautkan akaun ini daripada Muslim Pro?"
+  },
+  {
+   "idx": 12117,
+   "text": "Não existe qualquer conta Muslim Pro associada ao endereço de correio eletrônico %s. Gostaria de se registar agora?"
+  },
+  {
+   "idx": 12227,
+   "text": "O seu correio eletrônico %s deixou de estar relacionado com a sua conta Muslim Pro porque não verificou o correio eletrônico."
+  },
+  {
+   "idx": 12297,
+   "text": "Oggi hai detto \"Alhamdulillah\"? Muslim Pro ti aiuta a dedicare un po' di tempo della tua vita frenetica ad Allah."
+  },
+  {
+   "idx": 12462,
+   "text": "Os horários das orações são calculadas de acordo com seus ajustes no app Muslim Pro. Revise seus ajustes e consulte sua Mesquita local para verificação."
+  },
+  {
+   "idx": 12568,
+   "text": "Paga in anticipo regalando accesso Premium a Muslim Pro con quanti più familiari e amici"
+  },
+  {
+   "idx": 12627,
+   "text": "Partager Muslim Pro"
+  },
+  {
+   "idx": 12628,
+   "text": "Partager Muslim Pro App"
+  },
+  {
+   "idx": 12712,
+   "text": "Pautkan ke Akaun Muslim Pro anda"
+  },
+  {
+   "idx": 12713,
+   "text": "Pay it forward by gifting Muslim Pro's Premium access with as many family & friends"
+  },
+  {
+   "idx": 12744,
+   "text": "Pemberitahuan Azan daripada Muslim Pro nampaknya dilewatkan oleh sistem. Ketik di sini untuk mengetahui lebih lanjut."
+  },
+  {
+   "idx": 12779,
+   "text": "Pendant ce Ramadan, bénéficiez d'une offre spéciale sur la version Premium de Muslim Pro."
+  },
+  {
+   "idx": 12859,
+   "text": "Percubaan terakhir anda untuk menaik taraf ke Muslim Pro Premium gagal. Klik di sini untuk mencuba semula."
+  },
+  {
+   "idx": 12871,
+   "text": "Periksa tempat ini pada Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 12908,
+   "text": "Pernahkah anda mencuba ciri Ganjaran Harian Muslim Pro. Tingkatkan tabiat rohani anda & tuntut ganjaran pada penghujung setiap peringkat!\n%s"
+  },
+  {
+   "idx": 13144,
+   "text": "Prayer times are calculated accordingly to your settings in the Muslim Pro app. Please review your settings and refer to your local Mosque for verification."
+  },
+  {
+   "idx": 13298,
+   "text": "Progres yang bagus! Lanjutkan %s-Check-In harian Anda di aplikasi Muslim Pro sekarang."
+  },
+  {
+   "idx": 13477,
+   "text": "Questo Ramadan desideriamo offrire una promozione su Muslim Pro Premium ai nostri stimati utilizzatori."
+  },
+  {
+   "idx": 13508,
+   "text": "Quiero recibir las últimas actualizaciones de Muslim Pro y ideas exclusivas"
+  },
+  {
+   "idx": 13584,
+   "text": "Ramadan Countdown from #muslimpro"
+  },
+  {
+   "idx": 13585,
+   "text": "Ramadan Countdown von #muslimpro"
+  },
+  {
+   "idx": 13597,
+   "text": "Ramadan ini, kami ingin menawarkan promosi Muslim Pro Premium kepada para pengguna kami yang berharga."
+  },
+  {
+   "idx": 13646,
+   "text": "Rate Muslim Pro"
+  },
+  {
+   "idx": 13667,
+   "text": "Reativar o som de Muslim Pro?"
+  },
+  {
+   "idx": 13705,
+   "text": "Reciteer voor het slapen gaan Al-Ikhlas, Al-Falaq en An-Nas. Ontdek andere dua's op Muslim Pro."
+  },
+  {
+   "idx": 13731,
+   "text": "Redamkan Muslim Pro selama:"
+  },
+  {
+   "idx": 13744,
+   "text": "Reemtoore Ramadaan #muslimpro"
+  },
+  {
+   "idx": 13756,
+   "text": "Regardez la Mecque en direct avec Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 13769,
+   "text": "Registrati con Muslim Pro"
+  },
+  {
+   "idx": 13792,
+   "text": "Regístrate con Muslim Pro"
+  },
+  {
+   "idx": 13931,
+   "text": "Retrouvez cet établissement sur Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 13959,
+   "text": "Rezitieren Sie Al-Ikhlas, Al-Falaq und An-Nas, bevor Sie heute Abend schlafen gehen. Entdecken Sie andere Duas in Muslim Pro."
+  },
+  {
+   "idx": 13963,
+   "text": "Riattivare audio Muslim Pro?"
+  },
+  {
+   "idx": 14098,
+   "text": "S'inscrire à Muslim Pro"
+  },
+  {
+   "idx": 14123,
+   "text": "Sabia que pode utilizar o Muslim Pro em [%1$s]? Toque aqui utilizar [%2$s]."
+  },
+  {
+   "idx": 14138,
+   "text": "Sagde du \"Alhamdulillah\" i dag? Muslim Pro hjælper dig spare tid for Allah i din travle hverdag."
+  },
+  {
+   "idx": 14162,
+   "text": "Saksikan siaran langsung Mekah dengan Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 14163,
+   "text": "Salam ! Je viens d'obtenir un essai gratuit de la version Premium grâce à Daily Streak, sur Muslim Pro, pour le partagaer avec toute ma famille et mes amis. \n%s"
+  },
+  {
+   "idx": 14166,
+   "text": "Salam! Ho appena rivendicato la ricompensa della prova regalo gratuita di Premium dalla Serie Giornaliera, su Muslim Pro, da condividere con tutti i familiari e amici.\n%s"
+  },
+  {
+   "idx": 14167,
+   "text": "Salam! I have just claimed free Premium gift trial reward from Daily Streak, on Muslim Pro, to be shared with all my family & friends.\n%s"
+  },
+  {
+   "idx": 14168,
+   "text": "Salam! Ich habe soeben die kostenlose Premium-Testprämie von Tage-Streak auf Muslim Pro in freigeschalten, & kann sie mit meiner ganzen Familie & Freunden teilen.\n%s"
+  },
+  {
+   "idx": 14169,
+   "text": "Salam! Saya baru sahaja menuntut ganjaran percubaan hadiah Premium percuma daripada Ganjaran Harian, di Muslim Pro, untuk dikongsi dengan semua keluarga saya & kawan.\n%s"
+  },
+  {
+   "idx": 14219,
+   "text": "Sapevi che puoi usare Muslim Pro in [%1$s]? Tocca qui per usare [%2$s]."
+  },
+  {
+   "idx": 14251,
+   "text": "Savez-vous que vous pouvez utiliser Muslim Pro en [%1$s]? Cliquez ici pour utiliser [%2$s]."
+  },
+  {
+   "idx": 14257,
+   "text": "Saya baru sahaja memperolehi lencana ini di Muslim Pro dengan membaca Al-Quran! #GiftOfQuran"
+  },
+  {
+   "idx": 14258,
+   "text": "Saya baru sahaja menemui barang yang menarik di #muslimpro: %s"
+  },
+  {
+   "idx": 14259,
+   "text": "Saya baru sahaja menemui imej yang menarik ini di #muslimpro: %s"
+  },
+  {
+   "idx": 14260,
+   "text": "Saya baru sahaja menemui permintaan doa di #muslimpro, mari kita bersama-sama doakan %1$s di %2$s"
+  },
+  {
+   "idx": 14261,
+   "text": "Saya baru sahaja menemui permintaan doa di #muslimpro, mari kita bersama-sama doakan di %s"
+  },
+  {
+   "idx": 14262,
+   "text": "Saya baru sahaja menemui video yang menarik ini di#muslimpro: %s"
+  },
+  {
+   "idx": 14263,
+   "text": "Saya baru sahaja menghantar permintaan doa di #muslimpro, anda boleh bantu doakan saya di sini: %s"
+  },
+  {
+   "idx": 14264,
+   "text": "Saya baru saja mendapat permintaan doa di #muslimpro, mari kita berdoa di %s"
+  },
+  {
+   "idx": 14265,
+   "text": "Saya baru saja mendapat permintaan doa di #muslimpro, mari kita berdoa untuk %1$s di %2$s"
+  },
+  {
+   "idx": 14266,
+   "text": "Saya baru saja mendapatkan lencana ini di Muslim Pro dengan membaca Al-Qur'an! #GiftOfQuran"
+  },
+  {
+   "idx": 14267,
+   "text": "Saya baru saja menemukan artikel menarik ini dari #muslimpro: %s"
+  },
+  {
+   "idx": 14268,
+   "text": "Saya baru saja menemukan barang menarik ini di #muslimpro: %s"
+  },
+  {
+   "idx": 14269,
+   "text": "Saya baru saja menemukan gambar yang menarik ini di #muslimpro: %s"
+  },
+  {
+   "idx": 14270,
+   "text": "Saya baru saja menemukan video yang menarik ini di #muslimpro: %s"
+  },
+  {
+   "idx": 14271,
+   "text": "Saya baru saja mengirim doa baru lewat #muslimpro, Anda bisa membantu saya membuat doa di sini: %s"
+  },
+  {
+   "idx": 14278,
+   "text": "Saya ingin menerima kemas kini dan pandangan eksklusif Muslim Pro"
+  },
+  {
+   "idx": 14279,
+   "text": "Saya ingin menerima update terbaru dan pengetahuan eksklusif tentang islam dari Muslim Pro"
+  },
+  {
+   "idx": 14281,
+   "text": "Saya menemui artikel menarik di #muslimpro: %s"
+  },
+  {
+   "idx": 14290,
+   "text": "Saya telah membuat grup baca Al-Qur'an di Muslim Pro. Mari bergabung untuk menyelesaikan bacaan Al-Qur'an bersama & dapatkan badge eksklusif: %1$s\nGunakan kode akses ini untuk bergabung: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 14291,
+   "text": "Saya telah membuat satu kumpulan membaca Al-Quran di Muslim Pro. Sertai saya untuk menghabiskan bacaan Al-Quran bersama &peroleh lencana eksklusif: %1$s\nGunakan kod akses ini untuk menyertai: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 14313,
+   "text": "Schakel Muslim Pro-meldingen in in je apparaatinstellingen om azan-meldingen te ontvangen."
+  },
+  {
+   "idx": 14318,
+   "text": "Schau dir die Muslim Pro-App für iPhone und Android auf %s an"
+  },
+  {
+   "idx": 14319,
+   "text": "Schau dir diese Lokalität auf Muslim Pro an, %1$s %2$s"
+  },
+  {
+   "idx": 14339,
+   "text": "Scollegare questo account da Muslim Pro?"
+  },
+  {
+   "idx": 14358,
+   "text": "Se Makkah live med Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 14379,
+   "text": "Se connecter à Muslim Pro"
+  },
+  {
+   "idx": 14412,
+   "text": "Se ti piace Muslim Pro, perché non dedichi qualche istante a darne una valutazione sull'App Store? Non richiederà più di un minuto. Grazie per il supporto!"
+  },
+  {
+   "idx": 14422,
+   "text": "Se você gosta de usar o Muslim Pro, que tal avaliá-lo? Não levará mais de um minuto. Agradecemos o seu apoio!"
+  },
+  {
+   "idx": 14435,
+   "text": "Sebelum pergi tidur malam ini, bacalah Al-Ikhlas, Al-Falaq, dan An-Nas. Temukan doa-doa lain di Muslim Pro."
+  },
+  {
+   "idx": 14436,
+   "text": "Sebelum tidur malam ini, bacalah Al-Ikhlas, Al-Falaq dan An-Nas. Terokai doa lain di Muslim Pro."
+  },
+  {
+   "idx": 14468,
+   "text": "Sehen Sie Live-Bilder aus Mekka mit Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 14487,
+   "text": "Sekarang hari Jumat, buka Muslim Pro untuk melihat waktu sholat Jumat."
+  },
+  {
+   "idx": 14491,
+   "text": "Selam! Az önce tüm ailem & ve arkadaşlarımla \n%s paylaşmak üzere Muslim Pro'da Günlük Seri'den bedava Premium denemesi kazandım."
+  },
+  {
+   "idx": 14511,
+   "text": "Selamün Aleyküm, şu ana kadar kullandığım en iyi ücretsiz İslam uygulaması olan Muslim Pro'yu buradan indirebilirsin: %s"
+  },
+  {
+   "idx": 14649,
+   "text": "Send Muslim Pro til en ven"
+  },
+  {
+   "idx": 14650,
+   "text": "Send Muslim Pro to a friend"
+  },
+  {
+   "idx": 14661,
+   "text": "Sentuh di sini untuk mengaktifkan pemberitahuan Muslim Pro dari Pengaturan perangkat Anda untuk menerima pemberitahuan azan."
+  },
+  {
+   "idx": 14666,
+   "text": "Senyapkan Muslim Pro selama:"
+  },
+  {
+   "idx": 14741,
+   "text": "Seŋo e Muslim Pro"
+  },
+  {
+   "idx": 14742,
+   "text": "Seŋo e Muslim Pro & heɓ ɗum e DOKKAL"
+  },
+  {
+   "idx": 14751,
+   "text": "Seŋtu ɗee konte e Muslim Pro?"
+  },
+  {
+   "idx": 14769,
+   "text": "Share Muslim Pro"
+  },
+  {
+   "idx": 14770,
+   "text": "Share Muslim Pro App"
+  },
+  {
+   "idx": 14823,
+   "text": "Si te ha gustado Muslim Pro, ¿te gustaría calificarnos? No te tomará más de un minuto. ¡Gracias por tu colaboración!"
+  },
+  {
+   "idx": 14831,
+   "text": "Si vous aimez utiliser Muslim Pro, voulez-vous l'évaluer ? Cela ne vous prendra pas plus d'une minute. Merci de votre soutien !"
+  },
+  {
+   "idx": 14861,
+   "text": "Sidste forsøg på at opgradere til Muslim Pro Premium mislykkedes. Tryk her for at prøve igen."
+  },
+  {
+   "idx": 14865,
+   "text": "Sie haben Muslim Pro schon länger nicht verwendet! Vergessen Sie nicht, sich jeden Tag Zeit für Allah zu nehmen."
+  },
+  {
+   "idx": 14871,
+   "text": "Sie haben die Premium-Rezitation erfolgreich eingelöst. Genießen Sie sie, bis zum Ende des Ramadan oder solange Sie Muslim Pro Premium Mitglied sind."
+  },
+  {
+   "idx": 14890,
+   "text": "Sie nutzen Muslim Pro gerne? Dann nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!"
+  },
+  {
+   "idx": 14909,
+   "text": "Sign Up with Muslim Pro"
+  },
+  {
+   "idx": 14911,
+   "text": "Sign in ke Muslim Pro & dapatkan secara gratis"
+  },
+  {
+   "idx": 14912,
+   "text": "Sign in to Muslim Pro & get it for FREE"
+  },
+  {
+   "idx": 14966,
+   "text": "Silenciar Muslim Pro durante:"
+  },
+  {
+   "idx": 14967,
+   "text": "Silenciar o Muslim Pro por:"
+  },
+  {
+   "idx": 15001,
+   "text": "Sind Sie sicher, dass Sie diese Rezitation bis %s einlösen möchten? Sie können sie nur einmal auswählen. Die exklusive Rezitation ist nur für diesen Ramadan freigeschalten oder wenn Sie Muslim Pro Premium aktivieren."
+  },
+  {
+   "idx": 15066,
+   "text": "Sluk lyd for Muslim Pro i:"
+  },
+  {
+   "idx": 15070,
+   "text": "Slå lyd til for Muslim Pro?"
+  },
+  {
+   "idx": 15087,
+   "text": "So aɗa naftorii Muslim Pro, a ɓamataa sahaa daɓɓo ngam ɓettaade ɗum? Ɓurataa hojom. A jaaraama e ballal maa!"
+  },
+  {
+   "idx": 15162,
+   "text": "Sos finnde konte Muslim Pro?"
+  },
+  {
+   "idx": 15163,
+   "text": "Sos njuɓɓudi maa targol Ǧur'aana keeriindi. Ƴeewndo fa nu keso Muslim Pro oo jooni: %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 15241,
+   "text": "Start using Muslim Pro"
+  },
+  {
+   "idx": 15242,
+   "text": "Starten Sie Muslim Pro"
+  },
+  {
+   "idx": 15243,
+   "text": "Stasera, prima di addormentarti, recita Al-Ikhlas, Al-Falaq e An-Nas. Scopri altre dua su Muslim Pro."
+  },
+  {
+   "idx": 15302,
+   "text": "Stuur Muslim Pro naar een vriend"
+  },
+  {
+   "idx": 15304,
+   "text": "Su Muslim Pro, incoraggiamo la community a dare vita a un'abitudine giornaliera e simultaneamente far sviluppare la vostra maturità spirituale. Ricevi ricompense accedendo consecutivamente lavorando ai tuoi obiettivi dell'ibadah.\n\nCrea oggi la tua abitudine."
+  },
+  {
+   "idx": 15306,
+   "text": "Su correo electrónico %s ha sido desvinculado de su cuenta de Muslim Pro porque no verificó el correo electrónico."
+  },
+  {
+   "idx": 15338,
+   "text": "Sudah coba fitur Check-In harian di Muslim Pro? tetap istiqomah dan tingkatkan lagi keimanan Anda & dapatkan hadiah di akhir setiap tahapannya!\n%s"
+  },
+  {
+   "idx": 15345,
+   "text": "Sudahkah anda mengucapkan \"Alhamdulillah\" hari ini? Muslim Pro membantu anda meluangkan sedikit masa untuk Allah dalam kehidupan yang sibuk."
+  },
+  {
+   "idx": 15367,
+   "text": "Suka Muslim Pro?"
+  },
+  {
+   "idx": 15671,
+   "text": "Tap here to enable Muslim Pro notifications from your device Settings in order to receive adhan notifications."
+  },
+  {
+   "idx": 15696,
+   "text": "Tappu ɗoo ngam hurminde tintine Muslim Pro e Teelte kaɓirgol maa ngam heɓde tintine noddinaali."
+  },
+  {
+   "idx": 15732,
+   "text": "Tautkan ke Akun Muslim Pro Anda"
+  },
+  {
+   "idx": 15906,
+   "text": "Terokai tempat ini melalui Muslim pro, %1$s %2$s"
+  },
+  {
+   "idx": 16243,
+   "text": "There is no Muslim Pro account associated with the email address %s. Would you like to sign up now?"
+  },
+  {
+   "idx": 16253,
+   "text": "This Ramadan, we would like to offer a promotion of Muslim Pro Premium to our valued users."
+  },
+  {
+   "idx": 16281,
+   "text": "Ti piace Muslim Pro?"
+  },
+  {
+   "idx": 16285,
+   "text": "Tiada akaun Muslim Pro yang berkaitan dengan alamat e-mel %s. Adakah anda ingin mendaftar sekarang?"
+  },
+  {
+   "idx": 16337,
+   "text": "Tidak ada akun Muslim Pro dengan email %s. Daftar sekarang?"
+  },
+  {
+   "idx": 16451,
+   "text": "Tintine noddinaali Muslim Pro ena mbayi no yuɓɓo ngoo ena leeltina ɗum'en. Tappu ɗoo ngam ɓeydude humpito."
+  },
+  {
+   "idx": 16485,
+   "text": "Tjek dette sted ud på Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 16506,
+   "text": "Tocca qui per abilitare le notifiche di Muslim Pro dalle Impostazioni del tuo dispositivo se vuoi ricevere notifiche adhan."
+  },
+  {
+   "idx": 16532,
+   "text": "Tonton Makkah secara langsung dengan Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 16822,
+   "text": "U heeft eerder Muslim Pro-gegevens bewaard voor dit account. Wilt u deze herstellen?"
+  },
+  {
+   "idx": 16823,
+   "text": "U heeft eerder een back-up gemaakt van uw Muslim Pro-gegevens. U moet nu inloggen of u aanmelden om uw gegevens te bewaren en synchroniseren op al uw apparaten."
+  },
+  {
+   "idx": 16883,
+   "text": "Ulang tahun Muslim saya jatuh pada %s. Unduhlah aplikasi Muslim Pro untuk mengetahui ulang tahun Muslim Anda."
+  },
+  {
+   "idx": 16903,
+   "text": "Uma nova versão de Muslim Pro está disponível na %s. Toque aqui para baixar agora gratuitamente."
+  },
+  {
+   "idx": 16917,
+   "text": "Una nuova versione di Muslim Pro è disponibile nell'%s. Tocca qui per scaricarla gratuitamente ora."
+  },
+  {
+   "idx": 16935,
+   "text": "Une nouvelle version de Muslim Pro est disponible sur le %s. Tapez ici pour la télécharger gratuitement dès maintenant."
+  },
+  {
+   "idx": 16958,
+   "text": "Unlink this account from Muslim Pro?"
+  },
+  {
+   "idx": 16961,
+   "text": "Unmute Muslim Pro?"
+  },
+  {
+   "idx": 16981,
+   "text": "Upaya terakhir Anda untuk meng-upgrade ke Muslim Pro Premium gagal. Ketuk di sini untuk mencoba lagi sekarang."
+  },
+  {
+   "idx": 17036,
+   "text": "Utiliser Muslim Pro"
+  },
+  {
+   "idx": 17045,
+   "text": "Uw e-mail %s is ontkoppeld van uw Muslim Pro-account omdat u uw e-mail niet heeft bevestigd."
+  },
+  {
+   "idx": 17064,
+   "text": "Uyumadan önce İhlas, Felak ve Nas Surelerini okumak ister misiniz? Muslim Pro'daki diğer dualara da göz atabilirsiniz."
+  },
+  {
+   "idx": 17069,
+   "text": "Uzun müddətdir Muslim Pro-nu istifadə etmirsən. Allaha zaman ayırmağı unutma."
+  },
+  {
+   "idx": 17103,
+   "text": "Vea Makkah Live con Muslim pro: %s #muslimpro"
+  },
+  {
+   "idx": 17106,
+   "text": "Ved at klikke på knappen \"%s\" accepterer jeg Muslim Pros nye [V&B] og [privatlivspolitik], samt at mine personfølsomme oplysninger indsamles."
+  },
+  {
+   "idx": 17120,
+   "text": "Veja Makkah ao vivo com o Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 17192,
+   "text": "Verschenken Sie Premium-Tage von Muslim Pro an so viele Familienmitglieder & Freunde wie möglich."
+  },
+  {
+   "idx": 17204,
+   "text": "Versi baharu Muslim Pro kini boleh didapati di %s. Klik di sini untuk muat turun secara percuma sekarang."
+  },
+  {
+   "idx": 17206,
+   "text": "Versi baru dari Muslim Pro kini tersedia di %s. Ketuk di sini untuk mengunduhnya sekarang."
+  },
+  {
+   "idx": 17283,
+   "text": "Vidste du, at du kan bruge Muslim Pro i [%1$s]? Tryk her for at bruge [%2$s]."
+  },
+  {
+   "idx": 17310,
+   "text": "Vind je Muslim Pro leuk?"
+  },
+  {
+   "idx": 17343,
+   "text": "Você disse \"Alhamdulillah\" hoje? Muslim Pro ajuda você a tirar tempo para Allah em sua vida ocupada."
+  },
+  {
+   "idx": 17345,
+   "text": "Você efetuou anteriormente uma cópia de segurança dos seus dados do Muslim Pro. Inicie sessão ou crie uma conta para guardar e sincronizar dados em todos os seus dispositivos."
+  },
+  {
+   "idx": 17348,
+   "text": "Você guardou anteriormente os seus dados do Muslim Pro associados a esta conta. Pretende restaurá-los?"
+  },
+  {
+   "idx": 17375,
+   "text": "Voglio ricevere gli ultimi aggiornamenti di Muslim Pro e dettagli esclusivi"
+  },
+  {
+   "idx": 17438,
+   "text": "Vota Muslim Pro"
+  },
+  {
+   "idx": 17454,
+   "text": "Votre adresse e-mail %s a été dissociée de votre compte Muslim Pro parce que vous n’avez pas vérifié votre email."
+  },
+  {
+   "idx": 17458,
+   "text": "Votre dernière tentative pour passer à Muslim Pro Premium n'a pas abouti. Tapez ici et réessayez dès maintenant."
+  },
+  {
+   "idx": 17483,
+   "text": "Vous aimez Muslim Pro?"
+  },
+  {
+   "idx": 17496,
+   "text": "Vous avez précédemment sauvegardé des données Muslim Pro, vous devez désormais vous connecter ou vous inscrire pour sauvegarder et synchroniser entre vos différents appareils."
+  },
+  {
+   "idx": 17497,
+   "text": "Vous avez précédemment sauvegardé vos données Muslim Pro avec ce compte, souhaitez-vous les récupérer ?"
+  },
+  {
+   "idx": 17514,
+   "text": "Vous n'avez pas utilisé Muslim Pro depuis un certain temps. Pensez à consacrer un peu de temps à Allah chaque jour."
+  },
+  {
+   "idx": 17559,
+   "text": "Vurder Muslim Pro"
+  },
+  {
+   "idx": 17613,
+   "text": "Waktu Sholat dihitung berdasarkan pengaturan Anda di aplikasi Muslim Pro. Silahkan meninjau kembali pengaturan Anda dan merujuk kepada Masjid di sekitar wilayah Anda."
+  },
+  {
+   "idx": 17627,
+   "text": "Waktu solat dikira berdasarkan tetapan aplikasi Muslim Pro. Semak semula tetapan dan rujuk pada Masjid berdekatan untuk pengesahan."
+  },
+  {
+   "idx": 17637,
+   "text": "Waktuuji njuulu kiisaa ko fawaade e teelte maa e jaaɓnfal Muslim Pro ngal. Tiiɗno ƴeewto teelte maa tee tugno-ɗaa e Jumaa nokkuure maa ngam teeŋtinde."
+  },
+  {
+   "idx": 17658,
+   "text": "Watch Makkah live with Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 17685,
+   "text": "We will be ceasing registrations via mobile numbers by end of 2021. Kindly update with your email & password to maintain your Muslim Pro account."
+  },
+  {
+   "idx": 17785,
+   "text": "Winndito e Muslim Pro"
+  },
+  {
+   "idx": 17802,
+   "text": "Wir werden die Registrierung über Handynummern bis Ende 2021 einstellen. Bitte aktualisieren Sie Ihre E-Mail & Passwort, um Ihr Muslim Pro-Konto zu erhalten."
+  },
+  {
+   "idx": 17815,
+   "text": "Wist u dat u Muslim Pro kunt gebruiken in [%1$s]? Klik hier om [%2$s] te gebruiken."
+  },
+  {
+   "idx": 17836,
+   "text": "Wussten Sie, dass Sie Muslim Pro in [%1$s] verwenden können? Tippen Sie hier, um [%2$s] einzustellen."
+  },
+  {
+   "idx": 17905,
+   "text": "Yamre hesere Muslim Pro yaltii e %s. Tappu ɗoo ngam aawtaade nde ko aldaa e njoɓdi."
+  },
+  {
+   "idx": 18035,
+   "text": "Yatmazdan əvvəl İxlas, Fələq və Nas surələrini oxumaq istəyirsiniz? Muslim Pro-dakı digər dualara da baxın."
+  },
+  {
+   "idx": 18050,
+   "text": "Yeeɓ Makka tolbec e Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 18133,
+   "text": "You have previously backed up your Muslim Pro data, you now need to login or sign up to save and sync data across your devices."
+  },
+  {
+   "idx": 18134,
+   "text": "You have previously saved Muslim Pro data for this account, would you like to restore them?"
+  },
+  {
+   "idx": 18140,
+   "text": "You haven't used Muslim Pro for a while! Don't forget to spare some time for Allah everyday."
+  },
+  {
+   "idx": 18167,
+   "text": "Your email %s has been unlinked from your Muslim Pro account because you didn't verify the email."
+  },
+  {
+   "idx": 18170,
+   "text": "Your last attempt to upgrade to Muslim Pro Premium has failed. Tap here to try again now."
+  },
+  {
+   "idx": 18400,
+   "text": "[%1$s]でMuslim Proを使えるのをご存知でしたか？[%2$s]を使うには、ここをタップしてください。"
+  },
+  {
+   "idx": 20592,
+   "text": "dpo@muslimpro.com"
+  },
+  {
+   "idx": 20697,
+   "text": "facebook.com/muslimpro"
+  },
+  {
+   "idx": 20777,
+   "text": "get.muslimpro.com"
+  },
+  {
+   "idx": 20897,
+   "text": "http://get.muslimpro.com"
+  },
+  {
+   "idx": 20899,
+   "text": "http://www.facebook.com/muslimpro"
+  },
+  {
+   "idx": 20900,
+   "text": "http://www.muslimpro.com"
+  },
+  {
+   "idx": 20901,
+   "text": "http://www.muslimpro.com/?landing=0"
+  },
+  {
+   "idx": 20902,
+   "text": "http://www.muslimpro.com/duas/%1$s/%2$d/%3$d"
+  },
+  {
+   "idx": 20903,
+   "text": "http://www.muslimpro.com/halal/%s"
+  },
+  {
+   "idx": 20904,
+   "text": "http://www.muslimpro.com/makkah"
+  },
+  {
+   "idx": 20905,
+   "text": "http://www.muslimpro.com/message/%s"
+  },
+  {
+   "idx": 20906,
+   "text": "http://www.muslimpro.com/name/%1$d"
+  },
+  {
+   "idx": 20907,
+   "text": "http://www.muslimpro.com/quran/%1$d/%2$d"
+  },
+  {
+   "idx": 20908,
+   "text": "http://www.muslimpro.com/shop/%s"
+  },
+  {
+   "idx": 20909,
+   "text": "https://app-content.muslimpro.com/2020/05/19/doa-after-reading-the-quran/"
+  },
+  {
+   "idx": 20980,
+   "text": "https://go.muslimpro.com/"
+  },
+  {
+   "idx": 20981,
+   "text": "https://go.muslimpro.com/khatam"
+  },
+  {
+   "idx": 21021,
+   "text": "https://muslimpro.zendesk.com"
+  },
+  {
+   "idx": 21069,
+   "text": "https://www.muslimpro.com"
+  },
+  {
+   "idx": 21070,
+   "text": "https://www.muslimpro.com/Prayer"
+  },
+  {
+   "idx": 21071,
+   "text": "https://www.muslimpro.com/daily_streak"
+  },
+  {
+   "idx": 21072,
+   "text": "https://www.muslimpro.com/daily_streak/reward/%s>"
+  },
+  {
+   "idx": 21073,
+   "text": "https://www.muslimpro.com/khatam/%1$s/%2$s"
+  },
+  {
+   "idx": 21074,
+   "text": "https://www.muslimpro.com/virtual_tour/%1$s/%2$d/%3$s"
+  },
+  {
+   "idx": 21354,
+   "text": "market://details?id=com.bitsmedia.android.muslimpro"
+  },
+  {
+   "idx": 21420,
+   "text": "muslimpro# سے مجھے ابھی یہ دلچسپ تصویر ملی ہے: %s"
+  },
+  {
+   "idx": 21421,
+   "text": "muslimpro# کے طرف سے رمضان کا کاؤنٹ ڈاؤن"
+  },
+  {
+   "idx": 22036,
+   "text": "www.muslimpro.com"
+  },
+  {
+   "idx": 22037,
+   "text": "www.muslimpro.com/halal/%s"
+  },
+  {
+   "idx": 22227,
+   "text": "¡Hace tiempo que no utilizas Muslim Pro! No te olvides de reservar algo de tiempo para Alá todos los días."
+  },
+  {
+   "idx": 22228,
+   "text": "¡He obtenido esta insignia en Muslim Pro por leer el Corán! #GiftOfQuran"
+  },
+  {
+   "idx": 22238,
+   "text": "© 2010-%s Copyright Muslim Pro Limited"
+  },
+  {
+   "idx": 22239,
+   "text": "© 2010-%s Hak Cipta Muslim Pro Limited"
+  },
+  {
+   "idx": 22240,
+   "text": "© 2010-%s Telif Hakkı Muslim Pro Limited"
+  },
+  {
+   "idx": 22241,
+   "text": "© 2010-%s Авторские права Muslim Pro Limited"
+  },
+  {
+   "idx": 22242,
+   "text": "© 2010-%s جملہ حقوق محفوظ ہیں Muslim Pro Limited"
+  },
+  {
+   "idx": 22243,
+   "text": "© 2010-%s 著作権Muslim Pro Ltd."
+  },
+  {
+   "idx": 22244,
+   "text": "© 2010–%s Copyright Muslim Pro Limited"
+  },
+  {
+   "idx": 22245,
+   "text": "© 2010–%s Muslim Pro Limited 版权所有"
+  },
+  {
+   "idx": 22246,
+   "text": "© 2010–%s Müəllif Hüququ Muslim Pro Limited"
+  },
+  {
+   "idx": 22247,
+   "text": "© 2010–%s نەشىر ھوقۇقى Muslim Pro چەكلىككە تەۋە"
+  },
+  {
+   "idx": 22253,
+   "text": "¿Crear una contraseña de cuenta de Muslim Pro?"
+  },
+  {
+   "idx": 22256,
+   "text": "¿Desactivar el silencio de Muslim Pro?"
+  },
+  {
+   "idx": 22261,
+   "text": "¿Desea desvincular esta cuenta de Muslim Pro?"
+  },
+  {
+   "idx": 22277,
+   "text": "¿Has dicho hoy \"Alhamdulillah\"? Muslim Pro te ayuda a reservar algo de tiempo para Alá en tu ocupado día a día."
+  },
+  {
+   "idx": 22279,
+   "text": "¿Le gusta Muslim Pro?"
+  },
+  {
+   "idx": 22297,
+   "text": "¿Sabías que puedes usar Muslim Pro en [%1$s]? Toque aquí para usar [%2$s]."
+  },
+  {
+   "idx": 22355,
+   "text": "È venerdì, avvia Muslim Pro per controllare i tempi della Jumu'a."
+  },
+  {
+   "idx": 22360,
+   "text": "É sexta-feira, abra Muslim Pro para ver a horário da oração em \"congragação\" de Jummah."
+  },
+  {
+   "idx": 22687,
+   "text": "Ɓetto Muslim Pro"
+  },
+  {
+   "idx": 22721,
+   "text": "Əgər Muslim Pronu bəyənmisinizsə, onu qiymətləndirmək üçün vaxt ayıra bilərsiniz? Dəstəyiniz üçün minnətdarıq!"
+  },
+  {
+   "idx": 22869,
+   "text": "Ƴeew oo nokku e Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 22910,
+   "text": "Активируйте уведомления Muslim Pro из меню Настройки вашего устройства для того, чтобы получать азан уведомления."
+  },
+  {
+   "idx": 23043,
+   "text": "В Muslim Pro мы призываем сообщество начать ежедневную привычку и одновременно растить свою духовную зрелость. Получите вознаграждение, последовательно отмечаясь во время работы над достижением своих целей ибадата. \n\nНачните хорошую привычку сегодня"
+  },
+  {
+   "idx": 23069,
+   "text": "Ваша последняя попытка обновиться до Muslim Pro Premium не удалась. Нажмите здесь, чтобы попытаться еще раз."
+  },
+  {
+   "idx": 23107,
+   "text": "Включить звук Muslim Pro?"
+  },
+  {
+   "idx": 23126,
+   "text": "Войти в Muslim Pro"
+  },
+  {
+   "idx": 23127,
+   "text": "Войти в Muslim Pro & получите его бесплатно"
+  },
+  {
+   "idx": 23151,
+   "text": "Время молитв рассчитывается исходя из ваших настроек в приложении Muslim Pro. Просмотрите свои настройки и обратитесь в местную мечеть для проверки."
+  },
+  {
+   "idx": 23198,
+   "text": "Вы не пользовались Muslim Pro некоторое время! Не забывайте уделять Аллаху немного времени каждый день."
+  },
+  {
+   "idx": 23207,
+   "text": "Вы пробовали функцию Дни подряд в Muslim Pro? Развивайте свою духовную привычку, чтобы получить награду в конце каждого уровня!\n%s"
+  },
+  {
+   "idx": 23209,
+   "text": "Вы ранее выполняли резервное копирование данных Muslim Pro. Теперь вам нужно войти или зарегистрироваться, чтобы сохранить или синхронизировать данные на своих устройствах."
+  },
+  {
+   "idx": 23210,
+   "text": "Вы ранее сохраняли данные в этой учетной записи Muslim Pro, хотите их восстановить?"
+  },
+  {
+   "idx": 23221,
+   "text": "Вы уже сказали сегодня \"Альхамдулиллах\"? Muslim Pro поможет вам уделить время Аллаху в вашей суетливой жизни."
+  },
+  {
+   "idx": 23361,
+   "text": "Если Вам нравится Muslim Pro, пожалуйста, поставьте свою оценку. Это займет у Вас не больше одной минуты. Спасибо за поддержку!"
+  },
+  {
+   "idx": 23416,
+   "text": "Заплатите вперед, подарив премиум-доступ к Muslim Pro как можно большему количеству членов семьи и друзей"
+  },
+  {
+   "idx": 23420,
+   "text": "Зарегистрироваться в Muslim Pro"
+  },
+  {
+   "idx": 23432,
+   "text": "Знаете ли Вы, что Вы можете пользоваться Muslim Pro на [%s]? Нажмите здесь, что бы использовать [%s]."
+  },
+  {
+   "idx": 23560,
+   "text": "Мобильное приложение Muslim Pro"
+  },
+  {
+   "idx": 23570,
+   "text": "Мой мусульманский день рождения %s. Загрузите приложение Muslim Pro, чтобы узнать свой."
+  },
+  {
+   "idx": 23594,
+   "text": "На этот Рамадан мы хотим предложить нашим пользователям приложение Muslim Pro Premium."
+  },
+  {
+   "idx": 23598,
+   "text": "Нажимая \"%s\", я соглашаюсь с новыми [Условиями использования] и [Политикой конфиденциальности] Muslim Pro, а также на сбор моих персональных данных."
+  },
+  {
+   "idx": 23601,
+   "text": "Нажмите здесь, чтобы активировать уведомления Muslim Pro из меню Настройки вашего устройства и начать получать азан уведомления."
+  },
+  {
+   "idx": 23635,
+   "text": "Начать работу Muslim Pro"
+  },
+  {
+   "idx": 23697,
+   "text": "Новая версия Muslim Pro доступна в %s. Нажмите здесь, чтобы бесплатно загрузить ее."
+  },
+  {
+   "idx": 23712,
+   "text": "Нравится Muslim Pro?"
+  },
+  {
+   "idx": 23741,
+   "text": "Обратный отсчёт Рамадана от #muslimpro"
+  },
+  {
+   "idx": 23767,
+   "text": "Отвязать этот аккаунт от Muslim Pro?"
+  },
+  {
+   "idx": 23774,
+   "text": "Отключить звук Muslim Pro на:"
+  },
+  {
+   "idx": 23775,
+   "text": "Открой это заведение в Muslim Pro, %1$s %2$s"
+  },
+  {
+   "idx": 23795,
+   "text": "Отправить Muslim Pro другу"
+  },
+  {
+   "idx": 23811,
+   "text": "Оценить Muslim Pro"
+  },
+  {
+   "idx": 23843,
+   "text": "Перед сном прочтите сегодня Аль-Ихлас, Аль-Фалак и Ан-Нас. Откройте для себя и другие дуа с помощью Muslim Pro."
+  },
+  {
+   "idx": 23884,
+   "text": "Поделиться приложением Muslim Pro"
+  },
+  {
+   "idx": 24143,
+   "text": "С адресом эл. почты %s не связан аккаунт Muslim Pro. Вы хотите зарегистрироваться?"
+  },
+  {
+   "idx": 24149,
+   "text": "Салам! Я получил бесплатный подарок в виде триал-Премиума за Ежедневную активность в Muslim Pro, чтобы поделиться с моей семьёй и друзьями"
+  },
+  {
+   "idx": 24172,
+   "text": "Сегодня пятница, запустите Muslim Pro, чтобы проверить время молитвы Джума-намаз."
+  },
+  {
+   "idx": 24204,
+   "text": "Смотрите прямую трансляцию из Мекки в Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 24214,
+   "text": "Создайте ваш собственный план чтения. Попробуйте новую функцию Muslim Pro - Хатам: %s\n#GiftOfQuran"
+  },
+  {
+   "idx": 24220,
+   "text": "Создать пароль для вашего аккаунта Muslim Pro?"
+  },
+  {
+   "idx": 24311,
+   "text": "Уведомления Азан от Muslim Pro, по-видимому, задерживаются в системе. Нажмите сюда, чтобы узнать больше"
+  },
+  {
+   "idx": 24317,
+   "text": "Удалена связь вашего адреса электронной почты %s с вашей учетной записью Muslim Pro, так как вы не подтвердили ваш адрес электронной почты."
+  },
+  {
+   "idx": 24435,
+   "text": "Я создал группу чтения Корана в приложении Muslim Pro. Присоединяйся ко мне, чтобы совместно закончить Коран и получить эксклюзивные значки: %1$s\nИспользуй этот код для получения доступа: %2$s\n#GiftOfQuran"
+  },
+  {
+   "idx": 24436,
+   "text": "Я только что заработал этот значок в Muslim Pro, прочитав Коран! #GiftOfQuran"
+  },
+  {
+   "idx": 24437,
+   "text": "Я только что нашел(ла) эту молитву на #muslimpro, давайте все составим молитвы для %1$s at %2$s"
+  },
+  {
+   "idx": 24438,
+   "text": "Я только что нашел(ла) эту молитву на #muslimpro, давайте все составим молитвы на %s"
+  },
+  {
+   "idx": 24439,
+   "text": "Я только что нашёл интересное видео на #muslimpro: %s"
+  },
+  {
+   "idx": 24440,
+   "text": "Я только что нашёл интересную вещь на #muslimpro: %s"
+  },
+  {
+   "idx": 24441,
+   "text": "Я только что нашёл интересную картинку на #muslimpro: %s"
+  },
+  {
+   "idx": 24442,
+   "text": "Я только что нашёл интересную статью на #muslimpro: %s"
+  },
+  {
+   "idx": 24443,
+   "text": "Я только что отправил(а) новую молитву на #muslimpro, вы можете помочь мне составить молитвы здесь: %s"
+  },
+  {
+   "idx": 24664,
+   "text": "إذا كنت تستمع باستخدام Muslim Pro، فهل تمانع بأن تأخذ دقيقة من وقتك لتقيمه؟ لن يستغرق الأمر أكثر من دقيقة. شكرا لدعمك!"
+  },
+  {
+   "idx": 24730,
+   "text": "إنه يوم الجمعة، فابدأ تشغيل تطبيق Muslim Pro للتحقق من وقت صلاة الجمعة."
+  },
+  {
+   "idx": 24844,
+   "text": "ئۇشبۇ رامىزاندا، بىز Muslim Proنىڭ ھەقلىق نۇسخىسىنى قەدىرلىك ئىشلەتكۈچىلىرىمىزگە ئېتىبارلىق تەمىنلىمەكچى."
+  },
+  {
+   "idx": 24884,
+   "text": "ئەزان ئۇقتۇرۇشىنى تاپشۇرۇپ ئېلىش ئۈچۈن ئۈسكۈنىڭىزنىڭ تەڭشەك قىسمىدىكى Muslim Pro notifications دىگەن يېرىنى ئېچىۋىتىڭ."
+  },
+  {
+   "idx": 24885,
+   "text": "ئەزان ئۇقتۇرۇشىنى تاپشۇرۇپ ئېلىش ئۈچۈن بۇ يەرنى چېكىپ ئۈسكۈنىڭىزنىڭ تەڭشەكلەر قىسمىدىكى Muslim Pro notifications دىگەن يېرىنى ئېچىۋىتىڭ."
+  },
+  {
+   "idx": 24916,
+   "text": "ئەگەرسىز Muslim Proنى ئىشلىتىشنى ياقتۇرغان بولسىڭىز، ئازراق ۋاقىت چىقىرىپ بىزگە باھا بېرەلەمسىز؟ بىر مىنۇتتىن جىق ۋاقتىڭىز كەتمەيدۇ. قوللىغىنىڭىزغا رەخمەت!"
+  },
+  {
+   "idx": 24920,
+   "text": "ابدأ استخدام Muslim Pro"
+  },
+  {
+   "idx": 25299,
+   "text": "العد التنازلي لرمضان من #muslimpro"
+  },
+  {
+   "idx": 25693,
+   "text": "بىلەمسىز Muslim Proنى [%1$s] ئىشلىتەلەيسىز؟ چىكىپ [%2$s] ئىشلىتىڭ."
+  },
+  {
+   "idx": 25706,
+   "text": "بۇ ئېخەت ئادرېسىغا مۇناسىۋەتلىك Muslim Pro ھېساباتى يوق %s. ھازىرلا تىزىملىتىشنى خالامسىز؟"
+  },
+  {
+   "idx": 25721,
+   "text": "بۇ جاينى Muslim Proدا كۆرۈپ بېقىڭ،%1$s %2$s"
+  },
+  {
+   "idx": 25734,
+   "text": "بۇ ھېساباتنى Muslim Proدىن ئاجرىتامسىز؟"
+  },
+  {
+   "idx": 25740,
+   "text": "بۈگۈن جۈمە، Muslim Proئارقىلىق جۈمە ناماز ۋاقتىنى تەكشۈرۈڭ."
+  },
+  {
+   "idx": 25742,
+   "text": "بۈگۈن سىز \"شۈكرى ئاللاھ\" دېدىڭىزمۇ؟ ئالدىراش ۋاقىتلىرىڭىزدا Muslim Pro سىزگە ئاللاھنى ئەسلىتىدۇ."
+  },
+  {
+   "idx": 25744,
+   "text": "بۈگەن كەچ ئۇخلاشتىن بۇرۇن، سۈرە ئىلاس، سۈرە فەلەق ۋە سۈرە ناس لارنى ئوقۇڭ. Muslim Proدىن يەنە باشقا دۇئالارنى كۆرۈڭ."
+  },
+  {
+   "idx": 25877,
+   "text": "تطبيق Muslim Pro للهاتف المحمول"
+  },
+  {
+   "idx": 25908,
+   "text": "تفقد هذا المكان على Muslim Pro، %1$s %2$s"
+  },
+  {
+   "idx": 26011,
+   "text": "تىزىملاپ& Muslim Proغا كىرىش ۋە ئۇنىڭغا ھەقسىز ئىرىشىش"
+  },
+  {
+   "idx": 26169,
+   "text": "حقوق النشر © 2010–%s Muslim Pro Limited"
+  },
+  {
+   "idx": 26260,
+   "text": "دوستىڭىزغا Muslim Proنى يوللاپ بېرىڭ"
+  },
+  {
+   "idx": 26429,
+   "text": "سالام، %sدە ئەڭ ياخشى Muslim Pro ئىپىنى چۈشۈرۈڭ"
+  },
+  {
+   "idx": 26492,
+   "text": "سىز ئالدىدا Muslim Pro ئۇچۇرلىرىڭىزنى زاپاسلىدىڭىز، ھازىر ئۇچۇرلىرىڭىزنى ئۈسكۈنىڭىزگە ساقلاش ۋە ماس قەدەملەش ئۈچۈن تىزىملىتىپ كىرىشىڭىز ياكى تىزىملىتىشىڭىز كىرەك."
+  },
+  {
+   "idx": 26508,
+   "text": "سىز خىلى بولدى Muslim Proنى ئىشلەتمىدىڭىز! ھەركۈنى ئاللاھ ئۈچۈن ئازراق ۋاقتىڭىزنى چىقىرىشنى ئۇنتۇپ قالماڭ."
+  },
+  {
+   "idx": 26519,
+   "text": "سىزنىڭ ئېخەت %sنى جەزىملىمىگەنلىكىڭىز ئۈچۈن Muslim Pro ھېساباتىڭىزدىن ئۇلىنىشى بىكار قىلىندى."
+  },
+  {
+   "idx": 26532,
+   "text": "سىىز ئالدىنقى قىتىم Muslim Pro ئۇچۇرلىرىنى بۇ ھىساباتقا ساقلىدىڭىز، ئۇلارنى ئەسلىگە كەلتۈرۈسنى خالامسىز؟"
+  },
+  {
+   "idx": 26685,
+   "text": "شاهِد مكّة المكرمة في بثٍ مباشر عبر النسخة الاحترافية من تطبيق مسلم برو: %s #muslimpro"
+  },
+  {
+   "idx": 26894,
+   "text": "قبل النوم اليوم، عليك بتلاوة سورة الإخلاص والفلق والناس. تعرف على أدعية أخرى على تطبيق Muslim Pro."
+  },
+  {
+   "idx": 27005,
+   "text": "كۇنۇپكا \"%s\"نى چېكىش ئارقىلىق، مەن Muslim Proنىڭ [بەلگىلىمە ۋە شەرتلىرى] ھەم يېڭى [شەخسىيەت سىياسىتى]گە، شۇنداقلا ماڭا ئائىت سەزگۈر شەخسىي سانلىق مەلۇماتلارنى توپلىشىغا قوشۇلىمەن."
+  },
+  {
+   "idx": 27072,
+   "text": "لقد اكتشف للتو هذا الطلب للصلاة على #muslimpro، دعونا جميعًا نقوم بالدعاء على %s"
+  },
+  {
+   "idx": 27073,
+   "text": "لقد اكتشف للتو هذا الطلب للصلاة على #muslimpro، دعونا جميعًا نقوم بالدعاء لـ %1$s على %2$s"
+  },
+  {
+   "idx": 27081,
+   "text": "لقد فشلت آخر محاولة قمت بها للترقية إلى Muslim Pro Premium. انقر هنا للمحاولة مرة أخرى الآن."
+  },
+  {
+   "idx": 27083,
+   "text": "لقد قدمت للتو طلب جديد للصلاة على #muslimpro، يُمكنك مساعدتي في الدعاء هنا: %s"
+  },
+  {
+   "idx": 27092,
+   "text": "لقد وجدت للتو هذا الفيديو المثير للإهتمام على #muslimpro: %s"
+  },
+  {
+   "idx": 27093,
+   "text": "لقد وجدت للتو هذا المقال الممتع على muslimpro: %s#"
+  },
+  {
+   "idx": 27105,
+   "text": "لم تستخدم تطبيق Muslim Pro منذ فترة! لا تنس توفير بعض الوقت لله كل يوم."
+  },
+  {
+   "idx": 27171,
+   "text": "مجھے ابھی یہ دلچسپ مضمون ملا ہے muslimpro# سے: %s"
+  },
+  {
+   "idx": 27172,
+   "text": "مجھے ابھی یہ دلچسپ ویڈیو ملی ہے muslimpro# سے: %s"
+  },
+  {
+   "idx": 27173,
+   "text": "مجھے ابھی یہ دلچسپ چیز مل گئی ہے muslimpro# پی : %s"
+  },
+  {
+   "idx": 27232,
+   "text": "مسلم پرو کے ساتھ مکہ سے براہ راست نشریات دیکھیں : %s #muslimpro"
+  },
+  {
+   "idx": 27366,
+   "text": "مېنىڭ مۇسۇلمانچە تۇغۇلغان كۈنۈم %s ئىكەن. سىزنىڭكىنىڭ قاچانلىقىنى بىلىش ئۈچۈن Muslim Pro ئەپىنى چۈشۈرۈڭ."
+  },
+  {
+   "idx": 27378,
+   "text": "مەن #muslimproدا بۇ دۇئا مۇراجىتىنى بايقىدىم،. بىز بىرلىكتە %1$sغا بۇيەردە %2$s دۇئا قىلىپ قويايلى"
+  },
+  {
+   "idx": 27379,
+   "text": "مەن #muslimproدا يېڭى بىر دۇئا مۇراجىتى يوللىدىم، سىز ماڭا ياردەم قىلىپ بۇ يەردە دۇئا قىلالايسىز: %s"
+  },
+  {
+   "idx": 27380,
+   "text": "مەن بۇ ئەسەرنى #muslimproدا بايقاپ قالدىم:%s"
+  },
+  {
+   "idx": 27381,
+   "text": "مەن بۇ دۇئا تەلەپ مۇراجىتىنى #muslimproدا بايقىدىمم، ھەممىمىز بىرلىكتە بۇ يەردە %s دۇئا قىلىپ قويايلى"
+  },
+  {
+   "idx": 27382,
+   "text": "مەن بۇ رەسىمنى #muslimproدا بايقاپ قالدىم:%s"
+  },
+  {
+   "idx": 27383,
+   "text": "مەن بۇ سىننى #muslimproدا بايقاپ قالدىم:%s"
+  },
+  {
+   "idx": 27384,
+   "text": "مەن بۇ قىزىقارلىق مەھسۇلاتنى #muslimproدا بايقاپ قالدىم:%s"
+  },
+  {
+   "idx": 27403,
+   "text": "ناماز ۋاقىتلىرى سىزنىڭ Muslim Pro دىكى تەڭشەكلىرىڭىزگە ئاساسەن ھېسابلاندى. تەڭشەكلىرىڭىزنى تەكشۈرۈڭ ھەم يەرلىك مەسچىددە دەلىللەڭ."
+  },
+  {
+   "idx": 27520,
+   "text": "هل قلت \"الحمد لله\" اليوم؟ يساعدك تطبيق Muslim Pro على توفير بعض الوقت لله في حياتك المنشغلة."
+  },
+  {
+   "idx": 27557,
+   "text": "يأتي يوم ميلادي الإسلامي في %s. قم بتنزيل تطبيق Muslim Pro لتعرف يوم ميلادك."
+  },
+  {
+   "idx": 27585,
+   "text": "يتم احتساب أوقات الصلاة وفقًا لإعداداتك في تطبيق Muslim Pro. يرجى مراجعة إعداداتك والرجوع إلى المسجد المحلي لديك للتحقق."
+  },
+  {
+   "idx": 27997,
+   "text": "अधान की सूचनाएँ प्राप्त करने के लिए अपने डिवाइस सेटिंग से Muslim Pro की सूचनाएँ सक्षम करने के लिए यहाँ टैप करें।"
+  },
+  {
+   "idx": 27998,
+   "text": "अधान की सूचनाएँ प्राप्त करने के लिए अपने डिवाइस सेटिंग से Muslim Pro की सूचनाएँ सक्षम करें।"
+  },
+  {
+   "idx": 28178,
+   "text": "आज रात सोने से पहले, अल-इखलास, अल-फ़लाक और अं-नास का जिक्र करें Muslim Pro पर अन्य दुआ की खोज करें"
+  },
+  {
+   "idx": 28179,
+   "text": "आज शुक्रवार है, जुमे की नमाज का समय जाँचने के लिए Muslim Pro को शुरू करें"
+  },
+  {
+   "idx": 28209,
+   "text": "आपके डिवाइस पर %s काम कर रहा है और Muslim Pro की सूचनाओं को ठीक से काम करने मे रूकावट डाल सकता है Muslim Pro को संरक्षित ऐप्स की सूची में शामिल करना सुनिश्चित करें।"
+  },
+  {
+   "idx": 28210,
+   "text": "आपके पास इस खाते के लिए सुरक्षित किया हुआ पिछला Muslim Pro डेटा है, क्या आप उन्हें पुन: स्थापित करना चाहेंगे?"
+  },
+  {
+   "idx": 28222,
+   "text": "आपने कुछ समय से Muslim Pro का उपयोग नहीं किया है! प्रतिदिन अल्लाह के लिए कुछ समय निकालना ना भूलें।"
+  },
+  {
+   "idx": 28245,
+   "text": "इस ईमेल %s के साथ कोई भी Muslim Pro खाता संबद्ध नहीं है। क्या आप अभी साइन अप करना चाहेंगे?"
+  },
+  {
+   "idx": 28248,
+   "text": "इस खाते को Muslim Pro से अनलिंक करें?"
+  },
+  {
+   "idx": 28258,
+   "text": "इस रमज़ान, हम अपने महत्वपूर्ण उपयोगकर्ताओं के लिए Muslim Pro प्रीमियम के प्रमोशन की पेशकश करना चाहते हैं।"
+  },
+  {
+   "idx": 28425,
+   "text": "क्या आज आपने \"अल्हम्दुलिल्लाह\" कहा? Muslim Pro आपको अपने व्यस्त जीवन में अल्लाह के लिए कुछ समय निकालने में मदद करता है।"
+  },
+  {
+   "idx": 28445,
+   "text": "क्या आपको पता है कि आप Muslim Pro का उपयोग [%1$s] में कर सकते हैं? [%2$s] का उपयोग करने के लिए यहां टैप करें।"
+  },
+  {
+   "idx": 28630,
+   "text": "दोस्त को Muslim Pro भेजें"
+  },
+  {
+   "idx": 28820,
+   "text": "मुझे #muslimpro: %s पर यह दिलचस्प छवि मिली है"
+  },
+  {
+   "idx": 28821,
+   "text": "मुझे अभी यह प्रार्थना का अनुरोध #muslimpro पर मिला है, चलिए सब %2$s पर %1$s के लिए दुआ करते हैं"
+  },
+  {
+   "idx": 28822,
+   "text": "मुझे अभी यह प्रार्थना का अनुरोध #muslimpro पर मिला है, चलिए सब %s पर दुआ करते हैं"
+  },
+  {
+   "idx": 28825,
+   "text": "मुझे यह दिलचस्प उत्पाद अभी #muslimpro पर मिला है: %s"
+  },
+  {
+   "idx": 28826,
+   "text": "मुझे यह दिलचस्प लेख अभी #muslimpro पर मिला है: %s"
+  },
+  {
+   "idx": 28827,
+   "text": "मुझे यह दिलचस्प वीडियो अभी #muslimpro पर मिला है: %s"
+  },
+  {
+   "idx": 28844,
+   "text": "मेरा मुस्लिम जन्मदिन %s को है। आपका कब है यह जानने के लिए Muslim Pro ऐप डाउनलोड करें।"
+  },
+  {
+   "idx": 28854,
+   "text": "मैंने अभी #muslimpro पर एक नई प्रार्थना दर्ज की है, आप यहाँ %s दुआ करके मेरी मदद कर सकते हैं"
+  },
+  {
+   "idx": 28864,
+   "text": "यदि आप Muslim Pro का उपयोग करके आनंदित होते हैं, तो क्या आप इसका मूल्यांकन करने के लिए थोड़ा समय देंगे? इसमें एक मिनट से ज्यादा नहीं लगेगा। आपके समर्थन के लिए धन्यवाद!"
+  },
+  {
+   "idx": 29457,
+   "text": "আমি #muslimpro তে এই ছবিটি পেয়েছি: %s"
+  },
+  {
+   "idx": 29458,
+   "text": "আমি #muslimpro তে এই জিনিসটি পেয়েছি: %s"
+  },
+  {
+   "idx": 29459,
+   "text": "আমি #muslimpro তে এই দোয়ার অনুরোধটি পেয়েছি, আসুন সবাই এর জন্য দোয়া করি: %s"
+  },
+  {
+   "idx": 29460,
+   "text": "আমি #muslimpro তে এই দোয়ার অনুরোধটি পেয়েছি, আসুন সবাইমিলে %1$s এর জন্য দোয়া করি: %2$s"
+  },
+  {
+   "idx": 29461,
+   "text": "আমি #muslimpro তে এই প্রতিবেদনটি পেয়েছি: %s"
+  },
+  {
+   "idx": 29462,
+   "text": "আমি #muslimpro তে এই ভিডিওটি পেয়েছি: %s"
+  },
+  {
+   "idx": 29463,
+   "text": "আমি #muslimpro তে দোয়ার জন্য আবেদন করেছি, আপনি এখানে আমার জন্য দোয়া করে সাহায্য করতে পারেন: %s"
+  },
+  {
+   "idx": 30413,
+   "text": "মুসলিম প্রো থেকে সরাসরি মক্কা দেখুন: %s #muslimpro"
+  },
+  {
+   "idx": 30796,
+   "text": "ก่อนเข้านอนคืนนี้ ท่องอัลอิคลาส, อัลฟาลัก และอันนาส แล้วพบดูอาอื่นๆ บน Muslim Pro"
+  },
+  {
+   "idx": 30846,
+   "text": "ความพยายามครั้งล่าสุดในการอัปเกรดเป็น Muslim Pro Premium ไม่ประสบความสำเร็จ แตะที่นี่เพื่อลองใหม่อีกครั้ง"
+  },
+  {
+   "idx": 30870,
+   "text": "คุณกล่าว \"อัลฮัมดุลิลลาฮ์\" วันนี้แล้วหรือยัง? Muslim Pro ช่วยคุณหาเวลาว่างในวิถีชีวิตที่ยุ่งเหยิงเพื่อบูชาพระอัลเลาะห์ได้"
+  },
+  {
+   "idx": 30901,
+   "text": "คุณได้บันทึกข้อมูล Muslim Pro สำหรับบัญชีนี้ไว้แล้วก่อนหน้านี้ คุณต้องการกู้คืนข้อมูลดังกล่าวหรือไม่?"
+  },
+  {
+   "idx": 30904,
+   "text": "คุณได้สำรองข้อมูล Muslim Pro ของคุณไว้แล้วก่อนหน้านี้ ขณะนี้คุณจำเป็นต้องเข้าสู่ระบบหรือสมัครใช้งานเพื่อบันทึกและซิงค์ข้อมูลระหว่างอุปกรณ์ของคุณ"
+  },
+  {
+   "idx": 30907,
+   "text": "คุณไม่ได้ใช้ Muslim Pro มาสักพักหนึ่งแล้ว! อย่าลืมหาเวลาบูชาพระอัลเลาะห์ทุกวันนะ"
+  },
+  {
+   "idx": 30936,
+   "text": "ฉันเพิ่งพบบทความที่น่าสนใจนี้บน #muslimpro: %s"
+  },
+  {
+   "idx": 30937,
+   "text": "ฉันเพิ่งพบวิดีโอที่น่าสนใจนี้บน #muslimpro: %s"
+  },
+  {
+   "idx": 30938,
+   "text": "ฉันเพิ่งเจอผลิตภัณฑ์ที่น่าสนใจใน #muslimpro: %s"
+  },
+  {
+   "idx": 30939,
+   "text": "ฉันเพิ่งเจอรูปภาพที่น่าสนใจนี้บน #muslimpro: %s"
+  },
+  {
+   "idx": 30940,
+   "text": "ชอบ Muslim Pro ไหม?"
+  },
+  {
+   "idx": 30991,
+   "text": "ดูเหมือนว่าการแจ้งเตือนอะซานจาก Muslim Pro จะมีความล่าช้าเนื่องจากระบบ แตะที่นี่เพื่อดูข้อมูลเพิ่มเติม"
+  },
+  {
+   "idx": 31009,
+   "text": "ตั้งค่าในอุปกรณ์ของคุณเพื่อให้ Muslim Pro สามารถแจ้งเตือนเวลาอาซานได้"
+  },
+  {
+   "idx": 31043,
+   "text": "ถ้าคุณกำลังใช้ Muslim Pro โปรดสละเวลาสักครู่ในการให้อันดับแก่เรา คุณจะเสียเวลาไม่เกินหนึ่งนาที ขอบคุณสำหรับการสนับสนุน!"
+  },
+  {
+   "idx": 31072,
+   "text": "นับถอยหลังเดือนรอมฎอนจาก #muslimpro"
+  },
+  {
+   "idx": 31120,
+   "text": "ปิดเสียง Muslim Pro เป็นเวลา:"
+  },
+  {
+   "idx": 31178,
+   "text": "ยกเลิกการเชื่อมโยงบัญชีนี้จาก Muslim Pro?"
+  },
+  {
+   "idx": 31217,
+   "text": "รับชมเมืองมักกะฮ์แบบสดๆ ด้วย Muslim Pro: %s #muslimpro"
+  },
+  {
+   "idx": 31236,
+   "text": "รู้หรือไม่ว่าคุณใช้ Muslim Pro ในภาษา [%1$s] ได้ แตะที่นี่เพื่อใช้ [%2$s]"
+  },
+  {
+   "idx": 31279,
+   "text": "วันศุกร์แล้ว เปิด Muslim Pro เพื่อหาเวลาสวดญุมุอะฮฺ"
+  },
+  {
+   "idx": 31284,
+   "text": "วันเกิดตามแบบมุสลิมของฉันคือวันที่ %s ดาวน์โหลดแอป Muslim Pro สิจะได้รู้ว่าของคุณเกิดวันไหน"
+  },
+  {
+   "idx": 31290,
+   "text": "สงวนลิขสิทธิ์ © 2010–%s Muslim Pro จำกัด"
+  },
+  {
+   "idx": 31342,
+   "text": "ส่ง Muslim Pro ให้เพื่อน"
+  },
+  {
+   "idx": 31538,
+   "text": "อีเมลของคุณ %s ถูกยกเลิกการเชื่อมโยงจากบัญชี Muslim Pro เนื่องจากคุณยังไม่ได้ยืนยันอีเมล"
+  },
+  {
+   "idx": 31572,
+   "text": "เข้าสู่ระบบใน Muslim Pro แล้วรับฟรี"
+  },
+  {
+   "idx": 31594,
+   "text": "เดือนรอมฎอนนี้ เราขอเสนอโปรโมชั่น Muslim Pro Premium ให้กับผู้ใช้ผู้ทรงคุณค่าของเรา"
+  },
+  {
+   "idx": 31639,
+   "text": "เมื่อคลิกที่ปุ่ม “%s” ให้ถือว่าฉันยอมรับทั้ง [ข้อตกลงและเงื่อนไข] กับ [นโยบายความเป็นส่วนตัวและข้อมูลส่วนบุคคล] ของ Muslim Pro รวมถึงเห็นชอบ ให้เก็บข้อมูลส่วนตัว ที่เป็นความลับเกี่ยวกับฉัน"
+  },
+  {
+   "idx": 31652,
+   "text": "เราเพิ่งขอดุอาอฺผ่านทาง #muslimpro เธอสามารถช่วยเราขอดุอาอฺได้ที่นี่: %s"
+  },
+  {
+   "idx": 31653,
+   "text": "เราเพิ่งพบคำขอดุอาอฺทาง #muslimpro มาช่วยกันขอดุอาอฺสำหรับ %1$s ที่ %2$s"
+  },
+  {
+   "idx": 31654,
+   "text": "เราเพิ่งพบดุอาอฺทาง #muslimpro มาช่วยกันขอดุอาอฺ ที่ %s"
+  },
+  {
+   "idx": 31657,
+   "text": "เริ่มการใช้งาน Muslim Pro"
+  },
+  {
+   "idx": 31691,
+   "text": "เวลาละหมาดจะถูกคำนวณตามการตั้งค่าของคุณในแอป Muslim Pro กรุณาสอบทานการตั้งค่าของคุณ และมัสยิดในท้องถิ่นของคุณเพื่อการตรวจสอบ"
+  },
+  {
+   "idx": 31724,
+   "text": "แตะตรงนี้ เพื่อตั้งค่าในอุปกรณ์ของคุณให้ Muslim Pro สามารถแจ้งเตือนเวลาอาซานได้"
+  },
+  {
+   "idx": 31743,
+   "text": "แบ่งปัน Muslim Pro"
+  },
+  {
+   "idx": 31757,
+   "text": "แอปมือถือ Muslim Pro"
+  },
+  {
+   "idx": 31824,
+   "text": "ให้คะแนน Muslim Pro"
+  },
+  {
+   "idx": 31828,
+   "text": "ไปดูร้านนี้บน Muslim Pro %1$s %2$s"
+  },
+  {
+   "idx": 31856,
+   "text": "ไม่มีบัญชีของ Muslim Pro ที่เชื่อมโยงกับที่อยู่อีเมล %s คุณต้องการลงทะเบียนตอนนี้หรือไม่?"
+  },
+  {
+   "idx": 31941,
+   "text": "《Muslim Pro》应用的唤礼推送通知似乎被系统推迟。请点击这里了解更多信息。"
+  },
+  {
+   "idx": 31977,
+   "text": "あなたの電子メール %s は、あなたによる確認が行われなかったため、あなたの Muslim Pro アカウントから削除されました。"
+  },
+  {
+   "idx": 31986,
+   "text": "お使いのデバイスで作動中の%sがMuslim Proによる正常な通知の妨げとなっている可能性があります 。必ずMuslim Proを保護されたアプリに追加して下さい。"
+  },
+  {
+   "idx": 32004,
+   "text": "このアカウントで以前にMuslim Proのデータを保存しています。そのデータを回復しますか？"
+  },
+  {
+   "idx": 32005,
+   "text": "このアカウントとMuslim Proの接続を解除しますか?"
+  },
+  {
+   "idx": 32034,
+   "text": "この興味深い画像を #muslimpro で見つけました：%s"
+  },
+  {
+   "idx": 32045,
+   "text": "しばらくMuslim Proを使っていませんでした！毎日アラーのための時間を作ることを忘れないでください。"
+  },
+  {
+   "idx": 32091,
+   "text": "アザーン通知を受け取るために、ここをタップしてデバイス設定からMuslim Pro通知を有効にする。"
+  },
+  {
+   "idx": 32092,
+   "text": "アザーン通知を受け取るために、デバイス設定からMuslim Pro通知を有効にする。"
+  },
+  {
+   "idx": 32243,
+   "text": "システム上の理由により、Muslim Pro からのアザーン通知が遅延しているようです。詳しい内容についてはここをタップしてください。"
+  },
+  {
+   "idx": 32436,
+   "text": "メールアドレス%sに関連づけられたMuslim Proアカウントは存在しません。いますぐ登録しますか?"
+  },
+  {
+   "idx": 32557,
+   "text": "今天是周五，启动Muslim Pro查看主麻日祈祷的时间。"
+  },
+  {
+   "idx": 32559,
+   "text": "今年のラマダンでは、Muslim Pro プレミアムのプロモーションを弊社ユーザー様に向けて提供したいと考えています。"
+  },
+  {
+   "idx": 32561,
+   "text": "今日\"アルハムドゥリッラー\"と言いましたか？Muslim Proが忙しい生活の中でアラーのための時間を作るお手伝いを致します。"
+  },
+  {
+   "idx": 32567,
+   "text": "今日は金曜日、Muslim Proを起動してジュマ礼拝の時間をチェックしましょう。"
+  },
+  {
+   "idx": 32573,
+   "text": "今晩寝る前に、アル・イフラース、 アル・ファラクとアンナスを唱える。その他のドゥアーをMuslim Proで見つける。"
+  },
+  {
+   "idx": 32596,
+   "text": "以前にMuslim Proのデータをバックアップしています。デバイス全体でデータを保存・同期するには、ログインまたはサインアップが必要です。"
+  },
+  {
+   "idx": 32612,
+   "text": "你上次升级到Muslim Pro高级版的尝试失败了。现在点击这里再次尝试。"
+  },
+  {
+   "idx": 32615,
+   "text": "你今天说\"一切赞美归于阿拉\"了吗？Muslim Pro帮你在忙碌的生活中抽出点时间给真主阿拉。"
+  },
+  {
+   "idx": 32632,
+   "text": "你有段时间未使用Muslim Pro了！记住每天抽出点时间给真主阿拉。"
+  },
+  {
+   "idx": 32722,
+   "text": "分享Muslim Pro"
+  },
+  {
+   "idx": 32795,
+   "text": "发送Muslim Pro给好友"
+  },
+  {
+   "idx": 32803,
+   "text": "取消这个账号和Muslim Pro的绑定？"
+  },
+  {
+   "idx": 32847,
+   "text": "喜欢 Muslim Pro 吗？"
+  },
+  {
+   "idx": 32864,
+   "text": "在 Muslim Pro 上注册 & 免费获得唤拜录音"
+  },
+  {
+   "idx": 32865,
+   "text": "在 Muslim Pro上查看这个地点，%1$s %2$s"
+  },
+  {
+   "idx": 32869,
+   "text": "在今晚睡眠前，朗诵独一（Al-Ikhlas）、破晓(Al-Falaq) 和人类(An-Nas)。在Muslim Pro上发现其它杜阿祷告词。"
+  },
+  {
+   "idx": 32876,
+   "text": "在您的设备设置中启用 Muslim Pro 通知以接收唤礼通知。"
+  },
+  {
+   "idx": 32946,
+   "text": "如果你喜欢使用Muslim Pro，你介意花一点时间给它评分吗？不会超过一分钟。感谢您的支持！"
+  },
+  {
+   "idx": 32988,
+   "text": "将 Muslim Pro 静音："
+  },
+  {
+   "idx": 32990,
+   "text": "尊敬的用户，这个斋戒月，我们给您带来了 Muslim Pro 高级会员的优惠。"
+  },
+  {
+   "idx": 33076,
+   "text": "开始使用Muslim Pro"
+  },
+  {
+   "idx": 33111,
+   "text": "您之前已保存此账号的 Muslim Pro 数据，您是否希望恢复这些数据？"
+  },
+  {
+   "idx": 33112,
+   "text": "您之前已备份您的 Muslim Pro 数据，您现在需要登录或注册以便在所有设备上保存并同步数据。"
+  },
+  {
+   "idx": 33139,
+   "text": "您的电子邮件 %s 已从您的Muslim Pro 帐户中取消链接, 因为您没有验证电子邮件。"
+  },
+  {
+   "idx": 33147,
+   "text": "您知道您可以在 [%1$s] 使用 Muslim Pro 吗？轻触这里并使用 [%2$s] 。"
+  },
+  {
+   "idx": 33179,
+   "text": "我刚刚在 #muslimpro 上发现了这个祷告祈求，让我们一起在 %2$s 为 %1$s 进行祷告"
+  },
+  {
+   "idx": 33180,
+   "text": "我刚刚在 #muslimpro 上发现了这个祷告祈求，让我们一起在 %s 进行祷告"
+  },
+  {
+   "idx": 33181,
+   "text": "我刚刚在 #muslimpro 上找到了这张有意思的照片: %s"
+  },
+  {
+   "idx": 33182,
+   "text": "我刚刚在 #muslimpro 上找到了这篇有意思的产品: %s"
+  },
+  {
+   "idx": 33183,
+   "text": "我刚刚在 #muslimpro 上找到了这篇有意思的文章: %s"
+  },
+  {
+   "idx": 33184,
+   "text": "我刚刚在 #muslimpro 上找到了这篇有意思的视频: %s"
+  },
+  {
+   "idx": 33185,
+   "text": "我刚刚在 #muslimpro 提交了新的祷告，你可以在这里帮助我进行祷告：%s"
+  },
+  {
+   "idx": 33201,
+   "text": "我的穆斯林生日在%s。下载Muslim Pro应用可了解何时是你的生日。"
+  },
+  {
+   "idx": 33298,
+   "text": "斋月倒数 #muslimpro"
+  },
+  {
+   "idx": 33534,
+   "text": "没有与电子邮件地址%s关联的Muslim Pro账户。 您想现在注册吗？"
+  },
+  {
+   "idx": 33598,
+   "text": "点击此处以在您的设备设置中启用 Muslim Pro 通知以接收唤礼通知。"
+  },
+  {
+   "idx": 33623,
+   "text": "独自のコーラン読書計画を作成します。 Muslim Proの新しいカタム機能を今すぐお試しください：#GiftOfQuran"
+  },
+  {
+   "idx": 33713,
+   "text": "礼拝時間がMuslim Proアプリ内の設定通りに計算されました。設定を見直して現地のモスクの公式時間を参照してください。"
+  },
+  {
+   "idx": 33735,
+   "text": "祷告时间按照您在Muslim Pro应用程序中被计算。请审阅您的设置并参考您当地的清真寺以确认。"
+  },
+  {
+   "idx": 33744,
+   "text": "私のムスリム誕生日は%sです。Muslim Proアプリをダウンロードしてあなたの誕生日を調べましょう。"
+  },
+  {
+   "idx": 33745,
+   "text": "私はちょうど#muslimproでこのお祈りのリクエストを見つけたところです、みんなで%sでduasしましょう"
+  },
+  {
+   "idx": 33888,
+   "text": "解除 Muslim Pro 静音状态？"
+  },
+  {
+   "idx": 33950,
+   "text": "评价 Muslim Pro"
+  },
+  {
+   "idx": 34093,
+   "text": "通过 Muslim Pro 观看麦加流媒体直播：%s #muslimpro"
+  },
+  {
+   "idx": 34097,
+   "text": "通过点击“%s”按钮，我同意Muslim Pro[条款和条件]和[隐私政策]，以及收集有关我的敏感个人数据。"
+  }
+ ],
+ "premium": [
+  {
+   "idx": 583,
+   "text": "%s Days of Premium"
+  },
+  {
+   "idx": 586,
+   "text": "%s Giorni di Premium"
+  },
+  {
+   "idx": 589,
+   "text": "%s Hari Premium"
+  },
+  {
+   "idx": 596,
+   "text": "%s Jours de Premium"
+  },
+  {
+   "idx": 602,
+   "text": "%s Premium 'daki Günler"
+  },
+  {
+   "idx": 1458,
+   "text": "A jaaraama e coodgol yamre premium ndee"
+  },
+  {
+   "idx": 1477,
+   "text": "A sua inscrição Premium encerrou."
+  },
+  {
+   "idx": 1480,
+   "text": "A sua última tentativa de atualização para o Muslim Pro Premium falhou. Toque aqui agora para tentar novamente."
+  },
+  {
+   "idx": 1638,
+   "text": "Activar Premium"
+  },
+  {
+   "idx": 1643,
+   "text": "Activate Premium"
+  },
+  {
+   "idx": 1647,
+   "text": "Activeer premium"
+  },
+  {
+   "idx": 1650,
+   "text": "Activer Premium"
+  },
+  {
+   "idx": 1657,
+   "text": "Actualice a la versión Premium para guardar sus ajustes de color o pulse Vista previa para probarlos temporalmente."
+  },
+  {
+   "idx": 1665,
+   "text": "Actualizar a premium"
+  },
+  {
+   "idx": 1949,
+   "text": "Aktifkan Premium"
+  },
+  {
+   "idx": 1961,
+   "text": "Aktiviere Premium"
+  },
+  {
+   "idx": 1969,
+   "text": "Aktivér premium"
+  },
+  {
+   "idx": 2282,
+   "text": "Already have the Premium Version?"
+  },
+  {
+   "idx": 2348,
+   "text": "An error has occurred while activating your Premium subscription. Our server will automatically try again in an hour."
+  },
+  {
+   "idx": 2393,
+   "text": "Anda boleh menghapuskan iklan dengan menaik taraf ke Premium."
+  },
+  {
+   "idx": 2399,
+   "text": "Anda dapat menghapus iklan dengan meng-upgrade ke Premium."
+  },
+  {
+   "idx": 2699,
+   "text": "Arkadaşınız bunu bir Premium hediye denemesi ile ödedi!"
+  },
+  {
+   "idx": 2782,
+   "text": "Assalamu'alaikum! Saya baru saja mengklaim hadiah trial Premium gratis dari Check-in harian di Muslim Pro, dengan ini saya bagikan informasi ini kepada keluarga & kerabat sekalian.\n%s"
+  },
+  {
+   "idx": 2807,
+   "text": "Ativar \"Premium\""
+  },
+  {
+   "idx": 2823,
+   "text": "Attiva Premium"
+  },
+  {
+   "idx": 2833,
+   "text": "Atualize para a versão Premium para guardar as suas configurações de cor ou toque Pré-visualizar para experimentar temporariamente."
+  },
+  {
+   "idx": 2867,
+   "text": "Auf Premium upgraden"
+  },
+  {
+   "idx": 3099,
+   "text": "Aɗa jogii Yamre Premium ndee kisa?"
+  },
+  {
+   "idx": 3106,
+   "text": "Aɗa waawi ittude ɓaŋŋine so ƴeltinde to Premium."
+  },
+  {
+   "idx": 3173,
+   "text": "Bagikan & Dapatkan Hadiah Premium Sekarang"
+  },
+  {
+   "idx": 3177,
+   "text": "Bagikan Premium"
+  },
+  {
+   "idx": 3215,
+   "text": "Bantu berikan akses Premium Muslim Pro kepada sebanyak mungkin keluarga & dan teman Anda"
+  },
+  {
+   "idx": 3280,
+   "text": "Bedankt voor het kopen van de premium versie."
+  },
+  {
+   "idx": 3311,
+   "text": "Beim Aktivieren Ihres Premium-Abonnements ist ein Fehler aufgetreten. Unser Server wird es in einer Stunde automatisch erneut versuchen."
+  },
+  {
+   "idx": 3361,
+   "text": "Benefits of Premium"
+  },
+  {
+   "idx": 3620,
+   "text": "Bitte entschuldigen Sie es sieht so aus, als ob Ihr Premium-Abonnement mit einem anderen Google-, Apple-, Facebook-, E-Mail-Konto oder einer Telefonnummer verknüpft ist."
+  },
+  {
+   "idx": 3701,
+   "text": "Bu Ramazan, değerli kullanıcılarımıza Muslim Pro Premium'un bir promosyonunu takdim etmek istiyoruz."
+  },
+  {
+   "idx": 3702,
+   "text": "Bu Ramazan, əziz müştərilərimizə Muslim Pro Premiumun xüsusi həvəsləndirici təklifini təqdim etmək istəyirik."
+  },
+  {
+   "idx": 4019,
+   "text": "Característica Premium"
+  },
+  {
+   "idx": 4054,
+   "text": "Carwol maa premium gasata ko ɗoo e balɗe %s. Hoto waas ngartameeje maa, hesɗitin jooni."
+  },
+  {
+   "idx": 4055,
+   "text": "Carwol maa premium gasata ko ɗoo e balɗe %s. Hoto waas ngartameeje mum. Tappu ɗoo ngam jokkude lulnaade."
+  },
+  {
+   "idx": 4056,
+   "text": "Carwol maa premium gasii. Hurmitin jooni ngam artirde dawtol maa premium."
+  },
+  {
+   "idx": 4215,
+   "text": "Ciri Premium"
+  },
+  {
+   "idx": 4392,
+   "text": "Condividi Premium"
+  },
+  {
+   "idx": 4394,
+   "text": "Condividi e Regala Premium Adesso"
+  },
+  {
+   "idx": 4717,
+   "text": "Dahulukan pembayaran dengan menghadiahkan akses Premium Muslim Pro dengan seberapa ramai keluarga & rakan-rakan"
+  },
+  {
+   "idx": 4733,
+   "text": "Dalam bulan Ramadhan ini, kami ingin menawarkan promosi Muslim Pro Premium kepada pengguna kami yang dihargai."
+  },
+  {
+   "idx": 4771,
+   "text": "Das Premium-Upgrade ist auf diesem Gerät noch nicht verfügbar."
+  },
+  {
+   "idx": 4948,
+   "text": "Dein Premium"
+  },
+  {
+   "idx": 5003,
+   "text": "Denne Ramadan vil vi gerne tilbyde en kampagne af Muslim Pro Premium til vores værdsatte brugere."
+  },
+  {
+   "idx": 5068,
+   "text": "Der opstod en fejl under aktiveringen af dit Premium-abonnement. Vores server vil automatisk forsøge igen om en time."
+  },
+  {
+   "idx": 5168,
+   "text": "Devenir membre Premium"
+  },
+  {
+   "idx": 5179,
+   "text": "Deze Ramadan willen we een promotie van Muslim Pro Premium aanbieden aan onze gewaardeerde gebruikers."
+  },
+  {
+   "idx": 5427,
+   "text": "Dit Premium-abonnement er udløbet."
+  },
+  {
+   "idx": 5583,
+   "text": "Du kan fjerne annoncer ved at opgradere til Premium."
+  },
+  {
+   "idx": 5668,
+   "text": "Désolé mais vous êtes déjà Premium !"
+  },
+  {
+   "idx": 5713,
+   "text": "E kaa Koorka, amin njiɗi hokkude huutorɓe amen tedduɓe beeɓnol Muslim Pro Premium."
+  },
+  {
+   "idx": 5750,
+   "text": "Easy Premium Recovery"
+  },
+  {
+   "idx": 5831,
+   "text": "Einfache Premium-Wiederherstellung"
+  },
+  {
+   "idx": 6133,
+   "text": "Entfernen Sie die Werbung & Erhalten Sie alle Premium-Funktionen"
+  },
+  {
+   "idx": 6178,
+   "text": "Er is een fout opgetreden bij het activeren van uw Premium abbonement. Onze server zal het automatisch opnieuw proberen over één uur."
+  },
+  {
+   "idx": 6275,
+   "text": "Es liegt ein Problem mit Ihrem Premium Service vor. Tippen Sie hier, um zu den Einstellungen für Ihr Google Play-Konto zu gelangen."
+  },
+  {
+   "idx": 6277,
+   "text": "Es tut uns leid, aber Sie sind bereits Premium"
+  },
+  {
+   "idx": 6357,
+   "text": "Este Ramadán, nos gustaría ofrecer una promoción de Musulmán profesional premium a nuestros queridos usuarios."
+  },
+  {
+   "idx": 6484,
+   "text": "FAQ Recuperar Premium"
+  },
+  {
+   "idx": 6485,
+   "text": "FAQ Seputar Pemulihan Akun Premium"
+  },
+  {
+   "idx": 6486,
+   "text": "FAQ on Premium Recovery"
+  },
+  {
+   "idx": 6487,
+   "text": "FAQ sul Recupero Premium"
+  },
+  {
+   "idx": 6488,
+   "text": "FAQ sur Récupération Premium"
+  },
+  {
+   "idx": 6489,
+   "text": "FAQ untuk Pemulihan Akaun Premium"
+  },
+  {
+   "idx": 6490,
+   "text": "FAQ zur Premium-Wiederherstellung"
+  },
+  {
+   "idx": 6512,
+   "text": "Facile Recupero di Premium"
+  },
+  {
+   "idx": 6515,
+   "text": "Faedah Premium"
+  },
+  {
+   "idx": 6536,
+   "text": "Faites-en profiter votre famille & vos amis en leur offrant l'accès Premium de Muslim Pro."
+  },
+  {
+   "idx": 6559,
+   "text": "Fannu Premium"
+  },
+  {
+   "idx": 6738,
+   "text": "Fitur Premium"
+  },
+  {
+   "idx": 6750,
+   "text": "Fjern annoncer & Få alle Premiumfunktionerne"
+  },
+  {
+   "idx": 6776,
+   "text": "Fonctionnalité Premium"
+  },
+  {
+   "idx": 6878,
+   "text": "Funcionalidades Premium"
+  },
+  {
+   "idx": 6889,
+   "text": "Funzionalità Premium"
+  },
+  {
+   "idx": 6989,
+   "text": "Ganjaran Dituntut. Hadiah %s hari Premium."
+  },
+  {
+   "idx": 7130,
+   "text": "Gestionnaire Premium"
+  },
+  {
+   "idx": 7131,
+   "text": "Gestisci la tua personalizzazione Premium"
+  },
+  {
+   "idx": 7132,
+   "text": "Gestore Premium"
+  },
+  {
+   "idx": 7180,
+   "text": "Gli utenti premium possono scaricare le recitazioni audio per intero e riprodurle in modalità offline."
+  },
+  {
+   "idx": 7291,
+   "text": "Gracias por adquirir la versión Premium."
+  },
+  {
+   "idx": 7295,
+   "text": "Grazie per avere acquistato la versione premium."
+  },
+  {
+   "idx": 7357,
+   "text": "Gunakan versi Premium untuk menyimpan setelan warna Anda atau tap Pratinjau untuk uji coba sementara."
+  },
+  {
+   "idx": 7372,
+   "text": "Gérez la personnalisation de votre Premium"
+  },
+  {
+   "idx": 7448,
+   "text": "Ha fallado su último intento para actualizar a Muslim Pro Premium. Toque aquí para intentarlo de nuevo."
+  },
+  {
+   "idx": 7455,
+   "text": "Ha ocurrido un error mientras se activaba tu suscripción Premium. Nuestro servidor lo intentará de nuevo en una hora."
+  },
+  {
+   "idx": 7467,
+   "text": "Haben Sie bereits die Premium-Version?"
+  },
+  {
+   "idx": 7492,
+   "text": "Hadiah sudah Diklaim. Nikmati %s hari Premium"
+  },
+  {
+   "idx": 7504,
+   "text": "Hai già la Versione Premium?"
+  },
+  {
+   "idx": 7610,
+   "text": "Hapus iklan & Dapatkan semua fitur Premium"
+  },
+  {
+   "idx": 8036,
+   "text": "Hurmin Premium"
+  },
+  {
+   "idx": 8049,
+   "text": "Huutorɓe Premium ena mbaawi aawtaade ojoo timmuɗo oo ngam tarde e ceŋtol."
+  },
+  {
+   "idx": 8235,
+   "text": "Ihr Freund hat Ihnen ein Premium-Testgeschenk vorbereitet!"
+  },
+  {
+   "idx": 8238,
+   "text": "Ihr Premium-Abonnement ist abgelaufen."
+  },
+  {
+   "idx": 8239,
+   "text": "Ihr Premium-Service ist abgelaufen. Verlieren Sie Ihre Vorteile nicht! Jetzt hier tippen, um sich erneut anzumelden."
+  },
+  {
+   "idx": 8240,
+   "text": "Ihr Premium-Service ist aktualisiert"
+  },
+  {
+   "idx": 8241,
+   "text": "Ihr Premium-Service läuft in %s Tag(en) ab. Verlieren Sie Ihre Vorteile nicht! Jetzt hier tippen, um sich erneut anzumelden."
+  },
+  {
+   "idx": 8242,
+   "text": "Ihr Profil wurde aktualisiert und Ihr Premium Service wiederhergestellt."
+  },
+  {
+   "idx": 8244,
+   "text": "Ihr letzter Versuch, auf Muslim Pro Premium upzugraden, ist gescheitert. Tippen Sie hier, um es jetzt erneut zu versuchen."
+  },
+  {
+   "idx": 8329,
+   "text": "Il Tuo Premium"
+  },
+  {
+   "idx": 8364,
+   "text": "Il tuo amico ha pagato in anticipo con una prova gratuita di Premium!"
+  },
+  {
+   "idx": 8368,
+   "text": "Il tuo servizio premium scadrà in %s giorni. Non perdere i tuoi benefici. Tocca qui per reiscriverti."
+  },
+  {
+   "idx": 8369,
+   "text": "Il tuo servizio premium scadrà tra %s giorni. Non perdere i tuoi benefici, rinnova ora."
+  },
+  {
+   "idx": 8370,
+   "text": "Il tuo servizio premium è scaduto. Riattiva ora e riprenditi la tua esperienza premium."
+  },
+  {
+   "idx": 8371,
+   "text": "Il tuo ultimo tentativo di passare a Muslim Pro Premium è fallito. Tocca qui per provare di nuovo."
+  },
+  {
+   "idx": 8836,
+   "text": "Je kunt advertenties verwijderen door te upgraden naar Premium."
+  },
+  {
+   "idx": 8837,
+   "text": "Je laatste poging om te upgraden naar Muslim Pro Premium is niet geslaagd. Druk hier om het nu opnieuw te proberen."
+  },
+  {
+   "idx": 8995,
+   "text": "Juumre waɗii tuma caasnugol lulnagol Premium maa. Sarworde amen maa eto e jaajol ɗoo e waktu."
+  },
+  {
+   "idx": 9091,
+   "text": "Kami minta maaf tetapi akaun anda telahpun Premium"
+  },
+  {
+   "idx": 9227,
+   "text": "Kelola Premium"
+  },
+  {
+   "idx": 9228,
+   "text": "Kelola personalisasi Premium Anda"
+  },
+  {
+   "idx": 9263,
+   "text": "Kesalahan terjadi ketika mengaktifkan langganan Premium Anda. Server kami akan secara otomatis mencoba kembali dalam satu jam."
+  },
+  {
+   "idx": 9300,
+   "text": "Keɓtugol Konte Premium Beeɓngol"
+  },
+  {
+   "idx": 9377,
+   "text": "Kolay Premium Kurtarma"
+  },
+  {
+   "idx": 9408,
+   "text": "Kongsi & Hadiah Premium Sekarang"
+  },
+  {
+   "idx": 9413,
+   "text": "Kongsi Premium"
+  },
+  {
+   "idx": 9615,
+   "text": "L'abbonamento Premium è scaduto."
+  },
+  {
+   "idx": 9624,
+   "text": "L'aggiornamento premium non è disponibile su questo dispositivo ancora."
+  },
+  {
+   "idx": 9781,
+   "text": "La mise à niveau Premium n'est pas encore disponible sur cet appareil."
+  },
+  {
+   "idx": 9881,
+   "text": "Langganan Premium Anda telah berakhir."
+  },
+  {
+   "idx": 9882,
+   "text": "Langganan Premium anda telah tamat tempoh."
+  },
+  {
+   "idx": 9929,
+   "text": "Layanan premium Anda akan berakhir dalam %s hari. Jangan kehilangan manfaat pengingat ibadah Anda. Ketuk di sini untuk berlangganan kembali."
+  },
+  {
+   "idx": 9930,
+   "text": "Layanan premium Anda habis dalam %s hari. Jangan kehilangan pengingat ibadah Anda. Ketuk di sini meneruskan langganan"
+  },
+  {
+   "idx": 9931,
+   "text": "Layanan premium Anda sudah berakhir. Aktifkan kembali sekarang dan rasakan lagi pengalaman menikmati layanan premium Anda."
+  },
+  {
+   "idx": 9969,
+   "text": "Le Premium est déjà actif sous un autre e-mail ou numéro de téléphone."
+  },
+  {
+   "idx": 10101,
+   "text": "Les avantages de Premium"
+  },
+  {
+   "idx": 10127,
+   "text": "Les utilisateurs Premium peuvent télécharger l'intégralité des récitations du Coran pour les écouter hors-ligne."
+  },
+  {
+   "idx": 10227,
+   "text": "Lo sentimos. Su suscripción Premium puede estar vinculada a otra cuenta de Google, Apple, Facebook, cuenta e-mail o número de teléfono"
+  },
+  {
+   "idx": 10358,
+   "text": "Los usuarios premium pueden descargar todas las recitaciones en audio para reproducirlas sin conexión."
+  },
+  {
+   "idx": 10382,
+   "text": "Lulnagol maa Premium gasii."
+  },
+  {
+   "idx": 10482,
+   "text": "Maaf, akun Anda sudah Premium"
+  },
+  {
+   "idx": 10486,
+   "text": "Maaf. Langganan Premium anda mungkin dihubungkan ke Google, Apple, Facebook, akaun E-mel atau Nombor Telefon lain."
+  },
+  {
+   "idx": 10501,
+   "text": "Mabrouk ! Votre essai Premium est maintenant valide jusqu'au %s"
+  },
+  {
+   "idx": 10502,
+   "text": "Mabrouk! Ihre Premium-Testversion ist jetzt bis %s aktiv"
+  },
+  {
+   "idx": 10503,
+   "text": "Mabrouk! La tua prova Premium è ora valida fino al %s"
+  },
+  {
+   "idx": 10504,
+   "text": "Mabrouk! Percubaan Premium anda kini sah sehingga %s"
+  },
+  {
+   "idx": 10505,
+   "text": "Mabrouk! Your Premium trial is now valid until %s"
+  },
+  {
+   "idx": 10573,
+   "text": "Manage your Premium personalisation"
+  },
+  {
+   "idx": 10577,
+   "text": "Manfaat Premium"
+  },
+  {
+   "idx": 10879,
+   "text": "Merci pour votre achat de notre version Premium."
+  },
+  {
+   "idx": 11094,
+   "text": "Mohon maaf. Langganan Premium Anda mungkin ditautkan ke akun Google, Apple, Facebook, Email, atau Nomor Telepon lainnya."
+  },
+  {
+   "idx": 11108,
+   "text": "Momtu ɓaŋŋine & Heɓ fannuuji Premium ɗii"
+  },
+  {
+   "idx": 11194,
+   "text": "Mudar para premium"
+  },
+  {
+   "idx": 11233,
+   "text": "Muslim Pro Premium'a son yükseltme denemeniz başarısız oldu. Şimdi tekrar denemek için buraya dokunun."
+  },
+  {
+   "idx": 11288,
+   "text": "Muslim Pro'nun Premium erişimini olabildiğince çok aile ve arkadaşa hediye ederek ileride ödeyin"
+  },
+  {
+   "idx": 11312,
+   "text": "Muslim Pro-nun Premium versiyasını son satın alma cəhdi uğursuz oldu. Təkrar cəhd üçün bura toxunun."
+  },
+  {
+   "idx": 11417,
+   "text": "Mübarek olsun! Premium denemeniz artık %s tarihine kadar geçerlidir"
+  },
+  {
+   "idx": 11541,
+   "text": "Naik taraf kepada Premium"
+  },
+  {
+   "idx": 11542,
+   "text": "Naik taraf kepada versi Premium untuk menyimpan tetapan warna anda atau sentuh Pratonton untuk mencubanya secara sementara."
+  },
+  {
+   "idx": 11696,
+   "text": "Neste Ramadan, gostaríamos de oferecer uma promoção do Muslim Pro Premium aos nossos estimados utilizadores."
+  },
+  {
+   "idx": 12037,
+   "text": "Nous sommes désolés. Votre souscription Premium peut être lié à un autre compte Google, Apple, Facebook, Email ou Numéro de Téléphone."
+  },
+  {
+   "idx": 12271,
+   "text": "Obrigado por comprar a versão premium."
+  },
+  {
+   "idx": 12276,
+   "text": "Ocorreu um erro ao ativar a sua inscrição Premium. O nosso servidor voltará a tentar automaticamente daqui a uma hora."
+  },
+  {
+   "idx": 12400,
+   "text": "Opgrader til Premium versionen for at gemme dine farveindstillinger eller tryk på Preview for at prøve det midlertidigt."
+  },
+  {
+   "idx": 12401,
+   "text": "Opgrader til premium"
+  },
+  {
+   "idx": 12568,
+   "text": "Paga in anticipo regalando accesso Premium a Muslim Pro con quanti più familiari e amici"
+  },
+  {
+   "idx": 12629,
+   "text": "Partager Premium"
+  },
+  {
+   "idx": 12636,
+   "text": "Partagez & Offre Premium maintenant"
+  },
+  {
+   "idx": 12660,
+   "text": "Passa alla versione Premium per salvare le tue impostazioni dei colori o tocca anteprima per provarle temporaneamente."
+  },
+  {
+   "idx": 12661,
+   "text": "Passa alla versione premium"
+  },
+  {
+   "idx": 12671,
+   "text": "Passez à la version Premium pour sauvegarder la nouvelle couleur ou appuyez sur Visualiser pour la tester de façon temporaire."
+  },
+  {
+   "idx": 12713,
+   "text": "Pay it forward by gifting Muslim Pro's Premium access with as many family & friends"
+  },
+  {
+   "idx": 12716,
+   "text": "Paylaş & Şimdi Premium 'u Hediye Edin"
+  },
+  {
+   "idx": 12732,
+   "text": "Pembaruan premium belum tersedia di perangkat ini."
+  },
+  {
+   "idx": 12767,
+   "text": "Pemulihan Premium yang Mudah"
+  },
+  {
+   "idx": 12768,
+   "text": "Pemulihan premium yang mudah"
+  },
+  {
+   "idx": 12771,
+   "text": "Penaikan taraf premium belum tersedia untuk peranti ini."
+  },
+  {
+   "idx": 12779,
+   "text": "Pendant ce Ramadan, bénéficiez d'une offre spéciale sur la version Premium de Muslim Pro."
+  },
+  {
+   "idx": 12796,
+   "text": "Pengguna Premium dapat mengunduh seluruh resitasi audio untuk diputar secara offline."
+  },
+  {
+   "idx": 12799,
+   "text": "Pengguna premium boleh memuat turun keseluruhan audio bacaan untuk main kembali luar talian."
+  },
+  {
+   "idx": 12813,
+   "text": "Pengurus Premium"
+  },
+  {
+   "idx": 12859,
+   "text": "Percubaan terakhir anda untuk menaik taraf ke Muslim Pro Premium gagal. Klik di sini untuk mencuba semula."
+  },
+  {
+   "idx": 12894,
+   "text": "Perkhidmatan premium anda akan tamat dalam %s hari. Elakkan dari kehilangan faedah anda dan perbaharui sekarang."
+  },
+  {
+   "idx": 12895,
+   "text": "Perkhidmatan premium anda akan tamat dalam %s hari. Elakkan dari kehilangan faedah anda. Tekan di sini untuk melanggan semula."
+  },
+  {
+   "idx": 12896,
+   "text": "Perkhidmatan premium anda telah tamat. Aktifkan semula sekarang dan dapatkan kembali pengalaman premium anda."
+  },
+  {
+   "idx": 13064,
+   "text": "Pode remover os anúncios actualizando para a Versão Premium."
+  },
+  {
+   "idx": 13169,
+   "text": "Premium"
+  },
+  {
+   "idx": 13170,
+   "text": "Premium 'u paylaş"
+  },
+  {
+   "idx": 13171,
+   "text": "Premium Anda"
+  },
+  {
+   "idx": 13172,
+   "text": "Premium Feature"
+  },
+  {
+   "idx": 13173,
+   "text": "Premium Funktion"
+  },
+  {
+   "idx": 13174,
+   "text": "Premium Funktionen"
+  },
+  {
+   "idx": 13175,
+   "text": "Premium Kurtarma hakkında SSS"
+  },
+  {
+   "idx": 13176,
+   "text": "Premium Manager"
+  },
+  {
+   "idx": 13177,
+   "text": "Premium Versie"
+  },
+  {
+   "idx": 13178,
+   "text": "Premium Version"
+  },
+  {
+   "idx": 13179,
+   "text": "Premium Versiya"
+  },
+  {
+   "idx": 13180,
+   "text": "Premium Weiterschenken"
+  },
+  {
+   "idx": 13181,
+   "text": "Premium Yönetimı"
+  },
+  {
+   "idx": 13182,
+   "text": "Premium aboneliğiniz etkinleştirilirken bir hata oluştu. Sunucumuz bir saat içinde bu işlemi otomatik olarak yeniden gerçekleştirmeyi deneyecek."
+  },
+  {
+   "idx": 13183,
+   "text": "Premium aboneliğinizin süresi doldu."
+  },
+  {
+   "idx": 13184,
+   "text": "Premium abunəliyiniz aktivləşdirilərkən xəta yarandı. Serverimiz bir saat içində bu əməliyyatı təkrar etməyə çalışacaq."
+  },
+  {
+   "idx": 13185,
+   "text": "Premium abunəliyiniz başa çatmışdır."
+  },
+  {
+   "idx": 13186,
+   "text": "Premium brugere kan downloade alle audio recitationer til offline-afspilning."
+  },
+  {
+   "idx": 13187,
+   "text": "Premium ena hurmi kisa e iimeel walla telefon goɗɗo."
+  },
+  {
+   "idx": 13188,
+   "text": "Premium erişiminizin keyfini çıkarmak için sorunsuz bir şekilde geçiş yapın"
+  },
+  {
+   "idx": 13189,
+   "text": "Premium gebruikers kunnen alle audio-recitaties downloaden om offline af te spelen."
+  },
+  {
+   "idx": 13190,
+   "text": "Premium güncəlləmə hələ ki bu cihazda mövcud deyil."
+  },
+  {
+   "idx": 13191,
+   "text": "Premium hizmetiniz %s gün içinde sona eriyor. Avantajlarınızı kaybetmeyin ve yeniden abone olun."
+  },
+  {
+   "idx": 13192,
+   "text": "Premium hizmetiniz %s gün içinde sona eriyor. Avantajlarınızı kaybetmeyin. Yeniden abone olmak için buraya tıklayın."
+  },
+  {
+   "idx": 13193,
+   "text": "Premium hizmetinizin süresi doldu. Şimdi yeniden etkinleştirin ve premium deneyiminizi geri alın."
+  },
+  {
+   "idx": 13194,
+   "text": "Premium is already active under a different email or phone number."
+  },
+  {
+   "idx": 13195,
+   "text": "Premium ist bereits mit einer anderen E-mail order Tel. Nr. in Verwendung."
+  },
+  {
+   "idx": 13196,
+   "text": "Premium istifadəçilər bütün səsli oxutmaları endirib internetsiz də dinləyə bilərlər."
+  },
+  {
+   "idx": 13197,
+   "text": "Premium kişiselleştirmenizi yönetin"
+  },
+  {
+   "idx": 13198,
+   "text": "Premium kullanıcılar tüm sesli okumaları indirerek çevrimdışı da dinleyebilirler."
+  },
+  {
+   "idx": 13199,
+   "text": "Premium sudah aktif dengan menggunakan email atau nomor telepon lain."
+  },
+  {
+   "idx": 13200,
+   "text": "Premium sürüm"
+  },
+  {
+   "idx": 13201,
+   "text": "Premium sürüm özelliği"
+  },
+  {
+   "idx": 13202,
+   "text": "Premium sürümü satın aldığınız için teşekkürler"
+  },
+  {
+   "idx": 13203,
+   "text": "Premium telah aktif di bawah e-mel atau nombor telefon yang berbeza."
+  },
+  {
+   "idx": 13204,
+   "text": "Premium upgrade is nog niet beschikbaar op dit apparaat."
+  },
+  {
+   "idx": 13205,
+   "text": "Premium upgrade is not available on this device yet."
+  },
+  {
+   "idx": 13206,
+   "text": "Premium users can download the entire audio recitations for offline playback."
+  },
+  {
+   "idx": 13207,
+   "text": "Premium versiya alaraq reklamları silə bilərsiniz."
+  },
+  {
+   "idx": 13208,
+   "text": "Premium versiya satın alın"
+  },
+  {
+   "idx": 13209,
+   "text": "Premium versiyanı aktivləşdir"
+  },
+  {
+   "idx": 13210,
+   "text": "Premium versiyanı satın aldığınız üçün təşəkkür edirik"
+  },
+  {
+   "idx": 13211,
+   "text": "Premium xidmətiniz %s gün ərzində bitir. Üstünlüklərinizi itirməyin. Yenidən abunə olmaq üçün bura toxunun."
+  },
+  {
+   "idx": 13212,
+   "text": "Premium xüsusiyyət"
+  },
+  {
+   "idx": 13213,
+   "text": "Premium ya está activado bajo un diferente correo o número de teléfono."
+  },
+  {
+   "idx": 13214,
+   "text": "Premium è già attivo sotto un'email o numero di telefono differenti."
+  },
+  {
+   "idx": 13215,
+   "text": "Premium'a yükseltin"
+  },
+  {
+   "idx": 13216,
+   "text": "Premium'a yükseltme bu cihazda henüz mevcut değil."
+  },
+  {
+   "idx": 13217,
+   "text": "Premium'u Etkinleştir"
+  },
+  {
+   "idx": 13218,
+   "text": "Premium'un Faydaları"
+  },
+  {
+   "idx": 13219,
+   "text": "Premium'unuz"
+  },
+  {
+   "idx": 13220,
+   "text": "Premium, farklı bir e-posta veya telefon numarası altında zaten aktif."
+  },
+  {
+   "idx": 13221,
+   "text": "Premium-Funktion"
+  },
+  {
+   "idx": 13222,
+   "text": "Premium-Nutzer können die kompletten Audio-Rezitationen zur Offline-Wiedergabe herunterladen."
+  },
+  {
+   "idx": 13223,
+   "text": "Premium-Version"
+  },
+  {
+   "idx": 13224,
+   "text": "Premiumfunctie"
+  },
+  {
+   "idx": 13337,
+   "text": "Prämie eingelöst. %s Tage Premium."
+  },
+  {
+   "idx": 13364,
+   "text": "Puede eliminar la publicidad actualizando a Premium."
+  },
+  {
+   "idx": 13376,
+   "text": "Puoi rimuovere la pubblicità passando a Premium."
+  },
+  {
+   "idx": 13477,
+   "text": "Questo Ramadan desideriamo offrire una promozione su Muslim Pro Premium ai nostri stimati utilizzatori."
+  },
+  {
+   "idx": 13574,
+   "text": "Rakan anda telah membayarnya dengan percubaan hadiah Premium!"
+  },
+  {
+   "idx": 13597,
+   "text": "Ramadan ini, kami ingin menawarkan promosi Muslim Pro Premium kepada para pengguna kami yang berharga."
+  },
+  {
+   "idx": 13814,
+   "text": "Reklamları kaldırın ve tüm Premium özelliklerine sahip olun"
+  },
+  {
+   "idx": 13816,
+   "text": "Reklamları silin və bütün Premium xüsusiyyətləri əldə edin"
+  },
+  {
+   "idx": 13832,
+   "text": "Remova anúncios e tenha todas os recursos Premium"
+  },
+  {
+   "idx": 13839,
+   "text": "Remove ads & Get all the Premium features"
+  },
+  {
+   "idx": 13857,
+   "text": "Renk ayarlarınızı kaydetmek için Premium versiyona geçin veya bu versiyonu geçici olarak denemek için Önizleme'ye tıklayın."
+  },
+  {
+   "idx": 13940,
+   "text": "Reward Claimed. Gift %s days of Premium."
+  },
+  {
+   "idx": 13970,
+   "text": "Ricompensa Rivendicata. %s giorni regalo di Premium."
+  },
+  {
+   "idx": 13985,
+   "text": "Rimuovi pubblicità e amp; ottieni tutte le funzionalità Premium"
+  },
+  {
+   "idx": 14059,
+   "text": "Récompense obtenue. Offrez %s jours de Premium."
+  },
+  {
+   "idx": 14062,
+   "text": "Récupération Facile de votre Premium"
+  },
+  {
+   "idx": 14087,
+   "text": "Rəng seçimlərinizi yadda saxlamaq üçün Premium versiya satın alın və ya müvəqqəti test üçün Ön baxışa toxunun."
+  },
+  {
+   "idx": 14163,
+   "text": "Salam ! Je viens d'obtenir un essai gratuit de la version Premium grâce à Daily Streak, sur Muslim Pro, pour le partagaer avec toute ma famille et mes amis. \n%s"
+  },
+  {
+   "idx": 14166,
+   "text": "Salam! Ho appena rivendicato la ricompensa della prova regalo gratuita di Premium dalla Serie Giornaliera, su Muslim Pro, da condividere con tutti i familiari e amici.\n%s"
+  },
+  {
+   "idx": 14167,
+   "text": "Salam! I have just claimed free Premium gift trial reward from Daily Streak, on Muslim Pro, to be shared with all my family & friends.\n%s"
+  },
+  {
+   "idx": 14168,
+   "text": "Salam! Ich habe soeben die kostenlose Premium-Testprämie von Tage-Streak auf Muslim Pro in freigeschalten, & kann sie mit meiner ganzen Familie & Freunden teilen.\n%s"
+  },
+  {
+   "idx": 14169,
+   "text": "Salam! Saya baru sahaja menuntut ganjaran percubaan hadiah Premium percuma daripada Ganjaran Harian, di Muslim Pro, untuk dikongsi dengan semua keluarga saya & kawan.\n%s"
+  },
+  {
+   "idx": 14230,
+   "text": "Satu ralat telah berlaku semasa hendak mengaktifkan langganan Premium anda. Pelayan kami akan mencuba semula secara automatik selepas sejam."
+  },
+  {
+   "idx": 14491,
+   "text": "Selam! Az önce tüm ailem & ve arkadaşlarımla \n%s paylaşmak üzere Muslim Pro'da Günlük Seri'den bedava Premium denemesi kazandım."
+  },
+  {
+   "idx": 14506,
+   "text": "Selamat! Percobaan Premium Anda berlaku hingga %s"
+  },
+  {
+   "idx": 14766,
+   "text": "Share & Gift Premium Now"
+  },
+  {
+   "idx": 14771,
+   "text": "Share Premium"
+  },
+  {
+   "idx": 14838,
+   "text": "Si è verificato un errore durante l'attivazione dell'abbonamento Premium. I nostri server ritenteranno automaticamente tra un'ora."
+  },
+  {
+   "idx": 14850,
+   "text": "Siamo spiacenti, ma sei già Premium"
+  },
+  {
+   "idx": 14851,
+   "text": "Siamo spiacenti. Il tuo abbonamento Premium potrebbe esser collegato a un altro profilo di Google, Apple, Facebook, Email o Numero di Telefono."
+  },
+  {
+   "idx": 14861,
+   "text": "Sidste forsøg på at opgradere til Muslim Pro Premium mislykkedes. Tryk her for at prøve igen."
+  },
+  {
+   "idx": 14871,
+   "text": "Sie haben die Premium-Rezitation erfolgreich eingelöst. Genießen Sie sie, bis zum Ende des Ramadan oder solange Sie Muslim Pro Premium Mitglied sind."
+  },
+  {
+   "idx": 14883,
+   "text": "Sie können die Werbung entfernen, indem Sie auf Premium upgraden."
+  },
+  {
+   "idx": 15001,
+   "text": "Sind Sie sicher, dass Sie diese Rezitation bis %s einlösen möchten? Sie können sie nur einmal auswählen. Die exklusive Rezitation ist nur für diesen Ramadan freigeschalten oder wenn Sie Muslim Pro Premium aktivieren."
+  },
+  {
+   "idx": 15005,
+   "text": "Singkir iklan & Dapatkan semua ciri Premium"
+  },
+  {
+   "idx": 15259,
+   "text": "Stellen Sie Ihre Premium-Personalisierung ein"
+  },
+  {
+   "idx": 15341,
+   "text": "Sudah memiliki Versi Premium?"
+  },
+  {
+   "idx": 15343,
+   "text": "Sudah mempunyai Versi Premium?"
+  },
+  {
+   "idx": 15403,
+   "text": "Supprimez les pubs et accéder à toutes les fonctions Premium"
+  },
+  {
+   "idx": 15599,
+   "text": "Tak fordi du købte premium versionen"
+  },
+  {
+   "idx": 15762,
+   "text": "Teilen & Premium jetzt verschenken"
+  },
+  {
+   "idx": 15819,
+   "text": "Teman Anda telah membantu dengan uji coba hadiah Premium!"
+  },
+  {
+   "idx": 15865,
+   "text": "Terima kasih kerana membeli versi premium"
+  },
+  {
+   "idx": 15866,
+   "text": "Terima kasih telah membeli versi Premium."
+  },
+  {
+   "idx": 15981,
+   "text": "Thank you for purchasing the premium version"
+  },
+  {
+   "idx": 16242,
+   "text": "There is a problem with your subscription. Tap here to go to the Google Play Subscription settings."
+  },
+  {
+   "idx": 16253,
+   "text": "This Ramadan, we would like to offer a promotion of Muslim Pro Premium to our valued users."
+  },
+  {
+   "idx": 16689,
+   "text": "Tu suscripción Premium ha expirado."
+  },
+  {
+   "idx": 16918,
+   "text": "Unable to Retrieve Previous Subscription"
+  },
+  {
+   "idx": 16934,
+   "text": "Une erreur s’est produite lors de l’activation de votre abonnement Premium. Notre serveur tentera automatiquement à nouveau dans une heure."
+  },
+  {
+   "idx": 16981,
+   "text": "Upaya terakhir Anda untuk meng-upgrade ke Muslim Pro Premium gagal. Ketuk di sini untuk mencoba lagi sekarang."
+  },
+  {
+   "idx": 16992,
+   "text": "Upgrade ke premium"
+  },
+  {
+   "idx": 16993,
+   "text": "Upgrade naar de Premiumversie om je kleurinstellingen te bewaren of tik op Preview om het tijdelijk te proberen."
+  },
+  {
+   "idx": 16994,
+   "text": "Upgrade to premium"
+  },
+  {
+   "idx": 16995,
+   "text": "Upgrade to the Premium version to save your color settings or tap Preview to try it temporarily."
+  },
+  {
+   "idx": 16996,
+   "text": "Upgraden Sie zur Premium-Version, um Ihre Farbeinstellungen zu speichern. Oder klicken Sie auf \"Vorschau\", um diese Version temporär zu testen."
+  },
+  {
+   "idx": 16997,
+   "text": "Upgraden naar premium"
+  },
+  {
+   "idx": 17014,
+   "text": "Uruskan pemperibadian Premium anda"
+  },
+  {
+   "idx": 17030,
+   "text": "Usuários premium podem baixar recitações em áudio inteiras para reprodução offline."
+  },
+  {
+   "idx": 17043,
+   "text": "Uw Premium abbonement is verlopen."
+  },
+  {
+   "idx": 17063,
+   "text": "Uygulamayı Premium'a yükselterek reklamları kaldırabilirsiniz."
+  },
+  {
+   "idx": 17094,
+   "text": "Vantaggi di Premium"
+  },
+  {
+   "idx": 17192,
+   "text": "Verschenken Sie Premium-Tage von Muslim Pro an so viele Familienmitglieder & Freunde wie möglich."
+  },
+  {
+   "idx": 17203,
+   "text": "Versi Premium"
+  },
+  {
+   "idx": 17207,
+   "text": "Versi premium"
+  },
+  {
+   "idx": 17210,
+   "text": "Version Premium"
+  },
+  {
+   "idx": 17212,
+   "text": "Versione Premium"
+  },
+  {
+   "idx": 17214,
+   "text": "Versión Premium"
+  },
+  {
+   "idx": 17226,
+   "text": "Versão Premium"
+  },
+  {
+   "idx": 17237,
+   "text": "Verwijder reclame & Krijg alle Premium functies"
+  },
+  {
+   "idx": 17288,
+   "text": "Vielen Dank, dass Sie die Premium-Version gekauft haben"
+  },
+  {
+   "idx": 17432,
+   "text": "Vorteile mit Premium"
+  },
+  {
+   "idx": 17451,
+   "text": "Votre Premium"
+  },
+  {
+   "idx": 17453,
+   "text": "Votre abonnement Premium a expiré."
+  },
+  {
+   "idx": 17455,
+   "text": "Votre ami(e) a payé de sa personne avec un essai cadeau Premium !"
+  },
+  {
+   "idx": 17458,
+   "text": "Votre dernière tentative pour passer à Muslim Pro Premium n'a pas abouti. Tapez ici et réessayez dès maintenant."
+  },
+  {
+   "idx": 17463,
+   "text": "Votre service premium a expiré. Réactivez maintenant et récupérez votre compte premium."
+  },
+  {
+   "idx": 17464,
+   "text": "Votre service premium expire dans %s jour. Ne perdez pas vos avantages et renouvelez maintenant."
+  },
+  {
+   "idx": 17465,
+   "text": "Votre service premium expire dans %s jours. Ne perdez pas vos avantages. Appuyez ici pour vous réabonner."
+  },
+  {
+   "idx": 17467,
+   "text": "Votre version Premium a été restaurée gratuitement avec succès!"
+  },
+  {
+   "idx": 17488,
+   "text": "Vous avez déjà la version Premium ?"
+  },
+  {
+   "idx": 17522,
+   "text": "Vous pouvez supprimer les publicités en passant à la version Premium."
+  },
+  {
+   "idx": 17689,
+   "text": "We're sorry but you're already Premium"
+  },
+  {
+   "idx": 17691,
+   "text": "We're sorry. Your Premium subscription could be linked to another Google, Apple, Facebook, Email account or Phone Number."
+  },
+  {
+   "idx": 17838,
+   "text": "Wählen Sie Ihren Premium Ramadan-Rezitator:"
+  },
+  {
+   "idx": 17904,
+   "text": "Yamre Premium"
+  },
+  {
+   "idx": 18123,
+   "text": "You can remove ads by upgrading to Premium."
+  },
+  {
+   "idx": 18161,
+   "text": "Your Premium"
+  },
+  {
+   "idx": 18162,
+   "text": "Your Premium subscription has expired."
+  },
+  {
+   "idx": 18168,
+   "text": "Your form of payment has been updated and your subscription has been recovered."
+  },
+  {
+   "idx": 18169,
+   "text": "Your friend has paid it forward with a Premium gift trial!"
+  },
+  {
+   "idx": 18170,
+   "text": "Your last attempt to upgrade to Muslim Pro Premium has failed. Tap here to try again now."
+  },
+  {
+   "idx": 18178,
+   "text": "Your premium service expired. Reactivate now and get your premium experience back."
+  },
+  {
+   "idx": 18179,
+   "text": "Your premium service expires in %s days. Don't lose your benefits. Tap here to resubscribe."
+  },
+  {
+   "idx": 18180,
+   "text": "Your premium service is expiring in %s day. Don't lose your benefits and renew now."
+  },
+  {
+   "idx": 18286,
+   "text": "Zaten Premium Sürümünüz var mı?"
+  },
+  {
+   "idx": 19414,
+   "text": "avec aise pour profiter de votre accès Premium"
+  },
+  {
+   "idx": 20461,
+   "text": "dengan mulus untuk menikmati akses Premium Anda"
+  },
+  {
+   "idx": 21031,
+   "text": "https://play.google.com/store/account/subscriptions?sku=%s&package=%s"
+  },
+  {
+   "idx": 21443,
+   "text": "nahtloser Genuss Ihres Premium-Zugangs"
+  },
+  {
+   "idx": 21460,
+   "text": "nikmati akaun premium anda dengan lancar"
+  },
+  {
+   "idx": 21472,
+   "text": "no ɓuri weeɓirɗe ngam huutoraade konte Premium"
+  },
+  {
+   "idx": 21748,
+   "text": "seamlessly to enjoy your Premium access"
+  },
+  {
+   "idx": 21750,
+   "text": "senza soluzione di continuità per goderti il tuo accesso a Premium"
+  },
+  {
+   "idx": 22220,
+   "text": "¡Actualizar a Premium y eliminar publicidad ahora!"
+  },
+  {
+   "idx": 22304,
+   "text": "¿Ya tienes la versión Premium?"
+  },
+  {
+   "idx": 22401,
+   "text": "Ödül Talep Edildi. %s günlük Premium hediye edin."
+  },
+  {
+   "idx": 22439,
+   "text": "Özür dileriz ama hali hazırda Premium'sunuz"
+  },
+  {
+   "idx": 22482,
+   "text": "Üzgünüz. Premium aboneliğiniz başka bir Google, Apple, Facebook, E-posta hesabı veya Telefon Numarası ile bağlantılı olabilir."
+  },
+  {
+   "idx": 22702,
+   "text": "Ɓure Premium"
+  },
+  {
+   "idx": 22873,
+   "text": "Ƴellit to premium"
+  },
+  {
+   "idx": 22874,
+   "text": "Ƴellit to yamre Premium ngam danndude teelte nooneeji walla tappu ngam Yiytindoaade ɗum dumunna."
+  },
+  {
+   "idx": 22875,
+   "text": "Ƴellital Premium heɓotaako e ngol kaɓirgol tawo."
+  },
+  {
+   "idx": 23061,
+   "text": "Ваш друг оплатил это с помощью подарочной пробной версии Premium!"
+  },
+  {
+   "idx": 23069,
+   "text": "Ваша последняя попытка обновиться до Muslim Pro Premium не удалась. Нажмите здесь, чтобы попытаться еще раз."
+  },
+  {
+   "idx": 23192,
+   "text": "Вы можете убрать показ рекламы, обновившись до версии Premium."
+  },
+  {
+   "idx": 23537,
+   "text": "Мабрук! Ваша пробная версия Premium теперь действительна до %s"
+  },
+  {
+   "idx": 23594,
+   "text": "На этот Рамадан мы хотим предложить нашим пользователям приложение Muslim Pro Premium."
+  },
+  {
+   "idx": 27081,
+   "text": "لقد فشلت آخر محاولة قمت بها للترقية إلى Muslim Pro Premium. انقر هنا للمحاولة مرة أخرى الآن."
+  },
+  {
+   "idx": 30846,
+   "text": "ความพยายามครั้งล่าสุดในการอัปเกรดเป็น Muslim Pro Premium ไม่ประสบความสำเร็จ แตะที่นี่เพื่อลองใหม่อีกครั้ง"
+  },
+  {
+   "idx": 31594,
+   "text": "เดือนรอมฎอนนี้ เราขอเสนอโปรโมชั่น Muslim Pro Premium ให้กับผู้ใช้ผู้ทรงคุณค่าของเรา"
+  }
+ ],
+ "brand_count": 963,
+ "premium_count": 358
+}
