@@ -193,8 +193,12 @@ def main():
     print(f"alvos: {[(m[0], m[1]) for m in targets]}")
 
     for mid, ret, _params in targets:
-        want = "V" if mode == "noop" else "Z"
-        if ret != want:
+        want = "V" if mode == "noop" else ("Z" if mode == "ret1" else "obj")
+        if mode == "retnull":
+            if not ret.startswith("L"):
+                print(f"  pulando {mid}: retorno {ret} nao e objeto")
+                continue
+        elif ret != want:
             print(f"  pulando {mid}: retorno {ret}, esperado {want}")
             continue
         co = offsets.get(mid)
@@ -214,6 +218,11 @@ def main():
             body = struct.pack("<HHHHII", ins, ins, 0, 0, 0, words)
             body += struct.pack(f"<{words}H", 0x000E, *([0x0000] * (words - 1)))
             label = "return-void"
+        elif mode == "retnull":
+            # const/4 v0, #0 ; return-object v0
+            body = struct.pack("<HHHHII", ins + 1, ins, 0, 0, 0, words)
+            body += struct.pack(f"<{words}H", 0x0012, 0x0011, *([0x0000] * (words - 2)))
+            label = "return-null"
         else:
             # const/4 v0, #1 (11n: A no nibble alto do byte 1) ; return v0
             body = struct.pack("<HHHHII", ins + 1, ins, 0, 0, 0, words)
