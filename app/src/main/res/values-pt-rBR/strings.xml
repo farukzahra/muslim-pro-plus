@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Muslim Plus</string>
+    <string name="tab_today">Hoje</string>
+    <string name="tab_prayers">Orações</string>
+    <string name="tab_quran">Alcorão</string>
+    <string name="tab_qibla">Qibla</string>
+    <string name="tab_more">Mais</string>
+</resources>
