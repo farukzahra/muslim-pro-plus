@@ -182,6 +182,38 @@ python tools\repack.py apk\muslimpro-12.6.10.apk build\out.apk `
   --key-pass pass:android --ks-key-alias androiddebugkey --out build\muslimplus.apk build\out-aligned.apk
 ```
 
+## Testes
+
+Não existe projeto compilável: `decompiled/` é saída do JADX (leitura, sem
+Gradle/R.java), então não há como rodar teste unitário de código. O que existe
+é teste **E2E por adb** contra o APK instalado.
+
+```powershell
+python tests\e2e_app.py
+```
+
+Cobre:
+
+- **5 abas** da barra inferior: Hoje, Orações, Al Qur'an, Qibla e Mais
+  (toca, confere a flag `..S.....` de selecionada e se o app continua vivo).
+- **Todas as bolinhas da aba Mais**, descobertas dinamicamente pelo dump de UI:
+  toca cada uma, registra a activity de destino e confere o `logcat -b crash`.
+
+Resultado vai para `evidence/e2e-report.json` e imprime PASS/FAIL/PARTIAL.
+PASS = navegou; PARTIAL = não navegou mas não crashou; FAIL = crash ou morreu.
+
+Última execução: **23 PASS, 2 PARTIAL, 0 FAIL em 25 casos.** Os parciais são
+"Ajuda" e "Voos", que não abrem nada (provavelmente dependem de navegador
+externo).
+
+Notas de implementação do harness:
+
+- `uiautomator dump` falha na aba Hoje (`could not get idle state`) porque o
+  contador da próxima oração redesenha sem parar — por isso as abas usam
+  coordenadas fixas e o estado é lido do `dumpsys activity top`.
+- Os itens da grade não são `clickable`: o texto está num `TextView` filho.
+  O teste toca o centro do texto, não do container.
+
 ## Origem do APK
 
 APKPure e APKMirror respondem 403 (Cloudflare) e o Play Store exige conta.

@@ -1,0 +1,152 @@
+[
+ {
+  "kind": "tab",
+  "name": "Hoje",
+  "status": "PASS",
+  "detail": "selecionada=True app=True crashes=0"
+ },
+ {
+  "kind": "tab",
+  "name": "Orações",
+  "status": "PASS",
+  "detail": "selecionada=True app=True crashes=0"
+ },
+ {
+  "kind": "tab",
+  "name": "Al Qur'an",
+  "status": "PASS",
+  "detail": "selecionada=True app=True crashes=0"
+ },
+ {
+  "kind": "tab",
+  "name": "Qibla",
+  "status": "PASS",
+  "detail": "selecionada=True app=True crashes=0"
+ },
+ {
+  "kind": "tab",
+  "name": "Mais",
+  "status": "PASS",
+  "detail": "selecionada=True app=True crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Khatam",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.launchAppLanguageSettings crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Inspiração",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.$r8$lambda$cpfMLHajN0BiKjioi1YcbOF4Luc crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Rastreador",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.AdLoader crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Loja",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.onInterstitialDismissed crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Comunidade",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.AdLoader crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Halal",
+  "status": "PASS",
+  "detail": "abriu=sim destino=.core.screens.places.PlacesActivity crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Mesquitas",
+  "status": "PASS",
+  "detail": "abriu=sim destino=.core.screens.places.PlacesActivity crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Haje e Umrah",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.AyaBackgroundDTO crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Hajj Journey",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.getRangesFromListOfHighlights crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Calendário",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.access$setAppResumeTime$cp crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Greeting Messages",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.clearTestDevices crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Duas",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.getDays crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Shahadah",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.calculateChecksum crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Zakat",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.getPortraitInlineAdaptiveBannerAdSize crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Nomes",
+  "status": "PASS",
+  "detail": "abriu=sim destino=.core.screens.sura.view.SuraActivity crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Makkah",
+  "status": "PASS",
+  "detail": "abriu=sim destino=.core.screens.sura.view.SuraActivity crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Tasbih",
+  "status": "PASS",
+  "detail": "abriu=sim destino=.core.screens.tasbih.view.TasbihActivity crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Ajuda",
+  "status": "PARTIAL",
+  "detail": "abriu=nao destino=.core.screens.main.MainActivity crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Feriados",
+  "status": "PASS",
+  "detail": "abriu=sim destino=o.AdRequest$Builder crashes=0"
+ },
+ {
+  "kind": "tile",
+  "name": "Voos",
+  "status": "PARTIAL",
+  "detail": "abriu=nao destino=.core.screens.main.MainActivity crashes=0"
+ }
+]
