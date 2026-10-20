@@ -187,6 +187,9 @@ def main():
     if not targets:
         raise SystemExit("method not found")
     offsets = code_offsets(dex, {m[0] for m in targets})
+    all_offsets = sorted(
+        set(code_offsets(dex, set(range(dex.method_ids_size))).values())
+    )
     print(f"alvos: {[(m[0], m[1]) for m in targets]}")
 
     for mid, ret, _params in targets:
@@ -218,6 +221,11 @@ def main():
             label = "return-true"
         assert len(body) == aligned, (len(body), aligned)
         dex.data[co : co + len(body)] = body
+        # clear leftovers (try items/handlers) up to the next code item, otherwise
+        # ART rejects the dex with "non-zero padding" and the class is not found
+        next_off = next((o for o in all_offsets if o > co), len(dex.data))
+        for k in range(co + len(body), next_off):
+            dex.data[k] = 0
         print(
             f"  patch {mid} @ {co:#x}: regs={regs} ins={ins} insns={insns} bytes={old_len} -> {label}"
         )

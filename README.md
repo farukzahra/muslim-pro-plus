@@ -48,6 +48,7 @@ desinstalar o original antes).
 | Icone de premium | menu `aou` (XML binario) | icone e titulo do item `timelinePremium` zerados |
 | Conta | `classes.dex` | `setCheckMarkDrawable()` retorna `true`: pula a tela de cadastro/login |
 | Icone da conta | menu `aou` (XML binario) | icone e titulo do item `timelineAccount` zerados |
+| Banner "Remova anuncios" | layout `byv` (`ad_view_layout_0`) | root com `0dp x 0dp`: o card nao renderiza |
 
 ### Marca
 
@@ -87,6 +88,25 @@ quando precisar.
 o formato 11n guarda o registrador no nibble alto do segundo byte, entao
 `const/4 v0, #1` e `0x1012`, nao `0x0112` (que vira `const/4 v1, #0` e o
 verificador rejeita a classe com `VerifyError`).
+
+### Banner de upsell
+
+O card verde "Remova anuncios e tenha todas os recursos Premium" e o layout
+`ad_view_layout_0` (`byv`), o container que sobra quando nao ha anuncio para
+preencher. Como os anuncios foram removidos, ele passou a aparecer sempre.
+
+`patch_axml_root.py` zera `layout_width`/`layout_height` do root do `byv`,
+deixando o card com 0dp. Verificado: a faixa do banner ficou com 0 pixels
+verdes e o no continua na arvore com bounds `0,2009-0,2177`.
+
+### Tentativa descartada: matar o dialog de progresso
+
+Existe um crash intermitente do proprio app: `showProgress` cria um `Dialog`
+em thread de IO (`Can't create handler ... Looper.prepare()`), disparado por
+resposta do servidor. No-op em `Lo/setLongitude;->showProgress` **quebra o dex**:
+o metodo tem `try/catch` e sobraram bytes orfaos depois do novo code item
+(`Non-zero padding ... before section of type 8195`). Revertido; o crash
+continua latente e nao reproduz em start limpo.
 
 
 Por que o patch de dex resolve: o wrapper de anuncios do app
