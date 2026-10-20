@@ -48,7 +48,7 @@ desinstalar o original antes).
 | Icone de premium | menu `aou` (XML binario) | icone e titulo do item `timelinePremium` zerados |
 | Conta | `classes.dex` | `setCheckMarkDrawable()` retorna `true`: pula a tela de cadastro/login |
 | Icone da conta | menu `aou` (XML binario) | icone e titulo do item `timelineAccount` zerados |
-| Banner "Remova anuncios" | layout `byv` (`ad_view_layout_0`) | root com `0dp x 0dp`: o card nao renderiza |
+| Banner "Remova anuncios" | layout `byv` (`ad_view_layout_0`) | textos, icone e fundos zerados: o card nao desenha mais |
 
 ### Marca
 
@@ -95,9 +95,14 @@ O card verde "Remova anuncios e tenha todas os recursos Premium" e o layout
 `ad_view_layout_0` (`byv`), o container que sobra quando nao ha anuncio para
 preencher. Como os anuncios foram removidos, ele passou a aparecer sempre.
 
-`patch_axml_root.py` zera `layout_width`/`layout_height` do root do `byv`,
-deixando o card com 0dp. Verificado: a faixa do banner ficou com 0 pixels
-verdes e o no continua na arvore com bounds `0,2009-0,2177`.
+`patch_axml_zero_all.py` / `patch_axml_all.py` zeram textos, icone e fundos do
+`byv`, deixando o card vazio (faixa transparente). Verificado na tela: a area
+fica com a mesma cor do fundo do app.
+
+Armadilha: `layout_width`/`layout_height` nao podem receber valor cru quando o
+atributo e referencia (`@dimen`). Isso quebra o inflate com
+`You must supply a layout_width attribute`. `patch_axml_all.py` pula atributos
+do tipo referencia quando o valor e positivo; zero (que vira `@null`) e aceito.
 
 ### Tentativa descartada: matar o dialog de progresso
 
