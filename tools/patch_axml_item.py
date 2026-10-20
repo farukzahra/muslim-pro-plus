@@ -11,7 +11,7 @@ import zipfile
 
 APK = sys.argv[1]
 ENTRY = sys.argv[2]
-TARGET_ID = int(sys.argv[3], 16)
+TARGET_IDS = {int(x, 16) for x in sys.argv[3].split(",")}
 OUT = sys.argv[4]
 
 RES_STRING_POOL = 0x0001
@@ -55,7 +55,7 @@ for name, attrs in elements:
     if ids.get(ATTR_ID) is None:
         continue
     cur = struct.unpack_from("<I", data, ids[ATTR_ID])[0]
-    if cur != TARGET_ID:
+    if cur not in TARGET_IDS:
         continue
     for rid in (ATTR_ICON, ATTR_TITLE):
         if rid in ids:

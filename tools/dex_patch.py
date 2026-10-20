@@ -190,8 +190,9 @@ def main():
     print(f"alvos: {[(m[0], m[1]) for m in targets]}")
 
     for mid, ret, _params in targets:
-        if ret != "V":
-            print(f"  pulando {mid}: retorno {ret} nao e void")
+        want = "V" if mode == "noop" else "Z"
+        if ret != want:
+            print(f"  pulando {mid}: retorno {ret}, esperado {want}")
             continue
         co = offsets.get(mid)
         if not co:
@@ -206,12 +207,19 @@ def main():
         # no non-zero padding is left for the verifier to trip on
         aligned = (old_len + 3) & ~3
         words = (aligned - 16) // 2
-        body = struct.pack("<HHHHII", ins, ins, 0, 0, 0, words)
-        body += struct.pack(f"<{words}H", 0x000E, *([0x0000] * (words - 1)))
+        if mode == "noop":
+            body = struct.pack("<HHHHII", ins, ins, 0, 0, 0, words)
+            body += struct.pack(f"<{words}H", 0x000E, *([0x0000] * (words - 1)))
+            label = "return-void"
+        else:
+            # const/4 v0, #1 (11n: A no nibble alto do byte 1) ; return v0
+            body = struct.pack("<HHHHII", ins + 1, ins, 0, 0, 0, words)
+            body += struct.pack(f"<{words}H", 0x1012, 0x000F, *([0x0000] * (words - 2)))
+            label = "return-true"
         assert len(body) == aligned, (len(body), aligned)
         dex.data[co : co + len(body)] = body
         print(
-            f"  patch {mid} @ {co:#x}: regs={regs} ins={ins} insns={insns} bytes={old_len} -> return-void"
+            f"  patch {mid} @ {co:#x}: regs={regs} ins={ins} insns={insns} bytes={old_len} -> {label}"
         )
 
     dex.fix_header()

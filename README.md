@@ -46,6 +46,8 @@ desinstalar o original antes).
 | Anuncios | `classes2.dex` | `com.google.android.gms.ads.MobileAds.initialize(...)` virou `return-void` |
 | Avisos de premium | `classes.dex` | `premium_show_interval_days`, `show_premium_text_on_timeline_button` e a abertura da pagina premium viram no-op |
 | Icone de premium | menu `aou` (XML binario) | icone e titulo do item `timelinePremium` zerados |
+| Conta | `classes.dex` | `setCheckMarkDrawable()` retorna `true`: pula a tela de cadastro/login |
+| Icone da conta | menu `aou` (XML binario) | icone e titulo do item `timelineAccount` zerados |
 
 ### Marca
 
@@ -69,6 +71,22 @@ O icone em si nao pode ser escondido por codigo: ele e um item de menu
 (`res` -> `aou`) sem `android:visible`. Zerar `android:id` **quebra** o app
 (dialog em thread de IO, `Can't create handler ... Looper.prepare()`);
 zerar apenas icone e titulo e seguro e deixa o slot vazio.
+
+### Conta
+
+`SplashActivity` decide entre a tela de cadastro e a `MainActivity` por
+`setUserIdentifier.setCheckMarkDrawable()`, que e a flag
+`is_tutorial_complete` do SharedPreferences. Forcando `true`, o app abre direto
+na `MainActivity` e a tela "Sign Up / Log In" nao existe mais.
+
+Efeito colateral: o tutorial de primeira execucao (localizacao e notificacoes)
+tambem e pulado. O app passa a usar a localizacao padrao e pede a permissao
+quando precisar.
+
+`dex_patch.py ret1` grava `const/4 v0, #1; return v0`. Atencao ao encoding:
+o formato 11n guarda o registrador no nibble alto do segundo byte, entao
+`const/4 v0, #1` e `0x1012`, nao `0x0112` (que vira `const/4 v1, #0` e o
+verificador rejeita a classe com `VerifyError`).
 
 
 Por que o patch de dex resolve: o wrapper de anuncios do app
@@ -123,8 +141,11 @@ python tools\dex_patch.py noop build\classes.dex "Lo/PlaylistDTO`$Companion;" pe
 python tools\dex_patch.py noop build\classes.dex "Lo/setUserIdentifier;" RatingCompat "(I)V"
 python tools\dex_patch.py noop build\classes.dex "Lo/setUserIdentifier;" getLastCustomNonConfigurationInstance "(Z)V"
 
-# icone de premium some
-python tools\patch_axml_item.py apk\muslimpro-12.6.10.apk aou 7f0b0832 build\menu.blank.xml
+# sem tela de conta
+python tools\dex_patch.py ret1 build\classes.dex "Lo/setUserIdentifier;" setCheckMarkDrawable "()Z"
+
+# icones de premium e conta somem
+python tools\patch_axml_item.py apk\muslimpro-12.6.10.apk aou 7f0b0832,7f0b0831 build\menu.blank.xml
 
 python tools\repack.py apk\muslimpro-12.6.10.apk build\out.apk `
   "resources.arsc=build\resources.final.arsc" `
