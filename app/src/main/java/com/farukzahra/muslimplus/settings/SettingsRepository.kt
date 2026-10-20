@@ -1,6 +1,7 @@
 package com.farukzahra.muslimplus.settings
 
 import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -12,9 +13,12 @@ private val Context.dataStore by preferencesDataStore(name = "settings")
 class SettingsRepository(private val context: Context) {
     private val cityKey = stringPreferencesKey("city_id")
     private val methodKey = stringPreferencesKey("prayer_method")
+    private val notificationsKey = booleanPreferencesKey("notifications_enabled")
 
     val cityId: Flow<String> = context.dataStore.data.map { it[cityKey] ?: "sao-paulo" }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
+    val notificationsEnabled: Flow<Boolean> =
+        context.dataStore.data.map { it[notificationsKey] ?: true }
 
     suspend fun setCity(id: String) {
         context.dataStore.edit { it[cityKey] = id }
@@ -22,5 +26,9 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setMethod(name: String) {
         context.dataStore.edit { it[methodKey] = name }
+    }
+
+    suspend fun setNotificationsEnabled(enabled: Boolean) {
+        context.dataStore.edit { it[notificationsKey] = enabled }
     }
 }
