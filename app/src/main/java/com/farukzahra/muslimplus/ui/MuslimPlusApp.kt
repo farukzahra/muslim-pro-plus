@@ -22,6 +22,7 @@ import com.farukzahra.muslimplus.ui.nav.Tab
 import com.farukzahra.muslimplus.ui.screens.PlaceholderScreen
 import com.farukzahra.muslimplus.ui.screens.more.MoreScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
+import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
 const val LANGUAGE_ROUTE = "settings/language"
 
@@ -35,7 +36,7 @@ fun MuslimPlusApp() {
     Scaffold(
         bottomBar = {
             if (showTabs) {
-                NavigationBar {
+                NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
                     Tab.entries.forEach { tab ->
                         NavigationBarItem(
                             selected = currentRoute == tab.route,
@@ -74,6 +75,7 @@ fun MuslimPlusApp() {
             Tab.entries.forEach { tab ->
                 composable(tab.route) {
                     when (tab) {
+                        Tab.TODAY -> TodayScreen()
                         Tab.MORE -> MoreScreen(
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
                         )

@@ -15,4 +15,12 @@
     <string name="language_portuguese">البرتغالية (البرازيل)</string>
     <string name="language_arabic">العربية</string>
     <string name="action_back">رجوع</string>
+    <string name="today_next">الصلاة القادمة</string>
+    <string name="today_tomorrow_fajr">غدًا · الفجر</string>
+    <string name="prayer_fajr">الفجر</string>
+    <string name="prayer_sunrise">الشروق</string>
+    <string name="prayer_dhuhr">الظهر</string>
+    <string name="prayer_asr">العصر</string>
+    <string name="prayer_maghrib">المغرب</string>
+    <string name="prayer_isha">العشاء</string>
 </resources>

@@ -15,4 +15,12 @@
     <string name="language_portuguese">Português (Brasil)</string>
     <string name="language_arabic">العربية</string>
     <string name="action_back">Voltar</string>
+    <string name="today_next">Próxima oração</string>
+    <string name="today_tomorrow_fajr">Amanhã · Fajr</string>
+    <string name="prayer_fajr">Fajr</string>
+    <string name="prayer_sunrise">Nascer do sol</string>
+    <string name="prayer_dhuhr">Dhuhr</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Maghrib</string>
+    <string name="prayer_isha">Isha</string>
 </resources>
