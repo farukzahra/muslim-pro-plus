@@ -6,4 +6,13 @@
     <string name="tab_quran">Alcorão</string>
     <string name="tab_qibla">Qibla</string>
     <string name="tab_more">Mais</string>
+    <string name="more_language">Idioma</string>
+    <string name="more_about">Sobre</string>
+    <string name="about_version">Versão %1$s</string>
+    <string name="language_title">Idioma do app</string>
+    <string name="language_system">Padrão do sistema</string>
+    <string name="language_english">English</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_arabic">العربية</string>
+    <string name="action_back">Voltar</string>
 </resources>

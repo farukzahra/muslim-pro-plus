@@ -1,51 +1,67 @@
 package com.farukzahra.muslimplus.ui
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.List
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Menu
-import androidx.compose.material.icons.outlined.MoreVert
-import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.ui.nav.Tab
 import com.farukzahra.muslimplus.ui.screens.PlaceholderScreen
+import com.farukzahra.muslimplus.ui.screens.more.MoreScreen
+import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
+
+const val LANGUAGE_ROUTE = "settings/language"
 
 @Composable
 fun MuslimPlusApp() {
     val navController = rememberNavController()
     val backStack by navController.currentBackStackEntryAsState()
     val currentRoute = backStack?.destination?.route ?: Tab.TODAY.route
+    val showTabs = Tab.entries.any { it.route == currentRoute }
 
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                Tab.entries.forEach { tab ->
-                    NavigationBarItem(
-                        selected = currentRoute == tab.route,
-                        onClick = {
-                            navController.navigate(tab.route) {
-                                popUpTo(navController.graph.startDestinationId) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        icon = { Icon(iconFor(tab), contentDescription = null) },
-                        label = { Text(stringResource(tab.labelRes)) },
-                    )
+            if (showTabs) {
+                NavigationBar {
+                    Tab.entries.forEach { tab ->
+                        NavigationBarItem(
+                            selected = currentRoute == tab.route,
+                            onClick = {
+                                navController.navigate(tab.route) {
+                                    popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(iconRes(tab)),
+                                    contentDescription = null,
+                                )
+                            },
+                            label = { Text(stringResource(tab.labelRes)) },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedIconColor = MaterialTheme.colorScheme.primary,
+                                selectedTextColor = MaterialTheme.colorScheme.primary,
+                                indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
+                                unselectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f),
+                                unselectedTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f),
+                            ),
+                        )
+                    }
                 }
             }
         },
@@ -57,17 +73,25 @@ fun MuslimPlusApp() {
         ) {
             Tab.entries.forEach { tab ->
                 composable(tab.route) {
-                    PlaceholderScreen(title = stringResource(tab.labelRes))
+                    when (tab) {
+                        Tab.MORE -> MoreScreen(
+                            onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
+                        )
+                        else -> PlaceholderScreen(title = stringResource(tab.labelRes))
+                    }
                 }
+            }
+            composable(LANGUAGE_ROUTE) {
+                LanguageScreen(onBack = { navController.popBackStack() })
             }
         }
     }
 }
 
-private fun iconFor(tab: Tab): ImageVector = when (tab) {
-    Tab.TODAY -> Icons.Outlined.Home
-    Tab.PRAYERS -> Icons.AutoMirrored.Outlined.List
-    Tab.QURAN -> Icons.Outlined.Menu
-    Tab.QIBLA -> Icons.Outlined.Place
-    Tab.MORE -> Icons.Outlined.MoreVert
+private fun iconRes(tab: Tab): Int = when (tab) {
+    Tab.TODAY -> R.drawable.tab_today
+    Tab.PRAYERS -> R.drawable.tab_prayers
+    Tab.QURAN -> R.drawable.tab_quran
+    Tab.QIBLA -> R.drawable.tab_qibla
+    Tab.MORE -> R.drawable.tab_more
 }
