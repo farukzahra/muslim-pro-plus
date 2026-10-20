@@ -115,10 +115,23 @@ class Dex:
         open(path or self.path, "wb").write(self.data)
 
 
-def find_methods(dex, class_desc, name):
+def params_desc(dex, params_off):
+    if params_off == 0:
+        return "()"
+    size = struct.unpack_from("<I", dex.data, params_off)[0]
+    out = []
+    for i in range(size):
+        idx = struct.unpack_from("<H", dex.data, params_off + 4 + 2 * i)[0]
+        out.append(dex.type_desc(idx))
+    return "(" + "".join(out) + ")"
+
+
+def find_methods(dex, class_desc, name, sig=None):
     found = []
     for mid, cls, mname, ret, params in dex.methods():
         if cls == class_desc and mname == name:
+            if sig is not None and f"{params_desc(dex, params)}{ret}" != sig:
+                continue
             found.append((mid, ret, params))
     return found
 
@@ -161,14 +174,16 @@ def main():
     dex = Dex(path)
 
     if mode == "list":
+        list_sig = sys.argv[5] if len(sys.argv) > 5 else None
         for mid, ret, params in find_methods(
-            dex, class_desc, sys.argv[4] if len(sys.argv) > 4 else ""
+            dex, class_desc, sys.argv[4] if len(sys.argv) > 4 else "", list_sig
         ):
             print(f"method_idx={mid} ret={ret} params_off={params}")
         return
 
     name = sys.argv[4]
-    targets = find_methods(dex, class_desc, name)
+    sig = sys.argv[5] if len(sys.argv) > 5 else None
+    targets = find_methods(dex, class_desc, name, sig)
     if not targets:
         raise SystemExit("method not found")
     offsets = code_offsets(dex, {m[0] for m in targets})

@@ -39,6 +39,8 @@ reversa.
 
 ## Regras do repo
 
+- Tarefa pendente se executa, não se pergunta: fazer, verificar com evidência e
+  reportar o que sobrou. Perguntar só em decisão irreversível.
 - Nunca commitar `apk/`, `decompiled/`, `apktool_out/`, `build/` nem `.jar`.
   O código é proprietário da Bitsmedia; o repo guarda só a ferramentaria.
 - Todo patch precisa de evidência: log, dump de view ou screenshot em

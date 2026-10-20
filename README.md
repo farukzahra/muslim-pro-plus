@@ -36,13 +36,40 @@ tools/jadx-headless-mcp-0.7.1-all.jar   provider JADX exigido pelo REA
 
 ## Patches aplicados
 
-APK final: `build/muslimpro-noads.apk` (assinado com debug keystore, precisa
+APK final: `build/muslimplus.apk` (assinado com debug keystore, precisa
 desinstalar o original antes).
 
 | Patch | Arquivo | O que faz |
 |---|---|---|
 | Texto do botao | `resources.arsc` | `Pular` -> `Agora nao` (so pt-BR; ingles segue `Skip`) |
+| Marca | `resources.arsc` | `Muslim Pro` -> `Muslim Plus`: 1.020 strings, 25 URLs preservadas |
 | Anuncios | `classes2.dex` | `com.google.android.gms.ads.MobileAds.initialize(...)` virou `return-void` |
+| Avisos de premium | `classes.dex` | `premium_show_interval_days`, `show_premium_text_on_timeline_button` e a abertura da pagina premium viram no-op |
+| Icone de premium | menu `aou` (XML binario) | icone e titulo do item `timelinePremium` zerados |
+
+### Marca
+
+`tools/patch_brand.py` troca `Muslim Pro`, `MuslimPro`, `muslimpro`, `#muslimpro`
+e os nomes localizados em arabe (`مسلم برو`) e bengali (`মুসলিম প্রো`).
+URLs, dominios e caminhos de API ficam intactos para nao quebrar `api2`,
+`download` e deep links. O nome do pacote e das classes continua
+`com.bitsmedia.android.muslimpro` (rebrand profundo quebraria updates).
+
+### Premium
+
+Tres patches de dex, todos em `classes.dex`:
+
+| Classe | Metodo | Efeito |
+|---|---|---|
+| `Lo/setUserIdentifier;` | `RatingCompat(I)V` | intervalo do popup premium fica 0 |
+| `Lo/setUserIdentifier;` | `getLastCustomNonConfigurationInstance(Z)V` | texto "Premium" do botao nunca liga |
+| `Lo/PlaylistDTO$Companion;` | `peekAvailableContext()V` | toque no icone nao abre a pagina premium |
+
+O icone em si nao pode ser escondido por codigo: ele e um item de menu
+(`res` -> `aou`) sem `android:visible`. Zerar `android:id` **quebra** o app
+(dialog em thread de IO, `Can't create handler ... Looper.prepare()`);
+zerar apenas icone e titulo e seguro e deixa o slot vazio.
+
 
 Por que o patch de dex resolve: o wrapper de anuncios do app
 (`o.getWrappingSdk`) so cria `AdView`, intersticial e app-open ad dentro do
@@ -67,8 +94,14 @@ Caminhos de anuncio cobertos:
 | `patch_arsc.py` | troca string no pool UTF-8 do `resources.arsc`, rebuild do pool |
 | `patch_manifest.py` | troca string de mesmo tamanho no manifest binario |
 | `repack.py` | remonta o APK trocando entradas, mantendo compressao e ordem |
-| `dex_patch.py` | `list` / `noop` de metodo em DEX (reescreve code item em `return-void`) |
+| `dex_patch.py` | `list` / `noop` de metodo em DEX (reescreve code item em `return-void`), com filtro de assinatura |
 | `arsc_probe.py` | confere strings e offsets do `resources.arsc` |
+| `patch_brand.py` | rebrand em massa no `resources.arsc`, preservando URLs |
+| `axml_dump.py` | le XML binario do APK (menus, layouts) |
+| `patch_axml_item.py` | zera atributos de um item de menu no XML binario |
+| `find_res_id.py` / `find_res_string.py` | acham qual arquivo de recurso referencia um id/string |
+| `dex_strings.py` | lista strings do DEX por padrao |
+| `ctx.py` | imprime contexto de codigo no fonte do JADX |
 
 O `apktool` nao consegue remontar esse APK: os recursos usam caminho encurtado
 (`res/te`, `res/ma`) e o rebuild falha no `aapt2` e no smali. Por isso o caminho
@@ -78,12 +111,29 @@ e patch binario.
 $env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
 $bt = "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.1.0"
 
+# textos e marca
 python tools\patch_arsc.py build\resources.arsc build\resources.patched.arsc "Pular=Agora não"
+python tools\patch_brand.py build\resources.patched.arsc build\resources.final.arsc
+
+# anuncios
 python tools\dex_patch.py noop build\classes2.dex "Lcom/google/android/gms/ads/MobileAds;" initialize
-python tools\repack.py apk\muslimpro-12.6.10.apk build\out.apk "resources.arsc=build\resources.patched.arsc" "classes2.dex=build\classes2.dex"
+
+# avisos de premium
+python tools\dex_patch.py noop build\classes.dex "Lo/PlaylistDTO`$Companion;" peekAvailableContext "()V"
+python tools\dex_patch.py noop build\classes.dex "Lo/setUserIdentifier;" RatingCompat "(I)V"
+python tools\dex_patch.py noop build\classes.dex "Lo/setUserIdentifier;" getLastCustomNonConfigurationInstance "(Z)V"
+
+# icone de premium some
+python tools\patch_axml_item.py apk\muslimpro-12.6.10.apk aou 7f0b0832 build\menu.blank.xml
+
+python tools\repack.py apk\muslimpro-12.6.10.apk build\out.apk `
+  "resources.arsc=build\resources.final.arsc" `
+  "classes.dex=build\classes.dex" `
+  "classes2.dex=build\classes2.dex" `
+  "aou=build\menu.blank.xml"
 & "$bt\zipalign.exe" -p -f 4 build\out.apk build\out-aligned.apk
 & "$bt\apksigner.bat" sign --ks "$env:USERPROFILE\.android\debug.keystore" --ks-pass pass:android `
-  --key-pass pass:android --ks-key-alias androiddebugkey --out build\muslimpro-noads.apk build\out-aligned.apk
+  --key-pass pass:android --ks-key-alias androiddebugkey --out build\muslimplus.apk build\out-aligned.apk
 ```
 
 ## Origem do APK
