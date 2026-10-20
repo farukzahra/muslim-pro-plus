@@ -23,4 +23,7 @@
     <string name="prayer_asr">Asr</string>
     <string name="prayer_maghrib">Maghrib</string>
     <string name="prayer_isha">Isha</string>
+    <string name="prayers_city">City</string>
+    <string name="prayers_method">Method</string>
+    <string name="action_cancel">Cancel</string>
 </resources>

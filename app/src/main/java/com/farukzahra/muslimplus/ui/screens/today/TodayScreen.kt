@@ -40,7 +40,7 @@ import java.util.Locale
 
 @Composable
 fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state = viewModel.state.collectAsState().value ?: return
     val locale = LocalConfiguration.current.locales[0]
 
     val dateText = remember(state.date, locale) {
@@ -59,7 +59,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
         Header(
             dateText = dateText,
             hijriText = hijriText,
-            city = state.location.name,
+            city = state.city.name,
             next = state.next,
             nextAt = state.nextAt ?: state.tomorrowFajr,
             now = state.now,
