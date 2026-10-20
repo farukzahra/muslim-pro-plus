@@ -1,22 +1,35 @@
-# Artefatos de analise (grandes e/ou material de terceiros)
-apk/
-apktool_out/
+# Android / Gradle
+.gradle/
+local.properties
+.idea/
+*.iml
 build/
-decompiled/
-tools/jadx/
-tools/*.jar
-tools/*.zip
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.jks
+*.keystore
+
+# Pacotes gerados
 *.apk
-*.dex
 *.aab
+*.dex
 
-# Capturas de tela e dumps
-evidence/*.png
+# Projeto legado (patch do Muslim Pro 12.6.10)
+old/apk/
+old/apktool_out/
+old/build/
+old/decompiled/
+old/tools/jadx/
+old/tools/*.jar
+old/tools/*.zip
 
-# Cache de ferramentas
+# Caches
 .ruff_cache/
 __pycache__/
 *.pyc
+*.png
 
 # Sistema
 Thumbs.db
