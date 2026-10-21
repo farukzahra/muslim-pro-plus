@@ -1,5 +1,6 @@
 package com.farukzahra.muslimplus.ui.screens.quran
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
@@ -22,6 +26,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -35,11 +41,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -68,8 +77,11 @@ fun QuranReaderScreen(
     val state = viewModel.state.collectAsState().value ?: return
     val modes by viewModel.modes.collectAsState()
     val bookmarks by viewModel.bookmarks.collectAsState()
+    val playback by viewModel.playback.collectAsState()
+    val download by viewModel.download.collectAsState()
     var showOptions by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
+    val snackbarHostState = remember { SnackbarHostState() }
 
     // Restaura a posicao uma unica vez: depois disso, rolar e do usuario.
     LaunchedEffect(state.startIndex) {
@@ -83,10 +95,31 @@ fun QuranReaderScreen(
             .collect { index -> state.verses.getOrNull(index)?.let(viewModel::onVerseVisible) }
     }
 
+    // Avisa o fim do download (o progresso em si fica no topo).
+    val doneMessage = stringResource(R.string.quran_audio_download_done)
+    val failedMessage = stringResource(R.string.quran_audio_download_failed)
+    var wasDownloading by remember { mutableStateOf(false) }
+    LaunchedEffect(download.downloading, download.saved, download.failed) {
+        if (wasDownloading && !download.downloading) {
+            when {
+                download.failed -> snackbarHostState.showSnackbar(failedMessage)
+                download.saved -> snackbarHostState.showSnackbar(doneMessage)
+            }
+        }
+        wasDownloading = download.downloading
+    }
+
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text(state.surah?.nameLatin.orEmpty()) },
+                title = {
+                    Text(
+                        text = state.surah?.nameLatin.orEmpty(),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -96,6 +129,11 @@ fun QuranReaderScreen(
                     }
                 },
                 actions = {
+                    DownloadAction(
+                        state = download,
+                        onDownload = viewModel::downloadAudio,
+                        onCancel = viewModel::cancelDownload,
+                    )
                     IconButton(onClick = { showOptions = true }) {
                         Icon(
                             imageVector = Icons.Outlined.Settings,
@@ -117,7 +155,10 @@ fun QuranReaderScreen(
                     verse = verse,
                     modes = modes,
                     bookmarked = VerseRef(verse.surah, verse.ayah) in bookmarks,
+                    playing = playback.surah == verse.surah && playback.ayah == verse.ayah,
+                    anyPlaying = playback.playing,
                     onToggleBookmark = { viewModel.toggleBookmark(verse) },
+                    onToggleAudio = { viewModel.onVerseAudio(verse) },
                     layer = { mode -> viewModel.layer(mode, verse) },
                 )
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f))
@@ -166,17 +207,83 @@ fun QuranReaderScreen(
     }
 }
 
+/** Download da sura no topo: acao, progresso X/N com cancelar, ou "salvo". */
+@Composable
+private fun DownloadAction(
+    state: AudioDownloadState,
+    onDownload: () -> Unit,
+    onCancel: () -> Unit,
+) {
+    when {
+        state.downloading -> Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = stringResource(R.string.quran_audio_download_progress, state.done, state.total),
+                style = MaterialTheme.typography.labelMedium,
+            )
+            IconButton(onClick = onCancel) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = stringResource(R.string.quran_audio_download_cancel),
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
+
+        state.saved -> Row(
+            modifier = Modifier.padding(horizontal = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                imageVector = Icons.Filled.CheckCircle,
+                contentDescription = stringResource(R.string.quran_audio_download_saved),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(18.dp),
+            )
+            Text(
+                text = stringResource(R.string.quran_audio_download_saved),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 4.dp),
+            )
+        }
+
+        else -> TextButton(onClick = onDownload) {
+            Icon(
+                painter = painterResource(R.drawable.ic_audio_download),
+                contentDescription = null,
+                modifier = Modifier.size(18.dp),
+            )
+            Text(
+                text = stringResource(R.string.quran_audio_download),
+                style = MaterialTheme.typography.labelMedium,
+                maxLines = 1,
+                modifier = Modifier.padding(start = 4.dp),
+            )
+        }
+    }
+}
+
 @Composable
 private fun VerseBlock(
     verse: Verse,
     modes: Set<String>,
     bookmarked: Boolean,
+    playing: Boolean,
+    anyPlaying: Boolean,
     onToggleBookmark: () -> Unit,
+    onToggleAudio: () -> Unit,
     layer: (String) -> String?,
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .background(
+                if (playing) {
+                    MaterialTheme.colorScheme.primary.copy(alpha = 0.08f)
+                } else {
+                    Color.Transparent
+                },
+            )
             .padding(start = 20.dp, end = 8.dp, top = 14.dp, bottom = 6.dp),
     ) {
         if ("ar" in modes) {
@@ -220,6 +327,27 @@ private fun VerseBlock(
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            IconButton(onClick = onToggleAudio) {
+                if (playing && anyPlaying) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_audio_pause),
+                        contentDescription = stringResource(R.string.quran_audio_pause),
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp),
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Filled.PlayArrow,
+                        contentDescription = stringResource(R.string.quran_audio_play),
+                        tint = if (playing) {
+                            MaterialTheme.colorScheme.primary
+                        } else {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        },
+                        modifier = Modifier.size(22.dp),
+                    )
+                }
+            }
             Text(
                 text = stringResource(R.string.verse_reference, verse.surah, verse.ayah),
                 fontSize = 12.sp,

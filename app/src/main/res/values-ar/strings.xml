@@ -82,4 +82,14 @@
     <string name="onboarding_notifications_hint">تذكير عند كل وقت صلاة.</string>
     <string name="onboarding_start">ابدأ</string>
     <string name="onboarding_skip">تخطّي</string>
+    <string name="quran_audio_play">تشغيل الآية</string>
+    <string name="quran_audio_pause">إيقاف مؤقت</string>
+    <string name="quran_audio_download">تنزيل الصوت</string>
+    <string name="quran_audio_download_progress">%1$d/%2$d</string>
+    <string name="quran_audio_download_cancel">إلغاء التنزيل</string>
+    <string name="quran_audio_download_saved">الصوت محفوظ</string>
+    <string name="quran_audio_download_done">تم حفظ الصوت للاستخدام دون اتصال</string>
+    <string name="quran_audio_download_failed">تعذّر تنزيل الصوت.</string>
+    <string name="quran_audio_now_playing">%1$s، الآية %2$d</string>
+    <string name="quran_reciter_alafasy">مشاري العفاسي</string>
 </resources>

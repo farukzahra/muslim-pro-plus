@@ -82,4 +82,14 @@
     <string name="onboarding_notifications_hint">Um lembrete em cada horário de oração.</string>
     <string name="onboarding_start">Começar</string>
     <string name="onboarding_skip">Pular</string>
+    <string name="quran_audio_play">Tocar versículo</string>
+    <string name="quran_audio_pause">Pausar</string>
+    <string name="quran_audio_download">Baixar áudio</string>
+    <string name="quran_audio_download_progress">%1$d/%2$d</string>
+    <string name="quran_audio_download_cancel">Cancelar download</string>
+    <string name="quran_audio_download_saved">Áudio baixado</string>
+    <string name="quran_audio_download_done">Áudio salvo para uso offline</string>
+    <string name="quran_audio_download_failed">Não foi possível baixar o áudio.</string>
+    <string name="quran_audio_now_playing">%1$s, versículo %2$d</string>
+    <string name="quran_reciter_alafasy">Mishary Alafasy</string>
 </resources>

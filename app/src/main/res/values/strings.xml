@@ -82,4 +82,14 @@
     <string name="onboarding_notifications_hint">A reminder at each prayer time.</string>
     <string name="onboarding_start">Get started</string>
     <string name="onboarding_skip">Skip</string>
+    <string name="quran_audio_play">Play verse</string>
+    <string name="quran_audio_pause">Pause</string>
+    <string name="quran_audio_download">Download audio</string>
+    <string name="quran_audio_download_progress">%1$d/%2$d</string>
+    <string name="quran_audio_download_cancel">Cancel download</string>
+    <string name="quran_audio_download_saved">Audio saved</string>
+    <string name="quran_audio_download_done">Audio saved for offline use</string>
+    <string name="quran_audio_download_failed">Could not download the audio.</string>
+    <string name="quran_audio_now_playing">%1$s, verse %2$d</string>
+    <string name="quran_reciter_alafasy">Mishary Alafasy</string>
 </resources>
