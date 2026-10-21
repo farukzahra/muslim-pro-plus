@@ -2,7 +2,6 @@ package com.farukzahra.muslimplus.prayer
 
 import com.farukzahra.muslimplus.location.City
 import java.time.Instant
-import java.time.LocalDate
 import java.time.ZoneId
 
 data class NextPrayer(val prayer: Prayer, val at: Instant)
@@ -13,7 +12,7 @@ data class NextPrayer(val prayer: Prayer, val at: Instant)
 object NextPrayerResolver {
     fun resolve(now: Instant, city: City, method: PrayerMethod): NextPrayer {
         val zone = ZoneId.of(city.zoneId)
-        val today = LocalDate.now(zone)
+        val today = now.atZone(zone).toLocalDate()
         val todaySchedule = PrayerEngine.schedule(
             today, city.latitude, city.longitude, zone, method,
         )

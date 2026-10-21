@@ -22,6 +22,7 @@ import com.farukzahra.muslimplus.ui.nav.Tab
 import com.farukzahra.muslimplus.ui.screens.PlaceholderScreen
 import com.farukzahra.muslimplus.ui.screens.more.MoreScreen
 import com.farukzahra.muslimplus.ui.screens.prayers.PrayersScreen
+import com.farukzahra.muslimplus.ui.screens.qibla.QiblaScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
@@ -78,6 +79,7 @@ fun MuslimPlusApp() {
                     when (tab) {
                         Tab.TODAY -> TodayScreen()
                         Tab.PRAYERS -> PrayersScreen()
+                        Tab.QIBLA -> QiblaScreen()
                         Tab.MORE -> MoreScreen(
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
                         )

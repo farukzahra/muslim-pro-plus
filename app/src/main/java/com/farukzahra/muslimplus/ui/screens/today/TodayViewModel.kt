@@ -54,7 +54,7 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
     private fun build(city: City, method: PrayerMethod): TodayUiState {
         val now = Instant.now()
         val zone = ZoneId.of(city.zoneId)
-        val today = LocalDate.now(zone)
+        val today = now.atZone(zone).toLocalDate()
         val schedule = PrayerEngine.schedule(
             today, city.latitude, city.longitude, zone, method,
         )
