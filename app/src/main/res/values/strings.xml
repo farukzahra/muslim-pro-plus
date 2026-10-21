@@ -60,4 +60,18 @@
     <string name="action_ok">OK</string>
     <string name="qibla_calibration">Move the device in a figure-8 to calibrate.</string>
     <string name="qibla_no_sensor">This device has no compass. The angle shown is the direction to Makkah from true north.</string>
+    <string name="onboarding_title">Welcome</string>
+    <string name="onboarding_subtitle">Prayer times, Qibla and the Quran on your device. It takes a minute to set up.</string>
+    <string name="onboarding_language_hint">Follows your device language. You can change it later.</string>
+    <string name="onboarding_change">Change</string>
+    <string name="onboarding_location_title">Location</string>
+    <string name="onboarding_location_hint">Only used to pick the nearest city for prayer times and Qibla. It stays on your device.</string>
+    <string name="onboarding_use_location">Use my location</string>
+    <string name="onboarding_choose_city">Choose a city</string>
+    <string name="onboarding_location_searching">Getting your location…</string>
+    <string name="onboarding_location_failed">Could not get your location. Pick a city instead.</string>
+    <string name="onboarding_location_selected">Using %1$s</string>
+    <string name="onboarding_notifications_hint">A reminder at each prayer time.</string>
+    <string name="onboarding_start">Get started</string>
+    <string name="onboarding_skip">Skip</string>
 </resources>

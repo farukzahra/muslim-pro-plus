@@ -3,6 +3,10 @@ package com.farukzahra.muslimplus.location
 import android.content.Context
 import java.text.Normalizer
 import java.util.Locale
+import kotlin.math.asin
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 /**
  * Cidade do catalogo GeoNames (cities5000), ordenada por populacao decrescente.
@@ -75,9 +79,43 @@ class CityCatalog(cities: List<City>) {
     fun defaultForZone(zoneId: String): City? =
         cities.filter { it.zoneId == zoneId }.maxByOrNull { it.population }
 
+    /**
+     * Cidade mais proxima de uma coordenada (distancia haversine).
+     *
+     * Converte o fix do GPS em uma linha do catalogo, porque o app precisa de
+     * nome e fuso IANA, nao apenas do ponto. Sempre devolve uma cidade: no
+     * meio do oceano cai na mais proxima, e nao ha "sem resultado".
+     */
+    fun nearest(latitude: Double, longitude: Double): City {
+        var best = cities.firstOrNull() ?: error("catalogo de cidades vazio")
+        var bestDistance = Double.MAX_VALUE
+        for (city in cities) {
+            val distance = haversineKm(latitude, longitude, city.latitude, city.longitude)
+            if (distance < bestDistance) {
+                bestDistance = distance
+                best = city
+            }
+        }
+        return best
+    }
+
     companion object {
         const val ASSET = "cities.txt"
         const val MAX_RESULTS = 60
+
+        /** Raio medio da Terra em km (IUGG). */
+        private const val EARTH_RADIUS_KM = 6371.0088
+
+        /** Distancia em km entre dois pontos; o delta de longitude ja fecha 360°. */
+        fun haversineKm(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
+            val dLat = Math.toRadians(lat2 - lat1)
+            val dLon = Math.toRadians(lon2 - lon1)
+            val sinLat = sin(dLat / 2)
+            val sinLon = sin(dLon / 2)
+            val a = sinLat * sinLat +
+                cos(Math.toRadians(lat1)) * cos(Math.toRadians(lat2)) * sinLon * sinLon
+            return 2 * EARTH_RADIUS_KM * asin(sqrt(a.coerceIn(0.0, 1.0)))
+        }
 
         fun fromAsset(context: Context): CityCatalog {
             val cities = context.assets.open(ASSET).bufferedReader().useLines { lines ->

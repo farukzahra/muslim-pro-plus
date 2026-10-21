@@ -60,4 +60,18 @@
     <string name="action_ok">OK</string>
     <string name="qibla_calibration">Mova o aparelho em figura-8 para calibrar.</string>
     <string name="qibla_no_sensor">Este aparelho não tem bússola. O ângulo mostrado é a direção de Makkah a partir do norte verdadeiro.</string>
+    <string name="onboarding_title">Bem-vindo</string>
+    <string name="onboarding_subtitle">Horários de oração, Qibla e Alcorão no seu aparelho. Ajuste em um minuto.</string>
+    <string name="onboarding_language_hint">Segue o idioma do aparelho. Você pode mudar depois.</string>
+    <string name="onboarding_change">Alterar</string>
+    <string name="onboarding_location_title">Localização</string>
+    <string name="onboarding_location_hint">Só serve para achar a cidade mais próxima para horários e Qibla. Fica no seu aparelho.</string>
+    <string name="onboarding_use_location">Usar minha localização</string>
+    <string name="onboarding_choose_city">Escolher cidade</string>
+    <string name="onboarding_location_searching">Obtendo sua localização…</string>
+    <string name="onboarding_location_failed">Não foi possível obter sua localização. Escolha uma cidade.</string>
+    <string name="onboarding_location_selected">Usando %1$s</string>
+    <string name="onboarding_notifications_hint">Um lembrete em cada horário de oração.</string>
+    <string name="onboarding_start">Começar</string>
+    <string name="onboarding_skip">Pular</string>
 </resources>

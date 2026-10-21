@@ -92,4 +92,41 @@ class CityCatalogTest {
     fun searchWithoutMatchesIsEmpty() {
         assertTrue(catalog.search("zzzzzzqqqq").isEmpty())
     }
+
+    @Test
+    fun nearestOfSaoPauloReturnsSaoPaulo() {
+        // Coordenada de GPS no centro da cidade, nao o ponto exato do catalogo.
+        val city = catalog.nearest(-23.55, -46.63)
+        assertEquals("São Paulo", city.name)
+        assertEquals("BR", city.countryCode)
+        assertEquals("America/Sao_Paulo", city.zoneId)
+    }
+
+    @Test
+    fun nearestOfRioReturnsRio() {
+        val city = catalog.nearest(-22.9068, -43.1729)
+        assertEquals("Rio de Janeiro", city.name)
+    }
+
+    @Test
+    fun haversineMatchesKnownDistance() {
+        // Sao Paulo -> Rio de Janeiro: ~357 km em linha reta.
+        val distance = CityCatalog.haversineKm(-23.5505, -46.6333, -22.9068, -43.1729)
+        assertTrue("$distance km", distance in 340.0..380.0)
+    }
+
+    @Test
+    fun nearestInOpenOceanStillReturnsAValidCity() {
+        // Meio do Pacifico Sul: nao ha "sem resultado", o app precisa de um fuso.
+        val city = catalog.nearest(-40.0, -140.0)
+        assertTrue(catalog.all().any { it.id == city.id })
+        assertNotNull("fuso de ${city.name}", ZoneId.of(city.zoneId))
+        // Deve ser a mais proxima mesmo: nada de cair na primeira do catalogo.
+        val distance = CityCatalog.haversineKm(-40.0, -140.0, city.latitude, city.longitude)
+        assertTrue("$distance km de ${city.name}", distance > 100.0)
+        val closest = catalog.all().minOf {
+            CityCatalog.haversineKm(-40.0, -140.0, it.latitude, it.longitude)
+        }
+        assertEquals(closest, distance, 0.001)
+    }
 }

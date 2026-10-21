@@ -27,6 +27,7 @@ class SettingsRepository(
     private val themeKey = stringPreferencesKey("theme_mode")
     private val prayerOffsetsKey = stringPreferencesKey("prayer_offsets")
     private val hijriOffsetKey = intPreferencesKey("hijri_offset")
+    private val onboardingDoneKey = booleanPreferencesKey(Onboarding.DONE_KEY)
 
     /**
      * Cidade escolhida ou, sem escolha (primeira execucao), a maior cidade do
@@ -52,6 +53,10 @@ class SettingsRepository(
             HijriOffset.sanitize(preferences[hijriOffsetKey] ?: HijriOffset.DEFAULT)
         }
 
+    /** `null` = primeira execucao (onboarding ainda nao foi concluido ou pulado). */
+    val onboardingDone: Flow<Boolean?> =
+        context.dataStore.data.map { it[onboardingDoneKey] }
+
     suspend fun setCity(id: String) {
         context.dataStore.edit { it[cityKey] = id }
     }
@@ -75,6 +80,11 @@ class SettingsRepository(
     /** Aceita apenas -1, 0 e +1; valores fora da faixa viram o padrao. */
     suspend fun setHijriOffset(days: Int) {
         context.dataStore.edit { it[hijriOffsetKey] = HijriOffset.sanitize(days) }
+    }
+
+    /** Grava a flag tanto no "Comecar" quanto no "Pular". */
+    suspend fun setOnboardingDone() {
+        context.dataStore.edit { it[onboardingDoneKey] = true }
     }
 
     suspend fun setPrayerOffset(prayer: Prayer, minutes: Int) {

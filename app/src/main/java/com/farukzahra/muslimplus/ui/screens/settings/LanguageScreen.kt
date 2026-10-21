@@ -21,15 +21,6 @@ import androidx.compose.ui.res.stringResource
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.settings.LanguageRepository
 
-private data class LanguageOption(val tag: String?, val labelRes: Int)
-
-private val options = listOf(
-    LanguageOption(null, R.string.language_system),
-    LanguageOption("en", R.string.language_english),
-    LanguageOption("pt-BR", R.string.language_portuguese),
-    LanguageOption("ar", R.string.language_arabic),
-)
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LanguageScreen(onBack: () -> Unit) {
@@ -51,7 +42,7 @@ fun LanguageScreen(onBack: () -> Unit) {
         },
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            options.forEach { option ->
+            languageOptions.forEach { option ->
                 ListItem(
                     headlineContent = { Text(stringResource(option.labelRes)) },
                     leadingContent = {

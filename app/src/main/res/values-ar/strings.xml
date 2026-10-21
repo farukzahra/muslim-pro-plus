@@ -60,4 +60,18 @@
     <string name="action_ok">حسنًا</string>
     <string name="qibla_calibration">حرّك الجهاز على شكل الرقم 8 للمعايرة.</string>
     <string name="qibla_no_sensor">لا توجد بوصلة في هذا الجهاز. الزاوية المعروضة هي اتجاه مكة من الشمال الحقيقي.</string>
+    <string name="onboarding_title">مرحبًا بك</string>
+    <string name="onboarding_subtitle">مواقيت الصلاة والقبلة والقرآن على جهازك. الإعداد يستغرق دقيقة.</string>
+    <string name="onboarding_language_hint">يتبع لغة جهازك، ويمكنك تغييرها لاحقًا.</string>
+    <string name="onboarding_change">تغيير</string>
+    <string name="onboarding_location_title">الموقع</string>
+    <string name="onboarding_location_hint">يُستخدم فقط لاختيار أقرب مدينة لمواقيت الصلاة والقبلة، ويبقى على جهازك.</string>
+    <string name="onboarding_use_location">استخدم موقعي</string>
+    <string name="onboarding_choose_city">اختر مدينة</string>
+    <string name="onboarding_location_searching">جارٍ تحديد موقعك…</string>
+    <string name="onboarding_location_failed">تعذّر الحصول على موقعك. اختر مدينة بدلًا من ذلك.</string>
+    <string name="onboarding_location_selected">يُستخدم %1$s</string>
+    <string name="onboarding_notifications_hint">تذكير عند كل وقت صلاة.</string>
+    <string name="onboarding_start">ابدأ</string>
+    <string name="onboarding_skip">تخطّي</string>
 </resources>
