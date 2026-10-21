@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muslim Plus — recap da sessão</title>
+<style>
+  :root { --bg:#08131c; --card:#0e1b26; --line:#223444; --ink:#e9eef4; --muted:#9fb0c2; --green:#2fb98a; --gold:#d9b25f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:radial-gradient(1200px 600px at 85% -10%, #123a2f 0%, var(--bg) 55%); color:var(--ink);
+         font:16px/1.6 "Segoe UI", system-ui, sans-serif; }
+  .wrap { max-width:900px; margin:0 auto; padding:44px 22px 80px; }
+  h1 { font:600 34px/1.2 Georgia, serif; margin:0 0 6px; }
+  h2 { font:600 22px/1.3 Georgia, serif; color:var(--gold); margin:36px 0 12px; }
+  p, li { color:var(--muted); }
+  strong { color:var(--ink); }
+  .kicker { color:var(--green); letter-spacing:2px; font-size:12px; text-transform:uppercase; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:18px 0; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:720px) { .grid { grid-template-columns:1fr; } }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:9px 8px; border-bottom:1px solid var(--line); }
+  th { color:var(--gold); font-weight:600; }
+  code { background:#13232f; padding:2px 6px; border-radius:6px; color:var(--green); font-size:13px; }
+  .tag { display:inline-block; font-size:12px; padding:2px 10px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .ok { color:var(--green); font-weight:600; }
+  .todo { color:var(--gold); font-weight:600; }
+  ul { padding-left:20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Recap · 2026-10-21</div>
+  <h1>Muslim Plus</h1>
+  <p>Pedido × entregue nesta sessão. Repo <code>C:\repo\muslim-pro-plus</code>.</p>
+
+  <h2>O que você pediu</h2>
+  <div class="card">
+    <ul>
+      <li>App islâmico próprio, sem reempacotar o Muslim Pro.</li>
+      <li>Mesma estrutura de UX (5 abas), identidade própria, publiável no Play.</li>
+      <li>Multi-idioma desde o início, seguindo o padrão do aparelho.</li>
+      <li>Alcorão em árabe, pt-BR, inglês e transliteração, escolhível — inclusive no Mais.</li>
+      <li>Tema escuro e claro, escuro como padrão.</li>
+      <li>Plano completo de versão final, não beta.</li>
+      <li>Trabalho contínuo com subagentes supervisionados e recap no fim.</li>
+    </ul>
+  </div>
+
+  <h2>Entregue</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>Base</strong>
+      <ul>
+        <li>Kotlin + Compose, 5 abas, ícones próprios.</li>
+        <li>i18n en/pt-BR/ar com paridade testada e RTL.</li>
+        <li>Tema M3 escuro (padrão) / claro / sistema.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <strong>Oração</strong>
+      <ul>
+        <li>Motor local (12 métodos, latitude alta, offsets).</li>
+        <li>Testes contra São Paulo, Makkah e Londres.</li>
+        <li>Tela Hoje com contador e linha do tempo.</li>
+        <li>Tabela do mês com cidade e método.</li>
+        <li>Notificações com alarme exato e boot.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <strong>Qibla</strong>
+      <ul>
+        <li>Rumo, distância e bússola com declinação.</li>
+        <li>Calibração e fallback sem sensor.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <strong>Alcorão</strong>
+      <ul>
+        <li>6.236 versos, 114 suras, busca por sura.</li>
+        <li>Camadas árabe / transliteração / pt-BR / en.</li>
+        <li>Escolha persistida, no leitor e no Mais.</li>
+        <li>Teste que exige tradução para todo locale novo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Commits</h2>
+  <table>
+    <tr><th>Commit</th><th>Entrega</th></tr>
+    <tr><td><code>531fa6a</code></td><td>Shell Android com 5 abas e i18n</td></tr>
+    <tr><td><code>103805a</code></td><td>Seletor de idioma, ícones próprios, RTL</td></tr>
+    <tr><td><code>992c3bf</code></td><td>Motor de oração e tela Hoje</td></tr>
+    <tr><td><code>d10bcb7</code></td><td>Cidade/método e tabela do mês</td></tr>
+    <tr><td><code>89e46fb</code></td><td>Notificações com alarme exato</td></tr>
+    <tr><td><code>140af91</code></td><td>Qibla</td></tr>
+    <tr><td><code>714c9b0</code></td><td>Alcorão: texto, lista e leitor</td></tr>
+    <tr><td><code>a899b9e</code></td><td>Camadas e cobertura de locale</td></tr>
+    <tr><td><code>902b19c</code></td><td>Tema escuro-first e exibição no Mais</td></tr>
+    <tr><td><code>11f9592</code></td><td>Seletor de tema</td></tr>
+    <tr><td><code>927352d</code></td><td>Offsets por oração (subagente)</td></tr>
+  </table>
+
+  <h2>Verificação</h2>
+  <div class="card">
+    <p><span class="ok">Verde:</span> `test` + `lint` + `assembleDebug`; 39 testes JVM; app instalado no Pixel6.</p>
+    <p><span class="ok">Evidência:</span> capturas em <code>evidence/</code> (Hoje escuro, Orações, Qibla, lista e leitor do Alcorão).</p>
+  </div>
+
+  <h2>Pendente (plano v1)</h2>
+  <div class="card">
+    <ul>
+      <li><span class="todo">F2</span> fuso/hora no reagendamento, aviso de alarme negado, hijri ±1, verso do dia — subagente rodando.</li>
+      <li><span class="todo">F3</span> GeoNames completo, GPS, onboarding, padrão pelo aparelho.</li>
+      <li><span class="todo">F4</span> Room (última leitura, marcadores), busca de versos, áudio, Amiri.</li>
+      <li><span class="todo">F5</span> Configurações, licenças, privacidade.</li>
+      <li><span class="todo">F6</span> Ícone, assets de loja, AAB, trilha interna.</li>
+      <li><span class="todo">F7</span> Compose tests, E2E, CI.</li>
+    </ul>
+  </div>
+
+  <h2>Decisões abertas</h2>
+  <div class="card">
+    <ul>
+      <li>Termos do áudio (everyayah) antes do release.</li>
+      <li>Mover <code>old/</code> para repo privado antes do Play.</li>
+      <li>Criar DNS <code>muslimplus.faruk.dev.br</code> antes do upload.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
