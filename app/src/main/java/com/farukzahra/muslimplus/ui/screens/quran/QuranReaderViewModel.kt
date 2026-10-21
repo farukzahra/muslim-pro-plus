@@ -38,6 +38,10 @@ class QuranReaderViewModel(
     savedStateHandle: SavedStateHandle,
 ) : AndroidViewModel(application) {
     private val surahId: Int = savedStateHandle.get<Int>("surah") ?: 1
+
+    /** Verso pedido pela busca (`quran/2?ayah=255`); 0 cai na ultima leitura. */
+    private val requestedAyah: Int = savedStateHandle.get<Int>("ayah") ?: 0
+
     private val repository = ServiceLocator.quran
     private val settings = ServiceLocator.settings
     private val readerState = ServiceLocator.readerState
@@ -60,7 +64,13 @@ class QuranReaderViewModel(
                 val surah = repository.surah(surahId)
                 val verses = repository.versesOf(surahId)
                 val lastRead = readerState.lastRead.first()
-                val ayah = surah?.let { ContinueReading.startAyah(lastRead, it) }
+                // A busca manda no verso inicial; sem ela vale a ultima leitura.
+                val ayah = surah?.let { catalog ->
+                    requestedAyah.takeIf { it > 0 }
+                        ?.let { VerseRef.of(surahId, it) }
+                        ?.let { ContinueReading.startAyah(it, catalog) }
+                        ?: ContinueReading.startAyah(lastRead, catalog)
+                }
                 ReaderState(
                     surah = surah,
                     verses = verses,

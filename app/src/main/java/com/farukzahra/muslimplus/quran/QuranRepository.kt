@@ -40,6 +40,14 @@ class QuranRepository(private val context: Context) {
     private val singleVerses = mutableMapOf<String, Verse>()
     private val caches = mutableMapOf<String, Map<String, String>>()
 
+    /**
+     * Texto dos versos ja normalizado, montado uma vez: a busca por tecla nao
+     * pode normalizar 6.236 versos a cada consulta.
+     */
+    private val searchIndex: List<Pair<Verse, String>> by lazy {
+        verses.map { verse -> verse to ArabicText.normalize(verse.text) }
+    }
+
     fun surahs(): List<Surah> = surahs
 
     fun surah(id: Int): Surah? = surahs.firstOrNull { it.id == id }
@@ -91,8 +99,9 @@ class QuranRepository(private val context: Context) {
     fun searchVerses(query: String, limit: Int = 50): List<Verse> {
         val term = ArabicText.normalize(query.trim())
         if (term.length < 2) return emptyList()
-        return verses.asSequence()
-            .filter { ArabicText.normalize(it.text).contains(term, ignoreCase = true) }
+        return searchIndex.asSequence()
+            .filter { (_, text) -> text.contains(term, ignoreCase = true) }
+            .map { (verse, _) -> verse }
             .take(limit)
             .toList()
     }

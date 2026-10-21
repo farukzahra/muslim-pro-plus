@@ -51,7 +51,7 @@
     <string name="prayers_offsets_hint">Minutos somados a cada oração, de −30 a +30.</string>
     <string name="action_cancel">Cancelar</string>
     <string name="qibla_distance">%1$d km até Makkah</string>
-    <string name="quran_search">Buscar sura</string>
+    <string name="quran_search">Buscar sura ou versículo</string>
     <string name="quran_verses">%1$d versículos</string>
     <string name="quran_display">Exibição</string>
     <string name="quran_arabic">Árabe</string>
@@ -62,6 +62,9 @@
     <string name="quran_bookmark_add">Adicionar marcador</string>
     <string name="quran_bookmark_remove">Remover marcador</string>
     <string name="quran_bookmarks_count">%1$d marcadores nesta sura</string>
+    <string name="quran_search_suras">Suras</string>
+    <string name="quran_search_verses">Versículos</string>
+    <string name="quran_search_no_verses">Nenhum versículo encontrado.</string>
     <string name="action_ok">OK</string>
     <string name="qibla_calibration">Mova o aparelho em figura-8 para calibrar.</string>
     <string name="qibla_no_sensor">Este aparelho não tem bússola. O ângulo mostrado é a direção de Makkah a partir do norte verdadeiro.</string>

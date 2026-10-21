@@ -39,6 +39,13 @@ const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
 const val THEME_ROUTE = "settings/theme"
 const val HIJRI_ROUTE = "settings/hijri"
 
+/** Leitor do Alcorao; `ayah` e opcional e 0 significa "continuar da ultima leitura". */
+const val QURAN_READER_ROUTE = "quran/{surah}?ayah={ayah}"
+private const val NO_AYAH = 0
+
+/** Rota do leitor. Sem [ayah] a tela abre na ultima leitura daquela sura. */
+fun quranReaderRoute(surah: Int, ayah: Int = NO_AYAH): String = "quran/$surah?ayah=$ayah"
+
 @Composable
 fun MuslimPlusApp() {
     val navController = rememberNavController()
@@ -94,7 +101,10 @@ fun MuslimPlusApp() {
                         Tab.TODAY -> TodayScreen()
                         Tab.PRAYERS -> PrayersScreen()
                         Tab.QURAN -> QuranListScreen(
-                            onOpenSurah = { surah -> navController.navigate("quran/$surah") },
+                            onOpenSurah = { surah -> navController.navigate(quranReaderRoute(surah)) },
+                            onOpenVerse = { surah, ayah ->
+                                navController.navigate(quranReaderRoute(surah, ayah))
+                            },
                         )
                         Tab.QIBLA -> QiblaScreen()
                         Tab.MORE -> MoreScreen(
@@ -119,8 +129,14 @@ fun MuslimPlusApp() {
                 HijriScreen(onBack = { navController.popBackStack() })
             }
             composable(
-                route = "quran/{surah}",
-                arguments = listOf(navArgument("surah") { type = NavType.IntType }),
+                route = QURAN_READER_ROUTE,
+                arguments = listOf(
+                    navArgument("surah") { type = NavType.IntType },
+                    navArgument("ayah") {
+                        type = NavType.IntType
+                        defaultValue = NO_AYAH
+                    },
+                ),
             ) {
                 QuranReaderScreen(onBack = { navController.popBackStack() })
             }

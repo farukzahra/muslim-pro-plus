@@ -51,7 +51,7 @@
     <string name="prayers_offsets_hint">دقائق تُضاف إلى كل صلاة، من −30 إلى +30.</string>
     <string name="action_cancel">إلغاء</string>
     <string name="qibla_distance">حوالي %1$d كم إلى مكة</string>
-    <string name="quran_search">بحث عن سورة</string>
+    <string name="quran_search">بحث عن سورة أو آية</string>
     <string name="quran_verses">%1$d آيات</string>
     <string name="quran_display">العرض</string>
     <string name="quran_arabic">العربية</string>
@@ -62,6 +62,9 @@
     <string name="quran_bookmark_add">إضافة علامة مرجعية</string>
     <string name="quran_bookmark_remove">إزالة العلامة المرجعية</string>
     <string name="quran_bookmarks_count">%1$d علامات مرجعية في هذه السورة</string>
+    <string name="quran_search_suras">السور</string>
+    <string name="quran_search_verses">الآيات</string>
+    <string name="quran_search_no_verses">لم يتم العثور على آية.</string>
     <string name="action_ok">حسنًا</string>
     <string name="qibla_calibration">حرّك الجهاز على شكل الرقم 8 للمعايرة.</string>
     <string name="qibla_no_sensor">لا توجد بوصلة في هذا الجهاز. الزاوية المعروضة هي اتجاه مكة من الشمال الحقيقي.</string>
