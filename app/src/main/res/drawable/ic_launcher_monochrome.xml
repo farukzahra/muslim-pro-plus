@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Versao monocromatica (icone tematico do Android 13+). O sistema usa so o
+    alfa, entao crescente e estrela vao num unico path com fillType evenOdd:
+    o corte do crescente continua transparente e a estrela continua visivel.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M24,54a30,30 0 1,0 60,0a30,30 0 1,0 -60,0z M34.5,49.5a27,27 0 1,0 54,0a27,27 0 1,0 -54,0z M68,35.5L69.22,40.04L73.3,37.7L70.96,41.78L75.5,43L70.96,44.22L73.3,48.3L69.22,45.96L68,50.5L66.78,45.96L62.7,48.3L65.04,44.22L60.5,43L65.04,41.78L62.7,37.7L66.78,40.04z" />
+</vector>
