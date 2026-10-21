@@ -33,6 +33,9 @@
     <string name="prayer_isha">Isha</string>
     <string name="prayers_city">City</string>
     <string name="prayers_method">Method</string>
+    <string name="prayers_adjust">Adjust</string>
+    <string name="prayers_offsets_title">Prayer time adjustments</string>
+    <string name="prayers_offsets_hint">Minutes added to each prayer, from −30 to +30.</string>
     <string name="action_cancel">Cancel</string>
     <string name="qibla_distance">About %1$d km to Makkah</string>
     <string name="quran_search">Search surah</string>

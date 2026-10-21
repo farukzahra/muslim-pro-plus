@@ -9,6 +9,7 @@ import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerEngine
 import com.farukzahra.muslimplus.prayer.PrayerMethod
+import com.farukzahra.muslimplus.prayer.PrayerOffsets
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.YearMonth
@@ -30,6 +31,7 @@ data class PrayersUiState(
     val month: YearMonth,
     val today: LocalDate,
     val days: List<MonthDay>,
+    val offsets: Map<Prayer, Int> = PrayerOffsets.defaults,
 )
 
 class PrayersViewModel(application: Application) : AndroidViewModel(application) {
@@ -39,9 +41,13 @@ class PrayersViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         viewModelScope.launch {
-            combine(settings.cityId, settings.methodName) { city, method -> city to method }
-                .collect { (cityId, methodName) ->
-                    _state.value = build(cityId, methodName)
+            combine(
+                settings.cityId,
+                settings.methodName,
+                settings.prayerOffsets,
+            ) { city, method, offsets -> Triple(city, method, offsets) }
+                .collect { (cityId, methodName, offsets) ->
+                    _state.value = build(cityId, methodName, offsets)
                 }
         }
     }
@@ -54,7 +60,16 @@ class PrayersViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch { settings.setMethod(name) }
     }
 
-    private fun build(cityId: String, methodName: String): PrayersUiState {
+    /** [delta] em minutos, somado ao valor persistido (clamp em -30..+30). */
+    fun adjustOffset(prayer: Prayer, delta: Int) {
+        viewModelScope.launch { settings.nudgePrayerOffset(prayer, delta) }
+    }
+
+    private fun build(
+        cityId: String,
+        methodName: String,
+        offsets: Map<Prayer, Int>,
+    ): PrayersUiState {
         val city = CityCatalog.byId(cityId)
         val method = runCatching { PrayerMethod.valueOf(methodName) }.getOrDefault(PrayerMethod.MWL)
         val zone = ZoneId.of(city.zoneId)
@@ -62,12 +77,14 @@ class PrayersViewModel(application: Application) : AndroidViewModel(application)
         val month = YearMonth.from(today)
         val days = (1..month.lengthOfMonth()).map { day ->
             val date = month.atDay(day)
-            val schedule = PrayerEngine.schedule(date, city.latitude, city.longitude, zone, method)
+            val schedule = PrayerEngine.schedule(
+                date, city.latitude, city.longitude, zone, method, offsets,
+            )
             MonthDay(
                 date = date,
                 times = schedule.times.mapValues { (_, instant) -> instant.atZone(zone).toLocalTime() },
             )
         }
-        return PrayersUiState(city, method, month, today, days)
+        return PrayersUiState(city, method, month, today, days, offsets)
     }
 }

@@ -48,6 +48,9 @@ mostrando o próximo alarme após mudar fuso.
 - `tools/cities/build_cities.py` gerando catálogo GeoNames `cities5000`
   (lat/lon + fuso IANA), com atribuição CC BY 4.0.
 - `LocationRepository` com `LocationManager` (GPS/rede) + fallback manual.
+- **Sem cidade escolhida, o padrão é o fuso e a localização do aparelho** —
+  São Paulo deixa de ser default fixo (hoje o emulador em GMT mostrava horários
+  de São Paulo e o contador parecia errado).
 - Busca de cidade na tela Orações e no onboarding.
 - Onboarding pulável em 4 passos, idioma pré-preenchido pelo sistema.
 

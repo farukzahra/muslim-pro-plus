@@ -6,6 +6,8 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.farukzahra.muslimplus.prayer.Prayer
+import com.farukzahra.muslimplus.prayer.PrayerOffsets
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -17,6 +19,7 @@ class SettingsRepository(private val context: Context) {
     private val notificationsKey = booleanPreferencesKey("notifications_enabled")
     private val quranModesKey = stringSetPreferencesKey("quran_modes")
     private val themeKey = stringPreferencesKey("theme_mode")
+    private val prayerOffsetsKey = stringPreferencesKey("prayer_offsets")
 
     val cityId: Flow<String> = context.dataStore.data.map { it[cityKey] ?: "sao-paulo" }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
@@ -26,6 +29,10 @@ class SettingsRepository(private val context: Context) {
         context.dataStore.data.map { it[quranModesKey] ?: setOf("ar") }
     val themeMode: Flow<String> =
         context.dataStore.data.map { it[themeKey] ?: "dark" }
+    val prayerOffsets: Flow<Map<Prayer, Int>> =
+        context.dataStore.data.map { preferences ->
+            PrayerOffsets.decode(preferences[prayerOffsetsKey])
+        }
 
     suspend fun setCity(id: String) {
         context.dataStore.edit { it[cityKey] = id }
@@ -45,5 +52,26 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setThemeMode(mode: String) {
         context.dataStore.edit { it[themeKey] = mode }
+    }
+
+    suspend fun setPrayerOffset(prayer: Prayer, minutes: Int) {
+        updateOffset(prayer) { PrayerOffsets.clamp(minutes) }
+    }
+
+    /**
+     * Soma [delta] ao valor salvo dentro do mesmo `edit`, para que toques
+     * seguidos no dialogo nao percam incremento por estado atrasado da UI.
+     */
+    suspend fun nudgePrayerOffset(prayer: Prayer, delta: Int) {
+        updateOffset(prayer) { previous -> PrayerOffsets.clamp(previous + delta) }
+    }
+
+    private suspend fun updateOffset(prayer: Prayer, value: (Int) -> Int) {
+        context.dataStore.edit { preferences ->
+            val current = PrayerOffsets.decode(preferences[prayerOffsetsKey])
+            val updated = current.toMutableMap()
+            updated[prayer] = value(current[prayer] ?: 0)
+            preferences[prayerOffsetsKey] = PrayerOffsets.encode(updated)
+        }
     }
 }

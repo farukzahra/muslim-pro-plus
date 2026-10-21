@@ -32,7 +32,8 @@ class PrayerScheduler(private val context: Context) {
         val city = CityCatalog.byId(settings.cityId.first())
         val method = runCatching { PrayerMethod.valueOf(settings.methodName.first()) }
             .getOrDefault(PrayerMethod.MWL)
-        val next = NextPrayerResolver.resolve(Instant.now(), city, method)
+        val offsets = settings.prayerOffsets.first()
+        val next = NextPrayerResolver.resolve(Instant.now(), city, method, offsets)
 
         val alarmManager = context.getSystemService(AlarmManager::class.java)
         val pending = pendingIntent(next.prayer)

@@ -17,7 +17,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 data class TodayUiState(
@@ -38,29 +40,36 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-            combine(settings.cityId, settings.methodName) { city, method -> city to method }
-                .collect { (cityId, methodName) ->
+            combine(
+                settings.cityId,
+                settings.methodName,
+                settings.prayerOffsets,
+            ) { city, method, offsets -> Triple(city, method, offsets) }
+                .distinctUntilChanged()
+                .collectLatest { (cityId, methodName, offsets) ->
                     val city = CityCatalog.byId(cityId)
                     val method = runCatching { PrayerMethod.valueOf(methodName) }
                         .getOrDefault(PrayerMethod.MWL)
+                    // collectLatest cancela este loop quando cidade, metodo ou
+                    // offsets mudam, para o relogio nao segurar a config antiga.
                     while (true) {
-                        _state.value = build(city, method)
+                        _state.value = build(city, method, offsets)
                         delay(1_000)
                     }
                 }
         }
     }
 
-    private fun build(city: City, method: PrayerMethod): TodayUiState {
+    private fun build(city: City, method: PrayerMethod, offsets: Map<Prayer, Int>): TodayUiState {
         val now = Instant.now()
         val zone = ZoneId.of(city.zoneId)
         val today = now.atZone(zone).toLocalDate()
         val schedule = PrayerEngine.schedule(
-            today, city.latitude, city.longitude, zone, method,
+            today, city.latitude, city.longitude, zone, method, offsets,
         )
         val next = schedule.nextAfter(now)
         val tomorrow = PrayerEngine.schedule(
-            today.plusDays(1), city.latitude, city.longitude, zone, method,
+            today.plusDays(1), city.latitude, city.longitude, zone, method, offsets,
         )
         return TodayUiState(
             city = city,

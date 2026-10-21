@@ -33,6 +33,9 @@
     <string name="prayer_isha">العشاء</string>
     <string name="prayers_city">المدينة</string>
     <string name="prayers_method">الطريقة</string>
+    <string name="prayers_adjust">التعديلات</string>
+    <string name="prayers_offsets_title">تعديل أوقات الصلاة</string>
+    <string name="prayers_offsets_hint">دقائق تُضاف إلى كل صلاة، من −30 إلى +30.</string>
     <string name="action_cancel">إلغاء</string>
     <string name="qibla_distance">حوالي %1$d كم إلى مكة</string>
     <string name="quran_search">بحث عن سورة</string>
