@@ -28,6 +28,7 @@ fun MoreScreen(
     onLanguageClick: () -> Unit,
     onQuranDisplayClick: () -> Unit,
     onThemeClick: () -> Unit,
+    onHijriClick: () -> Unit,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -57,6 +58,14 @@ fun MoreScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = onThemeClick)
+                .padding(horizontal = 4.dp),
+        )
+        HorizontalDivider()
+        ListItem(
+            headlineContent = { Text(stringResource(R.string.more_hijri)) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onHijriClick)
                 .padding(horizontal = 4.dp),
         )
         HorizontalDivider()

@@ -28,6 +28,7 @@ import com.farukzahra.muslimplus.ui.screens.prayers.PrayersScreen
 import com.farukzahra.muslimplus.ui.screens.qibla.QiblaScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranListScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranReaderScreen
+import com.farukzahra.muslimplus.ui.screens.settings.HijriScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
 import com.farukzahra.muslimplus.ui.screens.settings.QuranDisplayScreen
 import com.farukzahra.muslimplus.ui.screens.settings.ThemeScreen
@@ -36,6 +37,7 @@ import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 const val LANGUAGE_ROUTE = "settings/language"
 const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
 const val THEME_ROUTE = "settings/theme"
+const val HIJRI_ROUTE = "settings/hijri"
 
 @Composable
 fun MuslimPlusApp() {
@@ -99,6 +101,7 @@ fun MuslimPlusApp() {
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
                             onQuranDisplayClick = { navController.navigate(QURAN_DISPLAY_ROUTE) },
                             onThemeClick = { navController.navigate(THEME_ROUTE) },
+                            onHijriClick = { navController.navigate(HIJRI_ROUTE) },
                         )
                     }
                 }
@@ -111,6 +114,9 @@ fun MuslimPlusApp() {
             }
             composable(THEME_ROUTE) {
                 ThemeScreen(onBack = { navController.popBackStack() })
+            }
+            composable(HIJRI_ROUTE) {
+                HijriScreen(onBack = { navController.popBackStack() })
             }
             composable(
                 route = "quran/{surah}",

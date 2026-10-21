@@ -12,6 +12,11 @@
     <string name="more_quran_display">Quran display</string>
     <string name="more_quran_display_hint">Choose Arabic, translation and transliteration</string>
     <string name="more_theme">Theme</string>
+    <string name="more_hijri">Hijri date</string>
+    <string name="hijri_minus_one">One day earlier</string>
+    <string name="hijri_default">Default</string>
+    <string name="hijri_plus_one">One day later</string>
+    <string name="hijri_hint">The Hijri date can differ by a day depending on moon sighting in your country.</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_light">Light</string>
     <string name="theme_system">System</string>
@@ -25,6 +30,9 @@
     <string name="action_back">Back</string>
     <string name="today_next">Next prayer</string>
     <string name="today_tomorrow_fajr">Tomorrow · Fajr</string>
+    <string name="today_hijri_city">%1$s · %2$s</string>
+    <string name="daily_verse_label">Verse of the day</string>
+    <string name="verse_reference">%1$d:%2$d</string>
     <string name="today_exact_alarm_warning">Reminders may be a few minutes late</string>
     <string name="action_allow">Allow</string>
     <string name="prayer_fajr">Fajr</string>

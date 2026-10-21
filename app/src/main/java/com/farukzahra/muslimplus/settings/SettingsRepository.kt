@@ -3,6 +3,7 @@ package com.farukzahra.muslimplus.settings
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -20,6 +21,7 @@ class SettingsRepository(private val context: Context) {
     private val quranModesKey = stringSetPreferencesKey("quran_modes")
     private val themeKey = stringPreferencesKey("theme_mode")
     private val prayerOffsetsKey = stringPreferencesKey("prayer_offsets")
+    private val hijriOffsetKey = intPreferencesKey("hijri_offset")
 
     val cityId: Flow<String> = context.dataStore.data.map { it[cityKey] ?: "sao-paulo" }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
@@ -32,6 +34,10 @@ class SettingsRepository(private val context: Context) {
     val prayerOffsets: Flow<Map<Prayer, Int>> =
         context.dataStore.data.map { preferences ->
             PrayerOffsets.decode(preferences[prayerOffsetsKey])
+        }
+    val hijriOffset: Flow<Int> =
+        context.dataStore.data.map { preferences ->
+            HijriOffset.sanitize(preferences[hijriOffsetKey] ?: HijriOffset.DEFAULT)
         }
 
     suspend fun setCity(id: String) {
@@ -52,6 +58,11 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setThemeMode(mode: String) {
         context.dataStore.edit { it[themeKey] = mode }
+    }
+
+    /** Aceita apenas -1, 0 e +1; valores fora da faixa viram o padrao. */
+    suspend fun setHijriOffset(days: Int) {
+        context.dataStore.edit { it[hijriOffsetKey] = HijriOffset.sanitize(days) }
     }
 
     suspend fun setPrayerOffset(prayer: Prayer, minutes: Int) {

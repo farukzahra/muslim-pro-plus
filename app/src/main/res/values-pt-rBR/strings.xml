@@ -12,6 +12,11 @@
     <string name="more_quran_display">Exibição do Alcorão</string>
     <string name="more_quran_display_hint">Escolha árabe, tradução e transliteração</string>
     <string name="more_theme">Tema</string>
+    <string name="more_hijri">Data hijri</string>
+    <string name="hijri_minus_one">Um dia antes</string>
+    <string name="hijri_default">Padrão</string>
+    <string name="hijri_plus_one">Um dia depois</string>
+    <string name="hijri_hint">A data hijri pode variar em um dia conforme a observação da lua no seu país.</string>
     <string name="theme_dark">Escuro</string>
     <string name="theme_light">Claro</string>
     <string name="theme_system">Sistema</string>
@@ -25,6 +30,9 @@
     <string name="action_back">Voltar</string>
     <string name="today_next">Próxima oração</string>
     <string name="today_tomorrow_fajr">Amanhã · Fajr</string>
+    <string name="today_hijri_city">%1$s · %2$s</string>
+    <string name="daily_verse_label">Verso do dia</string>
+    <string name="verse_reference">%1$d:%2$d</string>
     <string name="today_exact_alarm_warning">Avisos podem atrasar alguns minutos</string>
     <string name="action_allow">Permitir</string>
     <string name="prayer_fajr">Fajr</string>

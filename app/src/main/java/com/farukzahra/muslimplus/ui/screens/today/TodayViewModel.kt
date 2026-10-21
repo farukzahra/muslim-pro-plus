@@ -34,6 +34,7 @@ data class TodayUiState(
     val now: Instant,
     val zone: ZoneId,
     val exactAlarmsAvailable: Boolean,
+    val hijriOffset: Int,
 )
 
 class TodayViewModel(application: Application) : AndroidViewModel(application) {
@@ -66,26 +67,31 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
                 settings.cityId,
                 settings.methodName,
                 settings.prayerOffsets,
-            ) { city, method, offsets -> Triple(city, method, offsets) }
+                settings.hijriOffset,
+            ) { city, method, offsets, hijriOffset ->
+                TodayConfig(city, method, offsets, hijriOffset)
+            }
                 .distinctUntilChanged()
-                .collectLatest { (cityId, methodName, offsets) ->
-                    val city = CityCatalog.byId(cityId)
-                    val method = runCatching { PrayerMethod.valueOf(methodName) }
+                .collectLatest { config ->
+                    val city = CityCatalog.byId(config.cityId)
+                    val method = runCatching { PrayerMethod.valueOf(config.methodName) }
                         .getOrDefault(PrayerMethod.MWL)
-                    // collectLatest cancela este loop quando cidade, metodo ou
-                    // offsets mudam, para o relogio nao segurar a config antiga.
+                    // collectLatest cancela este loop quando cidade, metodo,
+                    // offsets ou offset hijri mudam, para o relogio nao segurar
+                    // a config antiga.
                     while (true) {
-                        _state.value = build(city, method, offsets)
+                        _state.value = build(city, method, config)
                         delay(1_000)
                     }
                 }
         }
     }
 
-    private fun build(city: City, method: PrayerMethod, offsets: Map<Prayer, Int>): TodayUiState {
+    private fun build(city: City, method: PrayerMethod, config: TodayConfig): TodayUiState {
         val now = Instant.now()
         val zone = ZoneId.of(city.zoneId)
         val today = now.atZone(zone).toLocalDate()
+        val offsets = config.offsets
         val schedule = PrayerEngine.schedule(
             today, city.latitude, city.longitude, zone, method, offsets,
         )
@@ -103,6 +109,15 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
             now = now,
             zone = zone,
             exactAlarmsAvailable = exactAlarmsAvailable,
+            hijriOffset = config.hijriOffset,
         )
     }
 }
+
+/** Config lida do DataStore; agrupada para o `combine` nao virar Triple aninhada. */
+private data class TodayConfig(
+    val cityId: String,
+    val methodName: String,
+    val offsets: Map<Prayer, Int>,
+    val hijriOffset: Int,
+)

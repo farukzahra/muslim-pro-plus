@@ -37,6 +37,7 @@ object ArabicText {
 class QuranRepository(private val context: Context) {
     private val surahs: List<Surah> by lazy { loadSurahs() }
     private val verses: List<Verse> by lazy { loadVerses() }
+    private val singleVerses = mutableMapOf<String, Verse>()
     private val caches = mutableMapOf<String, Map<String, String>>()
 
     fun surahs(): List<Surah> = surahs
@@ -44,6 +45,32 @@ class QuranRepository(private val context: Context) {
     fun surah(id: Int): Surah? = surahs.firstOrNull { it.id == id }
 
     fun versesOf(surahId: Int): List<Verse> = verses.filter { it.surah == surahId }
+
+    /**
+     * Um verso isolado (verso do dia). Le o asset direto, sem disparar o
+     * carregamento dos 6.236 versos na abertura da aba Hoje.
+     */
+    fun verse(surah: Int, ayah: Int): Verse? {
+        val key = verseKey(surah, ayah)
+        singleVerses[key]?.let { return it }
+        val verse = readVerse(key) ?: return null
+        singleVerses[key] = verse
+        return verse
+    }
+
+    private fun verseKey(surah: Int, ayah: Int): String = "$surah:$ayah"
+
+    private fun readVerse(key: String): Verse? =
+        runCatching {
+            context.assets.open("quran_verses.txt").bufferedReader().useLines { lines ->
+                val line = lines.firstOrNull { it.startsWith("$key|") } ?: return@useLines null
+                Verse(
+                    surah = key.substringBefore(':').toInt(),
+                    ayah = key.substringAfter(':').toInt(),
+                    text = line.substringAfter('|'),
+                )
+            }
+        }.getOrNull()
 
     /** Carrega (uma vez) a camada pedida: "translit" ou um locale como "en". */
     fun preload(mode: String) {

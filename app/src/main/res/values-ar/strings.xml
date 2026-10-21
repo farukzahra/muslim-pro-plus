@@ -12,6 +12,11 @@
     <string name="more_quran_display">عرض القرآن</string>
     <string name="more_quran_display_hint">اختر العربية والترجمة والنقل الحرفي</string>
     <string name="more_theme">المظهر</string>
+    <string name="more_hijri">التاريخ الهجري</string>
+    <string name="hijri_minus_one">قبل يوم واحد</string>
+    <string name="hijri_default">الافتراضي</string>
+    <string name="hijri_plus_one">بعد يوم واحد</string>
+    <string name="hijri_hint">قد يختلف التاريخ الهجري بيوم واحد حسب رؤية الهلال في بلدك.</string>
     <string name="theme_dark">داكن</string>
     <string name="theme_light">فاتح</string>
     <string name="theme_system">النظام</string>
@@ -25,6 +30,9 @@
     <string name="action_back">رجوع</string>
     <string name="today_next">الصلاة القادمة</string>
     <string name="today_tomorrow_fajr">غدًا · الفجر</string>
+    <string name="today_hijri_city">%1$s · %2$s</string>
+    <string name="daily_verse_label">آية اليوم</string>
+    <string name="verse_reference">%1$d:%2$d</string>
     <string name="today_exact_alarm_warning">قد تتأخر التذكيرات بضع دقائق</string>
     <string name="action_allow">السماح</string>
     <string name="prayer_fajr">الفجر</string>

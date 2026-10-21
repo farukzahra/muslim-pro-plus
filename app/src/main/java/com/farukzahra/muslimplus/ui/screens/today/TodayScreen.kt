@@ -1,7 +1,6 @@
 package com.farukzahra.muslimplus.ui.screens.today
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +21,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,21 +30,30 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.notifications.ExactAlarms
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerSchedule
+import com.farukzahra.muslimplus.quran.DailyVerse
+import com.farukzahra.muslimplus.quran.Verse
 import java.time.Duration
 import java.time.Instant
+import java.time.LocalDate
 import java.time.ZoneId
 import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Composable
 fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
@@ -60,9 +69,9 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
     val dateText = remember(state.date, locale) {
         state.date.format(DateTimeFormatter.ofPattern("EEEE, d MMMM", locale))
     }
-    val hijriText = remember(state.date, locale) {
+    val hijriText = remember(state.date, state.hijriOffset, locale) {
         runCatching {
-            val hijri = HijrahDate.from(state.date)
+            val hijri = HijrahDate.from(state.date.plusDays(state.hijriOffset.toLong()))
             hijri.format(
                 DateTimeFormatter.ofPattern("d MMMM y", locale).withChronology(hijri.chronology),
             )
@@ -83,6 +92,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
         if (!state.exactAlarmsAvailable) {
             ExactAlarmBanner()
         }
+        DailyVerseCard(date = state.date)
         PrayerList(
             schedule = state.schedule,
             next = state.next,
@@ -121,7 +131,7 @@ private fun Header(
                 color = scheme.onSurfaceVariant,
             )
             Text(
-                text = "$hijriText · $city",
+                text = stringResource(R.string.today_hijri_city, hijriText, city),
                 style = MaterialTheme.typography.bodyMedium,
                 color = scheme.onSurfaceVariant,
             )
@@ -183,6 +193,50 @@ private fun ExactAlarmBanner() {
         ) {
             Text(stringResource(R.string.action_allow))
         }
+    }
+}
+
+@Composable
+private fun DailyVerseCard(date: LocalDate) {
+    // Leitura do asset fora da main thread, como no reader do Alcorao.
+    val verse by produceState<Verse?>(initialValue = null, date) {
+        value = withContext(Dispatchers.IO) { DailyVerse.forDate(date) }
+    }
+    val current = verse ?: return
+    if (current.text.isBlank()) return
+    val scheme = MaterialTheme.colorScheme
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 12.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(scheme.surfaceVariant.copy(alpha = 0.35f))
+            .padding(horizontal = 18.dp, vertical = 16.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.daily_verse_label),
+            style = MaterialTheme.typography.labelLarge,
+            color = scheme.secondary,
+        )
+        Spacer(Modifier.height(10.dp))
+        Text(
+            text = current.text,
+            fontSize = 20.sp,
+            lineHeight = 36.sp,
+            textAlign = TextAlign.Start,
+            style = TextStyle(
+                color = scheme.onSurface,
+                textDirection = TextDirection.Rtl,
+            ),
+        )
+        Text(
+            text = stringResource(R.string.verse_reference, current.surah, current.ayah),
+            style = MaterialTheme.typography.bodySmall,
+            color = scheme.onSurfaceVariant,
+            modifier = Modifier
+                .align(Alignment.End)
+                .padding(top = 8.dp),
+        )
     }
 }
 
