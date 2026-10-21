@@ -21,6 +21,11 @@
     <string name="theme_system">System</string>
     <string name="notifications_channel">Prayer reminders</string>
     <string name="about_version">Version %1$s</string>
+    <string name="about_support_title">Support the project</string>
+    <string name="about_support_body">If Muslim Plus helps you, you can send a Pix. Only if you want to.</string>
+    <string name="about_pix_key">Pix key</string>
+    <string name="about_pix_hint">Tap to copy the key.</string>
+    <string name="about_pix_copied">Pix key copied</string>
     <string name="language_title">App language</string>
     <string name="language_system">System default</string>
     <string name="language_english">English</string>

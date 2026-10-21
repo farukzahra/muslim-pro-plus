@@ -28,8 +28,8 @@ class DailyVerseTest {
             .toMap()
 
     @Test
-    fun curatedListHasThirtyPairs() {
-        assertEquals(30, DailyVerse.keys.size)
+    fun curatedListHasOneHundredPairs() {
+        assertEquals(100, DailyVerse.keys.size)
     }
 
     @Test

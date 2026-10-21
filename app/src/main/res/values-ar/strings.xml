@@ -21,6 +21,11 @@
     <string name="theme_system">النظام</string>
     <string name="notifications_channel">تذكيرات الصلاة</string>
     <string name="about_version">الإصدار %1$s</string>
+    <string name="about_support_title">ادعم المشروع</string>
+    <string name="about_support_body">إذا ساعدك Muslim Plus يمكنك إرسال Pix. فقط إن أردت.</string>
+    <string name="about_pix_key">مفتاح Pix</string>
+    <string name="about_pix_hint">اضغط لنسخ المفتاح.</string>
+    <string name="about_pix_copied">تم نسخ مفتاح Pix</string>
     <string name="language_title">لغة التطبيق</string>
     <string name="language_system">لغة النظام الافتراضية</string>
     <string name="language_english">الإنجليزية</string>

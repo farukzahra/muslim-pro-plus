@@ -14,38 +14,28 @@ import java.time.LocalDate
 object DailyVerse {
     data class Key(val surah: Int, val ayah: Int)
 
-    /** 30 pares (sura, ayah) verificados por `DailyVerseTest`. */
+    /** 100 pares (sura, ayah) verificados por `DailyVerseTest`. */
     val keys: List<Key> = listOf(
-        Key(1, 5), // So a Ti adoramos e a Ti pedimos ajuda
-        Key(2, 45), // Buscai ajuda na paciencia e na oracao
-        Key(2, 152), // Lembrai-vos de Mim, que Eu Me lembrarei de vos
-        Key(2, 153), // Deus esta com os pacientes
-        Key(3, 31), // Se amais a Deus, segui-me
-        Key(3, 139), // Nao desanimeis nem vos entristecais
-        Key(5, 35), // Temei a Deus e buscai o meio de aproximar-vos
-        Key(7, 56), // Invocai-O com temor e esperanca
-        Key(8, 46), // Sede pacientes; Deus esta com os pacientes
-        Key(10, 57), // Chegou-vos uma exortacao do vosso Senhor
-        Key(11, 114), // As boas obras apagam as mas
-        Key(13, 28), // Com a lembranca de Deus os coracoes se tranquilizam
-        Key(14, 40), // Senhor, faze-me cumprir a oracao
-        Key(16, 128), // Deus esta com os que temem e fazem o bem
-        Key(17, 80), // Senhor, faze-me entrar com verdade
-        Key(21, 107), // Nao te enviamos senao como misericordia para os mundos
-        Key(23, 1), // Bem-aventurados os fieis
-        Key(23, 118), // Senhor, perdoa e tem misericordia
-        Key(25, 74), // Senhor, concede-nos consolo nos nossos conjuges e filhos
-        Key(29, 69), // Deus esta com os benfeitores
-        Key(31, 17), // Cumpre a oracao e ordena o bem
-        Key(33, 3), // Confia em Deus; Deus basta como protector
-        Key(33, 41), // Lembrai-vos de Deus com frequencia
-        Key(87, 14), // Bem-aventurado quem se purifica
-        Key(87, 15), // E lembra o nome do seu Senhor e ora
-        Key(93, 5), // O teu Senhor te dara e ficaras satisfeito
-        Key(94, 5), // Com a dificuldade vem a facilidade
-        Key(103, 3), // Os que creem, praticam o bem e recomendam a verdade
-        Key(112, 1), // Dize: Ele e Deus, o Unico
-        Key(112, 2), // Deus, o Absoluto
+        Key(1, 5), Key(2, 3), Key(2, 45), Key(2, 152), Key(2, 153),
+        Key(2, 177), Key(2, 186), Key(2, 216), Key(2, 261), Key(2, 286),
+        Key(3, 8), Key(3, 31), Key(3, 134), Key(3, 139), Key(3, 159),
+        Key(3, 173), Key(4, 58), Key(4, 135), Key(5, 8), Key(5, 35),
+        Key(6, 17), Key(7, 31), Key(7, 56), Key(7, 96), Key(7, 199),
+        Key(8, 46), Key(8, 61), Key(9, 40), Key(9, 51), Key(9, 105),
+        Key(10, 57), Key(10, 62), Key(11, 88), Key(11, 114), Key(12, 87),
+        Key(13, 11), Key(13, 24), Key(13, 28), Key(14, 7), Key(14, 34),
+        Key(14, 40), Key(15, 49), Key(16, 18), Key(16, 90), Key(16, 97),
+        Key(16, 128), Key(17, 23), Key(17, 37), Key(17, 70), Key(17, 80),
+        Key(18, 10), Key(20, 25), Key(20, 114), Key(21, 83), Key(21, 84),
+        Key(21, 87), Key(21, 107), Key(22, 78), Key(23, 1), Key(23, 97),
+        Key(23, 118), Key(24, 22), Key(24, 35), Key(25, 63), Key(25, 70),
+        Key(25, 74), Key(28, 24), Key(29, 45), Key(29, 69), Key(30, 17),
+        Key(30, 21), Key(31, 14), Key(31, 17), Key(33, 3), Key(33, 21),
+        Key(33, 41), Key(33, 70), Key(34, 39), Key(36, 58), Key(39, 9),
+        Key(39, 10), Key(39, 53), Key(40, 60), Key(41, 30), Key(49, 13),
+        Key(55, 60), Key(64, 11), Key(65, 3), Key(67, 2), Key(71, 10),
+        Key(73, 8), Key(87, 14), Key(87, 15), Key(90, 17), Key(92, 5),
+        Key(93, 5), Key(94, 5), Key(103, 3), Key(112, 1), Key(112, 2),
     )
 
     /** Indice deterministico no ciclo de [keys], inclusive para datas antes de 1970. */
