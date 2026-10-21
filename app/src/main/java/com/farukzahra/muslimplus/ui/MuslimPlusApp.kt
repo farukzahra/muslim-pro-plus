@@ -28,16 +28,24 @@ import com.farukzahra.muslimplus.ui.screens.prayers.PrayersScreen
 import com.farukzahra.muslimplus.ui.screens.qibla.QiblaScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranListScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranReaderScreen
+import com.farukzahra.muslimplus.ui.screens.settings.AboutScreen
 import com.farukzahra.muslimplus.ui.screens.settings.HijriScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
+import com.farukzahra.muslimplus.ui.screens.settings.LicensesScreen
+import com.farukzahra.muslimplus.ui.screens.settings.PrivacyScreen
 import com.farukzahra.muslimplus.ui.screens.settings.QuranDisplayScreen
+import com.farukzahra.muslimplus.ui.screens.settings.SettingsScreen
 import com.farukzahra.muslimplus.ui.screens.settings.ThemeScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
+const val SETTINGS_ROUTE = "settings"
 const val LANGUAGE_ROUTE = "settings/language"
 const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
 const val THEME_ROUTE = "settings/theme"
 const val HIJRI_ROUTE = "settings/hijri"
+const val LICENSES_ROUTE = "settings/licenses"
+const val PRIVACY_ROUTE = "settings/privacy"
+const val ABOUT_ROUTE = "settings/about"
 
 /** Leitor do Alcorao; `ayah` e opcional e 0 significa "continuar da ultima leitura". */
 const val QURAN_READER_ROUTE = "quran/{surah}?ayah={ayah}"
@@ -108,13 +116,21 @@ fun MuslimPlusApp() {
                         )
                         Tab.QIBLA -> QiblaScreen()
                         Tab.MORE -> MoreScreen(
+                            onSettingsClick = { navController.navigate(SETTINGS_ROUTE) },
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
                             onQuranDisplayClick = { navController.navigate(QURAN_DISPLAY_ROUTE) },
                             onThemeClick = { navController.navigate(THEME_ROUTE) },
-                            onHijriClick = { navController.navigate(HIJRI_ROUTE) },
+                            onLicensesClick = { navController.navigate(LICENSES_ROUTE) },
+                            onAboutClick = { navController.navigate(ABOUT_ROUTE) },
                         )
                     }
                 }
+            }
+            composable(SETTINGS_ROUTE) {
+                SettingsScreen(
+                    onBack = { navController.popBackStack() },
+                    onHijriClick = { navController.navigate(HIJRI_ROUTE) },
+                )
             }
             composable(LANGUAGE_ROUTE) {
                 LanguageScreen(onBack = { navController.popBackStack() })
@@ -127,6 +143,18 @@ fun MuslimPlusApp() {
             }
             composable(HIJRI_ROUTE) {
                 HijriScreen(onBack = { navController.popBackStack() })
+            }
+            composable(LICENSES_ROUTE) {
+                LicensesScreen(onBack = { navController.popBackStack() })
+            }
+            composable(PRIVACY_ROUTE) {
+                PrivacyScreen(onBack = { navController.popBackStack() })
+            }
+            composable(ABOUT_ROUTE) {
+                AboutScreen(
+                    onBack = { navController.popBackStack() },
+                    onPrivacyClick = { navController.navigate(PRIVACY_ROUTE) },
+                )
             }
             composable(
                 route = QURAN_READER_ROUTE,

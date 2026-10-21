@@ -6,24 +6,18 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,9 +28,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerMethod
-import com.farukzahra.muslimplus.prayer.PrayerOffsets
 import com.farukzahra.muslimplus.ui.components.ChoiceDialog
 import com.farukzahra.muslimplus.ui.components.CityPickerDialog
+import com.farukzahra.muslimplus.ui.components.OffsetsDialog
+import com.farukzahra.muslimplus.ui.components.prayerLabelRes
 import java.time.format.DateTimeFormatter
 
 private val tablePrayers = listOf(
@@ -99,7 +94,7 @@ fun PrayersScreen(viewModel: PrayersViewModel = viewModel()) {
             )
             tablePrayers.forEach { prayer ->
                 Text(
-                    text = stringResource(prayerLabel(prayer)),
+                    text = stringResource(prayerLabelRes(prayer)),
                     modifier = Modifier.weight(1f),
                     fontSize = 11.sp,
                     textAlign = TextAlign.Center,
@@ -176,75 +171,4 @@ fun PrayersScreen(viewModel: PrayersViewModel = viewModel()) {
             onDismiss = { showOffsets = false },
         )
     }
-}
-
-@Composable
-private fun OffsetsDialog(
-    offsets: Map<Prayer, Int>,
-    onAdjust: (Prayer, Int) -> Unit,
-    onDismiss: () -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.prayers_offsets_title)) },
-        text = {
-            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                Text(
-                    text = stringResource(R.string.prayers_offsets_hint),
-                    fontSize = 13.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                PrayerOffsets.adjustable.forEach { prayer ->
-                    val minutes = offsets[prayer] ?: 0
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(
-                            text = stringResource(prayerLabel(prayer)),
-                            modifier = Modifier.weight(1f),
-                            fontSize = 16.sp,
-                        )
-                        TextButton(
-                            onClick = { onAdjust(prayer, -1) },
-                            enabled = minutes > PrayerOffsets.MIN_MINUTES,
-                        ) {
-                            Text("−", fontSize = 20.sp)
-                        }
-                        Text(
-                            text = offsetLabel(minutes),
-                            modifier = Modifier.width(48.dp),
-                            textAlign = TextAlign.Center,
-                            fontSize = 16.sp,
-                        )
-                        TextButton(
-                            onClick = { onAdjust(prayer, +1) },
-                            enabled = minutes < PrayerOffsets.MAX_MINUTES,
-                        ) {
-                            Text("+", fontSize = 20.sp)
-                        }
-                    }
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.action_ok))
-            }
-        },
-    )
-}
-
-private fun offsetLabel(minutes: Int): String =
-    if (minutes > 0) "+$minutes" else minutes.toString()
-
-private fun prayerLabel(prayer: Prayer): Int = when (prayer) {
-    Prayer.FAJR -> R.string.prayer_fajr
-    Prayer.SUNRISE -> R.string.prayer_sunrise
-    Prayer.DHUHR -> R.string.prayer_dhuhr
-    Prayer.ASR -> R.string.prayer_asr
-    Prayer.MAGHRIB -> R.string.prayer_maghrib
-    Prayer.ISHA -> R.string.prayer_isha
 }

@@ -10,7 +10,6 @@
     <string name="more_about">حول</string>
     <string name="more_notifications">الإشعارات</string>
     <string name="more_quran_display">عرض القرآن</string>
-    <string name="more_quran_display_hint">اختر العربية والترجمة والنقل الحرفي</string>
     <string name="more_theme">المظهر</string>
     <string name="more_hijri">التاريخ الهجري</string>
     <string name="hijri_minus_one">قبل يوم واحد</string>
@@ -92,4 +91,26 @@
     <string name="quran_audio_download_failed">تعذّر تنزيل الصوت.</string>
     <string name="quran_audio_now_playing">%1$s، الآية %2$d</string>
     <string name="quran_reciter_alafasy">مشاري العفاسي</string>
+    <string name="more_settings">الإعدادات</string>
+    <string name="more_licenses">التراخيص</string>
+    <string name="more_privacy">الخصوصية</string>
+    <string name="settings_hijri_hint">قبل يوم أو الافتراضي أو بعده</string>
+    <string name="settings_notifications_hint">تذكير عند كل وقت صلاة</string>
+    <string name="about_description">مواقيت الصلاة والقبلة والقرآن دون اتصال على جهازك. بلا حساب ولا إعلانات ولا تتبّع.</string>
+    <string name="about_contact">التواصل</string>
+    <string name="licenses_intro">البيانات والمكتبات المستخدمة في التطبيق. اضغط على عنصر لفتح صفحة الترخيص.</string>
+    <string name="licenses_note_tanzil">النص العربي للقرآن</string>
+    <string name="licenses_note_geonames">دليل المدن مع الإحداثيات والمناطق الزمنية</string>
+    <string name="licenses_note_adhan">حساب مواقيت الصلاة</string>
+    <string name="licenses_note_media3">تشغيل صوت الآيات</string>
+    <string name="licenses_note_everyayah">صوت الآيات بالبث</string>
+    <string name="licenses_note_helmi_nasr">ترجمة برتغالية عبر واجهة Quran.com</string>
+    <string name="licenses_note_pickthall">ترجمة إنجليزية عبر واجهة Quran.com</string>
+    <string name="privacy_no_account">بلا حساب. يعمل التطبيق دون تسجيل ولا يحفظ شيئًا في السحابة.</string>
+    <string name="privacy_no_ads">بلا إعلانات ولا تحليلات. لا يُباع أي شيء ولا يُشارك.</string>
+    <string name="privacy_location">يُستخدم الموقع فقط لاختيار أقرب مدينة لمواقيت الصلاة والقبلة. يبقى على جهازك ولا يُرسل إلى أي مكان.</string>
+    <string name="privacy_local_data">تبقى الإعدادات والعلامات المرجعية والصوتيات المنزّلة على جهازك وتُحذف عند إزالة التطبيق.</string>
+    <string name="privacy_open_policy">فتح السياسة كاملة</string>
+    <string name="privacy_open_failed_title">لا يوجد متصفح</string>
+    <string name="privacy_open_failed_body">انسخ العنوان أدناه وافتحه في المتصفح.</string>
 </resources>

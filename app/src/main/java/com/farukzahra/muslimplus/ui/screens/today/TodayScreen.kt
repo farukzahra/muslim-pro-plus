@@ -31,6 +31,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
@@ -39,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
+import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.notifications.ExactAlarms
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerSchedule
@@ -198,11 +200,18 @@ private fun ExactAlarmBanner() {
 
 @Composable
 private fun DailyVerseCard(date: LocalDate) {
-    // Leitura do asset fora da main thread, como no reader do Alcorao.
-    val verse by produceState<Verse?>(initialValue = null, date) {
-        value = withContext(Dispatchers.IO) { DailyVerse.forDate(date) }
+    val modes by ServiceLocator.settings.quranModes.collectAsState(initial = setOf("ar"))
+    // Texto e camadas lidos fora da main thread, como no leitor.
+    val data by produceState<Pair<Verse, Map<String, String>>?>(null, date, modes) {
+        value = withContext(Dispatchers.IO) {
+            val verse = DailyVerse.forDate(date)
+            val key = "${verse.surah}:${verse.ayah}"
+            verse to modes.associateWith { mode ->
+                ServiceLocator.quran.layer(mode, key).orEmpty()
+            }
+        }
     }
-    val current = verse ?: return
+    val (current, layers) = data ?: return
     if (current.text.isBlank()) return
     val scheme = MaterialTheme.colorScheme
     Column(
@@ -219,16 +228,41 @@ private fun DailyVerseCard(date: LocalDate) {
             color = scheme.secondary,
         )
         Spacer(Modifier.height(10.dp))
-        Text(
-            text = current.text,
-            fontSize = 20.sp,
-            lineHeight = 36.sp,
-            textAlign = TextAlign.Start,
-            style = TextStyle(
-                color = scheme.onSurface,
-                textDirection = TextDirection.Rtl,
-            ),
-        )
+        if ("ar" in modes) {
+            Text(
+                text = current.text,
+                fontSize = 20.sp,
+                lineHeight = 36.sp,
+                textAlign = TextAlign.Start,
+                style = TextStyle(
+                    color = scheme.onSurface,
+                    textDirection = TextDirection.Rtl,
+                ),
+            )
+        }
+        if ("translit" in modes) {
+            layers["translit"]?.takeIf { it.isNotBlank() }?.let {
+                Text(
+                    text = it,
+                    fontSize = 14.sp,
+                    fontStyle = FontStyle.Italic,
+                    color = scheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 6.dp),
+                )
+            }
+        }
+        listOf("pt-BR", "en").forEach { locale ->
+            if (locale in modes) {
+                layers[locale]?.takeIf { it.isNotBlank() }?.let {
+                    Text(
+                        text = it,
+                        fontSize = 15.sp,
+                        color = scheme.onSurface,
+                        modifier = Modifier.padding(top = 6.dp),
+                    )
+                }
+            }
+        }
         Text(
             text = stringResource(R.string.verse_reference, current.surah, current.ayah),
             style = MaterialTheme.typography.bodySmall,

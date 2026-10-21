@@ -10,7 +10,6 @@
     <string name="more_about">Sobre</string>
     <string name="more_notifications">Notificações</string>
     <string name="more_quran_display">Exibição do Alcorão</string>
-    <string name="more_quran_display_hint">Escolha árabe, tradução e transliteração</string>
     <string name="more_theme">Tema</string>
     <string name="more_hijri">Data hijri</string>
     <string name="hijri_minus_one">Um dia antes</string>
@@ -92,4 +91,26 @@
     <string name="quran_audio_download_failed">Não foi possível baixar o áudio.</string>
     <string name="quran_audio_now_playing">%1$s, versículo %2$d</string>
     <string name="quran_reciter_alafasy">Mishary Alafasy</string>
+    <string name="more_settings">Configurações</string>
+    <string name="more_licenses">Licenças</string>
+    <string name="more_privacy">Privacidade</string>
+    <string name="settings_hijri_hint">Um dia antes, padrão ou um dia depois</string>
+    <string name="settings_notifications_hint">Um lembrete em cada horário de oração</string>
+    <string name="about_description">Horários de oração, Qibla e Alcorão offline no seu aparelho. Sem conta, sem anúncios, sem rastreamento.</string>
+    <string name="about_contact">Contato</string>
+    <string name="licenses_intro">Dados e bibliotecas usados no app. Toque em um item para abrir a página da licença.</string>
+    <string name="licenses_note_tanzil">Texto árabe do Alcorão</string>
+    <string name="licenses_note_geonames">Catálogo de cidades com coordenadas e fuso horário</string>
+    <string name="licenses_note_adhan">Cálculo dos horários de oração</string>
+    <string name="licenses_note_media3">Reprodução do áudio dos versículos</string>
+    <string name="licenses_note_everyayah">Áudio dos versículos por stream</string>
+    <string name="licenses_note_helmi_nasr">Tradução em português, via API do Quran.com</string>
+    <string name="licenses_note_pickthall">Tradução em inglês, via API do Quran.com</string>
+    <string name="privacy_no_account">Sem conta. O app funciona sem cadastro e não guarda nada na nuvem.</string>
+    <string name="privacy_no_ads">Sem anúncios e sem analytics. Nada é vendido ou compartilhado.</string>
+    <string name="privacy_location">A localização só serve para escolher a cidade mais próxima dos horários de oração e da Qibla. Fica no seu aparelho e não é enviada a lugar nenhum.</string>
+    <string name="privacy_local_data">Preferências, marcadores e áudios baixados ficam no aparelho e somem quando você desinstala o app.</string>
+    <string name="privacy_open_policy">Abrir política completa</string>
+    <string name="privacy_open_failed_title">Nenhum navegador encontrado</string>
+    <string name="privacy_open_failed_body">Copie o endereço abaixo e abra no navegador.</string>
 </resources>

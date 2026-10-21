@@ -38,6 +38,9 @@ android {
 
     buildFeatures {
         compose = true
+        // Sobre e Mais leem a versao de BuildConfig.VERSION_NAME; sem isto o
+        // AGP 8 nao gera a classe e o numero volta a ficar hardcoded.
+        buildConfig = true
     }
 }
 
