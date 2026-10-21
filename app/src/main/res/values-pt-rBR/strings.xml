@@ -31,6 +31,11 @@
     <string name="qibla_distance">%1$d km até Makkah</string>
     <string name="quran_search">Buscar sura</string>
     <string name="quran_verses">%1$d versículos</string>
+    <string name="quran_display">Exibição</string>
+    <string name="quran_arabic">Árabe</string>
+    <string name="quran_transliteration">Transliteração</string>
+    <string name="quran_keep_one">Mantenha pelo menos uma camada marcada.</string>
+    <string name="action_ok">OK</string>
     <string name="qibla_calibration">Mova o aparelho em figura-8 para calibrar.</string>
     <string name="qibla_no_sensor">Este aparelho não tem bússola. O ângulo mostrado é a direção de Makkah a partir do norte verdadeiro.</string>
 </resources>

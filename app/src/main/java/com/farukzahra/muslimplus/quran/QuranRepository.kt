@@ -37,12 +37,29 @@ object ArabicText {
 class QuranRepository(private val context: Context) {
     private val surahs: List<Surah> by lazy { loadSurahs() }
     private val verses: List<Verse> by lazy { loadVerses() }
+    private val caches = mutableMapOf<String, Map<String, String>>()
 
     fun surahs(): List<Surah> = surahs
 
     fun surah(id: Int): Surah? = surahs.firstOrNull { it.id == id }
 
     fun versesOf(surahId: Int): List<Verse> = verses.filter { it.surah == surahId }
+
+    /** Carrega (uma vez) a camada pedida: "translit" ou um locale como "en". */
+    fun preload(mode: String) {
+        caches.getOrPut(mode) {
+            val asset = when (mode) {
+                "translit" -> "quran_transliteration.txt"
+                else -> "quran_translation_$mode.txt"
+            }
+            runCatching { loadMap(asset) }.getOrDefault(emptyMap())
+        }
+    }
+
+    fun layer(mode: String, verseKey: String): String? {
+        preload(mode)
+        return caches[mode]?.get(verseKey)
+    }
 
     fun searchVerses(query: String, limit: Int = 50): List<Verse> {
         val term = ArabicText.normalize(query.trim())
@@ -52,6 +69,14 @@ class QuranRepository(private val context: Context) {
             .take(limit)
             .toList()
     }
+
+    private fun loadMap(asset: String): Map<String, String> =
+        context.assets.open(asset).bufferedReader().useLines { lines ->
+            lines.mapNotNull { line ->
+                val separator = line.indexOf('|')
+                if (separator <= 0) null else line.substring(0, separator) to line.substring(separator + 1)
+            }.toMap()
+        }
 
     private fun loadSurahs(): List<Surah> =
         context.assets.open("quran_surahs.txt").bufferedReader().useLines { lines ->

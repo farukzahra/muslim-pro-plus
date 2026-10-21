@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -14,11 +15,14 @@ class SettingsRepository(private val context: Context) {
     private val cityKey = stringPreferencesKey("city_id")
     private val methodKey = stringPreferencesKey("prayer_method")
     private val notificationsKey = booleanPreferencesKey("notifications_enabled")
+    private val quranModesKey = stringSetPreferencesKey("quran_modes")
 
     val cityId: Flow<String> = context.dataStore.data.map { it[cityKey] ?: "sao-paulo" }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
     val notificationsEnabled: Flow<Boolean> =
         context.dataStore.data.map { it[notificationsKey] ?: true }
+    val quranModes: Flow<Set<String>> =
+        context.dataStore.data.map { it[quranModesKey] ?: setOf("ar") }
 
     suspend fun setCity(id: String) {
         context.dataStore.edit { it[cityKey] = id }
@@ -30,5 +34,9 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setNotificationsEnabled(enabled: Boolean) {
         context.dataStore.edit { it[notificationsKey] = enabled }
+    }
+
+    suspend fun setQuranModes(modes: Set<String>) {
+        context.dataStore.edit { it[quranModesKey] = modes }
     }
 }

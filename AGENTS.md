@@ -42,6 +42,11 @@ docs/superpowers/{specs,plans}/
 
 - Nenhuma string de UI no código. Toda string nova entra nos 3 locales;
   `LocaleParityTest` quebra o build se faltar.
+- **Toda língua nova exige Alcorão na língua nova**: ao adicionar um locale em
+  `AppLocale.supported`, rode `python tools/quran/build_quran_data.py` com o
+  novo `TRANSLATIONS` (resource id do Quran.com) e gere
+  `quran_translation_<tag>.txt`. O `QuranLocaleCoverageTest` quebra o build se
+  o asset faltar ou não tiver 6.236 versos.
 - Primeira execução segue o locale do aparelho; fallback `en`.
 - RTL desde o primeiro layout (`start/end`, `supportsRtl`).
 - Sem conta, ads, analytics ou backend.

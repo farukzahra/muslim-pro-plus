@@ -31,6 +31,11 @@
     <string name="qibla_distance">حوالي %1$d كم إلى مكة</string>
     <string name="quran_search">بحث عن سورة</string>
     <string name="quran_verses">%1$d آيات</string>
+    <string name="quran_display">العرض</string>
+    <string name="quran_arabic">العربية</string>
+    <string name="quran_transliteration">النقل الحرفي</string>
+    <string name="quran_keep_one">أبقِ طبقة واحدة على الأقل محددة.</string>
+    <string name="action_ok">حسنًا</string>
     <string name="qibla_calibration">حرّك الجهاز على شكل الرقم 8 للمعايرة.</string>
     <string name="qibla_no_sensor">لا توجد بوصلة في هذا الجهاز. الزاوية المعروضة هي اتجاه مكة من الشمال الحقيقي.</string>
 </resources>
