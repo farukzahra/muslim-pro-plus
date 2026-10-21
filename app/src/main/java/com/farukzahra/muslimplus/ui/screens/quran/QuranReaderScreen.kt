@@ -1,13 +1,16 @@
 package com.farukzahra.muslimplus.ui.screens.quran
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Settings
@@ -23,11 +26,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -40,6 +45,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.quran.Verse
+import com.farukzahra.muslimplus.quran.VerseRef
+import com.farukzahra.muslimplus.ui.components.BookmarkFilled
+import com.farukzahra.muslimplus.ui.components.BookmarkOutline
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 private data class LayerOption(val mode: String, val labelRes: Int)
 
@@ -58,7 +67,21 @@ fun QuranReaderScreen(
 ) {
     val state = viewModel.state.collectAsState().value ?: return
     val modes by viewModel.modes.collectAsState()
+    val bookmarks by viewModel.bookmarks.collectAsState()
     var showOptions by remember { mutableStateOf(false) }
+    val listState = rememberLazyListState()
+
+    // Restaura a posicao uma unica vez: depois disso, rolar e do usuario.
+    LaunchedEffect(state.startIndex) {
+        state.startIndex?.let { if (it > 0) listState.scrollToItem(it) }
+    }
+
+    // Primeiro verso visivel -> ultima leitura (o ViewModel aplica o debounce).
+    LaunchedEffect(state.verses) {
+        snapshotFlow { listState.firstVisibleItemIndex }
+            .distinctUntilChanged()
+            .collect { index -> state.verses.getOrNull(index)?.let(viewModel::onVerseVisible) }
+    }
 
     Scaffold(
         topBar = {
@@ -84,14 +107,17 @@ fun QuranReaderScreen(
         },
     ) { padding ->
         LazyColumn(
+            state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            items(state.verses) { verse ->
+            items(state.verses, key = { verse -> verse.ayah }) { verse ->
                 VerseBlock(
                     verse = verse,
                     modes = modes,
+                    bookmarked = VerseRef(verse.surah, verse.ayah) in bookmarks,
+                    onToggleBookmark = { viewModel.toggleBookmark(verse) },
                     layer = { mode -> viewModel.layer(mode, verse) },
                 )
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f))
@@ -144,12 +170,14 @@ fun QuranReaderScreen(
 private fun VerseBlock(
     verse: Verse,
     modes: Set<String>,
+    bookmarked: Boolean,
+    onToggleBookmark: () -> Unit,
     layer: (String) -> String?,
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp, vertical = 14.dp),
+            .padding(start = 20.dp, end = 8.dp, top = 14.dp, bottom = 6.dp),
     ) {
         if ("ar" in modes) {
             Text(
@@ -161,6 +189,7 @@ private fun VerseBlock(
                     color = MaterialTheme.colorScheme.onSurface,
                     textDirection = TextDirection.Rtl,
                 ),
+                modifier = Modifier.padding(end = 12.dp),
             )
         }
         if ("translit" in modes) {
@@ -170,7 +199,7 @@ private fun VerseBlock(
                     fontSize = 15.sp,
                     fontStyle = FontStyle.Italic,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 8.dp),
+                    modifier = Modifier.padding(top = 8.dp, end = 12.dp),
                 )
             }
         }
@@ -181,18 +210,35 @@ private fun VerseBlock(
                         text = it,
                         fontSize = 16.sp,
                         color = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.padding(top = 8.dp),
+                        modifier = Modifier.padding(top = 8.dp, end = 12.dp),
                     )
                 }
             }
         }
-        Text(
-            text = "${verse.surah}:${verse.ayah}",
-            fontSize = 12.sp,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier
-                .align(Alignment.End)
-                .padding(top = 6.dp),
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(R.string.verse_reference, verse.surah, verse.ayah),
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            IconButton(onClick = onToggleBookmark) {
+                Icon(
+                    imageVector = if (bookmarked) BookmarkFilled else BookmarkOutline,
+                    contentDescription = stringResource(
+                        if (bookmarked) R.string.quran_bookmark_remove else R.string.quran_bookmark_add,
+                    ),
+                    tint = if (bookmarked) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    },
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
     }
 }

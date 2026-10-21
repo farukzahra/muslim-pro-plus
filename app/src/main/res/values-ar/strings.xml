@@ -57,6 +57,11 @@
     <string name="quran_arabic">العربية</string>
     <string name="quran_transliteration">النقل الحرفي</string>
     <string name="quran_keep_one">أبقِ طبقة واحدة على الأقل محددة.</string>
+    <string name="quran_continue_title">متابعة من حيث توقفت</string>
+    <string name="quran_continue_position">سورة %1$s · الآية %2$d</string>
+    <string name="quran_bookmark_add">إضافة علامة مرجعية</string>
+    <string name="quran_bookmark_remove">إزالة العلامة المرجعية</string>
+    <string name="quran_bookmarks_count">%1$d علامات مرجعية في هذه السورة</string>
     <string name="action_ok">حسنًا</string>
     <string name="qibla_calibration">حرّك الجهاز على شكل الرقم 8 للمعايرة.</string>
     <string name="qibla_no_sensor">لا توجد بوصلة في هذا الجهاز. الزاوية المعروضة هي اتجاه مكة من الشمال الحقيقي.</string>

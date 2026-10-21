@@ -57,6 +57,11 @@
     <string name="quran_arabic">Arabic</string>
     <string name="quran_transliteration">Transliteration</string>
     <string name="quran_keep_one">Keep at least one layer selected.</string>
+    <string name="quran_continue_title">Continue where you stopped</string>
+    <string name="quran_continue_position">Surah %1$s · verse %2$d</string>
+    <string name="quran_bookmark_add">Add bookmark</string>
+    <string name="quran_bookmark_remove">Remove bookmark</string>
+    <string name="quran_bookmarks_count">%1$d bookmarks in this surah</string>
     <string name="action_ok">OK</string>
     <string name="qibla_calibration">Move the device in a figure-8 to calibrate.</string>
     <string name="qibla_no_sensor">This device has no compass. The angle shown is the direction to Makkah from true north.</string>
