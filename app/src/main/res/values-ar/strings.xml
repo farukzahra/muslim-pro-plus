@@ -9,6 +9,8 @@
     <string name="more_language">اللغة</string>
     <string name="more_about">حول</string>
     <string name="more_notifications">الإشعارات</string>
+    <string name="more_quran_display">عرض القرآن</string>
+    <string name="more_quran_display_hint">اختر العربية والترجمة والنقل الحرفي</string>
     <string name="notifications_channel">تذكيرات الصلاة</string>
     <string name="about_version">الإصدار %1$s</string>
     <string name="language_title">لغة التطبيق</string>

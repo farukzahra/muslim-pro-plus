@@ -24,7 +24,10 @@ import com.farukzahra.muslimplus.notifications.PrayerScheduler
 import kotlinx.coroutines.launch
 
 @Composable
-fun MoreScreen(onLanguageClick: () -> Unit) {
+fun MoreScreen(
+    onLanguageClick: () -> Unit,
+    onQuranDisplayClick: () -> Unit,
+) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val settings = ServiceLocator.settings
@@ -36,6 +39,15 @@ fun MoreScreen(onLanguageClick: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = onLanguageClick)
+                .padding(horizontal = 4.dp),
+        )
+        HorizontalDivider()
+        ListItem(
+            headlineContent = { Text(stringResource(R.string.more_quran_display)) },
+            supportingContent = { Text(stringResource(R.string.more_quran_display_hint)) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onQuranDisplayClick)
                 .padding(horizontal = 4.dp),
         )
         HorizontalDivider()

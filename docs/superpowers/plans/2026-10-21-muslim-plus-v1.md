@@ -70,6 +70,9 @@ reabrir o app e cair no último verso.
 
 - Grade com 6 itens: Configurações, Idioma, Notificações, Sobre, Licenças,
   Privacidade.
+- **Exibição do Alcorão no Mais**: escolher camadas (árabe, transliteração,
+  pt-BR, inglês), pelo menos uma, mesma preferência usada no leitor.
+- **Tema**: escuro como padrão, claro disponível nas configurações.
 - Configurações: método, offsets, cidade, hijri, notificações.
 - Licenças: Tanzil (CC BY 3.0), GeoNames (CC BY 4.0), Amiri (OFL), adhan-java
   (MIT), traduções e áudio com atribuição.
@@ -106,6 +109,7 @@ Verificação: `connectedDebugAndroidTest` e E2E verdes no `Pixel6`.
 | Repositório | `old/` sai do repo público antes do Play (repo privado separado) |
 | DNS | `muslimplus.faruk.dev.br` criado antes do upload |
 | Hilt | Não entra na v1; `ServiceLocator` documentado |
+| Tema | Escuro por padrão; claro disponível nas configurações |
 | Room | Entra (marcadores, última leitura, FTS) |
 | GPS | `LocationManager` nativo, sem Play Services |
 

@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,9 +29,11 @@ import com.farukzahra.muslimplus.ui.screens.qibla.QiblaScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranListScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranReaderScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
+import com.farukzahra.muslimplus.ui.screens.settings.QuranDisplayScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
 const val LANGUAGE_ROUTE = "settings/language"
+const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
 
 @Composable
 fun MuslimPlusApp() {
@@ -42,7 +45,10 @@ fun MuslimPlusApp() {
     Scaffold(
         bottomBar = {
             if (showTabs) {
-                NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
+                NavigationBar(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    tonalElevation = 0.dp,
+                ) {
                     Tab.entries.forEach { tab ->
                         NavigationBarItem(
                             selected = currentRoute == tab.route,
@@ -89,12 +95,16 @@ fun MuslimPlusApp() {
                         Tab.QIBLA -> QiblaScreen()
                         Tab.MORE -> MoreScreen(
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
+                            onQuranDisplayClick = { navController.navigate(QURAN_DISPLAY_ROUTE) },
                         )
                     }
                 }
             }
             composable(LANGUAGE_ROUTE) {
                 LanguageScreen(onBack = { navController.popBackStack() })
+            }
+            composable(QURAN_DISPLAY_ROUTE) {
+                QuranDisplayScreen(onBack = { navController.popBackStack() })
             }
             composable(
                 route = "quran/{surah}",

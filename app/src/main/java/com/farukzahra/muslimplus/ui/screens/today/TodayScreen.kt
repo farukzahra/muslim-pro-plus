@@ -2,6 +2,7 @@ package com.farukzahra.muslimplus.ui.screens.today
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,9 +10,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -31,7 +36,6 @@ import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerSchedule
 import java.time.Duration
 import java.time.Instant
-import java.time.LocalDate
 import java.time.ZoneId
 import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
@@ -57,7 +61,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
 
     Column(modifier = Modifier.fillMaxSize()) {
         Header(
-            dateText = dateText,
+            dateText = dateText.replaceFirstChar { it.titlecase(locale) },
             hijriText = hijriText,
             city = state.city.name,
             next = state.next,
@@ -87,55 +91,57 @@ private fun Header(
     zone: ZoneId,
     locale: Locale,
 ) {
-    val primary = MaterialTheme.colorScheme.primary
-    Column(        modifier = Modifier
+    val scheme = MaterialTheme.colorScheme
+    Box(
+        modifier = Modifier
             .fillMaxWidth()
             .background(
                 Brush.verticalGradient(
-                    listOf(primary, primary.copy(alpha = 0.72f)),
+                    listOf(scheme.primaryContainer, scheme.background),
                 ),
-            )
-            .padding(horizontal = 24.dp, vertical = 22.dp),
+            ),
     ) {
-        Text(
-            text = dateText.replaceFirstChar { it.titlecase(locale) },
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onPrimary,
-        )
-        Text(
-            text = "$hijriText · $city",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f),
-        )
-        Spacer(Modifier.height(18.dp))
-        if (nextAt != null) {
+        Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 26.dp)) {
             Text(
-                text = stringResource(R.string.today_next),
+                text = dateText,
                 style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.85f),
+                color = scheme.onSurfaceVariant,
             )
             Text(
-                text = if (next == null) {
-                    stringResource(R.string.today_tomorrow_fajr)
-                } else {
-                    stringResource(prayerLabel(next))
-                },
-                style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.onPrimary,
+                text = "$hijriText · $city",
+                style = MaterialTheme.typography.bodyMedium,
+                color = scheme.onSurfaceVariant,
             )
-            Text(
-                text = formatCountdown(remainingSeconds(now, nextAt)),
-                style = MaterialTheme.typography.displayMedium,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onPrimary,
-            )
-            Text(
-                text = nextAt.atZone(zone).format(
-                    DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(locale),
-                ),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
-            )
+            Spacer(Modifier.height(26.dp))
+            if (nextAt != null) {
+                Text(
+                    text = stringResource(R.string.today_next).uppercase(locale),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = scheme.secondary,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = if (next == null) {
+                        stringResource(R.string.today_tomorrow_fajr)
+                    } else {
+                        stringResource(prayerLabel(next))
+                    },
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = scheme.onSurface,
+                )
+                Text(
+                    text = formatCountdown(remainingSeconds(now, nextAt)),
+                    style = MaterialTheme.typography.displayLarge,
+                    color = scheme.primary,
+                )
+                Text(
+                    text = nextAt.atZone(zone).format(
+                        DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(locale),
+                    ),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = scheme.onSurfaceVariant,
+                )
+            }
         }
     }
 }
@@ -149,26 +155,51 @@ private fun PrayerList(
     locale: Locale,
 ) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(Prayer.entries) { prayer ->
+        itemsIndexed(Prayer.entries) { index, prayer ->
             val at = schedule.timeOf(prayer)
             val isNext = prayer == next
             val isPast = at != null && at.isBefore(now)
+            val scheme = MaterialTheme.colorScheme
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 16.dp),
+                    .background(if (isNext) scheme.primary.copy(alpha = 0.08f) else scheme.background)
+                    .padding(horizontal = 24.dp, vertical = 14.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Box(
+                        modifier = Modifier
+                            .size(if (isNext) 12.dp else 8.dp)
+                            .clip(CircleShape)
+                            .background(
+                                when {
+                                    isNext -> scheme.primary
+                                    isPast -> scheme.outline.copy(alpha = 0.5f)
+                                    else -> scheme.outline
+                                },
+                            ),
+                    )
+                    if (index < Prayer.entries.lastIndex) {
+                        Box(
+                            modifier = Modifier
+                                .width(1.dp)
+                                .height(26.dp)
+                                .background(scheme.outlineVariant),
+                        )
+                    }
+                }
+                Spacer(Modifier.width(16.dp))
                 Text(
                     text = stringResource(prayerLabel(prayer)),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = if (isNext) FontWeight.Bold else FontWeight.Normal,
                     color = when {
-                        isNext -> MaterialTheme.colorScheme.primary
-                        isPast -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.45f)
-                        else -> MaterialTheme.colorScheme.onSurface
+                        isNext -> scheme.primary
+                        isPast -> scheme.onSurface.copy(alpha = 0.4f)
+                        else -> scheme.onSurface
                     },
+                    modifier = Modifier.weight(1f),
                 )
                 Text(
                     text = at?.atZone(zone)?.format(
@@ -177,13 +208,12 @@ private fun PrayerList(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = if (isNext) FontWeight.Bold else FontWeight.Normal,
                     color = when {
-                        isNext -> MaterialTheme.colorScheme.primary
-                        isPast -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.45f)
-                        else -> MaterialTheme.colorScheme.onSurface
+                        isNext -> scheme.primary
+                        isPast -> scheme.onSurface.copy(alpha = 0.4f)
+                        else -> scheme.onSurface
                     },
                 )
             }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f))
         }
     }
 }
