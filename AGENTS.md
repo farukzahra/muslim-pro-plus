@@ -55,12 +55,26 @@ docs/superpowers/{specs,plans}/
 - Segredos só em `../secrets/`; nunca no repo.
 - Toda task termina com teste verde + commit.
 
-## Workflow
+## Workflow (mandatory skills)
 
-1. Spec aprovado em `docs/superpowers/specs/`.
-2. Plano em `docs/superpowers/plans/`.
-3. TDD por task; commit a cada task.
-4. Verificação com evidência (teste, build, dump/screenshot no emulador).
+| Fase | Skill / comando | Regra |
+|---|---|---|
+| Design | `brainstorming` | Sem código antes do spec aprovado em `docs/superpowers/specs/` |
+| Plano | `writing-plans` | `docs/superpowers/plans/YYYY-MM-DD-*.md` |
+| Arquitetura | `ask-before-architecture` | Perguntar antes de stack/estrutura |
+| Build | TDD | Teste antes do código, commit por task |
+| Debug | `systematic-debugging` | Causa raiz antes de corrigir |
+| UI / bugs | `ui-change-e2e` | E2E em toda mudança de tela |
+| Recorrência | `dont-forget` | Virar teste/CI, não lembrete em prosa |
+| Automação | `automate-before-manual` | `../secrets/` e API antes de passo manual |
+| Links | `validate-before-share` | HTTP 200 + conteúdo antes de mandar URL |
+| Verificação | `verification-before-completion` | Evidência antes de dizer "pronto" |
+| Ship | `/commit-push` | `semantic-version` → `caveman-commit` → push |
+| Recap | `/recap` | HTML pedido × entregue em `docs/session-recaps/` |
+| Handoff | `/handoff` | Documento compacto para a próxima sessão |
+
+**Gates:** sem feature sem spec aprovado; sem "pronto" sem verificação;
+todo idioma novo exige Alcorão no idioma novo (teste quebra o build).
 
 ## Idioma
 
