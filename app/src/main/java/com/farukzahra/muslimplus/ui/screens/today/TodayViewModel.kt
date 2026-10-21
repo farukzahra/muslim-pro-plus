@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.location.City
-import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.notifications.ExactAlarms
 import com.farukzahra.muslimplus.notifications.PrayerScheduler
 import com.farukzahra.muslimplus.prayer.Prayer
@@ -73,7 +72,7 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
             }
                 .distinctUntilChanged()
                 .collectLatest { config ->
-                    val city = CityCatalog.byId(config.cityId)
+                    val city = ServiceLocator.cities.byId(config.cityId)
                     val method = runCatching { PrayerMethod.valueOf(config.methodName) }
                         .getOrDefault(PrayerMethod.MWL)
                     // collectLatest cancela este loop quando cidade, metodo,

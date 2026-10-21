@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,6 +17,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -26,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,7 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
-import com.farukzahra.muslimplus.location.CityCatalog
+import com.farukzahra.muslimplus.location.City
+import com.farukzahra.muslimplus.location.CountryNames
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerMethod
 import com.farukzahra.muslimplus.prayer.PrayerOffsets
@@ -155,9 +159,8 @@ fun PrayersScreen(viewModel: PrayersViewModel = viewModel()) {
     }
 
     if (showCities) {
-        ChoiceDialog(
-            title = stringResource(R.string.prayers_city),
-            options = CityCatalog.cities.map { it.id to "${it.name} · ${it.country}" },
+        CityDialog(
+            onSearch = viewModel::searchCities,
             onPick = { viewModel.selectCity(it) },
             onDismiss = { showCities = false },
         )
@@ -240,6 +243,73 @@ private fun OffsetsDialog(
 
 private fun offsetLabel(minutes: Int): String =
     if (minutes > 0) "+$minutes" else minutes.toString()
+
+@Composable
+private fun CityDialog(
+    onSearch: (String) -> List<City>,
+    onPick: (String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    var query by remember { mutableStateOf("") }
+    val locale = LocalConfiguration.current.locales[0]
+    // Busca sincrona no catalogo em memoria; 3000 nomes pre-normalizados.
+    val results = remember(query) { onSearch(query) }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.prayers_city)) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = query,
+                    onValueChange = { query = it },
+                    label = { Text(stringResource(R.string.prayers_city_search)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                if (results.isEmpty()) {
+                    Text(
+                        text = stringResource(R.string.prayers_city_none),
+                        modifier = Modifier.padding(vertical = 16.dp),
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(max = 320.dp)
+                            .padding(top = 8.dp),
+                    ) {
+                        items(results, key = { it.id }) { city ->
+                            Text(
+                                text = stringResource(
+                                    R.string.city_with_country,
+                                    city.name,
+                                    CountryNames.display(city.countryCode, locale),
+                                ),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        onPick(city.id)
+                                        onDismiss()
+                                    }
+                                    .padding(vertical = 12.dp),
+                                fontSize = 16.sp,
+                            )
+                            HorizontalDivider()
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {},
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.action_cancel))
+            }
+        },
+    )
+}
 
 @Composable
 private fun ChoiceDialog(

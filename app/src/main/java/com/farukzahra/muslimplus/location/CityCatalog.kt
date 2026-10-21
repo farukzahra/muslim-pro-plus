@@ -1,48 +1,140 @@
 package com.farukzahra.muslimplus.location
 
+import android.content.Context
+import java.text.Normalizer
+import java.util.Locale
+
+/**
+ * Cidade do catalogo GeoNames (cities5000), ordenada por populacao decrescente.
+ *
+ * [countryCode] e o codigo ISO de duas letras do asset; o nome do pais e
+ * resolvido na UI no idioma do app (`Locale`), para nao embarcar 3000 nomes
+ * de pais traduzidos.
+ */
 data class City(
     val id: String,
     val name: String,
-    val country: String,
+    val asciiName: String,
+    val countryCode: String,
     val latitude: Double,
     val longitude: Double,
     val zoneId: String,
+    val population: Int,
 )
 
 /**
- * Subset inicial de cidades. O catalogo completo (GeoNames cities5000) entra
- * no milestone de localizacao; aqui ficam as capitais mais usadas.
+ * Catalogo em memoria lido de `assets/cities.txt` (gerado por
+ * `tools/cities/build_cities.py`).
+ *
+ * O conteudo inteiro cabe em memoria (~3000 cidades) e e carregado uma vez;
+ * a busca nao toca em disco.
  */
-object CityCatalog {
-    val cities: List<City> = listOf(
-        City("sao-paulo", "São Paulo", "Brasil", -23.5505, -46.6333, "America/Sao_Paulo"),
-        City("rio", "Rio de Janeiro", "Brasil", -22.9068, -43.1729, "America/Sao_Paulo"),
-        City("brasilia", "Brasília", "Brasil", -15.7939, -47.8828, "America/Sao_Paulo"),
-        City("salvador", "Salvador", "Brasil", -12.9777, -38.5016, "America/Bahia"),
-        City("makkah", "Makkah", "Arábia Saudita", 21.4225, 39.8262, "Asia/Riyadh"),
-        City("madinah", "Madinah", "Arábia Saudita", 24.4672, 39.6111, "Asia/Riyadh"),
-        City("cairo", "Cairo", "Egito", 30.0444, 31.2357, "Africa/Cairo"),
-        City("istanbul", "Istambul", "Turquia", 41.0082, 28.9784, "Europe/Istanbul"),
-        City("dubai", "Dubai", "Emirados Árabes", 25.2048, 55.2708, "Asia/Dubai"),
-        City("london", "Londres", "Reino Unido", 51.5074, -0.1278, "Europe/London"),
-        City("lisbon", "Lisboa", "Portugal", 38.7223, -9.1393, "Europe/Lisbon"),
-        City("paris", "Paris", "França", 48.8566, 2.3522, "Europe/Paris"),
-        City("new-york", "Nova York", "EUA", 40.7128, -74.0060, "America/New_York"),
-        City("toronto", "Toronto", "Canadá", 43.6532, -79.3832, "America/Toronto"),
-        City("jakarta", "Jacarta", "Indonésia", -6.2088, 106.8456, "Asia/Jakarta"),
-        City("kuala-lumpur", "Kuala Lumpur", "Malásia", 3.1390, 101.6869, "Asia/Kuala_Lumpur"),
-        City("lagos", "Lagos", "Nigéria", 6.5244, 3.3792, "Africa/Lagos"),
-        City("cape-town", "Cidade do Cabo", "África do Sul", -33.9249, 18.4241, "Africa/Johannesburg"),
-    )
+class CityCatalog(cities: List<City>) {
 
-    fun byId(id: String): City = cities.firstOrNull { it.id == id } ?: cities.first()
+    private val cities: List<City> = cities.toList()
+    private val index: Map<String, City> = this.cities.associateBy(City::id)
 
-    fun search(query: String): List<City> {
-        val term = query.trim()
-        if (term.isEmpty()) return cities
-        return cities.filter {
-            it.name.contains(term, ignoreCase = true) ||
-                it.country.contains(term, ignoreCase = true)
+    /**
+     * Texto normalizado de cada cidade (nome + asciiname). Pre-corrigido na
+     * construcao para a busca nao normalizar 3000 nomes a cada tecla.
+     */
+    private val haystacks: List<Pair<String, City>> = this.cities.map { city ->
+        normalize("${city.name} ${city.asciiName}") to city
+    }
+
+    fun all(): List<City> = cities
+
+    fun byIdOrNull(id: String): City? = index[id]
+
+    /** Id desconhecido (dado antigo ou corrompido) cai na primeira cidade. */
+    fun byId(id: String): City = index[id] ?: first()
+
+    fun first(): City = cities.firstOrNull() ?: error("catalogo de cidades vazio")
+
+    /**
+     * Busca por nome/asciiname sem diferenciar acento nem caixa.
+     *
+     * Todos os termos precisam aparecer, entao "sao paulo" acha "São Paulo".
+     * O resultado segue a ordem do catalogo (populacao decrescente) e para em
+     * [limit]; consulta vazia devolve as primeiras cidades.
+     */
+    fun search(query: String, limit: Int = MAX_RESULTS): List<City> {
+        val terms = normalize(query).split(' ').filter { it.isNotEmpty() }
+        if (terms.isEmpty()) return cities.take(limit)
+        val found = ArrayList<City>(minOf(limit, 64))
+        for ((haystack, city) in haystacks) {
+            if (terms.all { haystack.contains(it) }) {
+                found += city
+                if (found.size >= limit) break
+            }
         }
+        return found
+    }
+
+    /** Maior cidade do fuso, para o padrao quando nao ha cidade salva. */
+    fun defaultForZone(zoneId: String): City? =
+        cities.filter { it.zoneId == zoneId }.maxByOrNull { it.population }
+
+    companion object {
+        const val ASSET = "cities.txt"
+        const val MAX_RESULTS = 60
+
+        fun fromAsset(context: Context): CityCatalog {
+            val cities = context.assets.open(ASSET).bufferedReader().useLines { lines ->
+                lines.mapNotNull(::parse).toList()
+            }
+            check(cities.isNotEmpty()) { "$ASSET sem cidades; rode tools/cities/build_cities.py" }
+            return CityCatalog(cities)
+        }
+
+        /** Entrada dos testes JVM, que nao tem `Context` para ler o asset. */
+        fun fromLines(lines: List<String>): CityCatalog =
+            CityCatalog(lines.mapNotNull(::parse))
+
+        /** Linha do asset: `id|name|asciiname|countryCode|lat|lon|zone|population`. */
+        fun parse(line: String): City? {
+            val parts = line.split('|')
+            if (parts.size < 7) return null
+            val zone = parts[6].trim()
+            if (zone.isEmpty()) return null
+            return City(
+                id = parts[0].trim(),
+                name = parts[1].trim(),
+                asciiName = parts[2].trim(),
+                countryCode = parts[3].trim(),
+                latitude = parts[4].trim().toDoubleOrNull() ?: return null,
+                longitude = parts[5].trim().toDoubleOrNull() ?: return null,
+                zoneId = zone,
+                population = parts.getOrNull(7)?.trim()?.toIntOrNull() ?: 0,
+            )
+        }
+
+        private val accents = Regex("\\p{Mn}+")
+        private val spaces = Regex("\\s+")
+
+        /** Minusculas, sem acento e com letras que o NFD nao decompoe. */
+        fun normalize(text: String): String {
+            val decomposed = Normalizer.normalize(text, Normalizer.Form.NFD)
+            var plain = accents.replace(decomposed, "").lowercase(Locale.ROOT)
+            plain = plain
+                .replace("ß", "ss")
+                .replace("æ", "ae")
+                .replace("ø", "o")
+                .replace("ł", "l")
+                .replace("đ", "d")
+                .replace("ı", "i")
+                .replace("þ", "th")
+            return spaces.replace(plain, " ").trim()
+        }
+    }
+}
+
+/** Nome do pais para exibir na UI, no idioma do app. */
+object CountryNames {
+    fun display(countryCode: String, locale: Locale): String {
+        if (countryCode.isEmpty()) return ""
+        return runCatching {
+            Locale.Builder().setRegion(countryCode).build().getDisplayCountry(locale)
+        }.getOrDefault(countryCode)
     }
 }

@@ -5,6 +5,7 @@ import com.farukzahra.muslimplus.prayer.NextPrayerResolver
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerMethod
 import com.farukzahra.muslimplus.prayer.PrayerOffsets
+import java.io.File
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
@@ -14,7 +15,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class NextPrayerTest {
-    private val city = CityCatalog.byId("sao-paulo")
+    private val catalog = CityCatalog.fromLines(
+        File("src/main/assets/cities.txt").readLines(Charsets.UTF_8),
+    )
+    private val city = catalog.defaultForZone("America/Sao_Paulo")!!
     private val zone = ZoneId.of(city.zoneId)
 
     private fun instantAt(hour: Int, minute: Int): Instant =

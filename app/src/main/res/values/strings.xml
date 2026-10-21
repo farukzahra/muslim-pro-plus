@@ -42,6 +42,9 @@
     <string name="prayer_maghrib">Maghrib</string>
     <string name="prayer_isha">Isha</string>
     <string name="prayers_city">City</string>
+    <string name="prayers_city_search">Search city</string>
+    <string name="prayers_city_none">No city found</string>
+    <string name="city_with_country">%1$s · %2$s</string>
     <string name="prayers_method">Method</string>
     <string name="prayers_adjust">Adjust</string>
     <string name="prayers_offsets_title">Prayer time adjustments</string>

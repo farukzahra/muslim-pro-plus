@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.location.City
-import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerEngine
 import com.farukzahra.muslimplus.prayer.PrayerMethod
@@ -36,6 +35,7 @@ data class PrayersUiState(
 
 class PrayersViewModel(application: Application) : AndroidViewModel(application) {
     private val settings = ServiceLocator.settings
+    private val cities = ServiceLocator.cities
     private val _state = MutableStateFlow<PrayersUiState?>(null)
     val state: StateFlow<PrayersUiState?> = _state.asStateFlow()
 
@@ -56,6 +56,9 @@ class PrayersViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch { settings.setCity(id) }
     }
 
+    /** Busca no catalogo (nome/asciiname), usada pelo dialogo de cidade. */
+    fun searchCities(query: String): List<City> = cities.search(query)
+
     fun selectMethod(name: String) {
         viewModelScope.launch { settings.setMethod(name) }
     }
@@ -70,7 +73,7 @@ class PrayersViewModel(application: Application) : AndroidViewModel(application)
         methodName: String,
         offsets: Map<Prayer, Int>,
     ): PrayersUiState {
-        val city = CityCatalog.byId(cityId)
+        val city = cities.byId(cityId)
         val method = runCatching { PrayerMethod.valueOf(methodName) }.getOrDefault(PrayerMethod.MWL)
         val zone = ZoneId.of(city.zoneId)
         val today = LocalDate.now(zone)

@@ -10,7 +10,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.location.City
-import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.qibla.QiblaMath
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,7 +38,7 @@ class QiblaViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             combine(settings.cityId, azimuthFlow()) { cityId, azimuth -> cityId to azimuth }
                 .collect { (cityId, azimuth) ->
-                    val city = CityCatalog.byId(cityId)
+                    val city = ServiceLocator.cities.byId(cityId)
                     _state.value = QiblaUiState(
                         city = city,
                         bearing = QiblaMath.bearingToKaaba(city.latitude, city.longitude),

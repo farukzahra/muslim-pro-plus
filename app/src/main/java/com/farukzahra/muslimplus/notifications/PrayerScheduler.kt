@@ -5,7 +5,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import com.farukzahra.muslimplus.ServiceLocator
-import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.NextPrayerResolver
 import com.farukzahra.muslimplus.prayer.PrayerMethod
 import java.time.Instant
@@ -28,7 +27,7 @@ class PrayerScheduler(private val context: Context) {
             cancel()
             return
         }
-        val city = CityCatalog.byId(settings.cityId.first())
+        val city = ServiceLocator.cities.byId(settings.cityId.first())
         val method = runCatching { PrayerMethod.valueOf(settings.methodName.first()) }
             .getOrDefault(PrayerMethod.MWL)
         val offsets = settings.prayerOffsets.first()

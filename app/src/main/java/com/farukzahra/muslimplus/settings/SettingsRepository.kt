@@ -7,14 +7,19 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerOffsets
+import java.time.ZoneId
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 private val Context.dataStore by preferencesDataStore(name = "settings")
 
-class SettingsRepository(private val context: Context) {
+class SettingsRepository(
+    private val context: Context,
+    private val cities: CityCatalog = CityCatalog.fromAsset(context),
+) {
     private val cityKey = stringPreferencesKey("city_id")
     private val methodKey = stringPreferencesKey("prayer_method")
     private val notificationsKey = booleanPreferencesKey("notifications_enabled")
@@ -23,7 +28,14 @@ class SettingsRepository(private val context: Context) {
     private val prayerOffsetsKey = stringPreferencesKey("prayer_offsets")
     private val hijriOffsetKey = intPreferencesKey("hijri_offset")
 
-    val cityId: Flow<String> = context.dataStore.data.map { it[cityKey] ?: "sao-paulo" }
+    /**
+     * Cidade escolhida ou, sem escolha (primeira execucao), a maior cidade do
+     * fuso do aparelho. Id salvo que o catalogo nao conhece (formato antigo)
+     * tambem cai no padrao do fuso. Sem cidade no fuso, a primeira do catalogo.
+     */
+    val cityId: Flow<String> = context.dataStore.data.map { preferences ->
+        preferences[cityKey]?.let(cities::byIdOrNull)?.id ?: defaultCityId()
+    }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
     val notificationsEnabled: Flow<Boolean> =
         context.dataStore.data.map { it[notificationsKey] ?: true }
@@ -85,4 +97,7 @@ class SettingsRepository(private val context: Context) {
             preferences[prayerOffsetsKey] = PrayerOffsets.encode(updated)
         }
     }
+
+    private fun defaultCityId(): String =
+        cities.defaultForZone(ZoneId.systemDefault().id)?.id ?: cities.first().id
 }

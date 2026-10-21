@@ -42,6 +42,9 @@
     <string name="prayer_maghrib">المغرب</string>
     <string name="prayer_isha">العشاء</string>
     <string name="prayers_city">المدينة</string>
+    <string name="prayers_city_search">بحث عن مدينة</string>
+    <string name="prayers_city_none">لم يتم العثور على مدينة</string>
+    <string name="city_with_country">%1$s · %2$s</string>
     <string name="prayers_method">الطريقة</string>
     <string name="prayers_adjust">التعديلات</string>
     <string name="prayers_offsets_title">تعديل أوقات الصلاة</string>
