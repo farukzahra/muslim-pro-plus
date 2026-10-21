@@ -7,8 +7,12 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.core.content.ContextCompat
 import com.farukzahra.muslimplus.notifications.PrayerScheduler
+import com.farukzahra.muslimplus.settings.SettingsRepository
 import com.farukzahra.muslimplus.ui.MuslimPlusApp
 import com.farukzahra.muslimplus.ui.theme.MuslimPlusTheme
 
@@ -30,7 +34,13 @@ class MainActivity : AppCompatActivity() {
         PrayerScheduler(this).reschedule()
 
         setContent {
-            MuslimPlusTheme {
+            val mode by ServiceLocator.settings.themeMode.collectAsState(initial = "dark")
+            val dark = when (mode) {
+                "light" -> false
+                "system" -> isSystemInDarkTheme()
+                else -> true
+            }
+            MuslimPlusTheme(darkTheme = dark) {
                 MuslimPlusApp()
             }
         }

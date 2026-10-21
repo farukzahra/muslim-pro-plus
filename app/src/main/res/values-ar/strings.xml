@@ -11,6 +11,10 @@
     <string name="more_notifications">الإشعارات</string>
     <string name="more_quran_display">عرض القرآن</string>
     <string name="more_quran_display_hint">اختر العربية والترجمة والنقل الحرفي</string>
+    <string name="more_theme">المظهر</string>
+    <string name="theme_dark">داكن</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_system">النظام</string>
     <string name="notifications_channel">تذكيرات الصلاة</string>
     <string name="about_version">الإصدار %1$s</string>
     <string name="language_title">لغة التطبيق</string>

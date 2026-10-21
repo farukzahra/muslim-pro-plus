@@ -27,6 +27,7 @@ import kotlinx.coroutines.launch
 fun MoreScreen(
     onLanguageClick: () -> Unit,
     onQuranDisplayClick: () -> Unit,
+    onThemeClick: () -> Unit,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -48,6 +49,14 @@ fun MoreScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(onClick = onQuranDisplayClick)
+                .padding(horizontal = 4.dp),
+        )
+        HorizontalDivider()
+        ListItem(
+            headlineContent = { Text(stringResource(R.string.more_theme)) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onThemeClick)
                 .padding(horizontal = 4.dp),
         )
         HorizontalDivider()

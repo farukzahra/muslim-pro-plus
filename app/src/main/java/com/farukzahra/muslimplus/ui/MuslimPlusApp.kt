@@ -30,10 +30,12 @@ import com.farukzahra.muslimplus.ui.screens.quran.QuranListScreen
 import com.farukzahra.muslimplus.ui.screens.quran.QuranReaderScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
 import com.farukzahra.muslimplus.ui.screens.settings.QuranDisplayScreen
+import com.farukzahra.muslimplus.ui.screens.settings.ThemeScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
 const val LANGUAGE_ROUTE = "settings/language"
 const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
+const val THEME_ROUTE = "settings/theme"
 
 @Composable
 fun MuslimPlusApp() {
@@ -96,6 +98,7 @@ fun MuslimPlusApp() {
                         Tab.MORE -> MoreScreen(
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
                             onQuranDisplayClick = { navController.navigate(QURAN_DISPLAY_ROUTE) },
+                            onThemeClick = { navController.navigate(THEME_ROUTE) },
                         )
                     }
                 }
@@ -105,6 +108,9 @@ fun MuslimPlusApp() {
             }
             composable(QURAN_DISPLAY_ROUTE) {
                 QuranDisplayScreen(onBack = { navController.popBackStack() })
+            }
+            composable(THEME_ROUTE) {
+                ThemeScreen(onBack = { navController.popBackStack() })
             }
             composable(
                 route = "quran/{surah}",

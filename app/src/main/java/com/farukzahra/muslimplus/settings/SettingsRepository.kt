@@ -16,6 +16,7 @@ class SettingsRepository(private val context: Context) {
     private val methodKey = stringPreferencesKey("prayer_method")
     private val notificationsKey = booleanPreferencesKey("notifications_enabled")
     private val quranModesKey = stringSetPreferencesKey("quran_modes")
+    private val themeKey = stringPreferencesKey("theme_mode")
 
     val cityId: Flow<String> = context.dataStore.data.map { it[cityKey] ?: "sao-paulo" }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
@@ -23,6 +24,8 @@ class SettingsRepository(private val context: Context) {
         context.dataStore.data.map { it[notificationsKey] ?: true }
     val quranModes: Flow<Set<String>> =
         context.dataStore.data.map { it[quranModesKey] ?: setOf("ar") }
+    val themeMode: Flow<String> =
+        context.dataStore.data.map { it[themeKey] ?: "dark" }
 
     suspend fun setCity(id: String) {
         context.dataStore.edit { it[cityKey] = id }
@@ -38,5 +41,9 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setQuranModes(modes: Set<String>) {
         context.dataStore.edit { it[quranModesKey] = modes }
+    }
+
+    suspend fun setThemeMode(mode: String) {
+        context.dataStore.edit { it[themeKey] = mode }
     }
 }
