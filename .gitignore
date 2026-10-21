@@ -30,6 +30,8 @@ old/tools/*.zip
 __pycache__/
 *.pyc
 *.png
+# Assets de loja versionados (ícone, feature graphic, screenshots)
+!docs/store/**/*.png
 
 # Sistema
 Thumbs.db
