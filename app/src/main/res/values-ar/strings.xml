@@ -29,6 +29,8 @@
     <string name="prayers_method">الطريقة</string>
     <string name="action_cancel">إلغاء</string>
     <string name="qibla_distance">حوالي %1$d كم إلى مكة</string>
+    <string name="quran_search">بحث عن سورة</string>
+    <string name="quran_verses">%1$d آيات</string>
     <string name="qibla_calibration">حرّك الجهاز على شكل الرقم 8 للمعايرة.</string>
     <string name="qibla_no_sensor">لا توجد بوصلة في هذا الجهاز. الزاوية المعروضة هي اتجاه مكة من الشمال الحقيقي.</string>
 </resources>

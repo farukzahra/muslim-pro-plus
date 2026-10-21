@@ -13,16 +13,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.ui.nav.Tab
 import com.farukzahra.muslimplus.ui.screens.PlaceholderScreen
 import com.farukzahra.muslimplus.ui.screens.more.MoreScreen
 import com.farukzahra.muslimplus.ui.screens.prayers.PrayersScreen
 import com.farukzahra.muslimplus.ui.screens.qibla.QiblaScreen
+import com.farukzahra.muslimplus.ui.screens.quran.QuranListScreen
+import com.farukzahra.muslimplus.ui.screens.quran.QuranReaderScreen
 import com.farukzahra.muslimplus.ui.screens.settings.LanguageScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
@@ -79,16 +83,24 @@ fun MuslimPlusApp() {
                     when (tab) {
                         Tab.TODAY -> TodayScreen()
                         Tab.PRAYERS -> PrayersScreen()
+                        Tab.QURAN -> QuranListScreen(
+                            onOpenSurah = { surah -> navController.navigate("quran/$surah") },
+                        )
                         Tab.QIBLA -> QiblaScreen()
                         Tab.MORE -> MoreScreen(
                             onLanguageClick = { navController.navigate(LANGUAGE_ROUTE) },
                         )
-                        else -> PlaceholderScreen(title = stringResource(tab.labelRes))
                     }
                 }
             }
             composable(LANGUAGE_ROUTE) {
                 LanguageScreen(onBack = { navController.popBackStack() })
+            }
+            composable(
+                route = "quran/{surah}",
+                arguments = listOf(navArgument("surah") { type = NavType.IntType }),
+            ) {
+                QuranReaderScreen(onBack = { navController.popBackStack() })
             }
         }
     }

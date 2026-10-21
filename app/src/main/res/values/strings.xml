@@ -29,6 +29,8 @@
     <string name="prayers_method">Method</string>
     <string name="action_cancel">Cancel</string>
     <string name="qibla_distance">About %1$d km to Makkah</string>
+    <string name="quran_search">Search surah</string>
+    <string name="quran_verses">%1$d verses</string>
     <string name="qibla_calibration">Move the device in a figure-8 to calibrate.</string>
     <string name="qibla_no_sensor">This device has no compass. The angle shown is the direction to Makkah from true north.</string>
 </resources>
