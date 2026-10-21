@@ -25,6 +25,8 @@
     <string name="action_back">Back</string>
     <string name="today_next">Next prayer</string>
     <string name="today_tomorrow_fajr">Tomorrow · Fajr</string>
+    <string name="today_exact_alarm_warning">Reminders may be a few minutes late</string>
+    <string name="action_allow">Allow</string>
     <string name="prayer_fajr">Fajr</string>
     <string name="prayer_sunrise">Sunrise</string>
     <string name="prayer_dhuhr">Dhuhr</string>

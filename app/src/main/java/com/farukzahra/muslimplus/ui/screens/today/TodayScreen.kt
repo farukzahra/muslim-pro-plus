@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -27,11 +28,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
+import com.farukzahra.muslimplus.notifications.ExactAlarms
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerSchedule
 import java.time.Duration
@@ -46,6 +50,12 @@ import java.util.Locale
 fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
     val state = viewModel.state.collectAsState().value ?: return
     val locale = LocalConfiguration.current.locales[0]
+
+    // Permissao de alarme exato pode ter mudado nas configuracoes do sistema.
+    LifecycleResumeEffect(viewModel) {
+        viewModel.refreshExactAlarms()
+        onPauseOrDispose { }
+    }
 
     val dateText = remember(state.date, locale) {
         state.date.format(DateTimeFormatter.ofPattern("EEEE, d MMMM", locale))
@@ -70,6 +80,9 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
             zone = state.zone,
             locale = locale,
         )
+        if (!state.exactAlarmsAvailable) {
+            ExactAlarmBanner()
+        }
         PrayerList(
             schedule = state.schedule,
             next = state.next,
@@ -142,6 +155,33 @@ private fun Header(
                     color = scheme.onSurfaceVariant,
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun ExactAlarmBanner() {
+    val context = LocalContext.current
+    val scheme = MaterialTheme.colorScheme
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(scheme.secondaryContainer)
+            .padding(start = 24.dp, end = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(R.string.today_exact_alarm_warning),
+            style = MaterialTheme.typography.bodySmall,
+            color = scheme.onSecondaryContainer,
+            modifier = Modifier.weight(1f),
+        )
+        TextButton(
+            onClick = {
+                runCatching { context.startActivity(ExactAlarms.requestIntent(context)) }
+            },
+        ) {
+            Text(stringResource(R.string.action_allow))
         }
     }
 }

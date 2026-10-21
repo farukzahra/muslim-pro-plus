@@ -4,7 +4,6 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.NextPrayerResolver
@@ -37,8 +36,7 @@ class PrayerScheduler(private val context: Context) {
 
         val alarmManager = context.getSystemService(AlarmManager::class.java)
         val pending = pendingIntent(next.prayer)
-        val canExact = Build.VERSION.SDK_INT < 31 || alarmManager.canScheduleExactAlarms()
-        if (canExact) {
+        if (ExactAlarms.isAvailable(context)) {
             alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP, next.at.toEpochMilli(), pending,
             )

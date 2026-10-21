@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.location.City
 import com.farukzahra.muslimplus.location.CityCatalog
+import com.farukzahra.muslimplus.notifications.ExactAlarms
+import com.farukzahra.muslimplus.notifications.PrayerScheduler
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerEngine
 import com.farukzahra.muslimplus.prayer.PrayerMethod
@@ -31,12 +33,32 @@ data class TodayUiState(
     val tomorrowFajr: Instant?,
     val now: Instant,
     val zone: ZoneId,
+    val exactAlarmsAvailable: Boolean,
 )
 
 class TodayViewModel(application: Application) : AndroidViewModel(application) {
     private val settings = ServiceLocator.settings
     private val _state = MutableStateFlow<TodayUiState?>(null)
     val state: StateFlow<TodayUiState?> = _state.asStateFlow()
+
+    // Lido uma vez e atualizado no ON_RESUME: canScheduleExactAlarms() consulta
+    // o appops, nao precisa rodar a cada segundo do relogio.
+    private var exactAlarmsAvailable = ExactAlarms.isAvailable(application)
+
+    /**
+     * Chamado quando a tela volta ao primeiro plano, caso o usuario tenha
+     * concedido ou revogado a permissao enquanto estava fora.
+     */
+    fun refreshExactAlarms() {
+        val available = ExactAlarms.isAvailable(getApplication())
+        if (available == exactAlarmsAvailable) return
+        exactAlarmsAvailable = available
+        _state.value = _state.value?.copy(exactAlarmsAvailable = available)
+        if (available) {
+            // O alarme atual foi agendado como inexato; refaz agora que da.
+            PrayerScheduler(getApplication()).reschedule()
+        }
+    }
 
     init {
         viewModelScope.launch {
@@ -80,6 +102,7 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
             tomorrowFajr = tomorrow.timeOf(Prayer.FAJR),
             now = now,
             zone = zone,
+            exactAlarmsAvailable = exactAlarmsAvailable,
         )
     }
 }

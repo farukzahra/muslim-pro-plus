@@ -25,6 +25,8 @@
     <string name="action_back">Voltar</string>
     <string name="today_next">Próxima oração</string>
     <string name="today_tomorrow_fajr">Amanhã · Fajr</string>
+    <string name="today_exact_alarm_warning">Avisos podem atrasar alguns minutos</string>
+    <string name="action_allow">Permitir</string>
     <string name="prayer_fajr">Fajr</string>
     <string name="prayer_sunrise">Nascer do sol</string>
     <string name="prayer_dhuhr">Dhuhr</string>

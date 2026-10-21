@@ -25,6 +25,8 @@
     <string name="action_back">رجوع</string>
     <string name="today_next">الصلاة القادمة</string>
     <string name="today_tomorrow_fajr">غدًا · الفجر</string>
+    <string name="today_exact_alarm_warning">قد تتأخر التذكيرات بضع دقائق</string>
+    <string name="action_allow">السماح</string>
     <string name="prayer_fajr">الفجر</string>
     <string name="prayer_sunrise">الشروق</string>
     <string name="prayer_dhuhr">الظهر</string>
