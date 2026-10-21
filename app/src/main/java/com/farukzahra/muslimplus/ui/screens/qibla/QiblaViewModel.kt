@@ -6,6 +6,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
@@ -57,14 +58,26 @@ class QiblaViewModel(application: Application) : AndroidViewModel(application) {
             awaitClose { }
             return@callbackFlow
         }
+        // Bussola nao precisa de 60 Hz: a agulha anda em passos de meio grau e
+        // o resto da tela nao muda. Sem o limite o Compose fica recompondo em
+        // todo evento do sensor e nunca fica ocioso (teste instrumentado nao
+        // consegue sincronizar).
+        var lastSentAt = 0L
+        var lastAzimuth: Float? = null
         val listener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent) {
+                val now = SystemClock.elapsedRealtime()
+                if (now - lastSentAt < SENSOR_INTERVAL_MS) return
                 val rotation = FloatArray(9)
                 SensorManager.getRotationMatrixFromVector(rotation, event.values)
                 val orientation = FloatArray(3)
                 SensorManager.getOrientation(rotation, orientation)
                 val magnetic = (Math.toDegrees(orientation[0].toDouble()) + 360.0) % 360.0
-                trySend(magnetic.toFloat())
+                val azimuth = Math.round(magnetic * 2.0).toFloat() / 2f
+                if (azimuth == lastAzimuth) return
+                lastSentAt = now
+                lastAzimuth = azimuth
+                trySend(azimuth)
             }
 
             override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
@@ -82,5 +95,10 @@ class QiblaViewModel(application: Application) : AndroidViewModel(application) {
             System.currentTimeMillis(),
         )
         return field.declination
+    }
+
+    private companion object {
+        /** Intervalo minimo entre duas atualizacoes da agulha. */
+        const val SENSOR_INTERVAL_MS = 80L
     }
 }

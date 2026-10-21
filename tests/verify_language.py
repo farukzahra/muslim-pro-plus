@@ -77,14 +77,33 @@ def visible_tabs():
     return {t for t, _, _ in texts(dump())} & (AR_TABS | PT_TABS)
 
 
+def dismiss_onboarding():
+    """Primeira execucao abre o onboarding; 'Pular' chega a tela inicial.
+
+    A permissao de notificacao e concedida antes de abrir o app, para o dialogo
+    do sistema nao cobrir o botao.
+    """
+    for _ in range(3):
+        labels = {t for t, _, _ in texts(dump())}
+        skip = labels & {"Pular", "Skip", "تخطّي"}
+        if not skip:
+            return True
+        tap_text(next(iter(skip)), tries=1)
+    return False
+
+
 def main():
     sh("shell", "pm", "clear", PKG)
     time.sleep(1)
+    sh("shell", "pm", "grant", PKG, "android.permission.POST_NOTIFICATIONS")
     sh("shell", "am", "force-stop", PKG)
     time.sleep(1)
     sh("shell", "am", "start", "-n", f"{PKG}/.MainActivity")
     time.sleep(5)
 
+    if not dismiss_onboarding():
+        print("FAIL onboarding nao fechou")
+        return 1
     if not tap_text("Mais"):
         print("FAIL aba Mais nao encontrada")
         return 1

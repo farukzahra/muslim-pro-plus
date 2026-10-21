@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Um push novo cancela o build anterior do mesmo branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: test + lint + assembleDebug
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      # Cache do Gradle User Home (dependencias + configuracoes de build).
+      # Em PR o cache e so leitura; so o main grava entradas novas.
+      - name: Gradle cache
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+
+      # O APK de release nao entra aqui: sem keystore o assembleRelease falha de
+      # proposito. Testes instrumentados (connectedDebugAndroidTest) e o E2E
+      # (python tests/e2e_app.py) precisam de emulador e rodam na maquina local.
+      - name: Testes, lint e APK debug
+        run: ./gradlew test lint assembleDebug --console=plain
+
+      - name: Relatorios em caso de falha
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-reports
+          path: |
+            app/build/reports/**
+            app/build/test-results/**
+          if-no-files-found: ignore
