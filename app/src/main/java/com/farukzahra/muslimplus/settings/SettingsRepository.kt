@@ -41,7 +41,9 @@ class SettingsRepository(
     val notificationsEnabled: Flow<Boolean> =
         context.dataStore.data.map { it[notificationsKey] ?: true }
     val quranModes: Flow<Set<String>> =
-        context.dataStore.data.map { it[quranModesKey] ?: setOf("ar") }
+        context.dataStore.data.map {
+            it[quranModesKey] ?: QuranModes.defaults(QuranModes.currentLanguageTag())
+        }
     val themeMode: Flow<String> =
         context.dataStore.data.map { it[themeKey] ?: "dark" }
     val prayerOffsets: Flow<Map<Prayer, Int>> =

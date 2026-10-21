@@ -79,3 +79,9 @@ todo idioma novo exige Alcorão no idioma novo (teste quebra o build).
 ## Idioma
 
 Responder em português do Brasil.
+
+## Cobrança de respostas
+
+Se o agente fizer uma pergunta e o usuário não responder, cobrar na mensagem
+seguinte, listando a pergunta em aberto. Não deixar pendência de decisão
+sumir no meio da conversa.
