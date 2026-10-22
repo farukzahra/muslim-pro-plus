@@ -57,3 +57,10 @@ python tools/store/check_store.py
 
 Valida limites de texto (30 / 80 / 4.000 / 500), dimensões, ausência de canal
 alfa e se as screenshots têm conteúdo (não são tela preta ou branca).
+
+## Idioma padrao da loja
+
+- **Default: ingles (en-US)** — publico internacional.
+- Localizacao adicional: **pt-BR**.
+- O app continua seguindo o idioma do aparelho; a ficha e' que tem default en.
+- Feature graphic principal: `feature-graphic.png` (sem legenda). As versoes com legenda sao opcionais por idioma.

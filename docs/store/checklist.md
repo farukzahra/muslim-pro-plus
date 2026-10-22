@@ -203,3 +203,11 @@ Conferir depois de instalar:
   versão). Regerar após o próximo build de release.
 - **Fundo do ícone**: o launcher usa `#0B1622`; o ícone da loja foi gerado com
   `#08131C`, o azul-noite do tema. Diferença imperceptível, mas existe.
+
+## Ordem no Play Console (default en)
+
+1. Detalhes do app: nome, descricao curta e completa em **ingles**; adicionar pt-BR como traducao.
+2. Conteudo do app: acesso (sem login), anuncios (nao), classificacao, publico-alvo, seguranca de dados (nada coletado; localizacao so no aparelho).
+3. Politica de privacidade: https://muslimplus.faruk.dev.br/privacy/
+4. Teste interno: subir o AAB 1.0.0 e convidar testadores.
+5. Producao so depois do teste interno aprovado.
