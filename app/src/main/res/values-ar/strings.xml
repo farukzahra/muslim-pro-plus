@@ -95,7 +95,6 @@
     <string name="quran_audio_download_done">تم حفظ الصوت للاستخدام دون اتصال</string>
     <string name="quran_audio_download_failed">تعذّر تنزيل الصوت.</string>
     <string name="quran_audio_now_playing">%1$s، الآية %2$d</string>
-    <string name="quran_reciter_alafasy">مشاري العفاسي</string>
     <string name="more_settings">الإعدادات</string>
     <string name="more_licenses">التراخيص</string>
     <string name="more_privacy">الخصوصية</string>
@@ -135,10 +134,12 @@
     <string name="audio_delete_voice">حذف تنزيلات هذا القارئ</string>
     <string name="audio_complete">مكتملة · %1$d / %2$d آية</string>
     <string name="audio_partial">%1$d / %2$d آية محفوظة</string>
+    <string name="audio_surah_title">\u2066%1$d. %2$s\u2069</string>
     <string name="audio_download">تنزيل / استئناف</string>
     <string name="audio_delete">حذف التنزيلات</string>
     <string name="audio_estimate">حوالي %1$s بناءً على 30 ساعة من التلاوة. يختلف الحجم الفعلي. أبقِ التطبيق مفتوحًا حتى الاكتمال.</string>
     <string name="audio_delete_confirm">هل تريد حذف التنزيلات المحددة؟ يمكنك تنزيلها مجددًا لاحقًا.</string>
     <string name="audio_no_space">لا توجد مساحة كافية للتنزيل المتوقع.</string>
     <string name="quran_audio_playback_failed">الصوت غير متاح. تحقق من الاتصال أو نزّل هذه التلاوة ثم حاول مجددًا.</string>
+    <string name="audio_storage_failed">تعذر تحديث تخزين الصوت. تحقق من المساحة المتاحة وحاول مجددًا.</string>
 </resources>

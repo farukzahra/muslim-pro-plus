@@ -20,7 +20,7 @@ ou por um campo preenchido pelo agente. Os testes do app não comprovam consenti
 
 | ID | Funcionalidade | Estado e decisão |
 | --- | --- | --- |
-| Q01 | Selecionar recitador do Alcorão | Escolhido pelo usuário em 23/10/2026; design em revisão; implementação depende do spec aprovado |
+| Q01 | Selecionar recitador do Alcorão | Implementado em 23/10/2026: vozes, cache LRU, downloads por voz/sura/Alcorão completo, tela de armazenamento; testes e Pixel6 verdes; commit local feito |
 | Q02 | Narrador de tradução | Fora da etapa atual: usuário respondeu “sempre arabe audio”; tradução continua em texto. Só retomar após nova pergunta e autorização |
 
 Spec de Q01: [seleção de recitador](specs/2026-10-23-quran-reciter-design.md).

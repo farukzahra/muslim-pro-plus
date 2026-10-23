@@ -95,7 +95,6 @@
     <string name="quran_audio_download_done">Áudio salvo para uso offline</string>
     <string name="quran_audio_download_failed">Não foi possível baixar o áudio.</string>
     <string name="quran_audio_now_playing">%1$s, versículo %2$d</string>
-    <string name="quran_reciter_alafasy">Mishary Alafasy</string>
     <string name="more_settings">Configurações</string>
     <string name="more_licenses">Licenças</string>
     <string name="more_privacy">Privacidade</string>
@@ -135,10 +134,12 @@
     <string name="audio_delete_voice">Remover downloads desta voz</string>
     <string name="audio_complete">Completa · %1$d / %2$d versos</string>
     <string name="audio_partial">%1$d / %2$d versos salvos</string>
+    <string name="audio_surah_title">%1$d. %2$s</string>
     <string name="audio_download">Baixar / retomar</string>
     <string name="audio_delete">Remover downloads</string>
     <string name="audio_estimate">Aproximadamente %1$s, com base em 30 horas de recitação. O tamanho real varia. Mantenha o app aberto para concluir.</string>
     <string name="audio_delete_confirm">Remover os downloads selecionados? Você pode baixá-los novamente depois.</string>
     <string name="audio_no_space">Espaço livre insuficiente para o download estimado.</string>
     <string name="quran_audio_playback_failed">Áudio indisponível. Confira a conexão ou baixe esta recitação e tente novamente.</string>
+    <string name="audio_storage_failed">Não foi possível atualizar o armazenamento de áudio. Confira o espaço livre e tente novamente.</string>
 </resources>

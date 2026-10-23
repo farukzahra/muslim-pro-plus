@@ -10,24 +10,28 @@ import com.farukzahra.muslimplus.quran.Surah
 import com.farukzahra.muslimplus.quran.Verse
 import com.farukzahra.muslimplus.quran.VerseRef
 import com.farukzahra.muslimplus.quran.audio.QuranAudioController
-import com.farukzahra.muslimplus.quran.audio.QuranAudioDownloader
+import com.farukzahra.muslimplus.quran.audio.QuranAudioLibrary
+import com.farukzahra.muslimplus.quran.audio.QuranReciters
 import com.farukzahra.muslimplus.quran.audio.QuranAudioItems
 import com.farukzahra.muslimplus.quran.audio.QuranAudioState
 import com.farukzahra.muslimplus.quran.audio.QuranAudioStore
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -48,6 +52,8 @@ data class AudioDownloadState(
     val total: Int = 0,
     val saved: Boolean = false,
     val failed: Boolean = false,
+    /** Existe fila de download em andamento, mesmo que de outra sura. */
+    val busy: Boolean = false,
 )
 
 @OptIn(FlowPreview::class)
@@ -63,8 +69,7 @@ class QuranReaderViewModel(
     private val repository = ServiceLocator.quran
     private val settings = ServiceLocator.settings
     private val readerState = ServiceLocator.readerState
-    private val audioStore = QuranAudioStore(application)
-    private val audioDownloader = QuranAudioDownloader(audioStore)
+    private val library = QuranAudioLibrary.get(application)
     private val audio = QuranAudioController(application)
 
     private val _state = MutableStateFlow<ReaderState?>(null)
@@ -81,7 +86,12 @@ class QuranReaderViewModel(
     private val _download = MutableStateFlow(AudioDownloadState())
     val download: StateFlow<AudioDownloadState> = _download.asStateFlow()
 
-    private var downloadJob: Job? = null
+    /** Evento para pedir escolha de voz quando a preferência salva não existe mais. */
+    private val _audioPrompt = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val audioPrompt: SharedFlow<Unit> = _audioPrompt.asSharedFlow()
+
+    val reciter = settings.quranReciterId.map { QuranReciters.find(it) }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, QuranReciters.default)
 
     /** Ultimo verso que ficou no topo da tela; o debounce evita gravar a cada quadro. */
     private val firstVisible = MutableStateFlow<Verse?>(null)
@@ -106,7 +116,6 @@ class QuranReaderViewModel(
                     startIndex = ayah?.let { ContinueReading.verseIndex(verses, it) },
                 )
             }
-            refreshSaved()
         }
         viewModelScope.launch(Dispatchers.IO) {
             settings.quranModes.collect { selected -> selected.forEach(repository::preload) }
@@ -117,16 +126,43 @@ class QuranReaderViewModel(
                 .debounce(LAST_READ_DEBOUNCE_MS)
                 .collect { verse -> readerState.saveLastRead(verse.surah, verse.ayah) }
         }
-        // Cada verso que comeca a tocar vira o mais recente no cache LRU.
+        // A preferência afeta a próxima reprodução; nunca muda a voz no meio do verso.
         viewModelScope.launch {
-            audio.state
-                .map { current -> current.surah to current.ayah }
-                .distinctUntilChanged()
-                .collect { (surah, ayah) ->
-                    if (surah != null && ayah != null) {
-                        withContext(Dispatchers.IO) { audioStore.touch(surah, ayah) }
+            var previousId: String? = null
+            settings.quranReciterId.distinctUntilChanged().collect { id ->
+                if ((previousId != null && previousId != id) ||
+                    (audio.state.value.reciterId != null && audio.state.value.reciterId != id)) audio.pause()
+                previousId = id
+            }
+        }
+        viewModelScope.launch {
+            combine(settings.quranReciterId, library.revision, _state) { id, _, reader -> id to reader }
+                .collect { (id, reader) ->
+                    val surah = reader?.surah ?: return@collect
+                    val source = QuranReciters.find(id)
+                    val saved = source != null && withContext(Dispatchers.IO) {
+                        QuranAudioStore(application, source).isSurahSaved(surah.id, reader.verses.size)
                     }
+                    _download.update { it.copy(saved = saved, total = reader.verses.size) }
                 }
+        }
+        // Progresso vem a cada verso; não recalcula o disco para não competir com o download.
+        viewModelScope.launch {
+            library.progress.collect { progress ->
+                val reader = _state.value
+                val surah = reader?.surah
+                val matches = surah != null &&
+                    progress.reciterId == reciter.value?.id && progress.surah == surah.id
+                _download.update {
+                    it.copy(
+                        downloading = progress.running && matches,
+                        done = if (matches) progress.surahDone else 0,
+                        total = reader?.verses?.size ?: it.total,
+                        busy = progress.running,
+                        failed = matches && progress.failed,
+                    )
+                }
+            }
         }
     }
 
@@ -145,62 +181,33 @@ class QuranReaderViewModel(
     fun onVerseAudio(verse: Verse) {
         val reader = _state.value ?: return
         val surah = reader.surah ?: return
+        val source = reciter.value ?: run {
+            _audioPrompt.tryEmit(Unit)
+            return
+        }
         val current = audio.state.value
-        if (current.surah == verse.surah && current.ayah == verse.ayah) {
+        if (current.surah == verse.surah && current.ayah == verse.ayah && current.reciterId == source.id) {
             if (current.playing) audio.pause() else audio.resume()
             return
         }
         val index = reader.verses.indexOfFirst { it.ayah == verse.ayah }.coerceAtLeast(0)
-        val items = QuranAudioItems.forSurah(getApplication(), audioStore, surah, reader.verses)
+        val items = QuranAudioItems.forSurah(getApplication(), surah, reader.verses, source)
         audio.play(items, index)
     }
 
     fun downloadAudio() {
         val reader = _state.value ?: return
         val surah = reader.surah ?: return
-        if (_download.value.downloading) return
-
-        val total = reader.verses.size
-        _download.value = AudioDownloadState(downloading = true, total = total)
-        downloadJob = viewModelScope.launch {
-            try {
-                val result = audioDownloader.download(surah.id, total) { done, count ->
-                    _download.value = _download.value.copy(done = done, total = count)
-                }
-                val saved = withContext(Dispatchers.IO) {
-                    audioStore.isSurahSaved(surah.id, total)
-                }
-                _download.value = AudioDownloadState(saved = saved, failed = !result.isComplete)
-            } catch (cancelled: CancellationException) {
-                // cancelDownload() ja deixou o estado limpo.
-                throw cancelled
-            }
-            downloadJob = null
+        val source = reciter.value ?: run {
+            _audioPrompt.tryEmit(Unit)
+            return
         }
+        if (library.progress.value.running) return
+        library.download(source, listOf(surah))
     }
 
     fun cancelDownload() {
-        downloadJob?.cancel()
-        downloadJob = null
-        val reader = _state.value ?: return
-        val surah = reader.surah ?: return
-        _download.value = AudioDownloadState()
-        viewModelScope.launch {
-            val saved = withContext(Dispatchers.IO) {
-                audioStore.isSurahSaved(surah.id, reader.verses.size)
-            }
-            _download.value = _download.value.copy(saved = saved)
-        }
-    }
-
-    /** "Baixar audio" so aparece como concluido se a sura inteira esta no disco. */
-    private suspend fun refreshSaved() {
-        val reader = _state.value ?: return
-        val surah = reader.surah ?: return
-        val saved = withContext(Dispatchers.IO) {
-            audioStore.isSurahSaved(surah.id, reader.verses.size)
-        }
-        _download.value = _download.value.copy(saved = saved)
+        if (library.progress.value.reciterId == reciter.value?.id) library.cancel()
     }
 
     /** Nunca deixa o conjunto vazio: pelo menos uma camada fica ligada. */
@@ -216,7 +223,6 @@ class QuranReaderViewModel(
         repository.layer(mode, "${verse.surah}:${verse.ayah}")
 
     override fun onCleared() {
-        downloadJob?.cancel()
         audio.release()
         super.onCleared()
     }

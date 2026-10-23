@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 /** One process-wide writer; cancellation retains the lock until finally completes. */
-data class AudioLibraryProgress(val running: Boolean = false, val reciterId: String? = null, val surah: Int? = null, val done: Int = 0, val total: Int = 0, val failed: Boolean = false)
+data class AudioLibraryProgress(val running: Boolean = false, val reciterId: String? = null, val surah: Int? = null, val done: Int = 0, val total: Int = 0, val surahDone: Int = 0, val failed: Boolean = false)
 
-class QuranAudioLibrary private constructor(private val context: Context) {
+class QuranAudioLibrary private constructor(private val context: Context, private val fetcher: AudioFetcher = HttpAudioFetcher()) {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val mutableProgress = MutableStateFlow(AudioLibraryProgress())
     val progress: StateFlow<AudioLibraryProgress> = mutableProgress
@@ -34,13 +34,13 @@ class QuranAudioLibrary private constructor(private val context: Context) {
                     val required = requiredBytes(reciter, remaining)
                     if (context.filesDir.usableSpace < required) throw java.io.IOException("Insufficient space")
                 }
-                val downloader = QuranAudioDownloader(store, reciter)
+                val downloader = QuranAudioDownloader(store, reciter, fetcher)
                 for (surah in surahs) {
                     ensureActive()
                     val before = done
-                    mutableProgress.value = mutableProgress.value.copy(surah = surah.id)
+                    mutableProgress.value = mutableProgress.value.copy(surah = surah.id, surahDone = 0)
                     val result = downloader.download(surah.id, surah.verseCount) { count, _ ->
-                        mutableProgress.value = mutableProgress.value.copy(done = before + count)
+                        mutableProgress.value = mutableProgress.value.copy(done = before + count, surahDone = count)
                     }
                     done += surah.verseCount
                     failed = failed || !result.isComplete
@@ -63,7 +63,10 @@ class QuranAudioLibrary private constructor(private val context: Context) {
 
     fun refresh() { synchronized(this) { mutableRevision.value++ } }
 
-    @Synchronized fun cancel() { job?.cancel() }
+    @Synchronized fun cancel() {
+        (fetcher as? CancellableFetcher)?.cancelActive()
+        job?.cancel()
+    }
 
     /** Deletion participates in the same exclusion as downloads. */
     suspend fun delete(reciter: QuranReciter, surah: Int? = null): Boolean {
@@ -76,6 +79,10 @@ class QuranAudioLibrary private constructor(private val context: Context) {
                 if (surah == null) store.deleteAll() else store.deleteSurah(surah)
             }
             true
+        } catch (cancelled: CancellationException) {
+            throw cancelled
+        } catch (_: java.io.IOException) {
+            false
         } finally {
             synchronized(this) { busy = false; mutableRevision.value++ }
         }
@@ -86,6 +93,7 @@ class QuranAudioLibrary private constructor(private val context: Context) {
         fun get(context: Context): QuranAudioLibrary = instance ?: synchronized(this) {
             instance ?: QuranAudioLibrary(context.applicationContext).also { instance = it }
         }
+        internal fun createForTest(context: Context, fetcher: AudioFetcher): QuranAudioLibrary = QuranAudioLibrary(context, fetcher)
         fun requiredBytes(reciter: QuranReciter, remaining: Int): Long = estimatedBytes(reciter) * remaining / 6236 + 10L * 1024 * 1024
         fun estimatedBytes(reciter: QuranReciter): Long = 30L * 60 * 60 * reciter.bitrateKbps * 1000 / 8
     }

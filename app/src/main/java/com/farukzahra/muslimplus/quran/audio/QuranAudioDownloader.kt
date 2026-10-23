@@ -16,9 +16,17 @@ fun interface AudioFetcher {
     fun fetch(url: String, destination: File)
 }
 
-class HttpAudioFetcher : AudioFetcher {
+/** Fetcher que consegue abortar a conexão em andamento. */
+interface CancellableFetcher : AudioFetcher {
+    fun cancelActive()
+}
+
+class HttpAudioFetcher : CancellableFetcher {
+    @Volatile private var active: HttpURLConnection? = null
+
     override fun fetch(url: String, destination: File) {
         val connection = URL(url).openConnection() as HttpURLConnection
+        active = connection
         connection.connectTimeout = TIMEOUT_MS
         connection.readTimeout = TIMEOUT_MS
         connection.instanceFollowRedirects = true
@@ -31,9 +39,12 @@ class HttpAudioFetcher : AudioFetcher {
                 if (expected >= 0 && received != expected) throw IOException("Incomplete audio response")
             }
         } finally {
+            if (active === connection) active = null
             connection.disconnect()
         }
     }
+
+    override fun cancelActive() { active?.disconnect() }
 
     private companion object {
         const val TIMEOUT_MS = 20_000

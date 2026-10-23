@@ -28,6 +28,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -72,6 +73,7 @@ private val layerOptions = listOf(
 @Composable
 fun QuranReaderScreen(
     onBack: () -> Unit,
+    onAudioSettings: () -> Unit = {},
     viewModel: QuranReaderViewModel = viewModel(),
 ) {
     val state = viewModel.state.collectAsState().value ?: return
@@ -79,6 +81,7 @@ fun QuranReaderScreen(
     val bookmarks by viewModel.bookmarks.collectAsState()
     val playback by viewModel.playback.collectAsState()
     val download by viewModel.download.collectAsState()
+    val reciter by viewModel.reciter.collectAsState()
     var showOptions by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -98,6 +101,22 @@ fun QuranReaderScreen(
     // Avisa o fim do download (o progresso em si fica no topo).
     val doneMessage = stringResource(R.string.quran_audio_download_done)
     val failedMessage = stringResource(R.string.quran_audio_download_failed)
+    val playbackFailed = stringResource(R.string.quran_audio_playback_failed)
+    LaunchedEffect(playback.failed) {
+        if (playback.failed) snackbarHostState.showSnackbar(playbackFailed)
+    }
+    val voiceMissingMessage = stringResource(R.string.audio_unknown_voice)
+    val voiceSettingsAction = stringResource(R.string.audio_storage_title)
+    LaunchedEffect(Unit) {
+        viewModel.audioPrompt.collect {
+            val result = snackbarHostState.showSnackbar(
+                message = voiceMissingMessage,
+                actionLabel = voiceSettingsAction,
+                withDismissAction = true,
+            )
+            if (result == SnackbarResult.ActionPerformed) onAudioSettings()
+        }
+    }
     var wasDownloading by remember { mutableStateOf(false) }
     LaunchedEffect(download.downloading, download.saved, download.failed) {
         if (wasDownloading && !download.downloading) {
@@ -114,11 +133,19 @@ fun QuranReaderScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = state.surah?.nameLatin.orEmpty(),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
+                    Column {
+                        Text(
+                            text = state.surah?.nameLatin.orEmpty(),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                        Text(
+                            text = reciter?.reciter ?: stringResource(R.string.audio_unknown_voice),
+                            style = MaterialTheme.typography.labelSmall,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
                 },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
@@ -172,6 +199,9 @@ fun QuranReaderScreen(
             title = { Text(stringResource(R.string.quran_display)) },
             text = {
                 Column {
+                    TextButton(onClick = { showOptions = false; onAudioSettings() }) {
+                        Text(stringResource(R.string.audio_storage_title))
+                    }
                     layerOptions.forEach { option ->
                         Row(
                             modifier = Modifier
@@ -247,7 +277,7 @@ private fun DownloadAction(
             )
         }
 
-        else -> TextButton(onClick = onDownload) {
+        else -> TextButton(onClick = onDownload, enabled = !state.busy) {
             Icon(
                 painter = painterResource(R.drawable.ic_audio_download),
                 contentDescription = null,

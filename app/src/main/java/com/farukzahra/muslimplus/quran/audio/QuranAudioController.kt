@@ -19,6 +19,8 @@ data class QuranAudioState(
     val playing: Boolean = false,
     val surah: Int? = null,
     val ayah: Int? = null,
+    val reciterId: String? = null,
+    val failed: Boolean = false,
 )
 
 /**
@@ -93,10 +95,14 @@ class QuranAudioController(context: Context) {
     }
 
     fun pause() {
+        pending = null
         controller?.pause()
     }
 
     fun resume() {
+        if (controller?.playbackState == Player.STATE_IDLE || controller?.playerError != null) {
+            controller?.prepare()
+        }
         controller?.play()
     }
 
@@ -126,6 +132,8 @@ class QuranAudioController(context: Context) {
             playing = player.isPlaying && player.playbackState != Player.STATE_ENDED,
             surah = ref?.surah,
             ayah = ref?.ayah,
+            reciterId = player.currentMediaItem?.mediaMetadata?.extras?.getString("reciter_id"),
+            failed = player.playerError != null,
         )
     }
 }

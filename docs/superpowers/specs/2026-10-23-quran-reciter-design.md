@@ -104,6 +104,14 @@ Detalhes internos sem impacto no escopo ficam a cargo do plano.
 8. Executar testes, lint e assembleDebug, verificar no Pixel6 e revisar versão
    conforme semantic-version antes do commit da implementação.
 
+## Estado em 23/10/2026
+
+Implementado no plano `plans/2026-10-23-quran-audio-storage.md`, com cache LRU de
+reprodução separado dos downloads explícitos, tela Áudio e armazenamento (voz, sura
+ou Alcorão completo) e remontagem da fila ao trocar de voz. Verificado com testes
+JVM, lint, assembleDebug e 12 testes instrumentados no Pixel6, em pt-BR e árabe.
+Commit local feito; nada enviado ao Play Store.
+
 ## Próximo passo
 
 Aprovar esta descrição e escolher a fonte. Depois produzir o plano em

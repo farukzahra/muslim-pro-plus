@@ -21,7 +21,8 @@ class QuranAudioStore(
 
     private fun safe(file: File): File {
         require(file.canonicalPath.startsWith(root.canonicalPath + File.separator))
-        require(file.canonicalFile == file.absoluteFile.normalize())
+        val relative = root.absoluteFile.normalize().toPath().relativize(file.absoluteFile.normalize().toPath())
+        require(file.canonicalFile == File(root.canonicalFile, relative.toString()))
         return file
     }
 

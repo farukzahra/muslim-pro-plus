@@ -40,6 +40,7 @@ fun AudioStorageScreen(onBack: () -> Unit) {
     var confirmAll by remember { mutableStateOf<QuranReciter?>(null) }
     var deleteTarget by remember { mutableStateOf<Pair<QuranReciter, Int?>?>(null) }
     var insufficient by remember { mutableStateOf(false) }
+    var storageFailed by remember { mutableStateOf(false) }
     var cleaning by remember { mutableStateOf(false) }
     LaunchedEffect(revision, refresh) {
         withContext(Dispatchers.IO) {
@@ -64,7 +65,7 @@ fun AudioStorageScreen(onBack: () -> Unit) {
                 Text(stringResource(R.string.audio_cache_size, formatBytes(context, cacheBytes)))
                 TextButton(enabled = !cleaning, modifier = Modifier.testTag("clear_audio_cache"), onClick = {
                     cleaning = true
-                    scope.launch { try { withContext(Dispatchers.IO) { QuranStreamingCache.clear(context) }; library.refresh(); refresh++ } finally { cleaning = false } }
+                    scope.launch { try { withContext(Dispatchers.IO) { QuranStreamingCache.clear(context) }; library.refresh(); refresh++ } catch (_: java.io.IOException) { storageFailed = true } finally { cleaning = false } }
                 }) { Text(stringResource(R.string.audio_clear_cache)) }
                 OutlinedTextField(value = query, onValueChange = { query = it }, label = { Text(stringResource(R.string.audio_search)) }, modifier = Modifier.fillMaxWidth())
                 Row { Checkbox(downloadedOnly, { downloadedOnly = it }); Text(stringResource(R.string.audio_downloaded_only), Modifier.padding(top = 12.dp)) }
@@ -89,7 +90,7 @@ fun AudioStorageScreen(onBack: () -> Unit) {
             }
             if (selected != null) items(surahs, key = { "surah_${it.id}" }) { surah ->
                 val count = inventory[selected.id]?.get(surah.id) ?: 0
-                ListItem(headlineContent = { Text("${surah.id}. ${surah.nameLatin}") }, supportingContent = { Text(stringResource(if (count == surah.verseCount) R.string.audio_complete else R.string.audio_partial, count, surah.verseCount)) })
+                ListItem(headlineContent = { Text(stringResource(R.string.audio_surah_title, surah.id, surah.nameLatin)) }, supportingContent = { Text(stringResource(if (count == surah.verseCount) R.string.audio_complete else R.string.audio_partial, count, surah.verseCount)) })
                 Row {
                     TextButton(enabled = !progress.running, onClick = { library.download(selected, listOf(surah)) }) { Text(stringResource(R.string.audio_download)) }
                     TextButton(enabled = !progress.running && count > 0, onClick = { deleteTarget = selected to surah.id }) { Text(stringResource(R.string.audio_delete)) }
@@ -115,9 +116,10 @@ fun AudioStorageScreen(onBack: () -> Unit) {
     }
     deleteTarget?.let { target ->
         AlertDialog(onDismissRequest = { deleteTarget = null }, title = { Text(stringResource(R.string.audio_delete)) }, text = { Text(stringResource(R.string.audio_delete_confirm)) }, confirmButton = {
-            TextButton(enabled = !progress.running, onClick = { deleteTarget = null; scope.launch { library.delete(target.first, target.second) } }) { Text(stringResource(R.string.audio_delete)) }
+            TextButton(enabled = !progress.running, onClick = { deleteTarget = null; scope.launch { storageFailed = !library.delete(target.first, target.second) } }) { Text(stringResource(R.string.audio_delete)) }
         }, dismissButton = { TextButton(onClick = { deleteTarget = null }) { Text(stringResource(R.string.audio_cancel)) } })
     }
+    if (storageFailed) AlertDialog(onDismissRequest = { storageFailed = false }, title = { Text(stringResource(R.string.audio_storage_failed)) }, confirmButton = { TextButton(onClick = { storageFailed = false }) { Text(stringResource(R.string.audio_cancel)) } })
     if (insufficient) AlertDialog(onDismissRequest = { insufficient = false }, title = { Text(stringResource(R.string.audio_no_space)) }, confirmButton = { TextButton(onClick = { insufficient = false }) { Text(stringResource(R.string.audio_cancel)) } })
 }
 
