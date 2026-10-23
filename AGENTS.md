@@ -82,6 +82,11 @@ Responder em português do Brasil.
 
 ## Cobrança de respostas
 
+Backlog: `docs/superpowers/TODO.md`. Antes de iniciar outra funcionalidade,
+perguntar se vamos fazê-la e aguardar autorização explícita; concluir uma
+funcionalidade não autoriza a próxima. Registrar a decisão no backlog e seguir
+o gate de spec aprovado. Os testes não substituem essa decisão humana.
+
 Se o agente fizer uma pergunta e o usuário não responder, cobrar na mensagem
 seguinte, listando a pergunta em aberto. Não deixar pendência de decisão
 sumir no meio da conversa.
