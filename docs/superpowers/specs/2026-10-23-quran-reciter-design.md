@@ -1,7 +1,24 @@
 # Alcorão — seleção de recitador
 
-Data: 23/10/2026. Status: proposta aguardando aprovação do usuário.
-Não autoriza implementação nem representa plano de execução.
+Data: 23/10/2026. Status: aprovado pelo usuário: “pode fazer tudo”, incluindo
+cache e downloads detalhados abaixo. Implementação local autorizada; proibido
+enviar/publicar no Google Play enquanto a versão 1.0 aguarda avaliação.
+
+## Ampliação aprovada — armazenamento
+
+- Cache automático durante a reprodução usando Media3, limitado a 300 MiB,
+  com remoção LRU. Reproduções futuras reutilizam os bytes já salvos.
+- Downloads explícitos separados e preservados fora desse limite: por sura
+  ou todo o Alcorão na voz escolhida; progresso, cancelar e retomar ao repetir
+  a ação. Não anunciar disponibilidade offline se houver versos faltando.
+- Tela Áudio e armazenamento: seleção/busca de voz, inventário por recitador
+  e sura, tamanho em disco, limpar somente cache e excluir downloads com confirmação.
+- Download sobrevive à navegação enquanto o processo está vivo; após encerramento
+  do processo, retomar manualmente reaproveita os versos completos. Não prometer
+  execução garantida com o app encerrado. Mostrar essa orientação na tela.
+- Download completo exige verificação de espaço livre e mostra estimativa
+  aproximada antes de iniciar, deixando claro que o tamanho real varia.
+- Fonte aprovada: ampliar o EveryAyah existente, sem backend novo.
 
 ## Intenção e decisões já dadas
 
