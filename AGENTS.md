@@ -21,9 +21,12 @@ $env:ANDROID_HOME="$env:LOCALAPPDATA\Android\Sdk"
 .\gradlew.bat lint
 .\gradlew.bat assembleDebug
 .\gradlew.bat installDebug
+.\scripts\install-local.ps1   # instala em todos e confere por hash que o build novo chegou
 ```
 
-Emulador de teste: `Pixel6` (`emulator-5554`).
+Emuladores de teste: `Pixel6`. Use o serial que aparecer em `adb devices`
+(`emulator-5554` ou `emulator-5556`); o `install-local.ps1` cobre todos os
+conectados.
 
 ## Estrutura
 
@@ -54,6 +57,9 @@ docs/superpowers/{specs,plans}/
 - Pacote `com.farukzahra.muslimplus` é permanente no Play.
 - Segredos só em `../secrets/`; nunca no repo.
 - Toda task termina com teste verde + commit.
+- Toda entrega que gera APK termina com `.\scripts\install-local.ps1` e a saída
+  `OK <serial>`; se o hash divergir, o emulador está com build antigo e a task
+  não está concluída.
 
 ## Workflow (mandatory skills)
 
