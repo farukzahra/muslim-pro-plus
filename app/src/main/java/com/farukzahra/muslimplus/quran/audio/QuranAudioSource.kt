@@ -7,6 +7,7 @@ package com.farukzahra.muslimplus.quran.audio
  * a implementacao, sem tocar no ExoPlayer, no download nem na tela.
  */
 interface QuranAudioSource {
+    val id: String get() = "alafasy-128"
     /** Nome exibido na notificacao. E uma constante de codigo, nao string de UI. */
     val reciter: String
 
@@ -31,5 +32,5 @@ object EveryAyahSource : QuranAudioSource {
 
     override val reciter: String = "Mishary Alafasy"
 
-    override fun urlFor(surah: Int, ayah: Int): String = BASE_URL + fileNameFor(surah, ayah)
+    override fun urlFor(surah: Int, ayah: Int): String = QuranReciters.default.urlFor(surah, ayah)
 }

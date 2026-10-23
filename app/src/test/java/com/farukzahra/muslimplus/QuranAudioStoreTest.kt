@@ -10,7 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
-/** Cache em disco: nomes, checagem da sura inteira e LRU por tamanho. */
+/** Downloads em disco: nomes, completude e proteção contra eviction. */
 class QuranAudioStoreTest {
     @get:Rule
     val temp = TemporaryFolder()
@@ -28,7 +28,7 @@ class QuranAudioStoreTest {
     fun filesLiveUnderTheSurahFolderWithTheCdnName() {
         val store = store()
         assertEquals(
-            File(temp.root, "002/002255.mp3").absolutePath,
+            File(temp.root, "alafasy-128/002/002255.mp3").absolutePath,
             store.fileFor(2, 255).absolutePath,
         )
     }
@@ -45,33 +45,33 @@ class QuranAudioStoreTest {
     }
 
     @Test
-    fun evictDeletesTheOldestFileWhenOverTheLimit() {
+    fun explicitDownloadsSurviveWhenOverTheLimit() {
         val store = store(limitBytes = 100)
         write(store.fileFor(1, 1), 60, 1_000)
         write(store.fileFor(2, 1), 60, 2_000)
 
         val deleted = store.evict()
 
-        assertEquals(listOf(store.fileFor(1, 1).absolutePath), deleted)
-        assertFalse(store.fileFor(1, 1).exists())
+        assertTrue(deleted.isEmpty())
+        assertTrue(store.fileFor(1, 1).exists())
         assertTrue(store.fileFor(2, 1).exists())
     }
 
     @Test
-    fun evictNeverTouchesTheSurahBeingPlayed() {
+    fun evictPreservesOtherSurahsToo() {
         val store = store(limitBytes = 50)
         write(store.fileFor(1, 1), 60, 1_000)
         write(store.fileFor(2, 1), 60, 2_000)
 
         val deleted = store.evict(keepSurah = 1)
 
-        assertEquals(listOf(store.fileFor(2, 1).absolutePath), deleted)
+        assertTrue(deleted.isEmpty())
         assertTrue(store.fileFor(1, 1).exists())
-        assertFalse(store.fileFor(2, 1).exists())
+        assertTrue(store.fileFor(2, 1).exists())
     }
 
     @Test
-    fun touchMakesAVerseTheMostRecent() {
+    fun touchDoesNotEnableEviction() {
         val store = store(limitBytes = 100)
         write(store.fileFor(1, 1), 60, 1_000)
         write(store.fileFor(2, 1), 60, 2_000)
@@ -79,7 +79,7 @@ class QuranAudioStoreTest {
         store.touch(1, 1)
         val deleted = store.evict()
 
-        assertEquals(listOf(store.fileFor(2, 1).absolutePath), deleted)
+        assertTrue(deleted.isEmpty())
     }
 
     @Test

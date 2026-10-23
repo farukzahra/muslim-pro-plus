@@ -1,68 +1,99 @@
 package com.farukzahra.muslimplus.quran.audio
 
 import android.content.Context
+import com.farukzahra.muslimplus.quran.VerseRef
 import java.io.File
+import java.io.IOException
 
-/**
- * Audio baixado em `filesDir/audio/{sura}/` (ou numa raiz qualquer, para os
- * testes JVM). Um arquivo por verso, nome igual ao do CDN (001001.mp3).
- *
- * A ordem LRU usa o `lastModified` do arquivo: tocar um verso marca o arquivo
- * como o mais recente; [evict] apaga os mais antigos quando o total passa do
- * limite.
- */
+/** Explicit downloads, isolated by voice; never subject to playback cache eviction. */
 class QuranAudioStore(
     private val root: File,
     private val source: QuranAudioSource = EveryAyahSource,
-    private val limitBytes: Long = AudioCache.LIMIT_BYTES,
+    @Suppress("UNUSED_PARAMETER") limitBytes: Long = AudioCache.LIMIT_BYTES,
 ) {
-    constructor(context: Context) : this(File(context.filesDir, "audio"))
+    constructor(context: Context, source: QuranAudioSource = EveryAyahSource) :
+        this(File(context.filesDir, "audio"), source)
 
-    fun surahDir(surah: Int): File = File(root, source.pad(surah))
+    private val voiceRoot: File
+        get() = safe(File(root, source.id))
 
-    fun fileFor(surah: Int, ayah: Int): File = File(surahDir(surah), source.fileNameFor(surah, ayah))
+    init { require(source.id.matches(Regex("[a-z0-9]+(?:-[a-z0-9]+)*"))) }
 
-    /** Arquivo temporario do download: vira o definitivo so no fim. */
-    fun partFor(surah: Int, ayah: Int): File =
-        File(surahDir(surah), source.fileNameFor(surah, ayah) + ".part")
+    private fun safe(file: File): File {
+        require(file.canonicalPath.startsWith(root.canonicalPath + File.separator))
+        require(file.canonicalFile == file.absoluteFile.normalize())
+        return file
+    }
 
-    /** Caminho pronto para tocar, ou `null` se o verso nao foi baixado. */
-    fun localAudio(surah: Int, ayah: Int): File? =
-        fileFor(surah, ayah).takeIf { it.isFile && it.length() > 0 }
+    fun surahDir(surah: Int): File {
+        require(surah in 1..114)
+        return safe(File(voiceRoot, source.pad(surah)))
+    }
+
+    fun fileFor(surah: Int, ayah: Int): File {
+        require(VerseRef.of(surah, ayah) != null)
+        return safe(File(surahDir(surah), source.fileNameFor(surah, ayah)))
+    }
+
+    fun partFor(surah: Int, ayah: Int): File = safe(File(fileFor(surah, ayah).path + ".part"))
+
+    /** Move only complete legacy Alafasy verses; failed moves leave the original intact. */
+    private fun migrate(surah: Int, ayah: Int) {
+        if (source.id != "alafasy-128") return
+        val legacy = safe(File(File(root, source.pad(surah)), source.fileNameFor(surah, ayah)))
+        val target = fileFor(surah, ayah)
+        if (!target.exists() && legacy.isFile && legacy.length() > 0) {
+            prepareDir(surah)
+            legacy.renameTo(target)
+        }
+    }
+
+    fun localAudio(surah: Int, ayah: Int): File? {
+        migrate(surah, ayah)
+        return fileFor(surah, ayah).takeIf { it.isFile && it.length() > 0 }
+    }
+
+    fun savedVerses(surah: Int, verseCount: Int): Int {
+        require(surah in 1..114 && verseCount in 0..VerseRef.MAX_AYAH)
+        return (1..verseCount).count { localAudio(surah, it) != null }
+    }
 
     fun isSurahSaved(surah: Int, verseCount: Int): Boolean =
-        verseCount > 0 && (1..verseCount).all { localAudio(surah, it) != null }
+        verseCount > 0 && savedVerses(surah, verseCount) == verseCount
 
-    fun touch(surah: Int, ayah: Int) {
-        localAudio(surah, ayah)?.setLastModified(System.currentTimeMillis())
-    }
+    fun touch(surah: Int, ayah: Int) { localAudio(surah, ayah)?.setLastModified(System.currentTimeMillis()) }
 
     fun prepareDir(surah: Int) {
-        root.mkdirs()
-        surahDir(surah).mkdirs()
+        val dir = surahDir(surah)
+        if (!dir.isDirectory && !dir.mkdirs()) throw IOException("Cannot create audio directory")
     }
 
-    /**
-     * Aplica a politica LRU. [keepSurah] nunca e removida: a sura em uso nao
-     * pode sumir no meio da reproducao. Devolve os caminhos apagados.
-     */
-    fun evict(keepSurah: Int? = null): List<String> {
-        val kept = keepSurah?.let { surahDir(it).absolutePath }
-        val candidates = root.walkTopDown()
-            .filter { it.isFile && it.extension == "mp3" && it.parentFile?.absolutePath != kept }
-            .toList()
-        val doomed = AudioCache.planEviction(AudioCache.snapshot(candidates), limitBytes)
-        doomed.forEach { path ->
-            val file = File(path)
-            file.delete()
-            // Remove a pasta da sura quando ela ficou vazia.
-            file.parentFile?.takeIf { it.listFiles().isNullOrEmpty() }?.delete()
+    @Deprecated("Explicit downloads are preserved; streaming cache owns eviction")
+    fun evict(@Suppress("UNUSED_PARAMETER") keepSurah: Int? = null): List<String> = emptyList()
+
+    private fun migrateAll() {
+        if (source.id == "alafasy-128") for (surah in 1..114) {
+            val dir = safe(File(root, source.pad(surah)))
+            if (dir.isDirectory) for (ayah in 1..QuranReciters.verseCounts[surah - 1]) migrate(surah, ayah)
         }
-        return doomed
     }
 
-    fun totalBytes(): Long = AudioCache.snapshot(mp3Files()).sumOf { it.bytes }
+    fun totalBytes(): Long {
+        migrateAll()
+        return voiceRoot.walkTopDown().filter { it.isFile && it.extension == "mp3" }
+            .sumOf { safe(it).length() }
+    }
 
-    private fun mp3Files(): List<File> =
-        root.walkTopDown().filter { it.isFile && it.extension == "mp3" }.toList()
+    fun deleteSurah(surah: Int) {
+        if (source.id == "alafasy-128") for (ayah in 1..VerseRef.MAX_AYAH) migrate(surah, ayah)
+        deleteOwned(surahDir(surah))
+    }
+
+    fun deleteAll() { migrateAll(); deleteOwned(voiceRoot) }
+
+    private fun deleteOwned(file: File) {
+        safe(file)
+        if (file.isDirectory) file.listFiles()?.forEach { deleteOwned(it) }
+        if (file.exists() && !file.delete()) throw IOException("Cannot delete audio file")
+    }
 }

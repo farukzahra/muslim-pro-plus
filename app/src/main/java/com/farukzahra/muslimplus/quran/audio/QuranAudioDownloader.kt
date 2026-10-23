@@ -26,7 +26,9 @@ class HttpAudioFetcher : AudioFetcher {
             val code = connection.responseCode
             if (code !in 200..299) throw IOException("HTTP $code em $url")
             connection.inputStream.use { input ->
-                destination.outputStream().use { output -> input.copyTo(output) }
+                val received = destination.outputStream().use { output -> input.copyTo(output) }
+                val expected = connection.contentLengthLong
+                if (expected >= 0 && received != expected) throw IOException("Incomplete audio response")
             }
         } finally {
             connection.disconnect()
@@ -81,8 +83,7 @@ class QuranAudioDownloader(
                 coroutineContext.ensureActive()
                 if (part.length() <= 0) throw IOException("audio vazio: ${part.name}")
                 if (!part.renameTo(target)) {
-                    part.copyTo(target, overwrite = true)
-                    part.delete()
+                    throw IOException("Cannot atomically publish audio")
                 }
                 store.touch(surah, ayah)
                 downloaded++
@@ -97,8 +98,6 @@ class QuranAudioDownloader(
             onProgress(processed, verseCount)
         }
 
-        // Mantem o limite de 300 MB; a sura recem-baixada fica protegida.
-        store.evict(keepSurah = surah)
         AudioDownloadResult(downloaded = downloaded, failed = failed)
     }
 }

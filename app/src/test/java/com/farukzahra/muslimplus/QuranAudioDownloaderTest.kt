@@ -80,6 +80,42 @@ class QuranAudioDownloaderTest {
         assertTrue(store.localAudio(1, 3) != null)
     }
 
+    @Test fun truncatedHttpBodyIsNeverPromoted() = runTest {
+        val server = java.net.ServerSocket(0).apply { soTimeout = 3000 }
+        val responder = Thread {
+            server.accept().use { socket ->
+                socket.getInputStream().bufferedReader().readLine()
+                socket.getOutputStream().write("HTTP/1.1 200 OK\r\nContent-Length: 20\r\nConnection: close\r\n\r\nshort".toByteArray())
+            }
+        }
+        responder.isDaemon = true; responder.start()
+        val source = object : com.farukzahra.muslimplus.quran.audio.QuranAudioSource {
+            override val reciter = "test"
+            override fun urlFor(surah: Int, ayah: Int) = "http://127.0.0.1:${server.localPort}/audio"
+        }
+        try {
+            val store = QuranAudioStore(temp.root, source)
+            val result = QuranAudioDownloader(store,source).download(1,1)
+            assertEquals(1,result.failed)
+            assertFalse(store.fileFor(1,1).exists())
+            assertFalse(store.partFor(1,1).exists())
+        } finally { server.close(); responder.join(1000) }
+    }
+    @Test fun cancellationCleansPartAndKeepsCompletedVerses() = runTest {
+        val store = QuranAudioStore(temp.root)
+        val cancelling = AudioFetcher { url, destination ->
+            destination.writeText("complete or partial")
+            if (url.endsWith("001002.mp3")) throw java.util.concurrent.CancellationException()
+        }
+        try {
+            QuranAudioDownloader(store, EveryAyahSource, cancelling).download(1,3)
+            org.junit.Assert.fail("Expected cancellation")
+        } catch (_: java.util.concurrent.CancellationException) {
+            assertTrue(store.localAudio(1,1) != null)
+            assertFalse(store.fileFor(1,2).exists())
+            assertFalse(store.partFor(1,2).exists())
+        }
+    }
     private class FakeFetcher : AudioFetcher {
         val requested = mutableListOf<String>()
         var failFileName: String? = null
