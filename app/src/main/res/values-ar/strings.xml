@@ -118,4 +118,27 @@
     <string name="privacy_open_policy">فتح السياسة كاملة</string>
     <string name="privacy_open_failed_title">لا يوجد متصفح</string>
     <string name="privacy_open_failed_body">انسخ العنوان أدناه وافتحه في المتصفح.</string>
+    <string name="audio_storage_title">الصوت والتخزين</string>
+    <string name="audio_arabic_hint">تلاوة القرآن باللغة العربية دائمًا.</string>
+    <string name="audio_lifecycle_hint">تستمر التنزيلات أثناء التصفح. بعد إغلاق التطبيق، ابدأ مجددًا لاستئناف الآيات المحفوظة.</string>
+    <string name="audio_download_size">التنزيلات: %1$s</string>
+    <string name="audio_cache_size">ذاكرة التشغيل المؤقتة: %1$s</string>
+    <string name="audio_clear_cache">مسح ذاكرة التشغيل المؤقتة</string>
+    <string name="audio_search">البحث عن قارئ</string>
+    <string name="audio_downloaded_only">القراء المحفوظون فقط</string>
+    <string name="audio_unknown_voice">القارئ المحفوظ غير متاح. اختر قارئًا للمتابعة.</string>
+    <string name="audio_voice_quality">%1$d kbps · %2$s</string>
+    <string name="audio_progress">%1$s: %2$d / %3$d آية</string>
+    <string name="audio_cancel">إلغاء</string>
+    <string name="audio_download_failed">تعذر تنزيل بعض الآيات. تحقق من الاتصال والمساحة ثم أعد التنزيل للاستئناف.</string>
+    <string name="audio_download_all">تنزيل القرآن كاملًا</string>
+    <string name="audio_delete_voice">حذف تنزيلات هذا القارئ</string>
+    <string name="audio_complete">مكتملة · %1$d / %2$d آية</string>
+    <string name="audio_partial">%1$d / %2$d آية محفوظة</string>
+    <string name="audio_download">تنزيل / استئناف</string>
+    <string name="audio_delete">حذف التنزيلات</string>
+    <string name="audio_estimate">حوالي %1$s بناءً على 30 ساعة من التلاوة. يختلف الحجم الفعلي. أبقِ التطبيق مفتوحًا حتى الاكتمال.</string>
+    <string name="audio_delete_confirm">هل تريد حذف التنزيلات المحددة؟ يمكنك تنزيلها مجددًا لاحقًا.</string>
+    <string name="audio_no_space">لا توجد مساحة كافية للتنزيل المتوقع.</string>
+    <string name="quran_audio_playback_failed">الصوت غير متاح. تحقق من الاتصال أو نزّل هذه التلاوة ثم حاول مجددًا.</string>
 </resources>

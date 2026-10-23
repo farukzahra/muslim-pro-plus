@@ -118,4 +118,27 @@
     <string name="privacy_open_policy">Abrir política completa</string>
     <string name="privacy_open_failed_title">Nenhum navegador encontrado</string>
     <string name="privacy_open_failed_body">Copie o endereço abaixo e abra no navegador.</string>
+    <string name="audio_storage_title">Áudio e armazenamento</string>
+    <string name="audio_arabic_hint">A recitação do Alcorão é sempre em árabe.</string>
+    <string name="audio_lifecycle_hint">Downloads continuam durante a navegação. Após encerrar o app, inicie novamente para retomar os versos salvos.</string>
+    <string name="audio_download_size">Downloads: %1$s</string>
+    <string name="audio_cache_size">Cache de reprodução: %1$s</string>
+    <string name="audio_clear_cache">Limpar cache de reprodução</string>
+    <string name="audio_search">Buscar recitadores</string>
+    <string name="audio_downloaded_only">Somente vozes baixadas</string>
+    <string name="audio_unknown_voice">Recitador salvo indisponível. Escolha uma voz para continuar.</string>
+    <string name="audio_voice_quality">%1$d kbps · %2$s</string>
+    <string name="audio_progress">%1$s: %2$d / %3$d versos</string>
+    <string name="audio_cancel">Cancelar</string>
+    <string name="audio_download_failed">Alguns versos não foram baixados. Confira a conexão e o espaço e baixe novamente para retomar.</string>
+    <string name="audio_download_all">Baixar todo o Alcorão</string>
+    <string name="audio_delete_voice">Remover downloads desta voz</string>
+    <string name="audio_complete">Completa · %1$d / %2$d versos</string>
+    <string name="audio_partial">%1$d / %2$d versos salvos</string>
+    <string name="audio_download">Baixar / retomar</string>
+    <string name="audio_delete">Remover downloads</string>
+    <string name="audio_estimate">Aproximadamente %1$s, com base em 30 horas de recitação. O tamanho real varia. Mantenha o app aberto para concluir.</string>
+    <string name="audio_delete_confirm">Remover os downloads selecionados? Você pode baixá-los novamente depois.</string>
+    <string name="audio_no_space">Espaço livre insuficiente para o download estimado.</string>
+    <string name="quran_audio_playback_failed">Áudio indisponível. Confira a conexão ou baixe esta recitação e tente novamente.</string>
 </resources>

@@ -38,6 +38,7 @@ import com.farukzahra.muslimplus.ui.screens.settings.SettingsScreen
 import com.farukzahra.muslimplus.ui.screens.settings.ThemeScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 
+const val AUDIO_STORAGE_ROUTE = "settings/audio-storage"
 const val SETTINGS_ROUTE = "settings"
 const val LANGUAGE_ROUTE = "settings/language"
 const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
@@ -130,8 +131,10 @@ fun MuslimPlusApp() {
                 SettingsScreen(
                     onBack = { navController.popBackStack() },
                     onHijriClick = { navController.navigate(HIJRI_ROUTE) },
+                    onAudioStorageClick = { navController.navigate(AUDIO_STORAGE_ROUTE) },
                 )
             }
+            composable(AUDIO_STORAGE_ROUTE) { com.farukzahra.muslimplus.ui.screens.settings.AudioStorageScreen(onBack = { navController.popBackStack() }) }
             composable(LANGUAGE_ROUTE) {
                 LanguageScreen(onBack = { navController.popBackStack() })
             }
@@ -166,7 +169,7 @@ fun MuslimPlusApp() {
                     },
                 ),
             ) {
-                QuranReaderScreen(onBack = { navController.popBackStack() })
+                QuranReaderScreen(onBack = { navController.popBackStack() }, onAudioSettings = { navController.navigate(AUDIO_STORAGE_ROUTE) })
             }
         }
     }

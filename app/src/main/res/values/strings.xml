@@ -118,4 +118,27 @@
     <string name="privacy_open_policy">Open full policy</string>
     <string name="privacy_open_failed_title">No browser found</string>
     <string name="privacy_open_failed_body">Copy the address below and open it in a browser.</string>
+    <string name="audio_storage_title">Audio and storage</string>
+    <string name="audio_arabic_hint">Quran recitation is always in Arabic.</string>
+    <string name="audio_lifecycle_hint">Downloads continue while you browse. After closing the app, start again to resume saved verses.</string>
+    <string name="audio_download_size">Downloads: %1$s</string>
+    <string name="audio_cache_size">Playback cache: %1$s</string>
+    <string name="audio_clear_cache">Clear playback cache</string>
+    <string name="audio_search">Search reciters</string>
+    <string name="audio_downloaded_only">Downloaded voices only</string>
+    <string name="audio_unknown_voice">Saved reciter unavailable. Choose a voice to continue.</string>
+    <string name="audio_voice_quality">%1$d kbps · %2$s</string>
+    <string name="audio_progress">%1$s: %2$d / %3$d verses</string>
+    <string name="audio_cancel">Cancel</string>
+    <string name="audio_download_failed">Some verses could not be downloaded. Check your connection and space, then download again to resume.</string>
+    <string name="audio_download_all">Download entire Quran</string>
+    <string name="audio_delete_voice">Remove this voice’s downloads</string>
+    <string name="audio_complete">Complete · %1$d / %2$d verses</string>
+    <string name="audio_partial">%1$d / %2$d verses saved</string>
+    <string name="audio_download">Download / resume</string>
+    <string name="audio_delete">Remove downloads</string>
+    <string name="audio_estimate">Approximately %1$s, based on 30 hours of recitation. Actual size varies. Keep the app open to finish.</string>
+    <string name="audio_delete_confirm">Remove the selected downloads? You can download them again later.</string>
+    <string name="audio_no_space">Not enough free space for the estimated download.</string>
+    <string name="quran_audio_playback_failed">Audio unavailable. Check your connection or download this recitation, then try again.</string>
 </resources>

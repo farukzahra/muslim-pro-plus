@@ -20,6 +20,7 @@ class SettingsRepository(
     private val context: Context,
     private val cities: CityCatalog = CityCatalog.fromAsset(context),
 ) {
+    private val quranReciterKey = stringPreferencesKey("quran_reciter_id")
     private val cityKey = stringPreferencesKey("city_id")
     private val methodKey = stringPreferencesKey("prayer_method")
     private val notificationsKey = booleanPreferencesKey("notifications_enabled")
@@ -37,6 +38,7 @@ class SettingsRepository(
     val cityId: Flow<String> = context.dataStore.data.map { preferences ->
         preferences[cityKey]?.let(cities::byIdOrNull)?.id ?: defaultCityId()
     }
+    val quranReciterId: Flow<String> = context.dataStore.data.map { it[quranReciterKey] ?: com.farukzahra.muslimplus.quran.audio.QuranReciters.default.id }
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
     val notificationsEnabled: Flow<Boolean> =
         context.dataStore.data.map { it[notificationsKey] ?: true }
@@ -58,6 +60,8 @@ class SettingsRepository(
     /** `null` = primeira execucao (onboarding ainda nao foi concluido ou pulado). */
     val onboardingDone: Flow<Boolean?> =
         context.dataStore.data.map { it[onboardingDoneKey] }
+
+    suspend fun setQuranReciterId(id: String) { context.dataStore.edit { it[quranReciterKey] = id } }
 
     suspend fun setCity(id: String) {
         context.dataStore.edit { it[cityKey] = id }

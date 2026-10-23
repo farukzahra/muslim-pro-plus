@@ -51,6 +51,7 @@ import kotlinx.coroutines.launch
 fun SettingsScreen(
     onBack: () -> Unit,
     onHijriClick: () -> Unit,
+    onAudioStorageClick: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val locale = LocalConfiguration.current.locales[0]
@@ -127,6 +128,8 @@ fun SettingsScreen(
                 value = stringResource(R.string.prayers_offsets_hint),
                 onClick = { showOffsets = true },
             )
+            HorizontalDivider()
+            SettingsRow(title = stringResource(R.string.audio_storage_title), value = stringResource(R.string.audio_arabic_hint), onClick = onAudioStorageClick)
             HorizontalDivider()
             SettingsRow(
                 title = stringResource(R.string.more_hijri),
