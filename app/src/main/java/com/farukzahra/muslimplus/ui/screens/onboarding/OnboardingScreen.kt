@@ -10,16 +10,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -33,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -60,7 +65,10 @@ import kotlinx.coroutines.withContext
  * seguem valendo.
  */
 @Composable
-fun OnboardingScreen(onDone: () -> Unit) {
+fun OnboardingScreen(
+    onDone: () -> Unit,
+    contentInsets: WindowInsets = WindowInsets.safeDrawing,
+) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val settings = ServiceLocator.settings
@@ -127,17 +135,23 @@ fun OnboardingScreen(onDone: () -> Unit) {
 
     // A tela de idioma e reaproveitada; sem nav graph, um estado local troca o
     // conteudo. Trocar o idioma recria a activity e volta para o onboarding.
-    if (showLanguage) {
-        LanguageScreen(onBack = { showLanguage = false })
-        return
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 28.dp),
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background,
     ) {
+        if (showLanguage) {
+            LanguageScreen(onBack = { showLanguage = false })
+        } else {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .testTag("onboarding")
+                    // Reserva status bar, barra de navegacao e cutout: no Android 15+
+                    // o app desenha atras das barras, e os botoes nao podem ficar sob elas.
+                    .windowInsetsPadding(contentInsets)
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 24.dp, vertical = 28.dp),
+            ) {
         Text(
             text = stringResource(R.string.onboarding_title),
             style = MaterialTheme.typography.headlineMedium,
@@ -252,13 +266,21 @@ fun OnboardingScreen(onDone: () -> Unit) {
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            TextButton(onClick = { finish() }) {
+            TextButton(
+                onClick = { finish() },
+                modifier = Modifier.testTag("onboarding_skip"),
+            ) {
                 Text(stringResource(R.string.onboarding_skip))
             }
-            Button(onClick = { finish() }, modifier = Modifier.weight(1f)) {
+            Button(
+                onClick = { finish() },
+                modifier = Modifier.weight(1f).testTag("onboarding_start"),
+            ) {
                 Text(stringResource(R.string.onboarding_start))
             }
+            }
         }
+    }
     }
 
     if (showCities) {
