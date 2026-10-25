@@ -32,6 +32,8 @@ __pycache__/
 *.png
 # Assets de loja versionados (ícone, feature graphic, screenshots)
 !docs/store/**/*.png
+# Camadas PNG do icone adaptativo (geradas por tools/generate_icon.py)
+!app/src/main/res/drawable-xxxhdpi/*.png
 
 # Sistema
 Thumbs.db
