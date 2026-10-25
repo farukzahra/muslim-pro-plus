@@ -28,6 +28,7 @@ class DonateDialogTest {
 
         compose.onNodeWithTag("donate_dialog").assertIsDisplayed()
         compose.onNodeWithText(PIX_KEY).assertIsDisplayed()
+        compose.onNodeWithTag("pix_copy").performClick()
         compose.onNodeWithText(context.getString(R.string.donate_copy)).performClick()
         compose.onNodeWithTag("donate_dialog").assertIsDisplayed()
 
