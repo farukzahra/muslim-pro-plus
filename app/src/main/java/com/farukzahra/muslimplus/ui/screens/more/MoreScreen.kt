@@ -18,7 +18,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -27,12 +32,13 @@ import androidx.compose.ui.unit.dp
 import com.farukzahra.muslimplus.BuildConfig
 import com.farukzahra.muslimplus.R
 
-/** Os seis destinos da grade do Mais, na ordem em que aparecem. */
+/** Os destinos da grade do Mais, na ordem em que aparecem. */
 private data class MoreItem(
     val labelRes: Int,
     val iconRes: Int,
     val onClick: () -> Unit,
     val supporting: String? = null,
+    val testTag: String? = null,
 )
 
 /**
@@ -51,6 +57,7 @@ fun MoreScreen(
     onLicensesClick: () -> Unit,
     onAboutClick: () -> Unit,
 ) {
+    var showDonate by remember { mutableStateOf(false) }
     val items = listOf(
         MoreItem(R.string.more_settings, R.drawable.ic_more_settings, onSettingsClick),
         MoreItem(R.string.more_language, R.drawable.ic_more_language, onLanguageClick),
@@ -66,6 +73,13 @@ fun MoreScreen(
             R.drawable.ic_more_about,
             onAboutClick,
             supporting = stringResource(R.string.about_version, BuildConfig.VERSION_NAME),
+        ),
+        MoreItem(
+            R.string.more_donate,
+            R.drawable.ic_more_donate,
+            onClick = { showDonate = true },
+            supporting = stringResource(R.string.donate_supporting),
+            testTag = "more_donate",
         ),
     )
 
@@ -87,15 +101,18 @@ fun MoreScreen(
             }
         }
     }
+
+    if (showDonate) DonateDialog(onDismiss = { showDonate = false })
 }
 
 @Composable
 private fun MoreCard(item: MoreItem) {
     val label = stringResource(item.labelRes)
+    val cardModifier = Modifier
+        .fillMaxWidth()
+        .height(124.dp)
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(124.dp)
+        modifier = (if (item.testTag != null) cardModifier.testTag(item.testTag) else cardModifier)
             .clickable(role = Role.Button, onClick = item.onClick),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainer,

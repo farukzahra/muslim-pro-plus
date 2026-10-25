@@ -26,6 +26,11 @@
     <string name="about_pix_key">مفتاح Pix</string>
     <string name="about_pix_hint">اضغط لنسخ المفتاح.</string>
     <string name="about_pix_copied">تم نسخ مفتاح Pix</string>
+    <string name="more_donate">ادعم المشروع</string>
+    <string name="donate_supporting">مجاني دائمًا</string>
+    <string name="donate_body">صُمم Muslim Plus ليبقى مجانيًا: بلا حساب أو إعلانات أو تتبع. إذا أردت المساعدة في استمراره، يمكنك إرسال Pix. فقط إن أردت.</string>
+    <string name="donate_copy">نسخ مفتاح Pix</string>
+    <string name="action_close">إغلاق</string>
     <string name="language_title">لغة التطبيق</string>
     <string name="language_system">لغة النظام الافتراضية</string>
     <string name="language_english">الإنجليزية</string>

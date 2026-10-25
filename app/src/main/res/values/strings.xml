@@ -26,6 +26,11 @@
     <string name="about_pix_key">Pix key</string>
     <string name="about_pix_hint">Tap to copy the key.</string>
     <string name="about_pix_copied">Pix key copied</string>
+    <string name="more_donate">Support the project</string>
+    <string name="donate_supporting">Always free</string>
+    <string name="donate_body">Muslim Plus is meant to stay free: no account, no ads, no tracking. If you want to help keep it running, you can send a Pix. Only if you want to.</string>
+    <string name="donate_copy">Copy Pix key</string>
+    <string name="action_close">Close</string>
     <string name="language_title">App language</string>
     <string name="language_system">System default</string>
     <string name="language_english">English</string>

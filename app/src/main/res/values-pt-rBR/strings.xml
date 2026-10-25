@@ -26,6 +26,11 @@
     <string name="about_pix_key">Chave Pix</string>
     <string name="about_pix_hint">Toque para copiar a chave.</string>
     <string name="about_pix_copied">Chave Pix copiada</string>
+    <string name="more_donate">Apoie o projeto</string>
+    <string name="donate_supporting">Sempre gratuito</string>
+    <string name="donate_body">O Muslim Plus é feito para ser sempre gratuito: sem conta, anúncios ou rastreamento. Se quiser ajudar a manter o projeto, envie um Pix. Só se quiser.</string>
+    <string name="donate_copy">Copiar chave Pix</string>
+    <string name="action_close">Fechar</string>
     <string name="language_title">Idioma do app</string>
     <string name="language_system">Padrão do sistema</string>
     <string name="language_english">English</string>
