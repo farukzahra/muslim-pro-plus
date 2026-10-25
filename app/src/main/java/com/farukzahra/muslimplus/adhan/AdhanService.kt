@@ -19,6 +19,9 @@ import androidx.media3.exoplayer.ExoPlayer
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.notifications.Notifications
 import com.farukzahra.muslimplus.prayer.Prayer
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 /**
  * Toca o adhan no horario da oracao. Usa o fluxo de ALARME, entao o audio sai
@@ -63,6 +66,7 @@ class AdhanService : Service() {
 
         try {
             startForeground(NOTIFICATION_ID, notification(prayer))
+            _playing.value = true
         } catch (error: Throwable) {
             android.util.Log.e("AdhanService", "startForeground failed", error)
             stopSelf()
@@ -77,6 +81,7 @@ class AdhanService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onDestroy() {
+        _playing.value = false
         player.release()
         super.onDestroy()
     }
@@ -121,6 +126,11 @@ class AdhanService : Service() {
         private const val EXTRA_PRAYER = "prayer"
         private const val EXTRA_SOUND = "sound"
 
+        private val _playing = MutableStateFlow(false)
+
+        /** Estado observável pelo app para mostrar o botão de parar. */
+        val playing: StateFlow<Boolean> = _playing.asStateFlow()
+
         fun start(context: Context, prayer: Prayer, sound: AdhanSound) {
             val intent = Intent(context, AdhanService::class.java)
                 .putExtra(EXTRA_PRAYER, prayer.name)
@@ -130,6 +140,16 @@ class AdhanService : Service() {
             } catch (_: Exception) {
                 // Alarme inexato/sem permissao de primeiro plano: a notificacao
                 // continua valendo e o app nao pode cair por causa do audio.
+            }
+        }
+
+        /** Para o chamado em andamento; tambem e a acao da notificacao. */
+        fun stop(context: Context) {
+            val intent = Intent(context, AdhanService::class.java).setAction(ACTION_STOP)
+            try {
+                context.startService(intent)
+            } catch (_: Exception) {
+                context.stopService(Intent(context, AdhanService::class.java))
             }
         }
     }
