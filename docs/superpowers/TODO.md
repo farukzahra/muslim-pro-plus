@@ -72,5 +72,24 @@ Busca no Alcorão, traduções em texto, transliteração, favoritos, continuar
 leitura, áudio por verso, download por sura, tema, idiomas, horários de oração,
 Qibla e data hijri. Melhorias específicas precisam de escopo próprio.
 
+Implementado em 25/10/2026, fora de novos itens: cartão **Apoie o projeto**
+(Pix, cópia por toque) na grade do Mais e **checagem de atualização** pelo Play
+In-App Updates (diálogo de versão nova, download em segundo plano e aviso para
+reiniciar), com status "Atualizações" no Mais.
+
+## Pedido em aberto — chamado (adhan) por oração
+
+Pedido do usuário em 25/10/2026. **Não iniciar sem spec aprovado.** Perguntas
+que mudam o resultado:
+
+1. Quais orações tocam: as cinco (Fajr, Dhuhr, Asr, Maghrib, Isha), com Fajr
+   separado? Nascer do sol não é oração, então não entraria.
+2. Fonte do áudio: gravação própria/CC0 embarcada, gravação licenciada ou
+   apenas o som de notificação atual? Sem asset com licença clara, não há adhan.
+3. Comportamento em silêncio/vibrar e volume do adhan (ignorar modo silencioso
+   ou respeitar).
+4. Substituir a notificação atual ou tocar junto com ela.
+
+
 Referência de pesquisa: `old/docs/2026-10-23-comparacao-features-recitadores.md`.
 O legado serve somente à comparação; implementar com código, assets e textos próprios.

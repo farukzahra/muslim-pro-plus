@@ -2,6 +2,7 @@ package com.farukzahra.muslimplus
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -21,9 +22,25 @@ import com.farukzahra.muslimplus.settings.StartScreen
 import com.farukzahra.muslimplus.ui.MuslimPlusApp
 import com.farukzahra.muslimplus.ui.screens.onboarding.OnboardingScreen
 import com.farukzahra.muslimplus.ui.theme.MuslimPlusTheme
+import com.farukzahra.muslimplus.ui.update.UpdateDialogs
+import com.farukzahra.muslimplus.ui.update.UpdateViewModel
+import com.farukzahra.muslimplus.ui.update.UpdateViewModelFactory
+import com.farukzahra.muslimplus.update.AppUpdaterProvider
 import kotlinx.coroutines.flow.first
 
 class MainActivity : AppCompatActivity() {
+    private val updateViewModel: UpdateViewModel by viewModels {
+        UpdateViewModelFactory(
+            AppUpdaterProvider.create(applicationContext),
+            ServiceLocator.settings,
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateViewModel.onResume()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             LaunchedEffect(Unit) {
                 screen = Onboarding.startScreen(ServiceLocator.settings.onboardingDone.first())
             }
+            val update by updateViewModel.uiState.collectAsState()
 
             MuslimPlusTheme(darkTheme = dark) {
                 when (screen) {
@@ -56,7 +74,22 @@ class MainActivity : AppCompatActivity() {
                     StartScreen.ONBOARDING -> OnboardingScreen(
                         onDone = { screen = StartScreen.HOME },
                     )
-                    StartScreen.HOME -> MuslimPlusApp()
+                    StartScreen.HOME -> MuslimPlusApp(
+                        updateCard = update.card,
+                        updatePercent = update.downloadPercent,
+                        onUpdateClick = { updateViewModel.onUpdateClick(this@MainActivity) },
+                        onRestartClick = updateViewModel::onRestartClick,
+                        onCheckUpdate = updateViewModel::checkNow,
+                    )
+                }
+                if (screen == StartScreen.HOME) {
+                    UpdateDialogs(
+                        dialog = update.dialog,
+                        onUpdate = { updateViewModel.onUpdateClick(this@MainActivity) },
+                        onLater = updateViewModel::onPromptDismissed,
+                        onRestart = updateViewModel::onRestartClick,
+                        onPostpone = updateViewModel::onRestartPostponed,
+                    )
                 }
             }
         }

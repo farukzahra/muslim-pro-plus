@@ -128,6 +128,7 @@ dependencies {
     implementation(libs.adhan)
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.session)
+    implementation(libs.play.app.update)
 
     debugImplementation(libs.androidx.ui.tooling)
 

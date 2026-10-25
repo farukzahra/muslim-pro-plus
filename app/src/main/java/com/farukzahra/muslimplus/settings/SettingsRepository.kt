@@ -19,7 +19,7 @@ private val Context.dataStore by preferencesDataStore(name = "settings")
 class SettingsRepository(
     private val context: Context,
     private val cities: CityCatalog = CityCatalog.fromAsset(context),
-) {
+) : com.farukzahra.muslimplus.update.UpdatePromptStore {
     private val quranReciterKey = stringPreferencesKey("quran_reciter_id")
     private val cityKey = stringPreferencesKey("city_id")
     private val methodKey = stringPreferencesKey("prayer_method")
@@ -29,6 +29,7 @@ class SettingsRepository(
     private val prayerOffsetsKey = stringPreferencesKey("prayer_offsets")
     private val hijriOffsetKey = intPreferencesKey("hijri_offset")
     private val onboardingDoneKey = booleanPreferencesKey(Onboarding.DONE_KEY)
+    private val updatePromptDismissedKey = booleanPreferencesKey("update_prompt_dismissed")
 
     /**
      * Cidade escolhida ou, sem escolha (primeira execucao), a maior cidade do
@@ -60,6 +61,13 @@ class SettingsRepository(
     /** `null` = primeira execucao (onboarding ainda nao foi concluido ou pulado). */
     val onboardingDone: Flow<Boolean?> =
         context.dataStore.data.map { it[onboardingDoneKey] }
+
+    override fun observePromptDismissed(): Flow<Boolean> =
+        context.dataStore.data.map { it[updatePromptDismissedKey] ?: false }
+
+    override suspend fun setPromptDismissed(value: Boolean) {
+        context.dataStore.edit { it[updatePromptDismissedKey] = value }
+    }
 
     suspend fun setQuranReciterId(id: String) { context.dataStore.edit { it[quranReciterKey] = id } }
 

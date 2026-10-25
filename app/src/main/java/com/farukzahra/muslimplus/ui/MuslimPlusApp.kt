@@ -37,6 +37,7 @@ import com.farukzahra.muslimplus.ui.screens.settings.QuranDisplayScreen
 import com.farukzahra.muslimplus.ui.screens.settings.SettingsScreen
 import com.farukzahra.muslimplus.ui.screens.settings.ThemeScreen
 import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
+import com.farukzahra.muslimplus.update.UpdateCardState
 
 const val AUDIO_STORAGE_ROUTE = "settings/audio-storage"
 const val SETTINGS_ROUTE = "settings"
@@ -56,7 +57,13 @@ private const val NO_AYAH = 0
 fun quranReaderRoute(surah: Int, ayah: Int = NO_AYAH): String = "quran/$surah?ayah=$ayah"
 
 @Composable
-fun MuslimPlusApp() {
+fun MuslimPlusApp(
+    updateCard: UpdateCardState = UpdateCardState.Unknown,
+    updatePercent: Int? = null,
+    onUpdateClick: () -> Unit = {},
+    onRestartClick: () -> Unit = {},
+    onCheckUpdate: () -> Unit = {},
+) {
     val navController = rememberNavController()
     val backStack by navController.currentBackStackEntryAsState()
     val currentRoute = backStack?.destination?.route ?: Tab.TODAY.route
@@ -123,6 +130,11 @@ fun MuslimPlusApp() {
                             onThemeClick = { navController.navigate(THEME_ROUTE) },
                             onLicensesClick = { navController.navigate(LICENSES_ROUTE) },
                             onAboutClick = { navController.navigate(ABOUT_ROUTE) },
+                            updateCard = updateCard,
+                            updatePercent = updatePercent,
+                            onUpdateClick = onUpdateClick,
+                            onRestartClick = onRestartClick,
+                            onCheckUpdate = onCheckUpdate,
                         )
                     }
                 }

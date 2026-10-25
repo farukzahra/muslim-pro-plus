@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.farukzahra.muslimplus.BuildConfig
 import com.farukzahra.muslimplus.R
+import com.farukzahra.muslimplus.update.UpdateCardState
 
 /** Os destinos da grade do Mais, na ordem em que aparecem. */
 private data class MoreItem(
@@ -56,6 +57,11 @@ fun MoreScreen(
     onThemeClick: () -> Unit,
     onLicensesClick: () -> Unit,
     onAboutClick: () -> Unit,
+    updateCard: UpdateCardState = UpdateCardState.Unknown,
+    updatePercent: Int? = null,
+    onUpdateClick: () -> Unit = {},
+    onRestartClick: () -> Unit = {},
+    onCheckUpdate: () -> Unit = {},
 ) {
     var showDonate by remember { mutableStateOf(false) }
     val items = listOf(
@@ -73,6 +79,17 @@ fun MoreScreen(
             R.drawable.ic_more_about,
             onAboutClick,
             supporting = stringResource(R.string.about_version, BuildConfig.VERSION_NAME),
+        ),
+        MoreItem(
+            R.string.more_updates,
+            R.drawable.ic_more_update,
+            onClick = when (updateCard) {
+                UpdateCardState.Available -> onUpdateClick
+                UpdateCardState.ReadyToInstall -> onRestartClick
+                else -> onCheckUpdate
+            },
+            supporting = updateStatus(updateCard, updatePercent),
+            testTag = "more_updates",
         ),
         MoreItem(
             R.string.more_donate,
@@ -103,6 +120,18 @@ fun MoreScreen(
     }
 
     if (showDonate) DonateDialog(onDismiss = { showDonate = false })
+}
+
+@Composable
+private fun updateStatus(state: UpdateCardState, percent: Int?): String = when (state) {
+    UpdateCardState.Unknown -> stringResource(R.string.update_status_check)
+    UpdateCardState.UpToDate -> stringResource(R.string.update_status_current)
+    UpdateCardState.Available -> stringResource(R.string.update_status_available)
+    UpdateCardState.Downloading -> percent?.let {
+        stringResource(R.string.update_status_downloading, it)
+    } ?: stringResource(R.string.update_status_downloading_unknown)
+
+    UpdateCardState.ReadyToInstall -> stringResource(R.string.update_status_ready)
 }
 
 @Composable
