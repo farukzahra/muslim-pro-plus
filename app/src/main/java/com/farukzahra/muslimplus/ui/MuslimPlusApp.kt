@@ -40,6 +40,7 @@ import com.farukzahra.muslimplus.ui.screens.today.TodayScreen
 import com.farukzahra.muslimplus.update.UpdateCardState
 
 const val AUDIO_STORAGE_ROUTE = "settings/audio-storage"
+const val ADHAN_ROUTE = "settings/adhan"
 const val SETTINGS_ROUTE = "settings"
 const val LANGUAGE_ROUTE = "settings/language"
 const val QURAN_DISPLAY_ROUTE = "settings/quran-display"
@@ -144,6 +145,12 @@ fun MuslimPlusApp(
                     onBack = { navController.popBackStack() },
                     onHijriClick = { navController.navigate(HIJRI_ROUTE) },
                     onAudioStorageClick = { navController.navigate(AUDIO_STORAGE_ROUTE) },
+                    onAdhanClick = { navController.navigate(ADHAN_ROUTE) },
+                )
+            }
+            composable(ADHAN_ROUTE) {
+                com.farukzahra.muslimplus.ui.screens.settings.AdhanScreen(
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable(AUDIO_STORAGE_ROUTE) { com.farukzahra.muslimplus.ui.screens.settings.AudioStorageScreen(onBack = { navController.popBackStack() }) }

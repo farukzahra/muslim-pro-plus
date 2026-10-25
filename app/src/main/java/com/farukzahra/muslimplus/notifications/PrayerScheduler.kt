@@ -23,7 +23,9 @@ class PrayerScheduler(private val context: Context) {
 
     suspend fun rescheduleNow() {
         val settings = ServiceLocator.settings
-        if (!settings.notificationsEnabled.first()) {
+        val notifications = settings.notificationsEnabled.first()
+        val hasAdhan = settings.adhanPrayers.first().isNotEmpty()
+        if (!notifications && !hasAdhan) {
             cancel()
             return
         }

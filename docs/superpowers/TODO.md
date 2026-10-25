@@ -77,18 +77,15 @@ Implementado em 25/10/2026, fora de novos itens: cartão **Apoie o projeto**
 In-App Updates (diálogo de versão nova, download em segundo plano e aviso para
 reiniciar), com status "Atualizações" no Mais.
 
-## Pedido em aberto — chamado (adhan) por oração
+## Chamado (adhan) — implementado em 25/10/2026
 
-Pedido do usuário em 25/10/2026. **Não iniciar sem spec aprovado.** Perguntas
-que mudam o resultado:
-
-1. Quais orações tocam: as cinco (Fajr, Dhuhr, Asr, Maghrib, Isha), com Fajr
-   separado? Nascer do sol não é oração, então não entraria.
-2. Fonte do áudio: gravação própria/CC0 embarcada, gravação licenciada ou
-   apenas o som de notificação atual? Sem asset com licença clara, não há adhan.
-3. Comportamento em silêncio/vibrar e volume do adhan (ignorar modo silencioso
-   ou respeitar).
-4. Substituir a notificação atual ou tocar junto com ela.
+Implementado conforme as decisões do usuário: Fajr, Dhuhr, Asr, Maghrib e Isha
+com switch individual (todas ligadas por padrão, menos Fajr); nascer do sol
+nunca toca; duas gravações embarcadas com troca e prévia (CC0 e domínio
+público, com atribuição em Licenças); "respeitar modo silencioso" desligado por
+padrão e ligável em Configurações → Chamado (adhan); reprodução por serviço em
+primeiro plano com Media3, notificação com "Parar". Spec em
+`specs/2026-10-25-adhan-design.md` e plano em `plans/2026-10-25-adhan.md`.
 
 
 Referência de pesquisa: `old/docs/2026-10-23-comparacao-features-recitadores.md`.

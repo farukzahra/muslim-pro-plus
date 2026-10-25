@@ -7,6 +7,8 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.farukzahra.muslimplus.adhan.AdhanPolicy
+import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerOffsets
@@ -30,6 +32,9 @@ class SettingsRepository(
     private val hijriOffsetKey = intPreferencesKey("hijri_offset")
     private val onboardingDoneKey = booleanPreferencesKey(Onboarding.DONE_KEY)
     private val updatePromptDismissedKey = booleanPreferencesKey("update_prompt_dismissed")
+    private val adhanPrayersKey = stringSetPreferencesKey("adhan_prayers")
+    private val adhanSoundKey = stringPreferencesKey("adhan_sound")
+    private val adhanRespectSilentKey = booleanPreferencesKey("adhan_respect_silent")
 
     /**
      * Cidade escolhida ou, sem escolha (primeira execucao), a maior cidade do
@@ -43,6 +48,12 @@ class SettingsRepository(
     val methodName: Flow<String> = context.dataStore.data.map { it[methodKey] ?: "MWL" }
     val notificationsEnabled: Flow<Boolean> =
         context.dataStore.data.map { it[notificationsKey] ?: true }
+    val adhanPrayers: Flow<Set<Prayer>> =
+        context.dataStore.data.map { AdhanPolicy.sanitize(it[adhanPrayersKey]) }
+    val adhanSoundId: Flow<String> =
+        context.dataStore.data.map { it[adhanSoundKey] ?: AdhanSound.default.id }
+    val adhanRespectSilent: Flow<Boolean> =
+        context.dataStore.data.map { it[adhanRespectSilentKey] ?: false }
     val quranModes: Flow<Set<String>> =
         context.dataStore.data.map {
             it[quranModesKey] ?: QuranModes.defaults(QuranModes.currentLanguageTag())
@@ -81,6 +92,18 @@ class SettingsRepository(
 
     suspend fun setNotificationsEnabled(enabled: Boolean) {
         context.dataStore.edit { it[notificationsKey] = enabled }
+    }
+
+    suspend fun setAdhanPrayers(prayers: Set<Prayer>) {
+        context.dataStore.edit { it[adhanPrayersKey] = AdhanPolicy.encode(prayers) }
+    }
+
+    suspend fun setAdhanSound(id: String) {
+        context.dataStore.edit { it[adhanSoundKey] = id }
+    }
+
+    suspend fun setAdhanRespectSilent(value: Boolean) {
+        context.dataStore.edit { it[adhanRespectSilentKey] = value }
     }
 
     suspend fun setQuranModes(modes: Set<String>) {

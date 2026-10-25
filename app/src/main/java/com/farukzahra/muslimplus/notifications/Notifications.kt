@@ -50,7 +50,7 @@ object Notifications {
         NotificationManagerCompat.from(context).notify(prayer.ordinal + 1, notification)
     }
 
-    private fun prayerLabel(prayer: Prayer): Int = when (prayer) {
+    fun prayerLabel(prayer: Prayer): Int = when (prayer) {
         Prayer.FAJR -> R.string.prayer_fajr
         Prayer.SUNRISE -> R.string.prayer_sunrise
         Prayer.DHUHR -> R.string.prayer_dhuhr

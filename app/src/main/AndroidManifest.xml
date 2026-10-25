@@ -9,6 +9,8 @@
     <!-- Notificacao do MediaSessionService com controles de reproducao. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <!-- Adhan toca com a tela apagada; o player segura o wake lock local. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- GPS/rede nativos (LocationManager), sem Play Services. Runtime grant. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -70,6 +72,11 @@
                 <action android:name="androidx.media3.session.MediaSessionService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".adhan.AdhanService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
 
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"

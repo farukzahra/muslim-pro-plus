@@ -32,6 +32,8 @@ object Licenses {
     const val MEDIA3_URL = "https://github.com/androidx/media"
     const val EVERYAYAH_URL = "https://everyayah.com/"
     const val QURAN_API_URL = "https://quran.com/"
+    const val ADHAN_CLASSIC_URL = "https://commons.wikimedia.org/wiki/File:Beautiful_adhan.ogg"
+    const val ADHAN_SABAH_URL = "https://commons.wikimedia.org/wiki/File:Call_to_prayer_by_Sabah_Fakhry.mp3"
 
     val all: List<LicenseEntry> = listOf(
         LicenseEntry(
@@ -75,6 +77,18 @@ object Licenses {
             license = "Quran.com API",
             url = QURAN_API_URL,
             noteRes = R.string.licenses_note_pickthall,
+        ),
+        LicenseEntry(
+            name = "Beautiful adhan",
+            license = "CC0 1.0",
+            url = ADHAN_CLASSIC_URL,
+            noteRes = R.string.licenses_note_adhan_audio,
+        ),
+        LicenseEntry(
+            name = "Sabah Fakhry — Call to prayer",
+            license = "Public domain",
+            url = ADHAN_SABAH_URL,
+            noteRes = R.string.licenses_note_adhan_audio,
         ),
     )
 }

@@ -52,6 +52,7 @@ fun SettingsScreen(
     onBack: () -> Unit,
     onHijriClick: () -> Unit,
     onAudioStorageClick: () -> Unit = {},
+    onAdhanClick: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val locale = LocalConfiguration.current.locales[0]
@@ -130,6 +131,12 @@ fun SettingsScreen(
             )
             HorizontalDivider()
             SettingsRow(title = stringResource(R.string.audio_storage_title), value = stringResource(R.string.audio_arabic_hint), onClick = onAudioStorageClick)
+            HorizontalDivider()
+            SettingsRow(
+                title = stringResource(R.string.settings_adhan),
+                value = stringResource(R.string.settings_adhan_hint),
+                onClick = onAdhanClick,
+            )
             HorizontalDivider()
             SettingsRow(
                 title = stringResource(R.string.more_hijri),
