@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Recap — Muslim Plus — 26/10/2026</title>
+  <style>
+    :root {
+      --bg-page: #08131c;
+      --bg-card: #0e1b26;
+      --bg-card-2: #13232f;
+      --primary: #2fb98a;
+      --secondary: #d9b25f;
+      --ink: #e9eef4;
+      --muted: #9fb0c2;
+      --border: #223444;
+      --border-strong: #3a4c5e;
+      --danger: #f2b8b5;
+      --radius: 18px;
+      --radius-sm: 14px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--bg-page); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(900px 480px at 8% -8%, rgba(47, 185, 138, 0.18), transparent 70%),
+        radial-gradient(760px 420px at 108% 18%, rgba(217, 178, 95, 0.10), transparent 70%),
+        var(--bg-page);
+      line-height: 1.55;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 100% 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.45), transparent 60%);
+    }
+    .wrap { width: min(1080px, calc(100% - 2.5rem)); margin: 0 auto; padding: 3.5rem 0 4rem; }
+    .eyebrow {
+      margin: 0 0 0.7rem;
+      color: var(--primary);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    header h1 {
+      margin: 0;
+      font-family: "Literata", "Iowan Old Style", Georgia, serif;
+      font-size: clamp(2.1rem, 5vw, 3.7rem);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+    header h1 span { color: var(--secondary); }
+    .lede {
+      max-width: 62ch;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 1.5rem 0 0; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(14, 27, 38, 0.72);
+      color: var(--muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+    .chip strong { color: var(--ink); font-weight: 600; }
+    .chip--progress { border-color: var(--border-strong); color: var(--ink); }
+    .local-env {
+      margin: 2rem 0 2.4rem;
+      padding: 1.15rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(19, 35, 47, 0.95), rgba(14, 27, 38, 0.9));
+      box-shadow: var(--shadow);
+    }
+    .local-env h2 { margin: 0 0 0.85rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; }
+    .status {
+      display: flex; gap: 0.7rem; align-items: flex-start;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(8, 19, 28, 0.45);
+    }
+    .dot { width: 9px; height: 9px; margin-top: 0.4rem; border-radius: 50%; flex: none; background: var(--primary); box-shadow: 0 0 0 4px rgba(47,185,138,0.12); }
+    .dot--gold { background: var(--secondary); box-shadow: 0 0 0 4px rgba(217,178,95,0.12); }
+    .status strong { display: block; font-size: 0.88rem; }
+    .status span { display: block; color: var(--muted); font-size: 0.78rem; }
+    .status a { color: var(--primary); text-decoration: none; border-bottom: 1px solid rgba(47,185,138,0.35); }
+    .status a:hover { border-color: var(--primary); }
+    .topics-hint { margin: 0 0 0.9rem; font-size: 0.8125rem; color: var(--muted); }
+    .topics { display: grid; gap: 0.95rem; }
+    .topic {
+      position: relative;
+      cursor: pointer;
+      padding: 1.2rem 1.3rem 1.15rem 1.4rem;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(150deg, rgba(19, 35, 47, 0.92), rgba(14, 27, 38, 0.95));
+      transition: opacity 0.2s ease, filter 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+    .topic:hover:not(.topic--seen) { border-color: var(--border-strong); transform: translateY(-1px); }
+    .topic:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+    .topic h2 {
+      margin: 0 0 0.55rem;
+      padding-right: 4.5rem;
+      font-family: "Literata", "Iowan Old Style", Georgia, serif;
+      font-size: 1.18rem;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+    .meta { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.74rem; letter-spacing: 0.03em; }
+    .meta code { color: var(--secondary); font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.72rem; }
+    .label { display: inline-block; margin: 0.25rem 0 0.15rem; color: var(--primary); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; }
+    .topic p { margin: 0; color: #c8d4df; font-size: 0.92rem; }
+    .topic p + .label { margin-top: 0.65rem; }
+    .topic--seen { opacity: 0.52; filter: saturate(0.65); border-left-color: var(--muted); }
+    .topic--seen::after {
+      content: "Visto";
+      position: absolute; top: 0.85rem; right: 1rem;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.625rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border); border-radius: 999px;
+      background: rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+    .pending {
+      margin-top: 2.4rem;
+      padding: 1.25rem 1.35rem;
+      border: 1px solid rgba(217, 178, 95, 0.35);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(62, 47, 12, 0.28), rgba(14, 27, 38, 0.8));
+    }
+    .pending h2 { margin: 0 0 0.6rem; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); }
+    .pending ul { margin: 0; padding-left: 1.1rem; color: #d8e2ec; font-size: 0.9rem; }
+    .pending li + li { margin-top: 0.4rem; }
+    footer { margin-top: 2.2rem; color: var(--muted); font-size: 0.75rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    @media (prefers-reduced-motion: reduce) {
+      .topic { transition: none; }
+      .topic:hover:not(.topic--seen) { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Muslim Plus · sessão 25–26 out 2026</p>
+    <header>
+      <h1>Do áudio do Alcorão ao adhan.<br /><span>Tudo pedido, tudo entregue.</span></h1>
+      <p class="lede">Retomada do trabalho do Codex, correções de usabilidade, doação, atualização, chamado em árabe, ícone, publicação no Play e a tela Hoje.</p>
+      <div class="chips">
+        <span class="chip"><strong>11</strong> tópicos</span>
+        <span class="chip"><strong>21</strong> testes instrumentados</span>
+        <span class="chip"><strong>1.1.0</strong> no ar</span>
+        <span class="chip chip--progress" data-recap-progress hidden>0/0 vistos</span>
+      </div>
+    </header>
+
+    <section class="local-env" aria-label="Estado local">
+      <h2>Estado local</h2>
+      <div class="status-grid">
+        <div class="status">
+          <span class="dot"></span>
+          <div><strong>Pixel6 · emulator-5556</strong><span>1.1.2 debug com as mudanças locais · SHA-256 conferido</span></div>
+        </div>
+        <div class="status">
+          <span class="dot dot--gold"></span>
+          <div><strong>Google Play</strong><span>1.1.0 no ar · 1.1.1 e 1.1.2 em análise</span></div>
+        </div>
+        <div class="status">
+          <span class="dot"></span>
+          <div><strong>Prints da sessão</strong><span><a href="../../build/shots/index.html">Abrir galeria local</a> (build/shots, fora do git)</span></div>
+        </div>
+        <div class="status">
+          <span class="dot"></span>
+          <div><strong>Instalação verificada</strong><span><code>scripts/install-local.ps1</code> compara hash e abre o app</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="topics">
+      <p class="topics-hint">Clique em um card para marcar como visto.</p>
+
+      <article class="topic" data-topic-id="audio-alcorao">
+        <h2>Áudio do Alcorão: cache, downloads e leitor</h2>
+        <p class="meta">Commit <code>37ea063</code> · testes JVM + Android</p>
+        <span class="label">Pedido</span>
+        <p>Retomar o trabalho do Codex: escolher recitador, cache de reprodução, downloads por sura ou Alcorão completo e tela de armazenamento.</p>
+        <span class="label">Entregue</span>
+        <p>Cache Media3 de 300 MiB separado dos downloads, resolução local a cada abertura, fila remontada ao trocar de voz, download único com retomada/cancelamento, tela com busca, inventário das 114 suras e exclusão protegida. Strings em pt/en/ar.</p>
+      </article>
+
+      <article class="topic" data-topic-id="onboarding-barras">
+        <h2>Onboarding e barra do Galaxy</h2>
+        <p class="meta">Commit <code>cd753d1</code> · teste de inset</p>
+        <span class="label">Pedido</span>
+        <p>O fundo do “Bem-vindo” parecia transparente e os botões Pular/Começar ficavam sob a barra de navegação do Galaxy.</p>
+        <span class="label">Entregue</span>
+        <p>Fundo opaco do tema e <code>safeDrawing</code> reservando status bar, barra de navegação e cutout. Teste injeta um inset inferior de 600 px e garante que o botão termina acima dele.</p>
+      </article>
+
+      <article class="topic" data-topic-id="doacao-pix">
+        <h2>Cartão de doação com Pix</h2>
+        <p class="meta">Commits <code>9b79ed4</code> e <code>03cbdca</code></p>
+        <span class="label">Pedido</span>
+        <p>Um card “Doação” no app dizendo que o projeto é para ser sempre gratuito, com o Pix do <code>../fumei</code>.</p>
+        <span class="label">Entregue</span>
+        <p>Card “Apoie o projeto” na grade do Mais, diálogo com a chave Pix e cópia por toque, mais botão de copiar ao lado da chave. Mesma chave já usada pelo Sobre.</p>
+      </article>
+
+      <article class="topic" data-topic-id="atualizacao-play">
+        <h2>Aviso de atualização pelo Play</h2>
+        <p class="meta">Commit <code>01af35d</code></p>
+        <span class="label">Pedido</span>
+        <p>Detectar se há versão nova e avisar o usuário, como no fumei.</p>
+        <span class="label">Entregue</span>
+        <p>Play In-App Updates com consulta ao abrir/voltar, diálogo de versão disponível, download em segundo plano, aviso de reinício e card “Atualizações” com estado. O “agora não” fica salvo.</p>
+      </article>
+
+      <article class="topic" data-topic-id="adhan">
+        <h2>Adhan por oração</h2>
+        <p class="meta">Commit <code>bb46845</code> · 2 gravações licenciadas</p>
+        <span class="label">Pedido</span>
+        <p>Chamamento em árabe por oração, com escolha individual, vozes e opção de silencioso; Fajr desligado por padrão.</p>
+        <span class="label">Entregue</span>
+        <p>Tela “Chamado (adhan)” com 5 orações, Fajr off por padrão, duas gravações (CC0 e domínio público) com prévia, “respeitar silencioso” opcional e serviço em primeiro plano com Media3 no volume de alarme.</p>
+      </article>
+
+      <article class="topic" data-topic-id="parar-adhan">
+        <h2>Parar o chamado no app e na notificação</h2>
+        <p class="meta">Commit <code>796dd7c</code> · 3 testes de serviço</p>
+        <span class="label">Pedido</span>
+        <p>Ter opção de desligar o adhan tanto no aviso push quanto dentro do app, com teste.</p>
+        <span class="label">Entregue</span>
+        <p>Faixa global “Tocando o chamado” com botão Parar em qualquer tela e ação Parar na notificação. Testes cobrem serviço em primeiro plano, botão do app e a ação real da notificação.</p>
+      </article>
+
+      <article class="topic" data-topic-id="icone-loja">
+        <h2>Ícone e artes da loja</h2>
+        <p class="meta">Commits <code>428fcca</code> e <code>89f4fff</code></p>
+        <span class="label">Pedido</span>
+        <p>Corrigir o ícone como o exemplo (crescente + estrela de cinco pontas), mantendo as cores.</p>
+        <span class="label">Entregue</span>
+        <p>Ícone adaptativo novo em verde/dourado com crescente aberto e estrela de 5 pontas; camadas PNG geradas por <code>tools/generate_icon.py</code>; ícone 512 e feature graphics atualizados e enviados ao listing.</p>
+      </article>
+
+      <article class="topic" data-topic-id="publicacao">
+        <h2>Publicação e versionamento</h2>
+        <p class="meta">1.1.0 no ar · 1.1.1 e 1.1.2 enviadas</p>
+        <span class="label">Pedido</span>
+        <p>Publicar no Google Play quando autorizado, sem mandar a versão antes do “pode publicar”.</p>
+        <span class="label">Entregue</span>
+        <p>AAB 1.1.0 (versionCode 2) publicado; depois 1.1.1 (ícone) e 1.1.2 (parar adhan) enviados a produção e teste interno, com notas em pt/en. Página pública responde 200 e mostra a 1.1.0.</p>
+      </article>
+
+      <article class="topic" data-topic-id="instalacao-verificada">
+        <h2>“Sobe local” com verificação</h2>
+        <p class="meta">Commit <code>8fdd830</code> · regra no AGENTS</p>
+        <span class="label">Pedido</span>
+        <p>O emulador estava com build velho; conferir sempre se a versão nova chegou.</p>
+        <span class="label">Entregue</span>
+        <p><code>scripts/install-local.ps1</code> instala em todos os dispositivos, compara o SHA-256 do APK instalado com o build local, abre o app e falha se o hash divergir. A regra passou a ser obrigatória em toda entrega com APK.</p>
+      </article>
+
+      <article class="topic" data-topic-id="verso-do-dia">
+        <h2>Tela Hoje: verso do dia e timeline</h2>
+        <p class="meta">Commits <code>0e400f8</code> e <code>566c792</code> · 21 testes</p>
+        <span class="label">Pedido</span>
+        <p>O card do verso travava a tela; adicionar scroll, opção de esconder, refresh para outro verso e, depois, uma forma de reabrir e uma linha contínua na timeline.</p>
+        <span class="label">Entregue</span>
+        <p>A tela inteira rola; card com refresh e X; botão “Mostrar verso do dia” quando oculto; switch em Configurações; linha contínua ligando os pontos das orações. Teste cobre rolagem, troca de verso, ocultar e reabrir.</p>
+      </article>
+
+      <article class="topic" data-topic-id="doacao-melhorada">
+        <h2>Doação com Buy me a coffee</h2>
+        <p class="meta">Commit <code>566c792</code> · cards com ícones</p>
+        <span class="label">Pedido</span>
+        <p>Melhorar a doação com o link <code>buymeacoffee.com/farukzahra</code>, ícones para Pix e café, e uma tela mais bonita.</p>
+        <span class="label">Entregue</span>
+        <p>Dois cards no diálogo e no Sobre: Pix (ícone, chave, cópia) e Buy me a coffee (ícone de café, link e Abrir). Título com coração, cartões arredondados e ações inline.</p>
+      </article>
+    </div>
+
+    <section class="pending">
+      <h2>Pendências e avisos</h2>
+      <ul>
+        <li>As melhorias de Hoje e doação estão no debug local, mas <strong>não</strong> no AAB 1.1.2 enviado; para irem à loja precisa de uma 1.1.3.</li>
+        <li>1.1.1 e 1.1.2 aguardam análise do Play; a página pública ainda mostra a 1.1.0 até a revisão terminar.</li>
+        <li>O adhan depende da permissão de alarmes exatos; sem ela o Android pode atrasar ou bloquear o áudio em segundo plano.</li>
+        <li>Na notificação, a ação Parar aparece ao expandir o aviso (chevron); no app ela fica sempre visível na faixa superior.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>Muslim Plus · recap gerado em 26/10/2026</span>
+      <span>Generated by /recap</span>
+    </footer>
+  </div>
+
+  <script>
+    (function initRecapTopicSeen() {
+      const storageKey = (id) => `recap-seen:${location.pathname}:${id}`;
+      const cards = Array.from(document.querySelectorAll('.topic[data-topic-id]'));
+      const counter = document.querySelector('[data-recap-progress]');
+
+      function updateCounter() {
+        if (!counter) return;
+        const seen = cards.filter((c) => c.classList.contains('topic--seen')).length;
+        counter.textContent = `${seen}/${cards.length} vistos`;
+        counter.hidden = cards.length === 0;
+      }
+
+      function setSeen(card, seen) {
+        const id = card.dataset.topicId;
+        if (!id) return;
+        card.classList.toggle('topic--seen', seen);
+        card.setAttribute('aria-pressed', seen ? 'true' : 'false');
+        if (seen) localStorage.setItem(storageKey(id), '1');
+        else localStorage.removeItem(storageKey(id));
+        updateCounter();
+      }
+
+      cards.forEach((card) => {
+        const id = card.dataset.topicId;
+        if (localStorage.getItem(storageKey(id)) === '1') card.classList.add('topic--seen');
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-pressed', card.classList.contains('topic--seen') ? 'true' : 'false');
+        card.setAttribute('aria-label', `${card.querySelector('h2')?.textContent ?? 'Tópico'} — marcar como visto`);
+
+        function toggle() {
+          setSeen(card, !card.classList.contains('topic--seen'));
+        }
+
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggle();
+          }
+        });
+      });
+
+      updateCounter();
+    })();
+  </script>
+</body>
+</html>
