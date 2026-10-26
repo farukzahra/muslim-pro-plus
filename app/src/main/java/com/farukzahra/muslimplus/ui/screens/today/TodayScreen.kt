@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -118,6 +119,17 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
                     scope.launch { ServiceLocator.settings.setDailyVerseVisible(false) }
                 },
             )
+        } else {
+            TextButton(
+                onClick = {
+                    scope.launch { ServiceLocator.settings.setDailyVerseVisible(true) }
+                },
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .testTag("daily_verse_show"),
+            ) {
+                Text(stringResource(R.string.daily_verse_show))
+            }
         }
         PrayerList(
             schedule = state.schedule,
@@ -349,11 +361,43 @@ private fun PrayerList(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(56.dp)
                     .background(if (isNext) scheme.primary.copy(alpha = 0.08f) else scheme.background)
-                    .padding(horizontal = 24.dp, vertical = 14.dp),
+                    .padding(horizontal = 24.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(
+                    modifier = Modifier
+                        .width(12.dp)
+                        .fillMaxHeight(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    val line = scheme.outlineVariant
+                    when {
+                        index == 0 && index < Prayer.entries.lastIndex -> Box(
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .fillMaxHeight(0.5f)
+                                .width(1.dp)
+                                .background(line),
+                        )
+
+                        index == Prayer.entries.lastIndex -> Box(
+                            modifier = Modifier
+                                .align(Alignment.TopCenter)
+                                .fillMaxHeight(0.5f)
+                                .width(1.dp)
+                                .background(line),
+                        )
+
+                        else -> Box(
+                            modifier = Modifier
+                                .align(Alignment.TopCenter)
+                                .fillMaxHeight()
+                                .width(1.dp)
+                                .background(line),
+                        )
+                    }
                     Box(
                         modifier = Modifier
                             .size(if (isNext) 12.dp else 8.dp)
@@ -366,14 +410,6 @@ private fun PrayerList(
                                 },
                             ),
                     )
-                    if (index < Prayer.entries.lastIndex) {
-                        Box(
-                            modifier = Modifier
-                                .width(1.dp)
-                                .height(26.dp)
-                                .background(scheme.outlineVariant),
-                        )
-                    }
                 }
                 Spacer(Modifier.width(16.dp))
                 Text(

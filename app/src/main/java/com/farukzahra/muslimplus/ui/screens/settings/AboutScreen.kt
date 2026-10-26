@@ -25,7 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.farukzahra.muslimplus.BuildConfig
 import com.farukzahra.muslimplus.R
-import com.farukzahra.muslimplus.ui.components.PixCard
+import com.farukzahra.muslimplus.ui.components.SupportOptions
 import com.farukzahra.muslimplus.ui.components.openUrl
 
 const val CONTACT_EMAIL = "farukz@gmail.com"
@@ -121,15 +121,9 @@ private fun SupportCard() {
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = 4.dp),
         )
-        PixCard(
+        SupportOptions(
             pixKey = PIX_KEY,
             modifier = Modifier.padding(top = 12.dp),
-        )
-        Text(
-            text = stringResource(R.string.about_pix_hint),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(top = 6.dp),
         )
     }
 }

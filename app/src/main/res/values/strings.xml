@@ -22,14 +22,15 @@
     <string name="notifications_channel">Prayer reminders</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_support_title">Support the project</string>
-    <string name="about_support_body">If Muslim Plus helps you, you can send a Pix. Only if you want to.</string>
-    <string name="about_pix_key">Pix key</string>
-    <string name="about_pix_hint">Tap to copy the key.</string>
+    <string name="about_support_body">If Muslim Plus helps you, you can support it with Pix or Buy me a coffee. Only if you want to.</string>
     <string name="about_pix_copied">Pix key copied</string>
     <string name="more_donate">Support the project</string>
     <string name="donate_supporting">Always free</string>
-    <string name="donate_body">Muslim Plus is meant to stay free: no account, no ads, no tracking. If you want to help keep it running, you can send a Pix. Only if you want to.</string>
+    <string name="donate_body">Muslim Plus is meant to stay free: no account, no ads, no tracking. If you want to help keep it running, use Pix or Buy me a coffee. Only if you want to.</string>
     <string name="donate_copy">Copy Pix key</string>
+    <string name="donate_pix_title">Pix</string>
+    <string name="donate_bmac_title">Buy me a coffee</string>
+    <string name="donate_bmac_action">Open</string>
     <string name="action_close">Close</string>
     <string name="more_updates">Updates</string>
     <string name="update_available_title">Update available</string>
@@ -75,6 +76,7 @@
     <string name="daily_verse_label">Verse of the day</string>
     <string name="daily_verse_refresh">Another verse</string>
     <string name="daily_verse_hide">Hide verse of the day</string>
+    <string name="daily_verse_show">Show verse of the day</string>
     <string name="settings_daily_verse">Verse of the day</string>
     <string name="settings_daily_verse_hint">Show the card on Today</string>
     <string name="verse_reference">%1$d:%2$d</string>

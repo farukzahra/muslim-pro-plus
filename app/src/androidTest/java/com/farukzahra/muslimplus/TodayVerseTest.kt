@@ -52,7 +52,10 @@ class TodayVerseTest {
             }
             compose.onNodeWithTag("daily_verse_card").assertDoesNotExist()
 
-            runBlocking { settings.setDailyVerseVisible(true) }
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithTag("daily_verse_show").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithTag("daily_verse_show").performScrollTo().performClick()
             compose.waitUntil(5_000) {
                 compose.onAllNodesWithTag("daily_verse_card").fetchSemanticsNodes().isNotEmpty()
             }

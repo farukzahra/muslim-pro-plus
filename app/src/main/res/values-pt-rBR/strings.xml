@@ -22,14 +22,15 @@
     <string name="notifications_channel">Lembretes de oração</string>
     <string name="about_version">Versão %1$s</string>
     <string name="about_support_title">Apoie o projeto</string>
-    <string name="about_support_body">Se o Muslim Plus te ajuda, você pode mandar um Pix. Só se quiser.</string>
-    <string name="about_pix_key">Chave Pix</string>
-    <string name="about_pix_hint">Toque para copiar a chave.</string>
+    <string name="about_support_body">Se o Muslim Plus te ajuda, você pode apoiar com Pix ou Buy me a coffee. Só se quiser.</string>
     <string name="about_pix_copied">Chave Pix copiada</string>
     <string name="more_donate">Apoie o projeto</string>
     <string name="donate_supporting">Sempre gratuito</string>
-    <string name="donate_body">O Muslim Plus é feito para ser sempre gratuito: sem conta, anúncios ou rastreamento. Se quiser ajudar a manter o projeto, envie um Pix. Só se quiser.</string>
+    <string name="donate_body">O Muslim Plus é feito para ser sempre gratuito: sem conta, anúncios ou rastreamento. Se quiser ajudar a manter o projeto, use Pix ou Buy me a coffee. Só se quiser.</string>
     <string name="donate_copy">Copiar chave Pix</string>
+    <string name="donate_pix_title">Pix</string>
+    <string name="donate_bmac_title">Buy me a coffee</string>
+    <string name="donate_bmac_action">Abrir</string>
     <string name="action_close">Fechar</string>
     <string name="more_updates">Atualizações</string>
     <string name="update_available_title">Tem atualização disponível</string>
@@ -75,6 +76,7 @@
     <string name="daily_verse_label">Verso do dia</string>
     <string name="daily_verse_refresh">Outro verso</string>
     <string name="daily_verse_hide">Ocultar verso do dia</string>
+    <string name="daily_verse_show">Mostrar verso do dia</string>
     <string name="settings_daily_verse">Verso do dia</string>
     <string name="settings_daily_verse_hint">Mostrar o card na tela Hoje</string>
     <string name="verse_reference">%1$d:%2$d</string>
