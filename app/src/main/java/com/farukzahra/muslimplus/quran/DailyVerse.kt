@@ -44,12 +44,18 @@ object DailyVerse {
 
     fun keyFor(date: LocalDate): Key = keys[indexFor(date)]
 
+    /** Indice absoluto, com wrap-around, usado pelo "outro verso". */
+    fun keyAt(index: Int): Key = keys[Math.floorMod(index, keys.size)]
+
     /**
      * Verso do dia resolvido no asset. Texto vazio apenas se o asset estiver
      * corrompido (o gate e' `DailyVerseTest`); a UI esconde o card nesse caso.
      */
-    fun forDate(date: LocalDate): Verse {
-        val key = keyFor(date)
+    fun forDate(date: LocalDate): Verse = forIndex(indexFor(date))
+
+    /** Verso do indice absoluto; o botao de refresh soma um ao indice do dia. */
+    fun forIndex(index: Int): Verse {
+        val key = keyAt(index)
         return ServiceLocator.quran.verse(key.surah, key.ayah)
             ?: Verse(surah = key.surah, ayah = key.ayah, text = "")
     }

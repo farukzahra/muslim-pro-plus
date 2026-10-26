@@ -11,24 +11,34 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -55,12 +65,15 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
 fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
     val state = viewModel.state.collectAsState().value ?: return
     val locale = LocalConfiguration.current.locales[0]
+    val showDailyVerse by ServiceLocator.settings.dailyVerseVisible.collectAsState(initial = true)
+    val scope = rememberCoroutineScope()
 
     // Permissao de alarme exato pode ter mudado nas configuracoes do sistema.
     LifecycleResumeEffect(viewModel) {
@@ -80,7 +93,11 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
         }.getOrDefault("")
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+    ) {
         Header(
             dateText = dateText.replaceFirstChar { it.titlecase(locale) },
             hijriText = hijriText,
@@ -94,7 +111,14 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
         if (!state.exactAlarmsAvailable) {
             ExactAlarmBanner()
         }
-        DailyVerseCard(date = state.date)
+        if (showDailyVerse) {
+            DailyVerseCard(
+                date = state.date,
+                onHide = {
+                    scope.launch { ServiceLocator.settings.setDailyVerseVisible(false) }
+                },
+            )
+        }
         PrayerList(
             schedule = state.schedule,
             next = state.next,
@@ -102,6 +126,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
             zone = state.zone,
             locale = locale,
         )
+        Spacer(Modifier.height(12.dp))
     }
 }
 
@@ -199,12 +224,14 @@ private fun ExactAlarmBanner() {
 }
 
 @Composable
-private fun DailyVerseCard(date: LocalDate) {
+private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit) {
     val modes by ServiceLocator.settings.quranModes.collectAsState(initial = setOf("ar"))
+    var refreshIndex by rememberSaveable(date) { mutableStateOf(0) }
+    val index = DailyVerse.indexFor(date) + refreshIndex
     // Texto e camadas lidos fora da main thread, como no leitor.
-    val data by produceState<Pair<Verse, Map<String, String>>?>(null, date, modes) {
+    val data by produceState<Pair<Verse, Map<String, String>>?>(null, date, modes, index) {
         value = withContext(Dispatchers.IO) {
-            val verse = DailyVerse.forDate(date)
+            val verse = DailyVerse.forIndex(index)
             val key = "${verse.surah}:${verse.ayah}"
             verse to modes.associateWith { mode ->
                 ServiceLocator.quran.layer(mode, key).orEmpty()
@@ -220,14 +247,44 @@ private fun DailyVerseCard(date: LocalDate) {
             .padding(horizontal = 24.dp, vertical = 12.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(scheme.surfaceVariant.copy(alpha = 0.35f))
-            .padding(horizontal = 18.dp, vertical = 16.dp),
+            .padding(start = 18.dp, end = 8.dp, top = 8.dp, bottom = 16.dp)
+            .testTag("daily_verse_card"),
     ) {
-        Text(
-            text = stringResource(R.string.daily_verse_label),
-            style = MaterialTheme.typography.labelLarge,
-            color = scheme.secondary,
-        )
-        Spacer(Modifier.height(10.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = stringResource(R.string.daily_verse_label),
+                style = MaterialTheme.typography.labelLarge,
+                color = scheme.secondary,
+                modifier = Modifier.weight(1f),
+            )
+            IconButton(
+                onClick = { refreshIndex++ },
+                modifier = Modifier
+                    .size(36.dp)
+                    .testTag("daily_verse_refresh"),
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_refresh),
+                    contentDescription = stringResource(R.string.daily_verse_refresh),
+                    tint = scheme.onSurfaceVariant,
+                    modifier = Modifier.size(18.dp),
+                )
+            }
+            IconButton(
+                onClick = onHide,
+                modifier = Modifier
+                    .size(36.dp)
+                    .testTag("daily_verse_hide"),
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = stringResource(R.string.daily_verse_hide),
+                    tint = scheme.onSurfaceVariant,
+                    modifier = Modifier.size(18.dp),
+                )
+            }
+        }
+        Spacer(Modifier.height(2.dp))
         if ("ar" in modes) {
             Text(
                 text = current.text,
@@ -269,7 +326,8 @@ private fun DailyVerseCard(date: LocalDate) {
             color = scheme.onSurfaceVariant,
             modifier = Modifier
                 .align(Alignment.End)
-                .padding(top = 8.dp),
+                .padding(top = 8.dp, end = 10.dp)
+                .testTag("daily_verse_reference"),
         )
     }
 }
@@ -282,8 +340,8 @@ private fun PrayerList(
     zone: ZoneId,
     locale: Locale,
 ) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        itemsIndexed(Prayer.entries) { index, prayer ->
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Prayer.entries.forEachIndexed { index, prayer ->
             val at = schedule.timeOf(prayer)
             val isNext = prayer == next
             val isPast = at != null && at.isBefore(now)

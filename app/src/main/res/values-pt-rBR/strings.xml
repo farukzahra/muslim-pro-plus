@@ -73,6 +73,10 @@
     <string name="today_tomorrow_fajr">Amanhã · Fajr</string>
     <string name="today_hijri_city">%1$s · %2$s</string>
     <string name="daily_verse_label">Verso do dia</string>
+    <string name="daily_verse_refresh">Outro verso</string>
+    <string name="daily_verse_hide">Ocultar verso do dia</string>
+    <string name="settings_daily_verse">Verso do dia</string>
+    <string name="settings_daily_verse_hint">Mostrar o card na tela Hoje</string>
     <string name="verse_reference">%1$d:%2$d</string>
     <string name="today_exact_alarm_warning">Avisos podem atrasar alguns minutos</string>
     <string name="action_allow">Permitir</string>

@@ -70,6 +70,7 @@ fun SettingsScreen(
     val methodName by settings.methodName.collectAsState(initial = PrayerMethod.MWL.name)
     val offsets by settings.prayerOffsets.collectAsState(initial = PrayerOffsets.defaults)
     val notificationsEnabled by settings.notificationsEnabled.collectAsState(initial = true)
+    val dailyVerseVisible by settings.dailyVerseVisible.collectAsState(initial = true)
 
     val city = cities.byIdOrNull(cityId)
     val cityLabel = if (city == null) {
@@ -142,6 +143,30 @@ fun SettingsScreen(
                 title = stringResource(R.string.more_hijri),
                 value = stringResource(R.string.settings_hijri_hint),
                 onClick = onHijriClick,
+            )
+            HorizontalDivider()
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.settings_daily_verse)) },
+                supportingContent = {
+                    Text(
+                        text = stringResource(R.string.settings_daily_verse_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                },
+                trailingContent = {
+                    Switch(
+                        checked = dailyVerseVisible,
+                        onCheckedChange = { visible ->
+                            scope.launch { settings.setDailyVerseVisible(visible) }
+                        },
+                    )
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        scope.launch { settings.setDailyVerseVisible(!dailyVerseVisible) }
+                    },
             )
             HorizontalDivider()
             ListItem(

@@ -86,4 +86,13 @@ class DailyVerseTest {
         val seen = (0 until size).map { DailyVerse.keyFor(start.plusDays(it.toLong())) }
         assertEquals(size, seen.toSet().size)
     }
+
+    @Test
+    fun indexAtWrapsAndRefreshAlwaysChangesThePair() {
+        val size = DailyVerse.keys.size
+        val start = DailyVerse.indexFor(LocalDate.of(2026, 10, 26))
+        assertTrue(DailyVerse.keyAt(start) != DailyVerse.keyAt(start + 1))
+        assertEquals(DailyVerse.keys[0], DailyVerse.keyAt(size))
+        assertEquals(DailyVerse.keys.last(), DailyVerse.keyAt(-1))
+    }
 }

@@ -32,6 +32,7 @@ class SettingsRepository(
     private val hijriOffsetKey = intPreferencesKey("hijri_offset")
     private val onboardingDoneKey = booleanPreferencesKey(Onboarding.DONE_KEY)
     private val updatePromptDismissedKey = booleanPreferencesKey("update_prompt_dismissed")
+    private val dailyVerseVisibleKey = booleanPreferencesKey("daily_verse_visible")
     private val adhanPrayersKey = stringSetPreferencesKey("adhan_prayers")
     private val adhanSoundKey = stringPreferencesKey("adhan_sound")
     private val adhanRespectSilentKey = booleanPreferencesKey("adhan_respect_silent")
@@ -54,6 +55,8 @@ class SettingsRepository(
         context.dataStore.data.map { it[adhanSoundKey] ?: AdhanSound.default.id }
     val adhanRespectSilent: Flow<Boolean> =
         context.dataStore.data.map { it[adhanRespectSilentKey] ?: false }
+    val dailyVerseVisible: Flow<Boolean> =
+        context.dataStore.data.map { it[dailyVerseVisibleKey] ?: true }
     val quranModes: Flow<Set<String>> =
         context.dataStore.data.map {
             it[quranModesKey] ?: QuranModes.defaults(QuranModes.currentLanguageTag())
@@ -104,6 +107,10 @@ class SettingsRepository(
 
     suspend fun setAdhanRespectSilent(value: Boolean) {
         context.dataStore.edit { it[adhanRespectSilentKey] = value }
+    }
+
+    suspend fun setDailyVerseVisible(value: Boolean) {
+        context.dataStore.edit { it[dailyVerseVisibleKey] = value }
     }
 
     suspend fun setQuranModes(modes: Set<String>) {

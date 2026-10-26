@@ -73,6 +73,10 @@
     <string name="today_tomorrow_fajr">غدًا · الفجر</string>
     <string name="today_hijri_city">%1$s · %2$s</string>
     <string name="daily_verse_label">آية اليوم</string>
+    <string name="daily_verse_refresh">آية أخرى</string>
+    <string name="daily_verse_hide">إخفاء آية اليوم</string>
+    <string name="settings_daily_verse">آية اليوم</string>
+    <string name="settings_daily_verse_hint">إظهار البطاقة في شاشة اليوم</string>
     <string name="verse_reference">%1$d:%2$d</string>
     <string name="today_exact_alarm_warning">قد تتأخر التذكيرات بضع دقائق</string>
     <string name="action_allow">السماح</string>
