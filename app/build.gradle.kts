@@ -39,8 +39,8 @@ android {
         applicationId = "com.farukzahra.muslimplus"
         minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "1.1.3"
+        versionCode = 6
+        versionName = "1.1.4"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -57,7 +57,11 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // Exigencia de qualidade do Play a partir de fevereiro/2027: apps
+            // com mais de 10 MB de DEX precisam de pelo menos 25% de
+            // otimizacao, ofuscacao e shrinking. O release sem R8 ficava em 0%.
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

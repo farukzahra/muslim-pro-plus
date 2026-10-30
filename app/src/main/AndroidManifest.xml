@@ -11,9 +11,10 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <!-- Adhan toca com a tela apagada; o player segura o wake lock local. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- GPS/rede nativos (LocationManager), sem Play Services. Runtime grant. -->
+    <!-- GPS/rede nativos (LocationManager), sem Play Services. Runtime grant.
+         So a precisao aproximada: o app usa o ponto para achar a cidade mais
+         proxima, e o escopo minimo e exigencia do Play desde outubro/2026. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- A localizacao e opcional: sem GPS o app usa a cidade escolhida a mao. -->
     <uses-feature

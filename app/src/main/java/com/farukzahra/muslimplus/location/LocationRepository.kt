@@ -32,8 +32,9 @@ data class Coordinates(
  *
  * O app so precisa de um ponto para achar a cidade mais proxima no catalogo,
  * entao tudo aqui e "one shot": nao existe assinatura de atualizacoes
- * continuas. Sem permissao ou sem fix dentro do timeout, [current] devolve
- * `null` e a UI cai no modo manual.
+ * continuas. A permissao e so de localizacao aproximada (escopo minimo pedido
+ * pelo Play): precisao de cidade basta para horarios e Qibla. Sem permissao ou
+ * sem fix dentro do timeout, [current] devolve `null` e a UI cai no modo manual.
  */
 class LocationRepository(
     context: Context,
@@ -155,11 +156,10 @@ class LocationRepository(
         const val FRESH_FIX_MILLIS = 5 * 60 * 1000L
 
         val PERMISSIONS = arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
         )
 
-        /** Basta uma das duas: coarse ja resolve a cidade mais proxima. */
+        /** Aproximada ja resolve a cidade mais proxima. */
         fun hasPermission(context: Context): Boolean =
             PERMISSIONS.any { permission ->
                 ContextCompat.checkSelfPermission(context, permission) ==

@@ -25,6 +25,22 @@ ou por um campo preenchido pelo agente. Os testes do app não comprovam consenti
 
 Spec de Q01: [seleção de recitador](specs/2026-10-23-quran-reciter-design.md).
 
+## Conformidade Play (outubro/2026)
+
+Decisão de 30/10/2026: o usuário autorizou a frente "Localização + R8" depois
+da revisão do aviso de políticas. Spec em
+[políticas do Play](specs/2026-10-30-play-policy-2026-10.md) e plano em
+[plano](plans/2026-10-30-play-policy-compliance.md).
+
+| Item | Estado |
+| --- | --- |
+| Localização só aproximada (27/01/2027) | Feito em 30/10/2026: `ACCESS_FINE_LOCATION` removida, `LocationScopeTest` protege o escopo |
+| Release com R8 (fevereiro/2027) | Feito em 30/10/2026: DEX de 29,4 MB para 4,2 MB, teste no Pixel 6 |
+| Status de comerciante no Play Console (novembro/2026) | **Pendente do usuário**: declaração de conta, não muda código |
+| Remover declaração antiga de localização fina no console | **Pendente do usuário**, se o console ainda mostrar a declaração da versão 1.1.3 |
+| Subir o AAB 1.1.4 | Aguardando autorização de envio |
+| `targetSdk` 37 e botão de localização do Android 17 | Aguardando a exigência anual de 2027 |
+
 ## Demais itens — perguntar antes de começar
 
 Todos estão aguardando decisão, sem autorização de implementação e sem ordem

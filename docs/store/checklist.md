@@ -9,9 +9,10 @@ Passo a passo com os dados reais deste app. Tudo que está marcado como
 |---|---|
 | Pacote | `com.farukzahra.muslimplus` (permanente no Play) |
 | Nome exibido | Muslim Plus |
-| Versão | `versionName` 1.0.0 · `versionCode` 1 |
+| Versão | `versionName` 1.1.4 · `versionCode` 6 |
 | Android mínimo | 8.0 (API 26) · `targetSdk` 36 |
-| Bundle gerado | `app/build/outputs/bundle/release/app-release.aab`, 12.141.577 bytes (11,58 MB) |
+| Bundle gerado | `app/build/outputs/bundle/release/app-release.aab`, 11.179.620 bytes (11,18 MB) |
+| DEX do bundle | 4.187.992 bytes (4,19 MB) com R8; era 29,4 MB sem minificação |
 | Categoria | Lifestyle (alternativa: Books & Reference) |
 | Preço | Grátis, sem compras no app (nenhuma dependência de billing no build) |
 | Idiomas da ficha | pt-BR e en (o app também tem árabe) |
@@ -23,7 +24,7 @@ Permissões declaradas no `AndroidManifest.xml`:
 | Permissão | Para quê |
 |---|---|
 | `INTERNET` | só o áudio dos versículos (stream/download do CDN) |
-| `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION` | achar a cidade mais próxima para horários e Qibla; opcional, com cidade manual como alternativa |
+| `ACCESS_COARSE_LOCATION` | achar a cidade mais próxima para horários e Qibla; opcional, com cidade manual como alternativa. Só aproximada, para cumprir o escopo mínimo de localização do Play |
 | `POST_NOTIFICATIONS` | lembrete de oração (Android 13+) |
 | `SCHEDULE_EXACT_ALARM` | lembrete no horário exato; sem ela o app agenda inexato e avisa na tela |
 | `RECEIVE_BOOT_COMPLETED` | reagendar os lembretes depois de reiniciar |
@@ -31,6 +32,11 @@ Permissões declaradas no `AndroidManifest.xml`:
 
 `uses-feature` de `android.hardware.location` e `...location.gps` está com
 `required="false"`: o app instala em aparelho sem GPS.
+
+O release usa R8 (`isMinifyEnabled` e `isShrinkResources`), exigência de
+qualidade do Play a partir de fevereiro/2027 para apps com mais de 10 MB de
+DEX. A conferência da porcentagem de otimização é no **App Bundle Explorer**
+depois do upload.
 
 ## 2. Antes de abrir o console
 
@@ -51,8 +57,7 @@ python tools/store/check_store.py
 & "$env:JAVA_HOME\bin\jarsigner.exe" -verify -verbose -certs app\build\outputs\bundle\release\app-release.aab
 ```
 
-- [ ] `versionCode` maior que o da versão já publicada (hoje 1; no próximo
-      envio, 2).
+- [ ] `versionCode` maior que o da versão já publicada (hoje 5; este bundle é 6).
 - [ ] `python tools/store/check_store.py` sem falhas (limites de texto,
       dimensões dos PNG, screenshots não vazias).
 
@@ -104,7 +109,7 @@ O app **não coleta nem compartilha dados**. Respostas:
 | Does your app collect or share any of the required user data types? | **No** |
 | Is all user data encrypted in transit? | Não se aplica (nada é coletado) |
 | Do you provide a way to request data deletion? | Não se aplica |
-| Location | **Não coletado.** O GPS é lido no aparelho para escolher a cidade; a coordenada não é gravada nem transmitida. |
+| Location | **Não coletado.** A localização aproximada é lida no aparelho para escolher a cidade; a coordenada não é gravada nem transmitida. |
 | Personal info, contacts, files, messages, health, financial | Não |
 | App activity / analytics | Não existe SDK de analytics |
 
@@ -156,6 +161,8 @@ certificado que o questionário devolver.
 | Financial features | Não. |
 | Health | Não. |
 | Foreground service (Android 14) | Declarar o uso **mediaPlayback**: áudio do Alcorão com a tela apagada. |
+| Declaração de permissão de localização | **Não se aplica**: o app só pede `ACCESS_COARSE_LOCATION`, sem localização em segundo plano. Se o console ainda mostrar a declaração antiga de localização fina da 1.1.3, remover. |
+| Status de comerciante (DSA) | Declarar **não comerciante** a partir de novembro/2026: app grátis, sem compras, anúncios ou assinaturas. |
 
 ## 8. Trilha interna
 
