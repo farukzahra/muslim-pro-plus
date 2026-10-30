@@ -56,9 +56,9 @@ class AdhanScreenTest {
             }
             compose.onNodeWithTag("adhan_fajr").assertIsOn()
 
-            compose.onNodeWithTag("adhan_sound_sabah-fakhry").performClick()
+            compose.onNodeWithTag("adhan_sound_madinah-bukhari").performClick()
             compose.waitUntil(5_000) {
-                runBlocking { ServiceLocator.settings.adhanSoundId.first() == "sabah-fakhry" }
+                runBlocking { ServiceLocator.settings.adhanSoundId.first() == "madinah-bukhari" }
             }
 
             compose.onNodeWithTag("adhan_respect_silent").performScrollTo().performClick()

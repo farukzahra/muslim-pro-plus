@@ -54,7 +54,6 @@
     <string name="adhan_prayers_title">Tocar em</string>
     <string name="adhan_sound_title">Voz do chamado</string>
     <string name="adhan_sound_classic">Adhan (clássico)</string>
-    <string name="adhan_sound_sabah">Sabah Fakhry</string>
 
     <!-- Vozes propostas em 30/10/2026; dependem do audio com licenca conferida
          e da aprovacao dos nomes antes de entrarem no seletor. -->
@@ -64,9 +63,8 @@
     <string name="adhan_sound_madinah_bukhari">Medina — Essam Bukhari</string>
     <string name="adhan_sound_madinah_nafman">Medina — Faisal Al-Na\'man</string>
     <string name="adhan_sound_aqsa">Al-Aqsa — Naji Qazzaz</string>
-    <string name="adhan_sound_kuwait">Kuwait — Nasser Al-Qatami</string>
-    <string name="adhan_sound_egypt">Egito — Abdul Baset</string>
-    <string name="adhan_sound_istanbul">Istambul</string>
+    <string name="adhan_sound_madinah_abdulaziz">Medina — Abdulaziz Bukhari</string>
+    <string name="adhan_sound_makkah_khashoggi">Meca — Abdulrahman Khashoggi</string>
     <string name="adhan_sound_casablanca">Casablanca — Mesquita Hassan II</string>
     <string name="adhan_preview">Ouvir</string>
     <string name="adhan_stop">Parar</string>

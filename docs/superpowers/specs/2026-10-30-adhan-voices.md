@@ -1,8 +1,8 @@
 # Vozes do chamado (adhan) — 10 gravações
 
-Data: 30/10/2026. Status: **proposta de nomes, aguardando conferência do
-usuário**. Nada de áudio novo entrou no app; as strings dos rótulos já estão
-nos três idiomas para revisão.
+Data: 30/10/2026. Status: **implementado em 30/10/2026** com 10 vozes e
+gravações embarcadas. O usuário autorizou usar as gravações livres e pediu para
+não bloquear por licença; as fontes ficam registradas em Licenças.
 
 ## Por que
 
@@ -72,6 +72,37 @@ Rótulos já escritos em `values/`, `values-pt-rBR/` e `values-ar/`
    mono 48 kbps, ~1 MB cada (~10 MB no total). Qual o limite aceitável?
 7. **Fajr.** As gravações trazem "as-salatu khayrun min an-nawm"? Se não,
    aceitamos o adhan comum no Fajr ou procuramos uma gravação específica?
+
+## Resultado da implementação
+
+As 10 vozes finais, com os arquivos efetivamente embarcados:
+
+| # | Voz | Arquivo | Fonte |
+| --- | --- | --- | --- |
+| 1 | Adhan (clássico) | `adhan_classic.ogg` | Wikimedia, CC0 |
+| 2 | Makkah, Ali Ahmed Mulla | `adhan_makkah_mulla.mp3` | archive.org, PD Mark |
+| 3 | Makkah, Majid Al-Hakim | `adhan_makkah_hakim.mp3` | archive.org, PD Mark |
+| 4 | Makkah, Abdulmalik Al-Mulla | `adhan_makkah_abdulmalik.mp3` | archive.org, PD Mark |
+| 5 | Madinah, Essam Bukhari | `adhan_madinah_bukhari.mp3` | archive.org, PD Mark |
+| 6 | Madinah, Faisal Al-Na'man | `adhan_madinah_nafman.mp3` | archive.org, PD Mark |
+| 7 | Al-Aqsa, Naji Qazzaz | `adhan_aqsa.mp3` | archive.org, PD Mark |
+| 8 | Madinah, Abdulaziz Bukhari | `adhan_madinah_abdulaziz.mp3` | archive.org, PD Mark |
+| 9 | Makkah, Abdulrahman Khashoggi | `adhan_makkah_khashoggi.mp3` | archive.org, PD Mark |
+| 10 | Casablanca, Hassan II | `adhan_casablanca.mp3` | Wikimedia, CC BY-SA 4.0 |
+
+Substituições em relação à proposta original:
+
+- Kuwait (Nasser Al-Qatami) saiu: não havia gravação localizada.
+- Abdul Baset saiu: era recitador, não muezzin; entrou Abdulrahman Khashoggi.
+- Istambul saiu: o único arquivo CC0 encontrado tinha apenas 50 s, um trecho.
+- Sabah Fakhry saiu: era cantor, não muezzin.
+
+Todas as gravações do archive.org vieram do pacote
+`azaan-of-world-mosques_202608` (Public Domain Mark 1.0 declarado pelo
+uploader `alqurantranslation.com`). Foram convertidas para mono, 44,1 kHz,
+48 kbps, com normalização de volume; o conjunto ocupa cerca de 13 MB no APK.
+A tela de Licenças registra o item do archive.org, a gravação CC0 e a da
+Mesquita Hassan II.
 
 ## Critérios de aceite (depois da aprovação)
 
