@@ -55,9 +55,23 @@
     <string name="adhan_sound_title">Call voice</string>
     <string name="adhan_sound_classic">Adhan (classic)</string>
     <string name="adhan_sound_sabah">Sabah Fakhry</string>
+
+    <!-- Vozes propostas em 30/10/2026; dependem do audio com licenca conferida
+         e da aprovacao dos nomes antes de entrarem no seletor. -->
+    <string name="adhan_sound_makkah_mulla">Makkah — Ali Ahmed Mulla</string>
+    <string name="adhan_sound_makkah_hakim">Makkah — Majid Al-Hakim</string>
+    <string name="adhan_sound_makkah_mulla_abdulmalik">Makkah — Abdulmalik Al-Mulla</string>
+    <string name="adhan_sound_madinah_bukhari">Madinah — Essam Bukhari</string>
+    <string name="adhan_sound_madinah_nafman">Madinah — Faisal Al-Na\'man</string>
+    <string name="adhan_sound_aqsa">Al-Aqsa — Naji Qazzaz</string>
+    <string name="adhan_sound_kuwait">Kuwait — Nasser Al-Qatami</string>
+    <string name="adhan_sound_egypt">Egypt — Abdul Baset</string>
+    <string name="adhan_sound_istanbul">Istanbul</string>
+    <string name="adhan_sound_casablanca">Casablanca — Hassan II Mosque</string>
     <string name="adhan_preview">Listen</string>
     <string name="adhan_stop">Stop</string>
     <string name="adhan_volume_hint">Audio uses the device alarm volume.</string>
+    <string name="adhan_stop_triggers">The call stops when you press a volume button, turn the screen off or rotate the device.</string>
     <string name="adhan_respect_silent">Respect silent mode</string>
     <string name="adhan_respect_silent_hint">Off by default: plays even in silent or vibrate, at alarm volume. On: no audio in those modes.</string>
     <string name="adhan_now">Call to prayer — %1$s</string>

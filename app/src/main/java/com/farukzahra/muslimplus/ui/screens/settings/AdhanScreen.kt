@@ -179,6 +179,12 @@ fun AdhanScreen(onBack: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 4.dp),
             )
+            Text(
+                text = stringResource(R.string.adhan_stop_triggers),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp),
+            )
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
 

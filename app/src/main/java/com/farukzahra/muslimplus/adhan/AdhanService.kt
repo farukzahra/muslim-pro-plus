@@ -5,9 +5,18 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
+import android.content.BroadcastReceiver
+import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.content.res.Configuration
+import android.database.ContentObserver
+import android.net.Uri
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
+import android.provider.Settings
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.media3.common.AudioAttributes
@@ -26,14 +35,83 @@ import kotlinx.coroutines.flow.asStateFlow
 /**
  * Toca o adhan no horario da oracao. Usa o fluxo de ALARME, entao o audio sai
  * no volume de alarme mesmo com o aparelho em silencioso (a opcao de respeitar
- * o silencioso e decidida antes, no receiver). Para sozinho no fim ou no erro.
+ * o silencioso e decidida antes, no receiver). Para sozinho no fim ou no erro,
+ * e tambem quando o usuario mexe no volume, desliga a tela ou gira o aparelho.
  */
 @androidx.annotation.OptIn(UnstableApi::class)
 class AdhanService : Service() {
     private lateinit var player: ExoPlayer
 
+    /**
+     * Teclas de volume nao chegam ao app: o sistema consome no AudioService. O
+     * caminho possivel e o broadcast de volume alterado, que o sistema manda
+     * mesmo com o app em segundo plano. Silenciar tambem conta como mexer.
+     */
+    private val volumeReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action in VOLUME_ACTIONS) stopSelf()
+        }
+    }
+
+    /** Botao de power: o app nao recebe a tecla, so o desligamento da tela. */
+    private val screenReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == Intent.ACTION_SCREEN_OFF) stopSelf()
+        }
+    }
+
+    /**
+     * Rede de seguranca para as teclas de volume: o broadcast acima e uma acao
+     * escondida e nem toda versao entrega para receiver nao exportado. O
+     * ajuste do stream de alarme (e o de midia, usado por alguns aparelhos)
+     * sempre passa por Settings.System.
+     */
+    private val volumeObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+        override fun onChange(selfChange: Boolean, uri: Uri?) = stopSelf()
+    }
+
+    /** Girar o aparelho muda a orientacao e chega aqui como config change. */
+    private val rotationCallbacks = object : ComponentCallbacks {
+        override fun onConfigurationChanged(newConfig: Configuration) {
+            if (newConfig.orientation != Configuration.ORIENTATION_UNDEFINED &&
+                newConfig.orientation != lastOrientation
+            ) {
+                lastOrientation = newConfig.orientation
+                stopSelf()
+            }
+        }
+
+        override fun onLowMemory() = Unit
+    }
+
+    private var lastOrientation = Configuration.ORIENTATION_UNDEFINED
+
     override fun onCreate() {
         super.onCreate()
+        lastOrientation = resources.configuration.orientation
+        ContextCompat.registerReceiver(
+            this,
+            volumeReceiver,
+            IntentFilter().apply { VOLUME_ACTIONS.forEach { addAction(it) } },
+            ContextCompat.RECEIVER_NOT_EXPORTED,
+        )
+        ContextCompat.registerReceiver(
+            this,
+            screenReceiver,
+            IntentFilter(Intent.ACTION_SCREEN_OFF),
+            ContextCompat.RECEIVER_NOT_EXPORTED,
+        )
+        registerComponentCallbacks(rotationCallbacks)
+        contentResolver.registerContentObserver(
+            Settings.System.getUriFor("volume_alarm"),
+            false,
+            volumeObserver,
+        )
+        contentResolver.registerContentObserver(
+            Settings.System.getUriFor("volume_music"),
+            false,
+            volumeObserver,
+        )
         player = ExoPlayer.Builder(this)
             .setAudioAttributes(
                 AudioAttributes.Builder()
@@ -82,6 +160,10 @@ class AdhanService : Service() {
 
     override fun onDestroy() {
         _playing.value = false
+        runCatching { unregisterReceiver(volumeReceiver) }
+        runCatching { unregisterReceiver(screenReceiver) }
+        runCatching { unregisterComponentCallbacks(rotationCallbacks) }
+        runCatching { contentResolver.unregisterContentObserver(volumeObserver) }
         player.release()
         super.onDestroy()
     }
@@ -125,6 +207,16 @@ class AdhanService : Service() {
         private const val ACTION_STOP = "com.farukzahra.muslimplus.adhan.STOP"
         private const val EXTRA_PRAYER = "prayer"
         private const val EXTRA_SOUND = "sound"
+
+        /**
+         * Acoes escondidas do AudioManager: `VOLUME_CHANGED_ACTION` e
+         * `STREAM_MUTE_CHANGED_ACTION`. Nao existem como constante publica na
+         * API, entao vao por texto; o sistema continua enviando.
+         */
+        private val VOLUME_ACTIONS = listOf(
+            "android.media.VOLUME_CHANGED_ACTION",
+            "android.media.STREAM_MUTE_CHANGED_ACTION",
+        )
 
         private val _playing = MutableStateFlow(false)
 

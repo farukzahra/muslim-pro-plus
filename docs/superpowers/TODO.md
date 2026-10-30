@@ -103,6 +103,21 @@ padrão e ligável em Configurações → Chamado (adhan); reprodução por serv
 primeiro plano com Media3, notificação com "Parar". Spec em
 `specs/2026-10-25-adhan-design.md` e plano em `plans/2026-10-25-adhan.md`.
 
+## 10 vozes de muezzins — aguardando conferência dos nomes
+
+Pedido de 30/10/2026: o usuário apontou que Sabah Fakhry era cantor, não
+muezzin, e pediu 10 chamados sunitas diferentes, com os nomes conferidos antes
+de entrar no app. Lista proposta, fontes de áudio e dúvidas em
+`specs/2026-10-30-adhan-voices.md`. Strings dos 10 rótulos já escritas nos três
+idiomas; **nenhum áudio novo foi adicionado**. Decisão pendente do usuário.
+
+Implementado junto, na mesma data, o pedido de parar o áudio ao apertar
+volume, desligar a tela (power) ou girar o aparelho: `AdhanService` com
+broadcast de volume, `ContentObserver` de `volume_alarm`/`volume_music`,
+`ACTION_SCREEN_OFF` e orientação; texto `adhan_stop_triggers` nos três idiomas;
+três testes instrumentados no Pixel 6.
+
+
 
 Referência de pesquisa: `old/docs/2026-10-23-comparacao-features-recitadores.md`.
 O legado serve somente à comparação; implementar com código, assets e textos próprios.

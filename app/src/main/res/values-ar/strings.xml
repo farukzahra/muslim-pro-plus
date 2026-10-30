@@ -55,9 +55,23 @@
     <string name="adhan_sound_title">صوت الأذان</string>
     <string name="adhan_sound_classic">أذان (كلاسيكي)</string>
     <string name="adhan_sound_sabah">صباح فخري</string>
+
+    <!-- أصوات مقترحة في 30/10/2026؛ تنتظر ملف صوتي بترخيص مؤكَّد وموافقة
+         المستخدم على الأسماء قبل ظهورها في قائمة الاختيار. -->
+    <string name="adhan_sound_makkah_mulla">مكة — علي أحمد ملا</string>
+    <string name="adhan_sound_makkah_hakim">مكة — ماجد حكيم</string>
+    <string name="adhan_sound_makkah_mulla_abdulmalik">مكة — عبدالملك الملا</string>
+    <string name="adhan_sound_madinah_bukhari">المدينة — عصام بخاري</string>
+    <string name="adhan_sound_madinah_nafman">المدينة — فيصل النعمان</string>
+    <string name="adhan_sound_aqsa">الأقصى — ناجي قزاز</string>
+    <string name="adhan_sound_kuwait">الكويت — ناصر القطامي</string>
+    <string name="adhan_sound_egypt">مصر — عبد الباسط</string>
+    <string name="adhan_sound_istanbul">إسطنبول</string>
+    <string name="adhan_sound_casablanca">الدار البيضاء — مسجد الحسن الثاني</string>
     <string name="adhan_preview">استماع</string>
     <string name="adhan_stop">إيقاف</string>
     <string name="adhan_volume_hint">يستخدم الصوت مستوى صوت المنبّه في الجهاز.</string>
+    <string name="adhan_stop_triggers">يتوقف الأذان عند الضغط على زرّي الصوت أو إطفاء الشاشة أو تدوير الجهاز.</string>
     <string name="adhan_respect_silent">مراعاة الوضع الصامت</string>
     <string name="adhan_respect_silent_hint">متوقف افتراضيًا: يعمل حتى في الوضع الصامت أو الاهتزاز، بمستوى صوت المنبّه. عند التشغيل: لا صوت في هذين الوضعين.</string>
     <string name="adhan_now">الأذان — %1$s</string>

@@ -4,7 +4,9 @@ import android.Manifest
 import android.app.ActivityManager
 import android.app.NotificationManager
 import android.content.Intent
+import android.media.AudioManager
 import android.os.Build
+import android.os.ParcelFileDescriptor
 import android.service.notification.StatusBarNotification
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -100,6 +102,87 @@ class AdhanServiceTest {
         } finally {
             activity.stopService(Intent(activity, AdhanService::class.java))
         }
+    }
+
+    @Test
+    fun volumeChangeStopsPlayback(
+    ) {
+        val activity = compose.activity
+        val audio = activity.getSystemService(AudioManager::class.java)
+        val original = audio.getStreamVolume(AudioManager.STREAM_ALARM)
+        AdhanService.start(activity, Prayer.DHUHR, AdhanSound.CLASSIC)
+
+        try {
+            assertTrue("chamado nao iniciou", waitUntil { AdhanService.playing.value })
+            // O emulador ignora `input keyevent KEYCODE_VOLUME_UP` (o volume
+            // nao muda), entao o teste mexe no stream como a tecla faria.
+            audio.adjustStreamVolume(
+                AudioManager.STREAM_ALARM,
+                AudioManager.ADJUST_LOWER,
+                AudioManager.FLAG_SHOW_UI,
+            )
+            assertTrue(
+                "mexer no volume nao parou o chamado",
+                waitUntil { !AdhanService.playing.value },
+            )
+        } finally {
+            audio.setStreamVolume(AudioManager.STREAM_ALARM, original, 0)
+            activity.stopService(Intent(activity, AdhanService::class.java))
+        }
+    }
+
+    @Test
+    fun rotationStopsPlayback() {
+        val activity = compose.activity
+        AdhanService.start(activity, Prayer.DHUHR, AdhanSound.CLASSIC)
+
+        try {
+            assertTrue("chamado nao iniciou", waitUntil { AdhanService.playing.value })
+            shell("settings put system accelerometer_rotation 0")
+            shell("settings put system user_rotation 1")
+            assertTrue(
+                "girar o aparelho nao parou o chamado",
+                waitUntil { !AdhanService.playing.value },
+            )
+        } finally {
+            shell("settings put system user_rotation 0")
+            activity.stopService(Intent(activity, AdhanService::class.java))
+        }
+    }
+
+    @Test
+    fun screenOffStopsPlayback() {
+        val activity = compose.activity
+        val stayOn = shellOutput("settings get global stay_on_while_plugged_in").trim()
+        shell("settings put global stay_on_while_plugged_in 0")
+        AdhanService.start(activity, Prayer.DHUHR, AdhanSound.CLASSIC)
+
+        try {
+            assertTrue("chamado nao iniciou", waitUntil { AdhanService.playing.value })
+            shell("input keyevent KEYCODE_POWER")
+            assertTrue(
+                "desligar a tela nao parou o chamado",
+                waitUntil { !AdhanService.playing.value },
+            )
+        } finally {
+            shell("input keyevent KEYCODE_WAKEUP")
+            shell("wm dismiss-keyguard")
+            shell("settings put global stay_on_while_plugged_in ${stayOn.ifBlank { "1" }}")
+            shell("am start -n ${activity.packageName}/.MainActivity")
+            activity.stopService(Intent(activity, AdhanService::class.java))
+        }
+    }
+
+    private fun shellOutput(command: String): String {
+        val descriptor = InstrumentationRegistry.getInstrumentation().uiAutomation
+            .executeShellCommand(command)
+        return ParcelFileDescriptor.AutoCloseInputStream(descriptor).use {
+            it.readBytes().toString(Charsets.UTF_8)
+        }
+    }
+
+    private fun shell(command: String) {
+        shellOutput(command)
     }
 
     private fun running(activity: MainActivity): Boolean =

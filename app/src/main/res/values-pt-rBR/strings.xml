@@ -55,9 +55,23 @@
     <string name="adhan_sound_title">Voz do chamado</string>
     <string name="adhan_sound_classic">Adhan (clássico)</string>
     <string name="adhan_sound_sabah">Sabah Fakhry</string>
+
+    <!-- Vozes propostas em 30/10/2026; dependem do audio com licenca conferida
+         e da aprovacao dos nomes antes de entrarem no seletor. -->
+    <string name="adhan_sound_makkah_mulla">Meca — Ali Ahmed Mulla</string>
+    <string name="adhan_sound_makkah_hakim">Meca — Majid Al-Hakim</string>
+    <string name="adhan_sound_makkah_mulla_abdulmalik">Meca — Abdulmalik Al-Mulla</string>
+    <string name="adhan_sound_madinah_bukhari">Medina — Essam Bukhari</string>
+    <string name="adhan_sound_madinah_nafman">Medina — Faisal Al-Na\'man</string>
+    <string name="adhan_sound_aqsa">Al-Aqsa — Naji Qazzaz</string>
+    <string name="adhan_sound_kuwait">Kuwait — Nasser Al-Qatami</string>
+    <string name="adhan_sound_egypt">Egito — Abdul Baset</string>
+    <string name="adhan_sound_istanbul">Istambul</string>
+    <string name="adhan_sound_casablanca">Casablanca — Mesquita Hassan II</string>
     <string name="adhan_preview">Ouvir</string>
     <string name="adhan_stop">Parar</string>
     <string name="adhan_volume_hint">O áudio usa o volume de alarme do aparelho.</string>
+    <string name="adhan_stop_triggers">O chamado para quando você aperta os botões de volume, desliga a tela ou gira o aparelho.</string>
     <string name="adhan_respect_silent">Respeitar modo silencioso</string>
     <string name="adhan_respect_silent_hint">Desligado (padrão): toca mesmo no silencioso ou vibrar, no volume de alarme. Ligado: não toca nesses modos.</string>
     <string name="adhan_now">Chamado — %1$s</string>
