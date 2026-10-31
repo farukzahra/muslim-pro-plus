@@ -205,7 +205,9 @@
     <string name="today_tracker_streak_none">Mark your prayers to start a streak</string>
     <string name="today_tracker_done">All prayers marked</string>
     <string name="today_mark_all">Mark all</string>
+    <string name="today_mark_prayer">Mark %1$s as prayed</string>
     <string name="today_unmark_prayer">Unmark %1$s</string>
+    <string name="today_tracker_hint">Tap a prayer to mark it as prayed. The bell only turns the call on or off.</string>
     <string name="today_adhan_mute">Turn off the call for %1$s</string>
     <string name="today_adhan_unmute">Turn on the call for %1$s</string>
 

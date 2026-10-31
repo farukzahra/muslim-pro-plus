@@ -48,6 +48,7 @@ class TodayTrackerTest {
                 compose.onAllNodesWithTag("tracker_card").fetchSemanticsNodes().isNotEmpty()
             }
             compose.onNodeWithTag("tracker_week").assertExists()
+            compose.onNodeWithTag("tracker_hint").assertExists()
             assertEquals(context.getString(R.string.today_tracker_progress, 0, 5), progress())
 
             compose.onNodeWithTag("prayer_check_fajr").performScrollTo().performClick()
@@ -55,6 +56,12 @@ class TodayTrackerTest {
                 progress() == context.getString(R.string.today_tracker_progress, 1, 5)
             }
             assertEquals(1, runBlocking { log.days.first()[today].orEmpty().size })
+
+            // A linha inteira também marca: o alvo do círculo não é o único caminho.
+            compose.onNodeWithTag("prayer_row_dhuhr").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                progress() == context.getString(R.string.today_tracker_progress, 2, 5)
+            }
 
             compose.onNodeWithTag("tracker_mark_all").performScrollTo().performClick()
             compose.waitUntil(5_000) {

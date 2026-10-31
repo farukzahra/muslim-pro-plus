@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,6 +51,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -328,6 +331,15 @@ private fun PrayerTracker(
                 )
             }
         }
+        if (count == 0) {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = stringResource(R.string.today_tracker_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = scheme.onSurfaceVariant,
+                modifier = Modifier.testTag("tracker_hint"),
+            )
+        }
     }
 }
 
@@ -578,12 +590,20 @@ private fun PrayerList(
             val trackable = prayer in PrayerLog.trackable
             val isDone = prayer in done
             val adhanOn = prayer in adhanPrayers
+            val name = stringResource(prayerLabel(prayer))
+            val checkDescription = if (isDone) {
+                stringResource(R.string.today_unmark_prayer, name)
+            } else {
+                stringResource(R.string.today_mark_prayer, name)
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp)
                     .background(if (isNext) scheme.primary.copy(alpha = 0.08f) else scheme.background)
-                    .padding(horizontal = 20.dp),
+                    .clickable(enabled = trackable) { onTogglePrayer(prayer) }
+                    .padding(horizontal = 20.dp)
+                    .testTag("prayer_row_${prayer.name.lowercase()}"),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Box(
@@ -637,16 +657,17 @@ private fun PrayerList(
                         onClick = { onTogglePrayer(prayer) },
                         modifier = Modifier
                             .size(44.dp)
-                            .testTag("prayer_check_${prayer.name.lowercase()}"),
+                            .testTag("prayer_check_${prayer.name.lowercase()}")
+                            .semantics { contentDescription = checkDescription },
                     ) {
                         Box(
                             modifier = Modifier
-                                .size(22.dp)
+                                .size(24.dp)
                                 .clip(CircleShape)
                                 .background(if (isDone) scheme.primary else scheme.background)
                                 .border(
                                     BorderStroke(
-                                        1.5.dp,
+                                        if (isDone) 2.dp else 1.5.dp,
                                         if (isDone) scheme.primary else scheme.outline,
                                     ),
                                     CircleShape,
@@ -656,12 +677,9 @@ private fun PrayerList(
                             if (isDone) {
                                 Icon(
                                     imageVector = Icons.Filled.Check,
-                                    contentDescription = stringResource(
-                                        R.string.today_unmark_prayer,
-                                        stringResource(prayerLabel(prayer)),
-                                    ),
+                                    contentDescription = null,
                                     tint = scheme.onPrimary,
-                                    modifier = Modifier.size(14.dp),
+                                    modifier = Modifier.size(15.dp),
                                 )
                             }
                         }
@@ -670,7 +688,7 @@ private fun PrayerList(
                     Spacer(Modifier.width(44.dp))
                 }
                 Text(
-                    text = stringResource(prayerLabel(prayer)),
+                    text = name,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = if (isNext) FontWeight.Bold else FontWeight.Normal,
                     color = when {

@@ -205,7 +205,9 @@
     <string name="today_tracker_streak_none">Marque suas orações para começar uma sequência</string>
     <string name="today_tracker_done">Todas as orações marcadas</string>
     <string name="today_mark_all">Marcar todas</string>
+    <string name="today_mark_prayer">Marcar %1$s como rezada</string>
     <string name="today_unmark_prayer">Desmarcar %1$s</string>
+    <string name="today_tracker_hint">Toque na oração para marcar que rezou. O sino só liga ou desliga o chamado.</string>
     <string name="today_adhan_mute">Desligar o chamado de %1$s</string>
     <string name="today_adhan_unmute">Ligar o chamado de %1$s</string>
 

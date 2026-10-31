@@ -205,7 +205,9 @@
     <string name="today_tracker_streak_none">علّم صلواتك لبدء سلسلة</string>
     <string name="today_tracker_done">تم تحديد جميع الصلوات</string>
     <string name="today_mark_all">تحديد الكل</string>
+    <string name="today_mark_prayer">تحديد %1$s كصلاة أدّيتها</string>
     <string name="today_unmark_prayer">إلغاء تحديد %1$s</string>
+    <string name="today_tracker_hint">اضغط على الصلاة لتحديد أنك أدّيتها. الجرس لإيقاف الأذان أو تشغيله فقط.</string>
     <string name="today_adhan_mute">إيقاف أذان %1$s</string>
     <string name="today_adhan_unmute">تشغيل أذان %1$s</string>
 
