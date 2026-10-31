@@ -36,6 +36,8 @@ __pycache__/
 !app/src/main/res/drawable-xxxhdpi/*.png
 # Prints próprios usados nos recaps de sessão
 !docs/session-recaps/**/*.png
+# Arte e print-fonte do Instagram
+!docs/instagram/**/*.png
 
 # Sistema
 Thumbs.db

@@ -8,7 +8,7 @@ Perfil criado em 31/10/2026 para divulgar o Muslim Plus.
 - Primeiro post: <https://www.instagram.com/muslimplus.br/p/DfLOsK-hULz/>
 - Arte do post: `post-1.jpg` (1080×1350), gerada por `tools/instagram/compose-post.py`
 - Legenda: `caption-1.txt`
-- Prints usados na arte: `build/p0/today-pt.png` (não versionado)
+- Prints usados na arte: `source-today.png` (print do app na tela Hoje)
 
 Credenciais no cofre: `C:\repo\secrets\instagram\muslimplus-login.env`.
 
