@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-/** O que a tela precisa saber: qual verso toca e se esta tocando. */
+/** O que a tela precisa saber: qual verso toca, se esta tocando e a velocidade. */
 data class QuranAudioState(
     val available: Boolean = false,
     val playing: Boolean = false,
@@ -21,6 +21,9 @@ data class QuranAudioState(
     val ayah: Int? = null,
     val reciterId: String? = null,
     val failed: Boolean = false,
+    val hasNext: Boolean = false,
+    val hasPrevious: Boolean = false,
+    val speed: Float = 1f,
 )
 
 /**
@@ -41,6 +44,9 @@ class QuranAudioController(context: Context) {
     private var pending: PendingQueue? = null
     private var future: ListenableFuture<MediaController>? = null
     private var released = false
+
+    /** Velocidade desejada; aplicada em toda fila nova e restaurada ao conectar. */
+    private var speed = 1f
 
     private data class PendingQueue(
         val items: List<MediaItem>,
@@ -71,6 +77,7 @@ class QuranAudioController(context: Context) {
                         controller = mediaController
                         future = null
                         mediaController.addListener(listener)
+                        mediaController.setPlaybackSpeed(speed)
                         publish(mediaController)
                         pending?.let { queue ->
                             start(mediaController, queue.items, queue.startIndex)
@@ -106,6 +113,28 @@ class QuranAudioController(context: Context) {
         controller?.play()
     }
 
+    /** Próximo verso da fila da sura, continuando a tocar. */
+    fun next() {
+        val mediaController = controller ?: return
+        if (!mediaController.hasNextMediaItem()) return
+        mediaController.seekToNextMediaItem()
+        mediaController.play()
+    }
+
+    fun previous() {
+        val mediaController = controller ?: return
+        if (!mediaController.hasPreviousMediaItem()) return
+        mediaController.seekToPreviousMediaItem()
+        mediaController.play()
+    }
+
+    /** Velocidade salva pelo usuário; vale para a fila atual e para as próximas. */
+    fun setSpeed(value: Float) {
+        speed = value
+        controller?.setPlaybackSpeed(value)
+        controller?.let(::publish)
+    }
+
     fun release() {
         released = true
         pending = null
@@ -121,6 +150,7 @@ class QuranAudioController(context: Context) {
     private fun start(mediaController: MediaController, items: List<MediaItem>, startIndex: Int) {
         if (items.isEmpty()) return
         mediaController.setMediaItems(items, startIndex.coerceIn(items.indices), 0L)
+        mediaController.setPlaybackSpeed(speed)
         mediaController.prepare()
         mediaController.play()
     }
@@ -134,6 +164,9 @@ class QuranAudioController(context: Context) {
             ayah = ref?.ayah,
             reciterId = player.currentMediaItem?.mediaMetadata?.extras?.getString("reciter_id"),
             failed = player.playerError != null,
+            hasNext = player.hasNextMediaItem(),
+            hasPrevious = player.hasPreviousMediaItem(),
+            speed = player.playbackParameters.speed,
         )
     }
 }

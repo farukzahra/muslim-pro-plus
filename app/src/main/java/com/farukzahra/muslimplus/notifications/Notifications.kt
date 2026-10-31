@@ -50,6 +50,38 @@ object Notifications {
         NotificationManagerCompat.from(context).notify(prayer.ordinal + 1, notification)
     }
 
+    /** Aviso antes do adhan: só texto, nunca áudio. */
+    fun showReminder(context: Context, prayer: Prayer, minutes: Int) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        val openApp = PendingIntent.getActivity(
+            context,
+            0,
+            Intent(context, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.drawable.tab_prayers)
+            .setContentTitle(context.getString(R.string.app_name))
+            .setContentText(
+                context.getString(
+                    R.string.notification_reminder,
+                    context.getString(prayerLabel(prayer)),
+                    minutes,
+                ),
+            )
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .setContentIntent(openApp)
+            .build()
+        NotificationManagerCompat.from(context).notify(REMINDER_BASE_ID + prayer.ordinal, notification)
+    }
+
+    private const val REMINDER_BASE_ID = 100
+
     fun prayerLabel(prayer: Prayer): Int = when (prayer) {
         Prayer.FAJR -> R.string.prayer_fajr
         Prayer.SUNRISE -> R.string.prayer_sunrise

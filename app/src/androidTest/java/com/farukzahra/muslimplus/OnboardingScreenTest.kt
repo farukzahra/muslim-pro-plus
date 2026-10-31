@@ -5,9 +5,11 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.farukzahra.muslimplus.ui.screens.onboarding.OnboardingScreen
 import com.farukzahra.muslimplus.ui.theme.MuslimPlusTheme
 import org.junit.Assert.assertTrue
@@ -45,5 +47,24 @@ class OnboardingScreenTest {
                 "(bottom=${bounds.bottom}, root=${root.bottom}, inset=$insetDp)",
             bounds.bottom <= root.bottom - insetDp,
         )
+    }
+
+    @Test
+    fun permissionCardsAndPrivacyAreVisible() {
+        compose.setContent {
+            MuslimPlusTheme {
+                OnboardingScreen(onDone = {}, contentInsets = WindowInsets(0, 0, 0, 0))
+            }
+        }
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        compose.onNodeWithText(context.getString(R.string.onboarding_location_title))
+            .assertExists()
+        compose.onNodeWithText(context.getString(R.string.onboarding_notifications_why))
+            .performScrollTo()
+            .assertIsDisplayed()
+        compose.onNodeWithText(context.getString(R.string.onboarding_privacy_title))
+            .performScrollTo()
+            .assertIsDisplayed()
+        compose.onNodeWithTag("onboarding_start").performScrollTo().assertIsDisplayed()
     }
 }

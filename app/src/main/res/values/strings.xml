@@ -196,4 +196,83 @@
     <string name="audio_no_space">Not enough free space for the estimated download.</string>
     <string name="quran_audio_playback_failed">Audio unavailable. Check your connection or download this recitation, then try again.</string>
     <string name="audio_storage_failed">Could not update audio storage. Check free space and try again.</string>
+
+    <!-- Rastreador de orações (31/10/2026) -->
+    <string name="today_tracker_title">Prayer tracker</string>
+    <string name="today_tracker_progress">%1$d of %2$d prayers</string>
+    <string name="today_tracker_streak">%1$d-day streak</string>
+    <string name="today_tracker_streak_one">1-day streak</string>
+    <string name="today_tracker_streak_none">Mark your prayers to start a streak</string>
+    <string name="today_tracker_done">All prayers marked</string>
+    <string name="today_mark_all">Mark all</string>
+    <string name="today_unmark_prayer">Unmark %1$s</string>
+    <string name="today_adhan_mute">Turn off the call for %1$s</string>
+    <string name="today_adhan_unmute">Turn on the call for %1$s</string>
+
+    <!-- Alcorão: setup, abas e progresso (31/10/2026) -->
+    <string name="quran_script_uthmani">Uthmani</string>
+    <string name="quran_setup_step">Step %1$d of %2$d</string>
+    <string name="quran_setup_skip">Skip</string>
+    <string name="quran_setup_next">Next</string>
+    <string name="quran_setup_start">Start reading</string>
+    <string name="quran_setup_script_title">Arabic script</string>
+    <string name="quran_setup_script_body">Uthmani is the Madinah-style script already included, with no extra download.</string>
+    <string name="quran_setup_script_note">IndoPak needs its own text and font license, so it is not part of this version.</string>
+    <string name="quran_setup_translation_title">Translation</string>
+    <string name="quran_setup_translation_body">Pick the translation shown under the Arabic. You can change it later.</string>
+    <string name="quran_setup_only_arabic">Arabic only</string>
+    <string name="quran_setup_goal_title">Daily goal</string>
+    <string name="quran_setup_goal_body">Small goals keep the habit. Reading time is counted only while the reader is open.</string>
+    <string name="quran_setup_goal_option">%1$d min</string>
+    <string name="quran_setup_khatam">At this pace, you finish in about %1$d days, InshaAllah.</string>
+    <string name="quran_setup_preview">Preview</string>
+    <string name="quran_tab_read">Read</string>
+    <string name="quran_tab_progress">Progress</string>
+    <string name="quran_progress_title">Today</string>
+    <string name="quran_progress_goal">%1$d of %2$d minutes read</string>
+    <string name="quran_progress_minutes">%1$d/%2$d</string>
+    <string name="quran_progress_streak">%1$d days reading</string>
+    <string name="quran_progress_streak_one">1 day reading</string>
+    <string name="quran_progress_streak_none">Read a minute today to start</string>
+    <string name="quran_progress_bookmarks">%1$d bookmarks in total</string>
+    <string name="quran_progress_last">Last read</string>
+    <string name="quran_progress_goal_edit">Edit daily goal</string>
+    <string name="quran_progress_empty">Your progress appears here after you read.</string>
+
+    <!-- Leitor: temas, texto, modo e mini-player (31/10/2026) -->
+    <string name="quran_reader_theme">Reading theme</string>
+    <string name="quran_reader_theme_modern">Modern</string>
+    <string name="quran_reader_theme_paper">Paper</string>
+    <string name="quran_reader_theme_dark">Dark</string>
+    <string name="quran_reader_text">Text size</string>
+    <string name="quran_reader_mode">Reading mode</string>
+    <string name="quran_reader_list">List</string>
+    <string name="quran_reader_page">Page</string>
+    <string name="quran_reader_keep_screen">Keep the screen on</string>
+    <string name="quran_reader_keep_screen_hint">Only while the reader is open. Uses more battery.</string>
+    <string name="quran_reader_layers">Text layers</string>
+    <string name="quran_audio_previous">Previous verse</string>
+    <string name="quran_audio_next">Next verse</string>
+    <string name="quran_audio_speed">Playback speed</string>
+    <string name="quran_page_of">Page %1$d of %2$d</string>
+
+    <!-- Lembrete antes do adhan (31/10/2026) -->
+    <string name="adhan_reminder_title">Remind me before</string>
+    <string name="adhan_reminder_hint">A silent notification before the call. The adhan still plays at prayer time.</string>
+    <string name="adhan_reminder_off">Off</string>
+    <string name="adhan_reminder_minutes">%1$d min</string>
+    <string name="notification_reminder">%1$s in %2$d minutes</string>
+
+    <!-- Qibla: precisão e ajuda (31/10/2026) -->
+    <string name="qibla_interference">Magnetic interference. Move away from metal and draw a figure-8.</string>
+    <string name="qibla_accuracy_medium">Compass accuracy is medium. Calibrate for a better reading.</string>
+    <string name="qibla_facing">You are facing Makkah</string>
+    <string name="qibla_help">Calibration help</string>
+    <string name="qibla_help_title">Calibrate the compass</string>
+    <string name="qibla_help_body">1. Move the phone in a figure-8 three times.\n2. Keep away from magnets, metal cases, cars and laptops.\n3. If the needle still jumps, check the system compass app and restart the phone.</string>
+
+    <!-- Onboarding: privacidade e permissões (31/10/2026) -->
+    <string name="onboarding_privacy_title">Private by design</string>
+    <string name="onboarding_privacy_body">No account, no ads, no tracking. Settings, bookmarks and downloads stay on this device.</string>
+    <string name="onboarding_notifications_why">A reminder at each prayer time. Denying it only removes the notification; prayer times keep working.</string>
 </resources>

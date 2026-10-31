@@ -17,12 +17,22 @@ class PrayerReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val name = intent.getStringExtra(PrayerScheduler.EXTRA_PRAYER)
         val prayer = runCatching { Prayer.valueOf(name.orEmpty()) }.getOrNull()
+        val reminder = intent.getBooleanExtra(PrayerScheduler.EXTRA_REMINDER, false)
 
         val pending = goAsync()
         Thread {
             try {
                 runBlocking {
-                    if (prayer != null) {
+                    if (prayer != null && reminder) {
+                        if (ServiceLocator.settings.notificationsEnabled.first()) {
+                            Notifications.ensureChannel(context)
+                            Notifications.showReminder(
+                                context,
+                                prayer,
+                                ServiceLocator.settings.adhanReminderMinutes.first(),
+                            )
+                        }
+                    } else if (prayer != null) {
                         if (ServiceLocator.settings.notificationsEnabled.first()) {
                             Notifications.ensureChannel(context)
                             Notifications.showPrayer(context, prayer)

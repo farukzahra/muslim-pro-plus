@@ -5,14 +5,19 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.quran.ContinueReading
+import com.farukzahra.muslimplus.quran.ReadingTime
 import com.farukzahra.muslimplus.quran.SearchResults
 import com.farukzahra.muslimplus.quran.SearchUiState
 import com.farukzahra.muslimplus.quran.Surah
 import com.farukzahra.muslimplus.quran.Verse
 import com.farukzahra.muslimplus.quran.VerseRef
+import com.farukzahra.muslimplus.settings.QuranGoal
+import java.time.LocalDate
+import java.time.ZoneId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -32,8 +37,14 @@ private data class VerseHits(val query: String, val verses: List<Verse>)
 class QuranViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = ServiceLocator.quran
     private val readerState = ServiceLocator.readerState
+    private val settings = ServiceLocator.settings
     private val surahs = MutableStateFlow<List<Surah>>(emptyList())
     private val query = MutableStateFlow("")
+
+    /** Fuso da cidade escolhida, o mesmo usado nos horários de oração. */
+    private val cityZone: Flow<ZoneId> = settings.cityId.map { id ->
+        ZoneId.of(ServiceLocator.cities.byId(id).zoneId)
+    }
 
     /** Catalogo completo (sem filtro), para rotular os versos encontrados. */
     val catalog: StateFlow<List<Surah>> = surahs.asStateFlow()
@@ -70,6 +81,32 @@ class QuranViewModel(application: Application) : AndroidViewModel(application) {
     val bookmarkCounts: StateFlow<Map<Int, Int>> = readerState.bookmarks
         .map { refs -> refs.groupingBy { it.surah }.eachCount() }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
+
+    /**
+     * Wizard do Alcorão. `null` só enquanto o DataStore ainda não respondeu;
+     * chave ausente (primeira execução) já vale como "não concluído".
+     */
+    val setupDone: StateFlow<Boolean?> = settings.quranSetupDone
+        .map { it ?: false }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    val goalMinutes: StateFlow<Int> = settings.quranGoalMinutes
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), QuranGoal.DEFAULT_MINUTES)
+
+    /** Minutos lidos hoje no fuso da cidade escolhida (o mesmo dos horários). */
+    val readingMinutesToday: StateFlow<Int> =
+        combine(readerState.readingSeconds, cityZone) { days, zone ->
+            ReadingTime.minutes(days, LocalDate.now(zone))
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    val readingStreak: StateFlow<Int> =
+        combine(readerState.readingSeconds, cityZone) { days, zone ->
+            ReadingTime.streak(days, LocalDate.now(zone))
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
+    val bookmarkTotal: StateFlow<Int> = readerState.bookmarks
+        .map { it.size }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
 
     init {
         viewModelScope.launch {

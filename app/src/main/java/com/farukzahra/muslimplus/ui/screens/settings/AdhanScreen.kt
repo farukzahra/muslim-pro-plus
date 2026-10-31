@@ -2,6 +2,8 @@ package com.farukzahra.muslimplus.ui.screens.settings
 
 import android.media.MediaPlayer
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -39,7 +42,9 @@ import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.adhan.AdhanPolicy
 import com.farukzahra.muslimplus.adhan.AdhanSound
+import com.farukzahra.muslimplus.notifications.PrayerScheduler
 import com.farukzahra.muslimplus.prayer.Prayer
+import com.farukzahra.muslimplus.prayer.PrayerReminder
 import kotlinx.coroutines.launch
 
 /**
@@ -55,6 +60,7 @@ fun AdhanScreen(onBack: () -> Unit) {
     val prayers by settings.adhanPrayers.collectAsState(initial = AdhanPolicy.defaultEnabled)
     val soundId by settings.adhanSoundId.collectAsState(initial = AdhanSound.default.id)
     val respectSilent by settings.adhanRespectSilent.collectAsState(initial = false)
+    val reminderMinutes by settings.adhanReminderMinutes.collectAsState(initial = PrayerReminder.OFF)
 
     var player by remember { mutableStateOf<MediaPlayer?>(null) }
     var playingRes by remember { mutableStateOf<Int?>(null) }
@@ -130,7 +136,10 @@ fun AdhanScreen(onBack: () -> Unit) {
                         checked = prayer in prayers,
                         onCheckedChange = { enabled ->
                             val next = if (enabled) prayers + prayer else prayers - prayer
-                            scope.launch { settings.setAdhanPrayers(next) }
+                            scope.launch {
+                                settings.setAdhanPrayers(next)
+                                PrayerScheduler(context).reschedule()
+                            }
                         },
                         modifier = Modifier.testTag("adhan_${prayer.name.lowercase()}"),
                     )
@@ -191,6 +200,32 @@ fun AdhanScreen(onBack: () -> Unit) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
+                        text = stringResource(R.string.adhan_reminder_title),
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    Text(
+                        text = stringResource(R.string.adhan_reminder_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(top = 4.dp),
+                    )
+                }
+            }
+            ReminderChoices(
+                selected = reminderMinutes,
+                onPick = { minutes ->
+                    scope.launch {
+                        settings.setAdhanReminderMinutes(minutes)
+                        PrayerScheduler(context).reschedule()
+                    }
+                },
+            )
+
+            HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
                         text = stringResource(R.string.adhan_respect_silent),
                         style = MaterialTheme.typography.bodyLarge,
                     )
@@ -207,6 +242,35 @@ fun AdhanScreen(onBack: () -> Unit) {
                     modifier = Modifier.testTag("adhan_respect_silent"),
                 )
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@Composable
+private fun ReminderChoices(selected: Int, onPick: (Int) -> Unit) {
+    FlowRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+        horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp),
+        verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(4.dp),
+    ) {
+        PrayerReminder.options.forEach { minutes ->
+            FilterChip(
+                selected = minutes == selected,
+                onClick = { onPick(minutes) },
+                label = {
+                    Text(
+                        text = if (minutes == PrayerReminder.OFF) {
+                            stringResource(R.string.adhan_reminder_off)
+                        } else {
+                            stringResource(R.string.adhan_reminder_minutes, minutes)
+                        },
+                    )
+                },
+                modifier = Modifier.testTag("adhan_reminder_$minutes"),
+            )
         }
     }
 }

@@ -82,6 +82,20 @@ docs/superpowers/{specs,plans}/
 **Gates:** sem feature sem spec aprovado; sem "pronto" sem verificação;
 todo idioma novo exige Alcorão no idioma novo (teste quebra o build).
 
+## Publicação — notas e divulgação
+
+Toda versão publicada (Play interno/fechado ou produção) exige, no mesmo envio:
+
+1. `docs/releases/<versao>.md` com o resumo do que entrou, as notas da versão
+   para o Google Play em pt-BR, en e ar (até 500 caracteres cada) e uma mensagem
+   pronta para WhatsApp, com `*negrito*`, poucas linhas e uma chamada no fim.
+2. As notas da versão preenchidas no Play Console junto do AAB.
+3. A mensagem de WhatsApp colada na conversa com o usuário, pronta para copiar.
+
+Publicar continua exigindo autorização explícita e track definido; a nota é
+escrita depois do build assinado e da verificação completa (`test`, `lint`, E2E
+e `install-local`).
+
 ## Idioma
 
 Responder em português do Brasil.

@@ -3,6 +3,7 @@ package com.farukzahra.muslimplus
 import android.app.Application
 import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.notifications.Notifications
+import com.farukzahra.muslimplus.prayer.PrayerLogRepository
 import com.farukzahra.muslimplus.quran.QuranRepository
 import com.farukzahra.muslimplus.quran.ReaderStateRepository
 import com.farukzahra.muslimplus.settings.SettingsRepository
@@ -12,6 +13,7 @@ object ServiceLocator {
     lateinit var settings: SettingsRepository
     lateinit var quran: QuranRepository
     lateinit var readerState: ReaderStateRepository
+    lateinit var prayerLog: PrayerLogRepository
 }
 
 class MuslimPlusApp : Application() {
@@ -23,6 +25,7 @@ class MuslimPlusApp : Application() {
         ServiceLocator.settings = SettingsRepository(this, ServiceLocator.cities)
         ServiceLocator.quran = QuranRepository(this)
         ServiceLocator.readerState = ReaderStateRepository(this)
+        ServiceLocator.prayerLog = PrayerLogRepository(this)
         Notifications.ensureChannel(this)
     }
 }

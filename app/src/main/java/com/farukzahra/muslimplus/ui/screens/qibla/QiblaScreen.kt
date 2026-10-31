@@ -1,18 +1,30 @@
 package com.farukzahra.muslimplus.ui.screens.qibla
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -20,11 +32,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
+import com.farukzahra.muslimplus.qibla.CompassAccuracy
+import com.farukzahra.muslimplus.qibla.QiblaCompass
 import kotlin.math.roundToInt
 
 @Composable
@@ -33,10 +48,14 @@ fun QiblaScreen(viewModel: QiblaViewModel = viewModel()) {
     val declination = viewModel.declination(state.city)
     val trueAzimuth = state.azimuth?.let { (it + declination + 360f) % 360f }
     val needleRotation = trueAzimuth?.let { (state.bearing - it + 360.0) % 360.0 }
+    val facing = QiblaCompass.isFacing(trueAzimuth?.toDouble(), state.bearing)
+    var showHelp by remember { mutableStateOf(false) }
+    val scheme = MaterialTheme.colorScheme
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -44,16 +63,16 @@ fun QiblaScreen(viewModel: QiblaViewModel = viewModel()) {
         Text(
             text = state.city.name,
             style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = scheme.onSurfaceVariant,
         )
         Spacer(Modifier.height(6.dp))
         Text(
             text = "${state.bearing.roundToInt()}°",
             style = MaterialTheme.typography.displaySmall,
             fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.primary,
+            color = scheme.primary,
         )
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(16.dp))
 
         Compass(
             needleRotation = needleRotation,
@@ -62,10 +81,27 @@ fun QiblaScreen(viewModel: QiblaViewModel = viewModel()) {
                 .aspectRatio(1f),
         )
 
+        if (facing) {
+            Spacer(Modifier.height(12.dp))
+            Box(
+                modifier = Modifier
+                    .background(scheme.primary.copy(alpha = 0.14f), RoundedCornerShape(50))
+                    .padding(horizontal = 14.dp, vertical = 6.dp)
+                    .testTag("qibla_facing"),
+            ) {
+                Text(
+                    text = stringResource(R.string.qibla_facing),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = scheme.primary,
+                )
+            }
+        }
+
         Spacer(Modifier.height(18.dp))
         Text(
             text = stringResource(R.string.qibla_distance, state.distanceKm.roundToInt()),
             style = MaterialTheme.typography.bodyLarge,
+            color = scheme.onSurface,
         )
         Spacer(Modifier.height(8.dp))
         Text(
@@ -75,7 +111,76 @@ fun QiblaScreen(viewModel: QiblaViewModel = viewModel()) {
                 stringResource(R.string.qibla_no_sensor)
             },
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = scheme.onSurfaceVariant,
+        )
+
+        when {
+            state.accuracy == CompassAccuracy.MEDIUM -> {
+                Spacer(Modifier.height(10.dp))
+                AccuracyCard(
+                    text = stringResource(R.string.qibla_accuracy_medium),
+                    color = scheme.secondary,
+                )
+            }
+
+            QiblaCompass.interference(state.accuracy) -> {
+                Spacer(Modifier.height(10.dp))
+                AccuracyCard(
+                    text = stringResource(R.string.qibla_interference),
+                    color = scheme.error,
+                    modifier = Modifier.testTag("qibla_interference"),
+                )
+            }
+        }
+
+        TextButton(
+            onClick = { showHelp = true },
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .testTag("qibla_help"),
+        ) {
+            Text(stringResource(R.string.qibla_help))
+        }
+    }
+
+    if (showHelp) {
+        AlertDialog(
+            onDismissRequest = { showHelp = false },
+            title = { Text(stringResource(R.string.qibla_help_title)) },
+            text = { Text(stringResource(R.string.qibla_help_body)) },
+            confirmButton = {
+                TextButton(onClick = { showHelp = false }) {
+                    Text(stringResource(R.string.action_ok))
+                }
+            },
+        )
+    }
+}
+
+@Composable
+private fun AccuracyCard(
+    text: String,
+    color: Color,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color.copy(alpha = 0.12f), RoundedCornerShape(16.dp))
+            .padding(horizontal = 14.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .height(8.dp)
+                .background(color, RoundedCornerShape(50))
+                .padding(horizontal = 4.dp),
+        )
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.padding(start = 10.dp),
         )
     }
 }

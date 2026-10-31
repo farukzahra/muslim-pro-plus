@@ -25,6 +25,29 @@ ou por um campo preenchido pelo agente. Os testes do app não comprovam consenti
 
 Spec de Q01: [seleção de recitador](specs/2026-10-23-quran-reciter-design.md).
 
+## P0 da comparação com o Muslim Pro 17.10.1
+
+Decisão de 31/10/2026: o usuário autorizou implementar **todas** as sugestões
+P0 do relatório de comparação, com testes E2E e validação no Pixel 6 antes de
+qualquer envio. Spec em
+[paridade de experiência](specs/2026-10-31-p0-experience-parity.md) e plano em
+[plano](plans/2026-10-31-p0-experience-parity.md).
+
+| Item | Estado |
+| --- | --- |
+| Hoje acionável (anel, check por oração, marcar todas, semana, sequência) | Feito em 31/10/2026, versão 1.2.0 |
+| Sino por oração direto na linha do Hoje | Feito em 31/10/2026 |
+| Lembrete antes do adhan (5/10/15/30 min) | Feito em 31/10/2026 |
+| Setup do Alcorão (escrita, tradução e meta) | Feito em 31/10/2026; IndoPak fica para depois |
+| Abas Leitura e Progresso, minutos lidos e sequência | Feito em 31/10/2026 |
+| Temas do leitor, tamanho do texto e modo Página | Feito em 31/10/2026 |
+| Mini-player com anterior/próximo e velocidade | Feito em 31/10/2026 |
+| Qibla com precisão, interferência e ajuda de calibração | Feito em 31/10/2026 |
+| Cartões de permissão e privacidade no onboarding | Feito em 31/10/2026 |
+| Envio do AAB 1.2.0 ao Play | **Aguardando autorização e escolha de track** |
+
+Notas de versão e mensagem para beta testers: `docs/releases/1.2.0.md`.
+
 ## Conformidade Play (outubro/2026)
 
 Decisão de 30/10/2026: o usuário autorizou a frente "Localização + R8" depois

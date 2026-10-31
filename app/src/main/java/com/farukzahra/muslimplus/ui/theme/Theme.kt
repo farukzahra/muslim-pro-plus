@@ -12,6 +12,7 @@ fun MuslimPlusTheme(
     MaterialTheme(
         colorScheme = if (darkTheme) DarkScheme else LightScheme,
         typography = MuslimPlusTypography,
+        shapes = MuslimPlusShapes,
         content = content,
     )
 }

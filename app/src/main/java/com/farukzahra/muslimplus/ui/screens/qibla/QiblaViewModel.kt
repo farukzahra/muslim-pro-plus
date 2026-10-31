@@ -11,6 +11,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.location.City
+import com.farukzahra.muslimplus.qibla.CompassAccuracy
 import com.farukzahra.muslimplus.qibla.QiblaMath
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,6 +27,13 @@ data class QiblaUiState(
     val distanceKm: Double,
     val azimuth: Float?,
     val sensorAvailable: Boolean,
+    val accuracy: CompassAccuracy = CompassAccuracy.UNKNOWN,
+)
+
+/** Leitura do sensor: rumo magnético e precisão informada pelo sistema. */
+private data class SensorSample(
+    val azimuth: Float,
+    val accuracy: CompassAccuracy,
 )
 
 class QiblaViewModel(application: Application) : AndroidViewModel(application) {
@@ -37,21 +45,23 @@ class QiblaViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-            combine(settings.cityId, azimuthFlow()) { cityId, azimuth -> cityId to azimuth }
-                .collect { (cityId, azimuth) ->
+            combine(settings.cityId, sensorFlow()) { cityId, sample -> cityId to sample }
+                .collect { (cityId, sample) ->
                     val city = ServiceLocator.cities.byId(cityId)
                     _state.value = QiblaUiState(
                         city = city,
                         bearing = QiblaMath.bearingToKaaba(city.latitude, city.longitude),
                         distanceKm = QiblaMath.distanceToKaaba(city.latitude, city.longitude),
-                        azimuth = azimuth,
-                        sensorAvailable = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR) != null,
+                        azimuth = sample?.azimuth,
+                        sensorAvailable = sample != null ||
+                            sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR) != null,
+                        accuracy = sample?.accuracy ?: CompassAccuracy.UNKNOWN,
                     )
                 }
         }
     }
 
-    private fun azimuthFlow() = callbackFlow<Float?> {
+    private fun sensorFlow() = callbackFlow<SensorSample?> {
         val sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
         if (sensor == null) {
             trySend(null)
@@ -64,6 +74,7 @@ class QiblaViewModel(application: Application) : AndroidViewModel(application) {
         // consegue sincronizar).
         var lastSentAt = 0L
         var lastAzimuth: Float? = null
+        var accuracy = CompassAccuracy.UNKNOWN
         val listener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent) {
                 val now = SystemClock.elapsedRealtime()
@@ -74,13 +85,18 @@ class QiblaViewModel(application: Application) : AndroidViewModel(application) {
                 SensorManager.getOrientation(rotation, orientation)
                 val magnetic = (Math.toDegrees(orientation[0].toDouble()) + 360.0) % 360.0
                 val azimuth = Math.round(magnetic * 2.0).toFloat() / 2f
-                if (azimuth == lastAzimuth) return
+                if (azimuth == lastAzimuth && accuracy == CompassAccuracy.UNKNOWN) return
                 lastSentAt = now
                 lastAzimuth = azimuth
-                trySend(azimuth)
+                trySend(SensorSample(azimuth, accuracy))
             }
 
-            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
+            override fun onAccuracyChanged(sensor: Sensor?, status: Int) {
+                accuracy = CompassAccuracy.fromSensor(status)
+                // Repinta na hora: o usuário precisa ver o aviso de
+                // interferência mesmo com a agulha parada.
+                lastAzimuth?.let { trySend(SensorSample(it, accuracy)) }
+            }
         }
         sensorManager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_UI)
         awaitClose { sensorManager.unregisterListener(listener) }

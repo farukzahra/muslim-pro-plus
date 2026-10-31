@@ -196,4 +196,83 @@
     <string name="audio_no_space">لا توجد مساحة كافية للتنزيل المتوقع.</string>
     <string name="quran_audio_playback_failed">الصوت غير متاح. تحقق من الاتصال أو نزّل هذه التلاوة ثم حاول مجددًا.</string>
     <string name="audio_storage_failed">تعذر تحديث تخزين الصوت. تحقق من المساحة المتاحة وحاول مجددًا.</string>
+
+    <!-- متابعة الصلوات (31/10/2026) -->
+    <string name="today_tracker_title">متابعة الصلوات</string>
+    <string name="today_tracker_progress">%1$d من %2$d صلوات</string>
+    <string name="today_tracker_streak">سلسلة %1$d يومًا</string>
+    <string name="today_tracker_streak_one">سلسلة يوم واحد</string>
+    <string name="today_tracker_streak_none">علّم صلواتك لبدء سلسلة</string>
+    <string name="today_tracker_done">تم تحديد جميع الصلوات</string>
+    <string name="today_mark_all">تحديد الكل</string>
+    <string name="today_unmark_prayer">إلغاء تحديد %1$s</string>
+    <string name="today_adhan_mute">إيقاف أذان %1$s</string>
+    <string name="today_adhan_unmute">تشغيل أذان %1$s</string>
+
+    <!-- القرآن: الإعداد والتبويبات والتقدم (31/10/2026) -->
+    <string name="quran_script_uthmani">عثماني</string>
+    <string name="quran_setup_step">الخطوة %1$d من %2$d</string>
+    <string name="quran_setup_skip">تخطي</string>
+    <string name="quran_setup_next">التالي</string>
+    <string name="quran_setup_start">ابدأ القراءة</string>
+    <string name="quran_setup_script_title">الخط العربي</string>
+    <string name="quran_setup_script_body">عثماني هو الخط المدني المضمّن، دون تنزيل إضافي.</string>
+    <string name="quran_setup_script_note">إندوباك يحتاج نصًا وترخيص خط خاصين، لذا ليس ضمن هذه النسخة.</string>
+    <string name="quran_setup_translation_title">الترجمة</string>
+    <string name="quran_setup_translation_body">اختر الترجمة المعروضة تحت العربية. يمكنك تغييرها لاحقًا.</string>
+    <string name="quran_setup_only_arabic">العربية فقط</string>
+    <string name="quran_setup_goal_title">الهدف اليومي</string>
+    <string name="quran_setup_goal_body">الأهداف الصغيرة تصنع العادة. يُحسب الوقت فقط أثناء فتح القارئ.</string>
+    <string name="quran_setup_goal_option">%1$d دقيقة</string>
+    <string name="quran_setup_khatam">بهذا الوتيرة تُكمل في نحو %1$d يومًا إن شاء الله.</string>
+    <string name="quran_setup_preview">معاينة</string>
+    <string name="quran_tab_read">قراءة</string>
+    <string name="quran_tab_progress">تقدمي</string>
+    <string name="quran_progress_title">اليوم</string>
+    <string name="quran_progress_goal">%1$d من %2$d دقيقة مقروءة</string>
+    <string name="quran_progress_minutes">%1$d/%2$d</string>
+    <string name="quran_progress_streak">%1$d أيام قراءة</string>
+    <string name="quran_progress_streak_one">يوم واحد من القراءة</string>
+    <string name="quran_progress_streak_none">اقرأ دقيقة اليوم للبدء</string>
+    <string name="quran_progress_bookmarks">%1$d علامات إجمالًا</string>
+    <string name="quran_progress_last">آخر قراءة</string>
+    <string name="quran_progress_goal_edit">تعديل الهدف اليومي</string>
+    <string name="quran_progress_empty">يظهر تقدمك هنا بعد القراءة.</string>
+
+    <!-- القارئ: السمات والنص والوضع والمشغل المصغر (31/10/2026) -->
+    <string name="quran_reader_theme">سمة القراءة</string>
+    <string name="quran_reader_theme_modern">حديثة</string>
+    <string name="quran_reader_theme_paper">ورقية</string>
+    <string name="quran_reader_theme_dark">داكنة</string>
+    <string name="quran_reader_text">حجم النص</string>
+    <string name="quran_reader_mode">وضع القراءة</string>
+    <string name="quran_reader_list">قائمة</string>
+    <string name="quran_reader_page">صفحة</string>
+    <string name="quran_reader_keep_screen">إبقاء الشاشة مضاءة</string>
+    <string name="quran_reader_keep_screen_hint">فقط أثناء فتح القارئ. يستهلك بطارية أكثر.</string>
+    <string name="quran_reader_layers">طبقات النص</string>
+    <string name="quran_audio_previous">الآية السابقة</string>
+    <string name="quran_audio_next">الآية التالية</string>
+    <string name="quran_audio_speed">سرعة التشغيل</string>
+    <string name="quran_page_of">الصفحة %1$d من %2$d</string>
+
+    <!-- تذكير قبل الأذان (31/10/2026) -->
+    <string name="adhan_reminder_title">ذكّرني قبل</string>
+    <string name="adhan_reminder_hint">إشعار صامت قبل الأذان. يبقى الأذان يُشغّل في وقت الصلاة.</string>
+    <string name="adhan_reminder_off">إيقاف</string>
+    <string name="adhan_reminder_minutes">%1$d دقيقة</string>
+    <string name="notification_reminder">%1$s بعد %2$d دقيقة</string>
+
+    <!-- القبلة: الدقة والمساعدة (31/10/2026) -->
+    <string name="qibla_interference">تداخل مغناطيسي. ابتعد عن المعادن وارسم رقم 8.</string>
+    <string name="qibla_accuracy_medium">دقة البوصلة متوسطة. عاير لقراءة أفضل.</string>
+    <string name="qibla_facing">أنت تواجه مكة</string>
+    <string name="qibla_help">مساعدة المعايرة</string>
+    <string name="qibla_help_title">معايرة البوصلة</string>
+    <string name="qibla_help_body">1. حرّك الهاتف على شكل رقم 8 ثلاث مرات.\n2. ابتعد عن المغانط والأغطية المعدنية والسيارات والحواسيب.\n3. إذا استمرت الإبرة في الاهتزاز، تحقق من بوصلة النظام وأعد تشغيل الهاتف.</string>
+
+    <!-- الترحيب: الخصوصية والأذونات (31/10/2026) -->
+    <string name="onboarding_privacy_title">خصوصية بالتصميم</string>
+    <string name="onboarding_privacy_body">لا حساب، لا إعلانات، لا تتبع. الإعدادات والعلامات والتنزيلات تبقى على هذا الجهاز.</string>
+    <string name="onboarding_notifications_why">تذكير في كل وقت صلاة. الرفض يلغي الإشعار فقط؛ تبقى أوقات الصلاة تعمل.</string>
 </resources>

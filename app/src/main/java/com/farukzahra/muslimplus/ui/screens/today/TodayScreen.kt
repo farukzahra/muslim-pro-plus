@@ -1,6 +1,10 @@
 package com.farukzahra.muslimplus.ui.screens.today
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -35,7 +40,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -54,6 +63,8 @@ import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.notifications.ExactAlarms
 import com.farukzahra.muslimplus.prayer.Prayer
+import com.farukzahra.muslimplus.prayer.PrayerDay
+import com.farukzahra.muslimplus.prayer.PrayerLog
 import com.farukzahra.muslimplus.prayer.PrayerSchedule
 import com.farukzahra.muslimplus.quran.DailyVerse
 import com.farukzahra.muslimplus.quran.Verse
@@ -64,6 +75,7 @@ import java.time.ZoneId
 import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.time.format.TextStyle as JavaTextStyle
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -112,6 +124,14 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
         if (!state.exactAlarmsAvailable) {
             ExactAlarmBanner()
         }
+        PrayerTracker(
+            date = state.date,
+            done = state.done,
+            week = state.week,
+            streak = state.streak,
+            locale = locale,
+            onMarkAll = viewModel::markAllPrayers,
+        )
         if (showDailyVerse) {
             DailyVerseCard(
                 date = state.date,
@@ -137,6 +157,10 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
             now = state.now,
             zone = state.zone,
             locale = locale,
+            done = state.done,
+            adhanPrayers = state.adhanPrayers,
+            onTogglePrayer = viewModel::togglePrayer,
+            onToggleAdhan = viewModel::toggleAdhan,
         )
         Spacer(Modifier.height(12.dp))
     }
@@ -195,6 +219,7 @@ private fun Header(
                     text = formatCountdown(remainingSeconds(now, nextAt)),
                     style = MaterialTheme.typography.displayLarge,
                     color = scheme.primary,
+                    modifier = Modifier.testTag("today_countdown"),
                 )
                 Text(
                     text = nextAt.atZone(zone).format(
@@ -205,6 +230,194 @@ private fun Header(
                 )
             }
         }
+    }
+}
+
+/**
+ * Rastreador do dia: anel `n/5`, sequência e faixa dos últimos sete dias.
+ * O botão "marcar todas" some quando o dia já está completo.
+ */
+@Composable
+private fun PrayerTracker(
+    date: LocalDate,
+    done: Set<Prayer>,
+    week: List<PrayerDay>,
+    streak: Int,
+    locale: Locale,
+    onMarkAll: () -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    val total = PrayerLog.trackable.size
+    val count = PrayerLog.progress(done)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(scheme.surfaceContainer.copy(alpha = 0.75f))
+            .padding(start = 16.dp, end = 12.dp, top = 16.dp, bottom = 14.dp)
+            .testTag("tracker_card"),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ProgressRing(count = count, total = total, modifier = Modifier.size(64.dp))
+            Spacer(Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.today_tracker_title),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = scheme.secondary,
+                )
+                Text(
+                    text = stringResource(R.string.today_tracker_progress, count, total),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = scheme.onSurface,
+                    modifier = Modifier
+                        .padding(top = 2.dp)
+                        .testTag("tracker_progress"),
+                )
+                Text(
+                    text = if (streak > 0) {
+                        stringResource(
+                            if (streak == 1) {
+                                R.string.today_tracker_streak_one
+                            } else {
+                                R.string.today_tracker_streak
+                            },
+                            streak,
+                        )
+                    } else {
+                        stringResource(R.string.today_tracker_streak_none)
+                    },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = scheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
+            }
+            if (count < total) {
+                TextButton(
+                    onClick = onMarkAll,
+                    modifier = Modifier.testTag("tracker_mark_all"),
+                ) {
+                    Text(stringResource(R.string.today_mark_all))
+                }
+            } else {
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = stringResource(R.string.today_tracker_done),
+                    tint = scheme.primary,
+                    modifier = Modifier
+                        .padding(horizontal = 12.dp)
+                        .size(24.dp)
+                        .testTag("tracker_done"),
+                )
+            }
+        }
+        Spacer(Modifier.height(14.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag("tracker_week"),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            week.forEach { day ->
+                WeekDay(
+                    day = day,
+                    today = date,
+                    locale = locale,
+                    modifier = Modifier.weight(1f),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun WeekDay(day: PrayerDay, today: LocalDate, locale: Locale, modifier: Modifier = Modifier) {
+    val scheme = MaterialTheme.colorScheme
+    val isToday = day.date == today
+    val label = remember(day.date, locale) {
+        day.date.getDayOfWeek().getDisplayName(JavaTextStyle.NARROW, locale)
+    }
+    val count = PrayerLog.progress(day.done)
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.testTag("tracker_day_${day.date}"),
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = if (isToday) scheme.primary else scheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(4.dp))
+        Box(
+            modifier = Modifier
+                .size(32.dp)
+                .clip(CircleShape)
+                .background(
+                    when {
+                        day.complete -> scheme.primary
+                        count > 0 -> scheme.primary.copy(alpha = 0.18f)
+                        else -> scheme.background
+                    },
+                )
+                .border(
+                    BorderStroke(
+                        width = if (isToday) 2.dp else 1.dp,
+                        color = when {
+                            day.complete -> scheme.primary
+                            isToday -> scheme.primary
+                            else -> scheme.outlineVariant
+                        },
+                    ),
+                    CircleShape,
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = day.date.dayOfMonth.toString(),
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = if (isToday) FontWeight.Bold else FontWeight.Normal,
+                color = if (day.complete) scheme.onPrimary else scheme.onSurface,
+            )
+        }
+    }
+}
+
+@Composable
+private fun ProgressRing(count: Int, total: Int, modifier: Modifier = Modifier) {
+    val scheme = MaterialTheme.colorScheme
+    Box(modifier = modifier.testTag("tracker_ring"), contentAlignment = Alignment.Center) {
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val stroke = size.minDimension * 0.11f
+            val inset = stroke / 2f
+            val arcSize = Size(size.width - stroke, size.height - stroke)
+            drawArc(
+                color = scheme.outlineVariant,
+                startAngle = -90f,
+                sweepAngle = 360f,
+                useCenter = false,
+                topLeft = Offset(inset, inset),
+                size = arcSize,
+                style = Stroke(width = stroke, cap = StrokeCap.Round),
+            )
+            if (count > 0 && total > 0) {
+                drawArc(
+                    color = scheme.primary,
+                    startAngle = -90f,
+                    sweepAngle = 360f * count / total,
+                    useCenter = false,
+                    topLeft = Offset(inset, inset),
+                    size = arcSize,
+                    style = Stroke(width = stroke, cap = StrokeCap.Round),
+                )
+            }
+        }
+        Text(
+            text = "$count/$total",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = scheme.primary,
+        )
     }
 }
 
@@ -351,19 +564,26 @@ private fun PrayerList(
     now: Instant,
     zone: ZoneId,
     locale: Locale,
+    done: Set<Prayer>,
+    adhanPrayers: Set<Prayer>,
+    onTogglePrayer: (Prayer) -> Unit,
+    onToggleAdhan: (Prayer) -> Unit,
 ) {
+    val scheme = MaterialTheme.colorScheme
     Column(modifier = Modifier.fillMaxWidth()) {
         Prayer.entries.forEachIndexed { index, prayer ->
             val at = schedule.timeOf(prayer)
             val isNext = prayer == next
             val isPast = at != null && at.isBefore(now)
-            val scheme = MaterialTheme.colorScheme
+            val trackable = prayer in PrayerLog.trackable
+            val isDone = prayer in done
+            val adhanOn = prayer in adhanPrayers
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp)
+                    .height(60.dp)
                     .background(if (isNext) scheme.primary.copy(alpha = 0.08f) else scheme.background)
-                    .padding(horizontal = 24.dp),
+                    .padding(horizontal = 20.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Box(
@@ -405,24 +625,81 @@ private fun PrayerList(
                             .background(
                                 when {
                                     isNext -> scheme.primary
+                                    isDone -> scheme.primary.copy(alpha = 0.7f)
                                     isPast -> scheme.outline.copy(alpha = 0.5f)
                                     else -> scheme.outline
                                 },
                             ),
                     )
                 }
-                Spacer(Modifier.width(16.dp))
+                if (trackable) {
+                    IconButton(
+                        onClick = { onTogglePrayer(prayer) },
+                        modifier = Modifier
+                            .size(44.dp)
+                            .testTag("prayer_check_${prayer.name.lowercase()}"),
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(22.dp)
+                                .clip(CircleShape)
+                                .background(if (isDone) scheme.primary else scheme.background)
+                                .border(
+                                    BorderStroke(
+                                        1.5.dp,
+                                        if (isDone) scheme.primary else scheme.outline,
+                                    ),
+                                    CircleShape,
+                                ),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            if (isDone) {
+                                Icon(
+                                    imageVector = Icons.Filled.Check,
+                                    contentDescription = stringResource(
+                                        R.string.today_unmark_prayer,
+                                        stringResource(prayerLabel(prayer)),
+                                    ),
+                                    tint = scheme.onPrimary,
+                                    modifier = Modifier.size(14.dp),
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    Spacer(Modifier.width(44.dp))
+                }
                 Text(
                     text = stringResource(prayerLabel(prayer)),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = if (isNext) FontWeight.Bold else FontWeight.Normal,
                     color = when {
                         isNext -> scheme.primary
-                        isPast -> scheme.onSurface.copy(alpha = 0.4f)
+                        isPast -> scheme.onSurface.copy(alpha = 0.45f)
                         else -> scheme.onSurface
                     },
                     modifier = Modifier.weight(1f),
                 )
+                if (trackable) {
+                    IconButton(
+                        onClick = { onToggleAdhan(prayer) },
+                        modifier = Modifier
+                            .size(40.dp)
+                            .testTag("prayer_bell_${prayer.name.lowercase()}"),
+                    ) {
+                        Icon(
+                            painter = painterResource(
+                                if (adhanOn) R.drawable.ic_bell else R.drawable.ic_bell_off,
+                            ),
+                            contentDescription = stringResource(
+                                if (adhanOn) R.string.today_adhan_mute else R.string.today_adhan_unmute,
+                                stringResource(prayerLabel(prayer)),
+                            ),
+                            tint = if (adhanOn) scheme.primary else scheme.onSurfaceVariant.copy(alpha = 0.5f),
+                            modifier = Modifier.size(20.dp),
+                        )
+                    }
+                }
                 Text(
                     text = at?.atZone(zone)?.format(
                         DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withLocale(locale),
@@ -431,7 +708,7 @@ private fun PrayerList(
                     fontWeight = if (isNext) FontWeight.Bold else FontWeight.Normal,
                     color = when {
                         isNext -> scheme.primary
-                        isPast -> scheme.onSurface.copy(alpha = 0.4f)
+                        isPast -> scheme.onSurface.copy(alpha = 0.45f)
                         else -> scheme.onSurface
                     },
                 )

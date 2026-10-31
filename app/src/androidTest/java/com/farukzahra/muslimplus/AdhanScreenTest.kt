@@ -28,6 +28,7 @@ class AdhanScreenTest {
         val originalPrayers = runBlocking { settings.adhanPrayers.first() }
         val originalSound = runBlocking { settings.adhanSoundId.first() }
         val originalRespect = runBlocking { settings.adhanRespectSilent.first() }
+        val originalReminder = runBlocking { settings.adhanReminderMinutes.first() }
         runBlocking {
             settings.setOnboardingDone()
             settings.setAdhanPrayers(AdhanPolicy.defaultEnabled)
@@ -65,11 +66,21 @@ class AdhanScreenTest {
             compose.waitUntil(5_000) {
                 runBlocking { ServiceLocator.settings.adhanRespectSilent.first() }
             }
+
+            compose.onNodeWithTag("adhan_reminder_15").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { ServiceLocator.settings.adhanReminderMinutes.first() == 15 }
+            }
+            compose.onNodeWithTag("adhan_reminder_0").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { ServiceLocator.settings.adhanReminderMinutes.first() == 0 }
+            }
         } finally {
             runBlocking {
                 settings.setAdhanPrayers(originalPrayers)
                 settings.setAdhanSound(originalSound)
                 settings.setAdhanRespectSilent(originalRespect)
+                settings.setAdhanReminderMinutes(originalReminder)
             }
         }
     }

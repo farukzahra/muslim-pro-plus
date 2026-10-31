@@ -12,6 +12,7 @@ import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerOffsets
+import com.farukzahra.muslimplus.prayer.PrayerReminder
 import java.time.ZoneId
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -36,6 +37,14 @@ class SettingsRepository(
     private val adhanPrayersKey = stringSetPreferencesKey("adhan_prayers")
     private val adhanSoundKey = stringPreferencesKey("adhan_sound")
     private val adhanRespectSilentKey = booleanPreferencesKey("adhan_respect_silent")
+    private val adhanReminderKey = intPreferencesKey("adhan_reminder_minutes")
+    private val quranSetupDoneKey = booleanPreferencesKey("quran_setup_done")
+    private val quranGoalMinutesKey = intPreferencesKey("quran_goal_minutes")
+    private val readerThemeKey = stringPreferencesKey("reader_theme")
+    private val readerFontKey = stringPreferencesKey("reader_font")
+    private val readerModeKey = stringPreferencesKey("reader_mode")
+    private val readerKeepScreenOnKey = booleanPreferencesKey("reader_keep_screen_on")
+    private val quranSpeedKey = stringPreferencesKey("quran_speed")
 
     /**
      * Cidade escolhida ou, sem escolha (primeira execucao), a maior cidade do
@@ -70,6 +79,36 @@ class SettingsRepository(
     val hijriOffset: Flow<Int> =
         context.dataStore.data.map { preferences ->
             HijriOffset.sanitize(preferences[hijriOffsetKey] ?: HijriOffset.DEFAULT)
+        }
+
+    /** Minutos do lembrete antes do adhan; 0 desliga. */
+    val adhanReminderMinutes: Flow<Int> =
+        context.dataStore.data.map { preferences ->
+            PrayerReminder.sanitize(preferences[adhanReminderKey])
+        }
+
+    /** `null` = wizard do Alcorão ainda não foi visto nem pulado. */
+    val quranSetupDone: Flow<Boolean?> =
+        context.dataStore.data.map { it[quranSetupDoneKey] }
+
+    val quranGoalMinutes: Flow<Int> =
+        context.dataStore.data.map { QuranGoal.sanitize(it[quranGoalMinutesKey]) }
+
+    val readerTheme: Flow<ReaderTheme> =
+        context.dataStore.data.map { ReaderTheme.fromId(it[readerThemeKey]) }
+
+    val readerFont: Flow<ReaderFont> =
+        context.dataStore.data.map { ReaderFont.fromId(it[readerFontKey]) }
+
+    val readerMode: Flow<ReaderMode> =
+        context.dataStore.data.map { ReaderMode.fromId(it[readerModeKey]) }
+
+    val readerKeepScreenOn: Flow<Boolean> =
+        context.dataStore.data.map { it[readerKeepScreenOnKey] ?: false }
+
+    val quranSpeed: Flow<Float> =
+        context.dataStore.data.map { preferences ->
+            ReaderPrefs.speed(preferences[quranSpeedKey]?.toFloatOrNull())
         }
 
     /** `null` = primeira execucao (onboarding ainda nao foi concluido ou pulado). */
@@ -107,6 +146,39 @@ class SettingsRepository(
 
     suspend fun setAdhanRespectSilent(value: Boolean) {
         context.dataStore.edit { it[adhanRespectSilentKey] = value }
+    }
+
+    suspend fun setAdhanReminderMinutes(minutes: Int) {
+        context.dataStore.edit { it[adhanReminderKey] = PrayerReminder.sanitize(minutes) }
+    }
+
+    /** Grava a conclusão tanto no "Começar" quanto no "Pular" do wizard. */
+    suspend fun setQuranSetupDone(done: Boolean = true) {
+        context.dataStore.edit { it[quranSetupDoneKey] = done }
+    }
+
+    suspend fun setQuranGoalMinutes(minutes: Int) {
+        context.dataStore.edit { it[quranGoalMinutesKey] = QuranGoal.sanitize(minutes) }
+    }
+
+    suspend fun setReaderTheme(theme: ReaderTheme) {
+        context.dataStore.edit { it[readerThemeKey] = theme.id }
+    }
+
+    suspend fun setReaderFont(font: ReaderFont) {
+        context.dataStore.edit { it[readerFontKey] = font.id }
+    }
+
+    suspend fun setReaderMode(mode: ReaderMode) {
+        context.dataStore.edit { it[readerModeKey] = mode.id }
+    }
+
+    suspend fun setReaderKeepScreenOn(value: Boolean) {
+        context.dataStore.edit { it[readerKeepScreenOnKey] = value }
+    }
+
+    suspend fun setQuranSpeed(speed: Float) {
+        context.dataStore.edit { it[quranSpeedKey] = ReaderPrefs.speed(speed).toString() }
     }
 
     suspend fun setDailyVerseVisible(value: Boolean) {

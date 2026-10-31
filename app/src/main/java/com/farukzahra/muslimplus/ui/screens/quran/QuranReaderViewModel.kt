@@ -15,6 +15,12 @@ import com.farukzahra.muslimplus.quran.audio.QuranReciters
 import com.farukzahra.muslimplus.quran.audio.QuranAudioItems
 import com.farukzahra.muslimplus.quran.audio.QuranAudioState
 import com.farukzahra.muslimplus.quran.audio.QuranAudioStore
+import com.farukzahra.muslimplus.settings.ReaderFont
+import com.farukzahra.muslimplus.settings.ReaderMode
+import com.farukzahra.muslimplus.settings.ReaderPrefs
+import com.farukzahra.muslimplus.settings.ReaderTheme
+import java.time.LocalDate
+import java.time.ZoneId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -93,6 +99,23 @@ class QuranReaderViewModel(
     val reciter = settings.quranReciterId.map { QuranReciters.find(it) }
         .stateIn(viewModelScope, SharingStarted.Eagerly, QuranReciters.default)
 
+    val readerTheme: StateFlow<ReaderTheme> = settings.readerTheme
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ReaderTheme.MODERN)
+
+    val readerFont: StateFlow<ReaderFont> = settings.readerFont
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ReaderFont.MEDIUM)
+
+    val readerMode: StateFlow<ReaderMode> = settings.readerMode
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), ReaderMode.LIST)
+
+    val keepScreenOn: StateFlow<Boolean> = settings.readerKeepScreenOn
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
+
+    /** Dia local da cidade, para o cronômetro de leitura e o progresso. */
+    val readingDay: StateFlow<LocalDate?> = settings.cityId
+        .map { id -> LocalDate.now(ZoneId.of(ServiceLocator.cities.byId(id).zoneId)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
     /** Ultimo verso que ficou no topo da tela; o debounce evita gravar a cada quadro. */
     private val firstVisible = MutableStateFlow<Verse?>(null)
 
@@ -134,6 +157,10 @@ class QuranReaderViewModel(
                     (audio.state.value.reciterId != null && audio.state.value.reciterId != id)) audio.pause()
                 previousId = id
             }
+        }
+        // Velocidade salva vale na hora e nas filas seguintes.
+        viewModelScope.launch {
+            settings.quranSpeed.collect(audio::setSpeed)
         }
         viewModelScope.launch {
             combine(settings.quranReciterId, library.revision, _state) { id, _, reader -> id to reader }
@@ -208,6 +235,45 @@ class QuranReaderViewModel(
 
     fun cancelDownload() {
         if (library.progress.value.reciterId == reciter.value?.id) library.cancel()
+    }
+
+    /** Play/pause do mini-player, sem trocar de verso. */
+    fun togglePlayback() {
+        if (audio.state.value.playing) audio.pause() else audio.resume()
+    }
+
+    fun nextVerse() = audio.next()
+
+    fun previousVerse() = audio.previous()
+
+    fun cycleSpeed() {
+        viewModelScope.launch {
+            val current = settings.quranSpeed.first()
+            settings.setQuranSpeed(ReaderPrefs.nextSpeed(current))
+        }
+    }
+
+    fun setReaderTheme(theme: ReaderTheme) {
+        viewModelScope.launch { settings.setReaderTheme(theme) }
+    }
+
+    fun setReaderFont(font: ReaderFont) {
+        viewModelScope.launch { settings.setReaderFont(font) }
+    }
+
+    fun setReaderMode(mode: ReaderMode) {
+        viewModelScope.launch { settings.setReaderMode(mode) }
+    }
+
+    fun setKeepScreenOn(value: Boolean) {
+        viewModelScope.launch { settings.setReaderKeepScreenOn(value) }
+    }
+
+    /** Soma os segundos que o leitor passou em primeiro plano. */
+    fun addReadingSeconds(date: LocalDate, seconds: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            readerState.addReadingSeconds(date, seconds)
+        }
     }
 
     /** Nunca deixa o conjunto vazio: pelo menos uma camada fica ligada. */

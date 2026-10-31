@@ -18,9 +18,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
@@ -164,7 +164,10 @@ fun OnboardingScreen(
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
 
-        Section(title = stringResource(R.string.language_title)) {
+        PermissionCard(
+            title = stringResource(R.string.language_title),
+            subtitle = stringResource(R.string.onboarding_language_hint),
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = stringResource(languageLabelRes(LanguageRepository.currentTag())),
@@ -175,20 +178,13 @@ fun OnboardingScreen(
                     Text(stringResource(R.string.onboarding_change))
                 }
             }
-            Text(
-                text = stringResource(R.string.onboarding_language_hint),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
         }
 
-        Section(title = stringResource(R.string.onboarding_location_title)) {
-            Text(
-                text = stringResource(R.string.onboarding_location_hint),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(12.dp))
+        PermissionCard(
+            title = stringResource(R.string.onboarding_location_title),
+            subtitle = stringResource(R.string.onboarding_location_hint),
+        ) {
+            Spacer(Modifier.height(4.dp))
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(
                     onClick = {
@@ -230,7 +226,7 @@ fun OnboardingScreen(
             }
         }
 
-        Section(title = stringResource(R.string.prayers_method)) {
+        PermissionCard(title = stringResource(R.string.prayers_method)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = method.name,
@@ -243,10 +239,12 @@ fun OnboardingScreen(
             }
         }
 
-        Section(title = stringResource(R.string.more_notifications)) {
+        PermissionCard(
+            title = stringResource(R.string.more_notifications),
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = stringResource(R.string.onboarding_notifications_hint),
+                    text = stringResource(R.string.onboarding_notifications_why),
                     modifier = Modifier.weight(1f),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -260,6 +258,12 @@ fun OnboardingScreen(
                 )
             }
         }
+
+        Spacer(Modifier.height(12.dp))
+        PermissionCard(
+            title = stringResource(R.string.onboarding_privacy_title),
+            subtitle = stringResource(R.string.onboarding_privacy_body),
+        ) { }
 
         Spacer(Modifier.height(28.dp))
         Row(
@@ -304,18 +308,34 @@ fun OnboardingScreen(
 }
 
 @Composable
-private fun Section(
+private fun PermissionCard(
     title: String,
+    subtitle: String? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    Spacer(Modifier.height(24.dp))
-    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f))
-    Spacer(Modifier.height(16.dp))
-    Text(
-        text = title,
-        style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.onSurface,
-    )
-    Spacer(Modifier.height(4.dp))
-    Column(modifier = Modifier.fillMaxWidth(), content = content)
+    Surface(
+        shape = RoundedCornerShape(20.dp),
+        color = MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.75f),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp),
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+            if (subtitle != null) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
+            }
+            Spacer(Modifier.height(10.dp))
+            Column(modifier = Modifier.fillMaxWidth(), content = content)
+        }
+    }
 }

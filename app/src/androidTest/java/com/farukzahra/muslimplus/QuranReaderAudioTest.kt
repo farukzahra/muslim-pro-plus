@@ -8,6 +8,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.farukzahra.muslimplus.quran.audio.QuranReciters
 import kotlinx.coroutines.flow.first
@@ -21,7 +22,10 @@ class QuranReaderAudioTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
 
     @Test fun readerShowsSelectedVoiceAndOpensAudioStorage() {
-        runBlocking { ServiceLocator.settings.setOnboardingDone() }
+        runBlocking {
+            ServiceLocator.settings.setOnboardingDone()
+            ServiceLocator.settings.setQuranSetupDone()
+        }
         compose.activityRule.scenario.recreate()
         val context = compose.activity
         val original = runBlocking { ServiceLocator.settings.quranReciterId.first() }
@@ -38,7 +42,9 @@ class QuranReaderAudioTest {
             }
             compose.onAllNodesWithText(voice.reciter)[0].assertIsDisplayed()
             compose.onNodeWithContentDescription(context.getString(R.string.quran_display)).performClick()
-            compose.onNodeWithText(context.getString(R.string.audio_storage_title)).performClick()
+            compose.onNodeWithText(context.getString(R.string.audio_storage_title))
+                .performScrollTo()
+                .performClick()
             compose.waitUntil(10_000) {
                 compose.onAllNodesWithTag("clear_audio_cache").fetchSemanticsNodes().isNotEmpty()
             }

@@ -8,7 +8,9 @@ import com.farukzahra.muslimplus.location.City
 import com.farukzahra.muslimplus.notifications.ExactAlarms
 import com.farukzahra.muslimplus.notifications.PrayerScheduler
 import com.farukzahra.muslimplus.prayer.Prayer
+import com.farukzahra.muslimplus.prayer.PrayerDay
 import com.farukzahra.muslimplus.prayer.PrayerEngine
+import com.farukzahra.muslimplus.prayer.PrayerLog
 import com.farukzahra.muslimplus.prayer.PrayerMethod
 import com.farukzahra.muslimplus.prayer.PrayerSchedule
 import java.time.Instant
@@ -34,10 +36,21 @@ data class TodayUiState(
     val zone: ZoneId,
     val exactAlarmsAvailable: Boolean,
     val hijriOffset: Int,
-)
+    /** Orações já marcadas hoje (só as cinco obrigatórias). */
+    val done: Set<Prayer> = emptySet(),
+    /** Últimos sete dias, do mais antigo para hoje. */
+    val week: List<PrayerDay> = emptyList(),
+    val streak: Int = 0,
+    /** Orações cujo adhan está ligado; o sino da linha reflete isto. */
+    val adhanPrayers: Set<Prayer> = emptySet(),
+) {
+    val doneCount: Int get() = PrayerLog.progress(done)
+    val allDone: Boolean get() = PrayerLog.isComplete(done)
+}
 
 class TodayViewModel(application: Application) : AndroidViewModel(application) {
     private val settings = ServiceLocator.settings
+    private val prayerLog = ServiceLocator.prayerLog
     private val _state = MutableStateFlow<TodayUiState?>(null)
     val state: StateFlow<TodayUiState?> = _state.asStateFlow()
 
@@ -60,37 +73,69 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /** Marca ou desmarca a oração no dia que está na tela. */
+    fun togglePrayer(prayer: Prayer) {
+        val current = _state.value ?: return
+        if (prayer !in PrayerLog.trackable) return
+        viewModelScope.launch { prayerLog.toggle(current.date, prayer) }
+    }
+
+    fun markAllPrayers() {
+        val current = _state.value ?: return
+        if (current.allDone) return
+        viewModelScope.launch { prayerLog.setAll(current.date, done = true) }
+    }
+
+    /**
+     * Liga/desliga o adhan daquela oração na própria linha do Hoje. É a mesma
+     * preferência usada pelo agendador, então o sino e a tela de Chamado nunca
+     * divergem. Reagenda porque o alarme pode não existir quando o adhan era o
+     * único motivo de agendar.
+     */
+    fun toggleAdhan(prayer: Prayer) {
+        if (prayer !in com.farukzahra.muslimplus.adhan.AdhanPolicy.eligible) return
+        val current = _state.value?.adhanPrayers ?: return
+        val next = if (prayer in current) current - prayer else current + prayer
+        viewModelScope.launch {
+            settings.setAdhanPrayers(next)
+            PrayerScheduler(getApplication()).reschedule()
+        }
+    }
+
     init {
         viewModelScope.launch {
-            combine(
+            val configFlow = combine(
                 settings.cityId,
                 settings.methodName,
                 settings.prayerOffsets,
                 settings.hijriOffset,
-            ) { city, method, offsets, hijriOffset ->
-                TodayConfig(city, method, offsets, hijriOffset)
+            ) { cityId, methodName, offsets, hijriOffset ->
+                TodayConfig(cityId, methodName, offsets, hijriOffset)
+            }
+            combine(configFlow, prayerLog.days, settings.adhanPrayers) { config, days, adhan ->
+                TodayInputs(config, days, adhan)
             }
                 .distinctUntilChanged()
-                .collectLatest { config ->
-                    val city = ServiceLocator.cities.byId(config.cityId)
-                    val method = runCatching { PrayerMethod.valueOf(config.methodName) }
+                .collectLatest { inputs ->
+                    val city = ServiceLocator.cities.byId(inputs.config.cityId)
+                    val method = runCatching { PrayerMethod.valueOf(inputs.config.methodName) }
                         .getOrDefault(PrayerMethod.MWL)
                     // collectLatest cancela este loop quando cidade, metodo,
-                    // offsets ou offset hijri mudam, para o relogio nao segurar
-                    // a config antiga.
+                    // offsets, offset hijri, marcações ou adhan mudam, para o
+                    // relógio não segurar a config antiga.
                     while (true) {
-                        _state.value = build(city, method, config)
+                        _state.value = build(city, method, inputs)
                         delay(1_000)
                     }
                 }
         }
     }
 
-    private fun build(city: City, method: PrayerMethod, config: TodayConfig): TodayUiState {
+    private fun build(city: City, method: PrayerMethod, inputs: TodayInputs): TodayUiState {
         val now = Instant.now()
         val zone = ZoneId.of(city.zoneId)
         val today = now.atZone(zone).toLocalDate()
-        val offsets = config.offsets
+        val offsets = inputs.config.offsets
         val schedule = PrayerEngine.schedule(
             today, city.latitude, city.longitude, zone, method, offsets,
         )
@@ -108,7 +153,11 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
             now = now,
             zone = zone,
             exactAlarmsAvailable = exactAlarmsAvailable,
-            hijriOffset = config.hijriOffset,
+            hijriOffset = inputs.config.hijriOffset,
+            done = PrayerLog.clean(inputs.days[today].orEmpty()),
+            week = PrayerLog.week(today, inputs.days),
+            streak = PrayerLog.streak(inputs.days, today),
+            adhanPrayers = inputs.adhanPrayers,
         )
     }
 }
@@ -119,4 +168,11 @@ private data class TodayConfig(
     val methodName: String,
     val offsets: Map<Prayer, Int>,
     val hijriOffset: Int,
+)
+
+/** Config + o que muda a cada toque do usuário (marcações e adhan). */
+private data class TodayInputs(
+    val config: TodayConfig,
+    val days: Map<LocalDate, Set<Prayer>>,
+    val adhanPrayers: Set<Prayer>,
 )

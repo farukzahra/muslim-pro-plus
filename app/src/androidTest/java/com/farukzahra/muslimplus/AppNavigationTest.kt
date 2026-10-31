@@ -47,6 +47,9 @@ class AppNavigationTest {
                 Thread.sleep(50)
             }
             runBlocking { ServiceLocator.settings.setOnboardingDone() }
+            // A lista do Alcorão só aparece depois do wizard; os testes de
+            // navegação não devem parar no setup.
+            runBlocking { ServiceLocator.settings.setQuranSetupDone() }
         }
     }
 

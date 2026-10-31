@@ -196,4 +196,83 @@
     <string name="audio_no_space">Espaço livre insuficiente para o download estimado.</string>
     <string name="quran_audio_playback_failed">Áudio indisponível. Confira a conexão ou baixe esta recitação e tente novamente.</string>
     <string name="audio_storage_failed">Não foi possível atualizar o armazenamento de áudio. Confira o espaço livre e tente novamente.</string>
+
+    <!-- Rastreador de orações (31/10/2026) -->
+    <string name="today_tracker_title">Rastreador de orações</string>
+    <string name="today_tracker_progress">%1$d de %2$d orações</string>
+    <string name="today_tracker_streak">Sequência de %1$d dias</string>
+    <string name="today_tracker_streak_one">Sequência de 1 dia</string>
+    <string name="today_tracker_streak_none">Marque suas orações para começar uma sequência</string>
+    <string name="today_tracker_done">Todas as orações marcadas</string>
+    <string name="today_mark_all">Marcar todas</string>
+    <string name="today_unmark_prayer">Desmarcar %1$s</string>
+    <string name="today_adhan_mute">Desligar o chamado de %1$s</string>
+    <string name="today_adhan_unmute">Ligar o chamado de %1$s</string>
+
+    <!-- Alcorão: setup, abas e progresso (31/10/2026) -->
+    <string name="quran_script_uthmani">Uthmani</string>
+    <string name="quran_setup_step">Passo %1$d de %2$d</string>
+    <string name="quran_setup_skip">Pular</string>
+    <string name="quran_setup_next">Continuar</string>
+    <string name="quran_setup_start">Começar a ler</string>
+    <string name="quran_setup_script_title">Escrita árabe</string>
+    <string name="quran_setup_script_body">Uthmani é a escrita de Madinah já incluída, sem download extra.</string>
+    <string name="quran_setup_script_note">IndoPak exige texto e licença de fonte próprios, então não entra nesta versão.</string>
+    <string name="quran_setup_translation_title">Tradução</string>
+    <string name="quran_setup_translation_body">Escolha a tradução exibida abaixo do árabe. Dá para mudar depois.</string>
+    <string name="quran_setup_only_arabic">Somente árabe</string>
+    <string name="quran_setup_goal_title">Meta diária</string>
+    <string name="quran_setup_goal_body">Metas pequenas criam o hábito. O tempo só conta com o leitor aberto.</string>
+    <string name="quran_setup_goal_option">%1$d min</string>
+    <string name="quran_setup_khatam">Nesse ritmo, você conclui em cerca de %1$d dias, InshaAllah.</string>
+    <string name="quran_setup_preview">Prévia</string>
+    <string name="quran_tab_read">Leitura</string>
+    <string name="quran_tab_progress">Progresso</string>
+    <string name="quran_progress_title">Hoje</string>
+    <string name="quran_progress_goal">%1$d de %2$d minutos lidos</string>
+    <string name="quran_progress_minutes">%1$d/%2$d</string>
+    <string name="quran_progress_streak">%1$d dias de leitura</string>
+    <string name="quran_progress_streak_one">1 dia de leitura</string>
+    <string name="quran_progress_streak_none">Leia um minuto hoje para começar</string>
+    <string name="quran_progress_bookmarks">%1$d marcadores no total</string>
+    <string name="quran_progress_last">Última leitura</string>
+    <string name="quran_progress_goal_edit">Editar meta diária</string>
+    <string name="quran_progress_empty">Seu progresso aparece aqui depois da leitura.</string>
+
+    <!-- Leitor: temas, texto, modo e mini-player (31/10/2026) -->
+    <string name="quran_reader_theme">Tema de leitura</string>
+    <string name="quran_reader_theme_modern">Moderno</string>
+    <string name="quran_reader_theme_paper">Papel</string>
+    <string name="quran_reader_theme_dark">Escuro</string>
+    <string name="quran_reader_text">Tamanho do texto</string>
+    <string name="quran_reader_mode">Modo de leitura</string>
+    <string name="quran_reader_list">Lista</string>
+    <string name="quran_reader_page">Página</string>
+    <string name="quran_reader_keep_screen">Manter a tela ligada</string>
+    <string name="quran_reader_keep_screen_hint">Só com o leitor aberto. Gasta mais bateria.</string>
+    <string name="quran_reader_layers">Camadas de texto</string>
+    <string name="quran_audio_previous">Verso anterior</string>
+    <string name="quran_audio_next">Próximo verso</string>
+    <string name="quran_audio_speed">Velocidade</string>
+    <string name="quran_page_of">Página %1$d de %2$d</string>
+
+    <!-- Lembrete antes do adhan (31/10/2026) -->
+    <string name="adhan_reminder_title">Lembrar antes</string>
+    <string name="adhan_reminder_hint">Um aviso silencioso antes do chamado. O adhan continua tocando no horário.</string>
+    <string name="adhan_reminder_off">Desligado</string>
+    <string name="adhan_reminder_minutes">%1$d min</string>
+    <string name="notification_reminder">%1$s em %2$d minutos</string>
+
+    <!-- Qibla: precisão e ajuda (31/10/2026) -->
+    <string name="qibla_interference">Interferência magnética. Afaste-se de metal e faça um 8 no ar.</string>
+    <string name="qibla_accuracy_medium">A precisão da bússola está média. Calibre para melhorar.</string>
+    <string name="qibla_facing">Você está de frente para Makkah</string>
+    <string name="qibla_help">Ajuda de calibração</string>
+    <string name="qibla_help_title">Calibrar a bússola</string>
+    <string name="qibla_help_body">1. Mova o celular em forma de 8 três vezes.\n2. Fique longe de ímãs, capas metálicas, carros e notebooks.\n3. Se a agulha continuar pulando, confira a bússola do sistema e reinicie o celular.</string>
+
+    <!-- Onboarding: privacidade e permissões (31/10/2026) -->
+    <string name="onboarding_privacy_title">Privado por padrão</string>
+    <string name="onboarding_privacy_body">Sem conta, sem anúncios, sem rastreamento. Ajustes, marcadores e downloads ficam neste aparelho.</string>
+    <string name="onboarding_notifications_why">Um lembrete em cada horário de oração. Negar só remove a notificação; os horários continuam funcionando.</string>
 </resources>
