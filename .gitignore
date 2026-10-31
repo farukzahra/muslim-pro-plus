@@ -40,3 +40,6 @@ __pycache__/
 # Sistema
 Thumbs.db
 .DS_Store
+
+# Perfis de Chrome CDP usados por automacoes locais
+.chrome-cdp-profile*/
