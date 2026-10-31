@@ -44,7 +44,7 @@ qualquer envio. Spec em
 | Mini-player com anterior/próximo e velocidade | Feito em 31/10/2026 |
 | Qibla com precisão, interferência e ajuda de calibração | Feito em 31/10/2026 |
 | Cartões de permissão e privacidade no onboarding | Feito em 31/10/2026 |
-| Envio do AAB 1.2.0 ao Play | **Aguardando autorização e escolha de track** |
+| Envio do AAB 1.2.0 ao Play | Feito em 31/10/2026: versionCode 7 em interno e produção, notas em en-US e pt-BR |
 
 Notas de versão e mensagem para beta testers: `docs/releases/1.2.0.md`.
 
@@ -61,7 +61,7 @@ da revisão do aviso de políticas. Spec em
 | Release com R8 (fevereiro/2027) | Feito em 30/10/2026: DEX de 29,4 MB para 4,2 MB, teste no Pixel 6 |
 | Status de comerciante no Play Console (novembro/2026) | **Pendente do usuário**: declaração de conta, não muda código |
 | Remover declaração antiga de localização fina no console | **Pendente do usuário**, se o console ainda mostrar a declaração da versão 1.1.3 |
-| Subir o AAB 1.1.4 | Aguardando autorização de envio |
+| Subir o AAB 1.2.0 (versionCode 7) | Feito em 31/10/2026: interno e produção via API |
 | `targetSdk` 37 e botão de localização do Android 17 | Aguardando a exigência anual de 2027 |
 
 ## Demais itens — perguntar antes de começar
