@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Recap · Muslim Plus 1.2.0 · 31/10/2026</title>
+<style>
+  :root {
+    --bg-page: #08131c;
+    --bg-card: #0e1b26;
+    --bg-soft: #13232f;
+    --primary: #2fb98a;
+    --secondary: #d9b25f;
+    --ink: #e9eef4;
+    --muted: #9fb0c2;
+    --border: #223444;
+    --border-strong: #35516a;
+    --radius: 20px;
+    --radius-sm: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 480px at 10% -10%, rgba(47,185,138,.16), transparent 70%),
+      radial-gradient(700px 420px at 105% 8%, rgba(217,178,95,.09), transparent 70%),
+      var(--bg-page);
+    color: var(--ink);
+    font: 16px/1.65 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: min(1080px, calc(100% - 2.5rem)); margin: 0 auto; padding: 3rem 0 4rem; }
+  .eyebrow {
+    margin: 0 0 .6rem;
+    color: var(--primary);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 0;
+    font: 600 clamp(2rem, 4.4vw, 3.2rem)/1.06 "Literata", "Iowan Old Style", Georgia, serif;
+    letter-spacing: -.02em;
+  }
+  h1 span { color: var(--secondary); }
+  .lede { max-width: 72ch; margin: .9rem 0 0; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+  .chip {
+    padding: .32rem .68rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(14, 27, 38, .8);
+    color: var(--muted);
+    font-size: .74rem;
+  }
+  .chip b { color: var(--ink); font-weight: 600; }
+  .chip--progress { border-color: var(--border-strong); color: var(--ink); }
+  .env {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: .8rem;
+    margin: 1.6rem 0 2.2rem;
+  }
+  .env-card {
+    padding: .9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: linear-gradient(160deg, rgba(19, 35, 47, .9), rgba(14, 27, 38, .9));
+    font-size: .84rem;
+    color: var(--muted);
+  }
+  .env-card b { display: block; color: var(--ink); font-weight: 600; margin-bottom: .15rem; }
+  .env-card code { color: var(--secondary); font-size: .78rem; }
+  .topics { display: grid; gap: 1rem; }
+  .topics-hint { margin: 0 0 .25rem; font-size: .8125rem; color: var(--muted); }
+  .topic {
+    position: relative;
+    cursor: pointer;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.15rem 1.25rem 1.15rem 1.35rem;
+    border-left: 3px solid var(--primary);
+    transition: opacity .2s ease, filter .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .topic:hover:not(.topic--seen) { border-color: var(--border-strong); transform: translateY(-1px); }
+  .topic:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+  .topic--seen { opacity: .52; filter: saturate(.65); border-left-color: var(--muted); }
+  .topic--seen::after {
+    content: "Visto";
+    position: absolute;
+    top: .85rem;
+    right: 1rem;
+    font-size: .625rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .2rem .5rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, .15);
+    pointer-events: none;
+  }
+  .topic h2 {
+    margin: 0 0 .45rem;
+    padding-right: 4.5rem;
+    font: 600 1.32rem/1.25 "Literata", Georgia, serif;
+  }
+  .topic .status {
+    display: inline-block;
+    margin-bottom: .55rem;
+    padding: .1rem .5rem;
+    border-radius: 999px;
+    background: rgba(47,185,138,.14);
+    color: var(--primary);
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .blocks { display: grid; gap: .55rem; }
+  .block { font-size: .9rem; }
+  .block b {
+    display: block;
+    color: var(--secondary);
+    font-size: .66rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: .1rem;
+  }
+  .block p { margin: 0; color: #d5e2e8; }
+  ul.clean { margin: 0; padding-left: 1.1rem; color: #d5e2e8; }
+  ul.clean li + li { margin-top: .2rem; }
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: .7rem;
+    margin-top: .9rem;
+  }
+  .shot {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption {
+    padding: .45rem .55rem .5rem;
+    font-size: .7rem;
+    color: var(--muted);
+    background: var(--bg-soft);
+  }
+  .pending {
+    margin-top: 2.4rem;
+    padding: 1.2rem 1.3rem;
+    border: 1px solid rgba(217,178,95,.35);
+    border-radius: var(--radius);
+    background: rgba(217,178,95,.07);
+  }
+  .pending h2 { margin: 0 0 .5rem; font: 600 1.3rem/1.2 "Literata", Georgia, serif; color: var(--secondary); }
+  .pending ul { margin: 0; padding-left: 1.15rem; color: #e8e2d2; font-size: .9rem; }
+  .pending li + li { margin-top: .3rem; }
+  footer {
+    margin-top: 2.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .74rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .topic { transition: none; }
+    .topic:hover:not(.topic--seen) { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Muslim Plus · sessão de 31/10/2026</p>
+  <header>
+    <h1>O que foi feito nesta sessão<br /><span>paridade P0 com o Muslim Pro 17.10.1</span></h1>
+    <p class="lede">Você pediu para pesquisar o concorrente, criar uma task por sugestão, implementar todas as P0, rodar os E2E e deixar o app aberto para validar. Também pediu ajustes de uso no rastreador e a mensagem de divulgação. Este recap mostra pedido, entrega e prints de cada frente.</p>
+    <div class="chips">
+      <span class="chip"><b>1.2.0</b> · versionCode 7</span>
+      <span class="chip"><b>181</b> testes JVM</span>
+      <span class="chip"><b>30</b> testes instrumentados</span>
+      <span class="chip">AAB assinado</span>
+      <span class="chip">Offline · sem conta · sem anúncios</span>
+      <span class="chip chip--progress" data-recap-progress hidden>0/0 vistos</span>
+    </div>
+  </header>
+
+  <section class="env">
+    <div class="env-card"><b>Emulador dedicado</b><code>MuslimPlusP0</code> · Pixel 6 · Android 14 · <code>emulator-5556</code> · 12 GB de dados</div>
+    <div class="env-card"><b>App instalado</b>1.2.0 · hash do APK conferido · aberto na tela Hoje</div>
+    <div class="env-card"><b>Repositório</b>commits <code>50e20d4</code>, <code>9b08fa1</code>, <code>e7e4d32</code> · branch <code>codex/quran-audio-storage</code></div>
+  </section>
+
+  <div class="topics">
+    <p class="topics-hint">Clique em um card para marcar como visto.</p>
+
+    <article class="topic" data-topic-id="pesquisa-muslim-pro">
+      <span class="status">Feito</span>
+      <h2>Pesquisa do Muslim Pro 17.10.1</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Instalar o Muslim Pro oficial, comparar as telas com o Plus e listar o que falta.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Instalação oficial pela Play Store no Pixel 6, sessão como visitante.</li>
+            <li>Prints reais de onboarding, Home, Orações, setup/leitor do Alcorão, Learn e Progresso.</li>
+            <li>Relatório em <code>docs/research/2026-10-31-muslim-pro-17.10.1.md</code> e HTML em <code>build/muslimpro/report/index.html</code>.</li>
+            <li>Nenhum asset do concorrente foi versionado.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="spec-e-plano">
+      <span class="status">Feito</span>
+      <h2>Spec e plano com uma task por sugestão</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Criar uma task para cada sugestão e começar a implementar.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Spec em <code>docs/superpowers/specs/2026-10-31-p0-experience-parity.md</code>.</li>
+            <li>Plano em <code>docs/superpowers/plans/2026-10-31-p0-experience-parity.md</code> com T1 a T6 e checkboxes.</li>
+            <li>Backlog atualizado em <code>docs/superpowers/TODO.md</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="hoje-rastreador">
+      <span class="status">Feito + ajuste seu</span>
+      <h2>Hoje acionável, com os ajustes que você pediu</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Transformar o Hoje em checklist das cinco orações. Depois você não entendeu como marcar e pediu para subir o verso do dia.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Anel <code>n/5</code>, check por oração, marcar todas, faixa de sete dias e sequência.</li>
+            <li>A linha inteira marca e desmarca; o sino só liga/desliga o adhan. Dica quando o dia está em 0/5.</li>
+            <li>Verso do dia subiu para cima do rastreador; o rastreador ficou colado na lista.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/today-final.png" alt="Tela Hoje com verso do dia em cima e rastreador antes da lista" loading="lazy" /><figcaption>Ordem final: verso, rastreador, orações</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-10-31/today-tracker.png" alt="Fajr marcada e anel em 1 de 5" loading="lazy" /><figcaption>Toque na linha marcou o Fajr</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-10-31/today-complete.png" alt="Rastreador com 5 de 5 e sequência de 1 dia" loading="lazy" /><figcaption>Marcar todas: 5/5 e sequência</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="adhan-lembrete">
+      <span class="status">Feito</span>
+      <h2>Adhan por oração e lembrete antes</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Silencioso por oração e lembrete antes do chamado, mantendo as nove vozes.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Sino na linha do Hoje e switches na tela de Chamado usam a mesma preferência.</li>
+            <li>Lembrete silencioso de 5, 10, 15 ou 30 minutos, em alarme separado do adhan.</li>
+            <li>O adhan continua tocando no horário exato; o lembrete nunca toca áudio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/adhan-reminder.png" alt="Tela de adhan com opções de lembrete antes" loading="lazy" /><figcaption>Lembrete antes, com 30 min quebrando linha</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="setup-alcorao">
+      <span class="status">Feito</span>
+      <h2>Setup do Alcorão em três passos</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Ter o wizard de primeira entrada do Alcorão: escrita, tradução e meta.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Passo 1 mostra Uthmani com prévia do texto; explica que IndoPak exige texto e fonte próprios.</li>
+            <li>Passo 2 escolhe tradução (só árabe, português ou inglês).</li>
+            <li>Passo 3 escolhe 5, 10, 15 ou 30 minutos e estima a conclusão.</li>
+            <li>Pular grava a conclusão e mantém os padrões.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/quran-setup-1.png" alt="Primeiro passo do setup do Alcorão" loading="lazy" /><figcaption>Passo 1: escrita</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-10-31/quran-setup-3.png" alt="Terceiro passo com meta diária e estimativa" loading="lazy" /><figcaption>Passo 3: meta e estimativa</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="abas-progresso">
+      <span class="status">Feito</span>
+      <h2>Abas Leitura e Progresso</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Separar leitura de progresso, com meta e minutos lidos.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Abas Leitura e Progresso na lista de suras.</li>
+            <li>Minutos lidos hoje contados só com o leitor aberto, sem serviço de fundo.</li>
+            <li>Meta, sequência, último ponto e total de marcadores; editar meta no próprio progresso.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/quran-list.png" alt="Lista de suras com abas Leitura e Progresso" loading="lazy" /><figcaption>Abas na lista</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-10-31/quran-progress.png" alt="Aba Progresso com 1 de 15 minutos e sequência" loading="lazy" /><figcaption>1 de 15 min e sequência</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="leitor-mini-player">
+      <span class="status">Feito</span>
+      <h2>Leitor com temas e mini-player</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Dar ao leitor a camada de experiência: tema, fonte, modo e áudio persistente.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Temas Moderno, Papel e Escuro; quatro tamanhos; Lista ou Página.</li>
+            <li>Manter a tela ligada, chip de referência e bottom sheet de configurações.</li>
+            <li>Mini-player com anterior, play/pause, próximo e velocidade de 0,75× a 1,5×, salva.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/reader-paper.png" alt="Leitor no tema Papel em modo Página" loading="lazy" /><figcaption>Papel + Página</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-10-31/reader-settings.png" alt="Bottom sheet de configurações do leitor" loading="lazy" /><figcaption>Bottom sheet</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-10-31/reader-mini.png" alt="Mini-player com recitador, versículo e velocidade" loading="lazy" /><figcaption>Mini-player com 1×</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="qibla">
+      <span class="status">Feito</span>
+      <h2>Qibla com confiança e calibração</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Melhorar a confiança da bússola sem backend.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Precisão do sensor e aviso de interferência magnética.</li>
+            <li>"De frente para Makkah" com tolerância de 5°.</li>
+            <li>Ajuda de calibração com figura 8 e cuidados com ímãs e capas metálicas.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/qibla-help.png" alt="Diálogo de ajuda de calibração da Qibla" loading="lazy" /><figcaption>Ajuda de calibração</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="onboarding-polimento">
+      <span class="status">Feito</span>
+      <h2>Onboarding e polimento visual</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Deixar o onboarding mais claro e o visual consistente.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Cartões de permissão para idioma, localização, método e notificações, com o motivo de cada uma.</li>
+            <li>Cartão de privacidade: sem conta, sem anúncios, sem rastreamento.</li>
+            <li>Formas de 20 dp no tema, usadas por cartões, sheets e diálogos.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-10-31/onboarding.png" alt="Onboarding em cartões com bloco de privacidade" loading="lazy" /><figcaption>Cartões e privacidade</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="qualidade-release">
+      <span class="status">Feito</span>
+      <h2>Qualidade, instalação e notas de versão</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Rodar todos os E2E, deixar o app levantado e preparar a divulgação.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>181 testes JVM, 30 instrumentados no Pixel 6, lint e build verdes.</li>
+            <li>Versão 1.2.0 (versionCode 7), AAB assinado e verificado com <code>jarsigner</code>.</li>
+            <li>Instalação conferida por hash em <code>emulator-5556</code>.</li>
+            <li>Notas do Play em pt-BR, en e ar e mensagem de WhatsApp em <code>docs/releases/1.2.0.md</code>.</li>
+            <li>Regra de publicação registrada no <code>AGENTS.md</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="emulador">
+      <span class="status">Feito</span>
+      <h2>Emulador dedicado ao Muslim Plus</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>O Maco estava com o emulador; abrir outro para o Muslim Plus.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>AVD <code>MuslimPlusP0</code> criado, Pixel 6 com Android 14 e 12 GB de dados.</li>
+            <li>Rodando em <code>emulator-5556</code>, sem tocar no 5554 do Maco.</li>
+            <li>1.2.0 instalado e aberto na tela Hoje para validação.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <section class="pending">
+    <h2>Pendências</h2>
+    <ul>
+      <li><b>Publicar o AAB 1.2.0</b>: falta você definir o track. Teste interno/fechado (beta testers) ou produção?</li>
+      <li><b>Play Console</b>: status de comerciante e remoção da declaração antiga de localização fina, se ainda aparecer.</li>
+      <li><b>IndoPak</b>: exige texto e licença de fonte próprios; ficou fora desta versão.</li>
+      <li><b>P1</b>: widgets, Khatam/Juz, notas e itens salvos, Duas/Tasbih/99 nomes, calendário, Zakat e Hajj.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Muslim Plus · recap de 31/10/2026 · versão 1.2.0</span>
+    <span>Prints do próprio app, nenhum asset do Muslim Pro</span>
+  </footer>
+</div>
+<script>
+(function initRecapTopicSeen() {
+  const storageKey = (id) => `recap-seen:${location.pathname}:${id}`
+  const cards = Array.from(document.querySelectorAll('.topic[data-topic-id]'))
+  const counter = document.querySelector('[data-recap-progress]')
+
+  function updateCounter() {
+    if (!counter) return
+    const seen = cards.filter((c) => c.classList.contains('topic--seen')).length
+    counter.textContent = `${seen}/${cards.length} vistos`
+    counter.hidden = cards.length === 0
+  }
+
+  function setSeen(card, seen) {
+    const id = card.dataset.topicId
+    if (!id) return
+    card.classList.toggle('topic--seen', seen)
+    card.setAttribute('aria-pressed', seen ? 'true' : 'false')
+    if (seen) localStorage.setItem(storageKey(id), '1')
+    else localStorage.removeItem(storageKey(id))
+    updateCounter()
+  }
+
+  cards.forEach((card) => {
+    const id = card.dataset.topicId
+    if (localStorage.getItem(storageKey(id)) === '1') card.classList.add('topic--seen')
+    card.setAttribute('role', 'button')
+    card.setAttribute('tabindex', '0')
+    card.setAttribute('aria-pressed', card.classList.contains('topic--seen') ? 'true' : 'false')
+    card.setAttribute('aria-label', `${card.querySelector('h2')?.textContent ?? 'Tópico'} · marcar como visto`)
+
+    function toggle() { setSeen(card, !card.classList.contains('topic--seen')) }
+    card.addEventListener('click', toggle)
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        toggle()
+      }
+    })
+  })
+
+  updateCounter()
+})()
+</script>
+</body>
+</html>
