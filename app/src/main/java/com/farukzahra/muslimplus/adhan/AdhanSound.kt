@@ -35,7 +35,6 @@ enum class AdhanSound(
         R.raw.adhan_makkah_khashoggi,
         R.string.adhan_sound_makkah_khashoggi,
     ),
-    CASABLANCA("casablanca", R.raw.adhan_casablanca, R.string.adhan_sound_casablanca),
     ;
 
     companion object {

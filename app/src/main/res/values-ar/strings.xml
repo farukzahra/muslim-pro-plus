@@ -65,7 +65,6 @@
     <string name="adhan_sound_aqsa">الأقصى — ناجي قزاز</string>
     <string name="adhan_sound_madinah_abdulaziz">المدينة — عبدالعزيز بخاري</string>
     <string name="adhan_sound_makkah_khashoggi">مكة — عبدالرحمن خاشقجي</string>
-    <string name="adhan_sound_casablanca">الدار البيضاء — مسجد الحسن الثاني</string>
     <string name="adhan_preview">استماع</string>
     <string name="adhan_stop">إيقاف</string>
     <string name="adhan_volume_hint">يستخدم الصوت مستوى صوت المنبّه في الجهاز.</string>

@@ -34,8 +34,6 @@ object Licenses {
     const val QURAN_API_URL = "https://quran.com/"
     const val ADHAN_CLASSIC_URL = "https://commons.wikimedia.org/wiki/File:Beautiful_adhan.ogg"
     const val ADHAN_WORLD_MOSQUES_URL = "https://archive.org/details/azaan-of-world-mosques_202608"
-    const val ADHAN_CASABLANCA_URL =
-        "https://commons.wikimedia.org/wiki/File:Llamada_a_oraci%C3%B3n_Mezquita_Hassan_II.wav"
 
     val all: List<LicenseEntry> = listOf(
         LicenseEntry(
@@ -90,12 +88,6 @@ object Licenses {
             name = "Azaan of World Mosques (alqurantranslation.com)",
             license = "Public Domain Mark 1.0",
             url = ADHAN_WORLD_MOSQUES_URL,
-            noteRes = R.string.licenses_note_adhan_audio,
-        ),
-        LicenseEntry(
-            name = "Llamada a oracion Mezquita Hassan II",
-            license = "CC BY-SA 4.0",
-            url = ADHAN_CASABLANCA_URL,
             noteRes = R.string.licenses_note_adhan_audio,
         ),
     )

@@ -1,4 +1,4 @@
-package com.farukzahra.muslimplus
+﻿package com.farukzahra.muslimplus
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -13,11 +13,12 @@ class AdhanSoundTest {
     @Test
     fun hasTenVoicesWithUniqueIdsAndPlayableResources() {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
-        assertEquals(10, AdhanSound.entries.size)
-        assertEquals(10, AdhanSound.entries.map { it.id }.toSet().size)
+        assertEquals(9, AdhanSound.entries.size)
+        assertEquals(9, AdhanSound.entries.map { it.id }.toSet().size)
         AdhanSound.entries.forEach { sound ->
             val bytes = context.resources.openRawResource(sound.resId).use { it.readBytes() }
             assertTrue("audio vazio: ${sound.id}", bytes.isNotEmpty())
         }
     }
 }
+

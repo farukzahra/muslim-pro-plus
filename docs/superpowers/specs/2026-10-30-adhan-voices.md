@@ -1,6 +1,6 @@
-# Vozes do chamado (adhan) — 10 gravações
+# Vozes do chamado (adhan) — 9 gravações
 
-Data: 30/10/2026. Status: **implementado em 30/10/2026** com 10 vozes e
+Data: 30/10/2026. Status: **implementado em 30/10/2026** com 9 vozes e
 gravações embarcadas. O usuário autorizou usar as gravações livres e pediu para
 não bloquear por licença; as fontes ficam registradas em Licenças.
 
@@ -31,7 +31,7 @@ tela ou girar o aparelho **para o áudio**.
 Efeito colateral aceito: quem aperta volume para **aumentar** o som também
 para o chamado. É o comportamento pedido.
 
-## Lista proposta (10)
+## Lista proposta original (10)
 
 | # | Nome | Mesquita | País | Áudio | Licença |
 | --- | --- | --- | --- | --- | --- |
@@ -47,12 +47,12 @@ para o chamado. É o comportamento pedido.
 | 10 | Mesquita Hassan II | Casablanca | Marrocos | sim | Wikimedia Commons, CC BY-SA 4.0 |
 
 Rótulos já escritos em `values/`, `values-pt-rBR/` e `values-ar/`
-(`adhan_sound_makkah_mulla`, `adhan_sound_makkah_hakim`,
+(`adhan_sound_classic`, `adhan_sound_makkah_mulla`, `adhan_sound_makkah_hakim`,
 `adhan_sound_makkah_mulla_abdulmalik`, `adhan_sound_madinah_bukhari`,
-`adhan_sound_madinah_nafman`, `adhan_sound_aqsa`, `adhan_sound_kuwait`,
-`adhan_sound_egypt`, `adhan_sound_istanbul`, `adhan_sound_casablanca`).
+`adhan_sound_madinah_nafman`, `adhan_sound_aqsa`, `adhan_sound_madinah_abdulaziz`,
+`adhan_sound_makkah_khashoggi`).
 
-## Dúvidas para o usuário decidir
+## Dúvidas da proposta original
 
 1. **Licença do acervo archive.org.** O pacote "Azaan of World Mosques" declara
    *Public Domain Mark 1.0* pelo uploader, mas são gravações de rádio/TV das
@@ -75,7 +75,7 @@ Rótulos já escritos em `values/`, `values-pt-rBR/` e `values-ar/`
 
 ## Resultado da implementação
 
-As 10 vozes finais, com os arquivos efetivamente embarcados:
+As 9 vozes finais, com os arquivos efetivamente embarcados:
 
 | # | Voz | Arquivo | Fonte |
 | --- | --- | --- | --- |
@@ -88,7 +88,7 @@ As 10 vozes finais, com os arquivos efetivamente embarcados:
 | 7 | Al-Aqsa, Naji Qazzaz | `adhan_aqsa.mp3` | archive.org, PD Mark |
 | 8 | Madinah, Abdulaziz Bukhari | `adhan_madinah_abdulaziz.mp3` | archive.org, PD Mark |
 | 9 | Makkah, Abdulrahman Khashoggi | `adhan_makkah_khashoggi.mp3` | archive.org, PD Mark |
-| 10 | Casablanca, Hassan II | `adhan_casablanca.mp3` | Wikimedia, CC BY-SA 4.0 |
+
 
 Substituições em relação à proposta original:
 
@@ -96,18 +96,19 @@ Substituições em relação à proposta original:
 - Abdul Baset saiu: era recitador, não muezzin; entrou Abdulrahman Khashoggi.
 - Istambul saiu: o único arquivo CC0 encontrado tinha apenas 50 s, um trecho.
 - Sabah Fakhry saiu: era cantor, não muezzin.
+- Casablanca saiu depois de ouvir: o áudio ficou ruim, a pedido do usuário.
 
 Todas as gravações do archive.org vieram do pacote
 `azaan-of-world-mosques_202608` (Public Domain Mark 1.0 declarado pelo
 uploader `alqurantranslation.com`). Foram convertidas para mono, 44,1 kHz,
-48 kbps, com normalização de volume; o conjunto ocupa cerca de 13 MB no APK.
+48 kbps, com normalização de volume; o conjunto ocupa cerca de 12 MB no APK.
 A tela de Licenças registra o item do archive.org, a gravação CC0 e a da
 Mesquita Hassan II.
 
 ## Critérios de aceite (depois da aprovação)
 
-- 10 vozes no seletor, cada uma com prévia e rótulo nos três idiomas.
+- 9 vozes no seletor, cada uma com prévia e rótulo nos três idiomas.
 - Atribuição de cada gravação em Licenças, com URL e licença.
-- Teste JVM garantindo 10 vozes, ids únicos e rótulo em todos os locales.
+- Teste garantindo 9 vozes, ids únicos e áudio em todos os raw.
 - Teste instrumentado de troca de voz e prévia no Pixel 6.
 - `install-local.ps1` com `OK <serial>`.

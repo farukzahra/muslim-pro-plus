@@ -65,7 +65,6 @@
     <string name="adhan_sound_aqsa">Al-Aqsa — Naji Qazzaz</string>
     <string name="adhan_sound_madinah_abdulaziz">Madinah — Abdulaziz Bukhari</string>
     <string name="adhan_sound_makkah_khashoggi">Makkah — Abdulrahman Khashoggi</string>
-    <string name="adhan_sound_casablanca">Casablanca — Hassan II Mosque</string>
     <string name="adhan_preview">Listen</string>
     <string name="adhan_stop">Stop</string>
     <string name="adhan_volume_hint">Audio uses the device alarm volume.</string>
