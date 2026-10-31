@@ -127,14 +127,6 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
         if (!state.exactAlarmsAvailable) {
             ExactAlarmBanner()
         }
-        PrayerTracker(
-            date = state.date,
-            done = state.done,
-            week = state.week,
-            streak = state.streak,
-            locale = locale,
-            onMarkAll = viewModel::markAllPrayers,
-        )
         if (showDailyVerse) {
             DailyVerseCard(
                 date = state.date,
@@ -154,6 +146,14 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
                 Text(stringResource(R.string.daily_verse_show))
             }
         }
+        PrayerTracker(
+            date = state.date,
+            done = state.done,
+            week = state.week,
+            streak = state.streak,
+            locale = locale,
+            onMarkAll = viewModel::markAllPrayers,
+        )
         PrayerList(
             schedule = state.schedule,
             next = state.next,
