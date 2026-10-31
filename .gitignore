@@ -34,6 +34,8 @@ __pycache__/
 !docs/store/**/*.png
 # Camadas PNG do icone adaptativo (geradas por tools/generate_icon.py)
 !app/src/main/res/drawable-xxxhdpi/*.png
+# Prints próprios usados nos recaps de sessão
+!docs/session-recaps/**/*.png
 
 # Sistema
 Thumbs.db
