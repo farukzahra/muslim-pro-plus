@@ -126,6 +126,21 @@ padrão e ligável em Configurações → Chamado (adhan); reprodução por serv
 primeiro plano com Media3, notificação com "Parar". Spec em
 `specs/2026-10-25-adhan-design.md` e plano em `plans/2026-10-25-adhan.md`.
 
+## Adhan de Fajr e mais vozes — aguardando decisão (01/11/2026)
+
+Pedido do pai do usuário: um ou dois adhan de Fajr com “as-salatu khayrun min
+an-nawm”, mais tipos de adhan e uma configuração clara para trocar o som do
+Fajr. Pesquisa em
+[`docs/research/2026-11-01-adhan-fajr-concorrentes.md`](../research/2026-11-01-adhan-fajr-concorrentes.md);
+página de audição em [`docs/adhan-preview/index.html`](../adhan-preview/index.html).
+
+Achado: `adhan_madinah_nafman.mp3` e `adhan_madinah_bukhari.mp3` já são
+gravações de Fajr (têm o tathwib) e hoje podem ser escolhidas para qualquer
+oração. Nenhum código do app foi alterado.
+
+**Pergunta em aberto:** modelo “padrão + Fajr” (recomendado) ou cinco
+seletores por oração? Aguardando resposta antes de abrir spec/plano.
+
 ## 10 vozes de muezzins — aguardando conferência dos nomes
 
 Pedido de 30/10/2026: o usuário apontou que Sabah Fakhry era cantor, não
