@@ -1,0 +1,23 @@
+﻿const { chromium } = require('playwright');
+const fs = require('fs');
+(async () => {
+  const acc = JSON.parse(fs.readFileSync('C:/repo/muslim-pro-plus/build/instagram/new-account.json', 'utf8'));
+  const browser = await chromium.connectOverCDP('http://127.0.0.1:9227');
+  const ctx = await browser.newContext({ locale: 'pt-BR' });
+  const page = await ctx.newPage();
+  await page.goto('https://www.instagram.com/accounts/login/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.waitForTimeout(4000);
+  const inputs = await page.locator('input').evaluateAll(els => els.map((e,i) => ({i, type:e.type, name:e.name, aria:e.getAttribute('aria-label')})));
+  console.log('INPUTS', JSON.stringify(inputs));
+  const user = page.locator('input[name="username"], input[name="email"]').first();
+  const pass = page.locator('input[name="password"], input[name="pass"]').first();
+  await user.fill(acc.username);
+  await pass.fill(acc.password);
+  await pass.press('Enter');
+  await page.waitForTimeout(10000);
+  console.log('URL', page.url());
+  const body = (await page.locator('body').innerText().catch(()=>'')).slice(0, 400);
+  console.log('BODY', JSON.stringify(body));
+  await page.screenshot({ path: 'C:/repo/muslim-pro-plus/build/instagram/login-test.png' });
+  await browser.close();
+})().catch(e => { console.error('ERRO', e.message); process.exit(1); });

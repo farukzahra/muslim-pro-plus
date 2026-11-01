@@ -1,0 +1,20 @@
+﻿const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.connectOverCDP('http://127.0.0.1:9222');
+  const ctx = browser.contexts()[0];
+  const page = await ctx.newPage();
+  await page.goto('https://accountscenter.instagram.com/profiles/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.waitForTimeout(6000);
+  const body = await page.locator('body').innerText();
+  console.log('HAS_MUSLIMPLUS', body.includes('muslimplus.br'));
+  const idx = body.indexOf('Perfis');
+  console.log(JSON.stringify(body.slice(idx, idx + 500)));
+  await page.goto('https://www.instagram.com/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.waitForTimeout(4000);
+  await page.getByText(/^(Mudar|Switch)$/).first().click().catch(()=>{});
+  await page.waitForTimeout(2500);
+  const sheet = (await page.locator('body').innerText().catch(()=>'')).slice(-350);
+  console.log('SWITCHER', JSON.stringify(sheet));
+  await page.close();
+  await browser.close();
+})().catch(e => { console.error(e.message); process.exit(1); });
