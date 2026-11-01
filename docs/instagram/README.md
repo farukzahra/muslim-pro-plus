@@ -1,27 +1,33 @@
-# Instagram @muslimplus.br
+# Instagram do Muslim Plus
 
-Perfil criado em 31/10/2026 para divulgar o Muslim Plus.
+## Estado em 01/11/2026
 
-- Nome: **Muslim Plus**
-- Bio: orações/Qibla/Alcorão offline, sem conta e sem anúncios, em pt/en/ar
-- Foto: `docs/store/icon-512.png`
-- Post atual: <https://www.instagram.com/muslimplus.br/p/DfMybhUhMPX/>
-- Arte do post: `post-2.jpg` (1080×1080 quadrado), gerada por
-  `tools/instagram/compose-post-square.py`
+A conta **@muslimplus.br** foi eliminada (agendada) porque nasceu num Accounts
+Center separado e o Meta não permite mover perfil entre centros. O perfil sai do
+ar na hora; a exclusão definitiva ocorre em 30 dias.
+
+Arte e textos continuam prontos para a conta nova:
+
+- Avatar: `avatar.png` (fundo preto, crescente verde, estrela dourada)
+- Post: `post-2.jpg` (1080×1080)
 - Legenda: `caption-1.txt`
-- Print-fonte: `source-today.png`
+- Geradores: `tools/instagram/compose-post-square.py` e `compose-avatar.py`
 
-Credenciais no cofre: `C:\repo\secrets\instagram\muslimplus-login.env`.
+## Conta nova (criar dentro do farukz@gmail.com)
 
-O primeiro post era 1080×1350 e o Instagram cortava para quadrado no feed,
-cortando a manchete e o celular. Ele foi apagado e substituído pelo quadrado.
+O Instagram só oferece "criar conta" no app, com a conta principal já logada:
 
-## Pendências (só no app do celular)
+1. Instagram > perfil > menu > Definições e atividade > **Adicionar conta**.
+2. **Criar nova conta**.
+3. Usuário sugerido: `muslimplus.oficial` (alternativas: `muslimplusapp`,
+   `muslim.plus.app`).
+4. Senha: `MuslimPlus2026!` (guardar no cofre depois).
 
-- **Adicionar a conta ao Accounts Center do farukz@gmail.com**: Instagram >
-  perfil > menu > Definições > Adicionar conta > entrar com **usuário**
-  `muslimplus.br` (não o e-mail) e a senha do cofre. O site recusou a fusão e
-  pede reCAPTCHA; o app conclui.
-- **Link na bio**: o campo "Site" só abre no app. Colar
-  `https://play.google.com/store/apps/details?id=com.farukzahra.muslimplus`.
-- Opcional: mudar para conta profissional para ver insights.
+Depois de criada, aplicar `avatar.png`, a bio e publicar `post-2.jpg` com
+`caption-1.txt`.
+
+## Histórico
+
+- 31/10: @muslimplus.br criado pela web, com 1 post 1080×1350 (cortado pelo feed).
+- 01/11: post refeito em 1080×1080; avatar trocado para o miolo preto; conta
+  eliminada por estar num centro separado.
