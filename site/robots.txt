@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://muslimplus.com.br/sitemap.xml
