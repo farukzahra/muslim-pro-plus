@@ -1,33 +1,36 @@
 # Instagram do Muslim Plus
 
-## Estado em 01/11/2026
+## Conta atual
 
-A conta **@muslimplus.br** foi eliminada (agendada) porque nasceu num Accounts
-Center separado e o Meta não permite mover perfil entre centros. O perfil sai do
-ar na hora; a exclusão definitiva ocorre em 30 dias.
+**@muslimplus.app.br**, criada em 01/11/2026 dentro do Accounts Center do
+farukz@gmail.com. Por isso não tem senha separada: usa o login principal.
 
-Arte e textos continuam prontos para a conta nova:
-
+- Post: <https://www.instagram.com/muslimplus.app.br/p/DfNHx0zGgyB/>
 - Avatar: `avatar.png` (fundo preto, crescente verde, estrela dourada)
-- Post: `post-2.jpg` (1080×1080)
+- Bio:
+  ```
+  Orações, Qibla e Alcorão offline 🕌
+  Sem conta, sem anúncios.
+  Android: play.google.com/store/apps/details?id=com.farukzahra.muslimplus
+  iPhone em breve
+  ```
+- Arte do post: `post-2.jpg` (1080×1080)
 - Legenda: `caption-1.txt`
 - Geradores: `tools/instagram/compose-post-square.py` e `compose-avatar.py`
 
-## Conta nova (criar dentro do farukz@gmail.com)
+## Pendências (só no app)
 
-O Instagram só oferece "criar conta" no app, com a conta principal já logada:
-
-1. Instagram > perfil > menu > Definições e atividade > **Adicionar conta**.
-2. **Criar nova conta**.
-3. Usuário sugerido: `muslimplus.oficial` (alternativas: `muslimplusapp`,
-   `muslim.plus.app`).
-4. Senha: `MuslimPlus2026!` (guardar no cofre depois).
-
-Depois de criada, aplicar `avatar.png`, a bio e publicar `post-2.jpg` com
-`caption-1.txt`.
+- **Site clicável**: o campo "Site" do Instagram só abre no app. Colar
+  `https://play.google.com/store/apps/details?id=com.farukzahra.muslimplus`.
+  Hoje o link está na bio como texto, sem clique.
+- **Nome de exibição**: o site não mostra o campo "Nome"; no app, colocar
+  "Muslim Plus".
+- Opcional: conta profissional para insights.
 
 ## Histórico
 
-- 31/10: @muslimplus.br criado pela web, com 1 post 1080×1350 (cortado pelo feed).
-- 01/11: post refeito em 1080×1080; avatar trocado para o miolo preto; conta
-  eliminada por estar num centro separado.
+- 31/10: @muslimplus.br criado pela web, num centro separado; 1 post 4:5.
+- 01/11: post refeito em 1080×1080, avatar preto, conta eliminada por não poder
+  ser movida de centro.
+- 01/11: @muslimplus.app.br criada pelo app dentro do farukz, com avatar, bio e
+  primeiro post.
