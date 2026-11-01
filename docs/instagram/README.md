@@ -37,10 +37,11 @@ As legendas não falam mais de iPhone.
 
 ## Pendência
 
-- **Apagar o @muslimplus.app.br**: a migração dos 5 posts foi feita, mas a
-  exclusão no site pede a senha atual do centro e as senhas do cofre foram
-  recusadas. Apagar pelo app (trocar para o .app → Configurações → Conta →
-  Excluir conta) ou informar a senha atual do centro.
+- **Excluir a conta @muslimplus.app.br**: os 5 posts já foram apagados e a bio
+  aponta para o .com.br. Falta excluir a conta em si; o site pede a senha atual
+  do centro e as senhas do cofre foram recusadas. Excluir pelo app (trocar para
+  o .app → Configurações → Conta → Excluir conta) ou informar a senha atual do
+  centro.
 
 ## Histórico
 

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Recap — Muslim Plus — 31/10 a 01/11/2026</title>
+<style>
+  :root {
+    --bg-page: #08131c;
+    --bg-card: #0e1b26;
+    --bg-soft: #13232f;
+    --primary: #2fb98a;
+    --secondary: #d9b25f;
+    --ink: #e9eef4;
+    --muted: #9fb0c2;
+    --border: #223444;
+    --border-strong: #35516a;
+    --radius: 20px;
+    --radius-sm: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 480px at 10% -10%, rgba(47,185,138,.16), transparent 70%),
+      radial-gradient(700px 420px at 105% 8%, rgba(217,178,95,.09), transparent 70%),
+      var(--bg-page);
+    color: var(--ink);
+    font: 16px/1.65 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: min(1080px, calc(100% - 2.5rem)); margin: 0 auto; padding: 3rem 0 4rem; }
+  .eyebrow {
+    margin: 0 0 .6rem;
+    color: var(--primary);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 0;
+    font: 600 clamp(2rem, 4.4vw, 3.2rem)/1.06 "Literata", "Iowan Old Style", Georgia, serif;
+    letter-spacing: -.02em;
+  }
+  h1 span { color: var(--secondary); }
+  .lede { max-width: 72ch; margin: .9rem 0 0; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+  .chip {
+    padding: .32rem .68rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(14, 27, 38, .8);
+    color: var(--muted);
+    font-size: .74rem;
+  }
+  .chip b { color: var(--ink); font-weight: 600; }
+  .chip--progress { border-color: var(--border-strong); color: var(--ink); }
+  .env {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: .8rem;
+    margin: 1.6rem 0 2.2rem;
+  }
+  .env-card {
+    padding: .9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: linear-gradient(160deg, rgba(19, 35, 47, .9), rgba(14, 27, 38, .9));
+    font-size: .84rem;
+    color: var(--muted);
+  }
+  .env-card b { display: block; color: var(--ink); font-weight: 600; margin-bottom: .15rem; }
+  .env-card code { color: var(--secondary); font-size: .78rem; }
+  .topics { display: grid; gap: 1rem; }
+  .topics-hint { margin: 0 0 .25rem; font-size: .8125rem; color: var(--muted); }
+  .topic {
+    position: relative;
+    cursor: pointer;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.15rem 1.25rem 1.15rem 1.35rem;
+    border-left: 3px solid var(--primary);
+    transition: opacity .2s ease, filter .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .topic:hover:not(.topic--seen) { border-color: var(--border-strong); transform: translateY(-1px); }
+  .topic:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+  .topic--seen { opacity: .52; filter: saturate(.65); border-left-color: var(--muted); }
+  .topic--seen::after {
+    content: "Visto";
+    position: absolute;
+    top: .85rem;
+    right: 1rem;
+    font-size: .625rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .2rem .5rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, .15);
+    pointer-events: none;
+  }
+  .topic h2 {
+    margin: 0 0 .45rem;
+    padding-right: 4.5rem;
+    font: 600 1.3rem/1.25 "Literata", Georgia, serif;
+  }
+  .status {
+    display: inline-block;
+    margin-bottom: .55rem;
+    padding: .1rem .5rem;
+    border-radius: 999px;
+    background: rgba(47,185,138,.14);
+    color: var(--primary);
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .status.warn { background: rgba(217,178,95,.14); color: var(--secondary); }
+  .blocks { display: grid; gap: .55rem; }
+  .block { font-size: .9rem; }
+  .block b {
+    display: block;
+    color: var(--secondary);
+    font-size: .66rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: .1rem;
+  }
+  .block p { margin: 0; color: #d5e2e8; }
+  ul.clean { margin: 0; padding-left: 1.1rem; color: #d5e2e8; }
+  ul.clean li + li { margin-top: .2rem; }
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: .7rem;
+    margin-top: .9rem;
+  }
+  .shot {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { padding: .45rem .55rem .5rem; font-size: .7rem; color: var(--muted); background: var(--bg-soft); }
+  .pending {
+    margin-top: 2.4rem;
+    padding: 1.2rem 1.3rem;
+    border: 1px solid rgba(217,178,95,.35);
+    border-radius: var(--radius);
+    background: rgba(217,178,95,.07);
+  }
+  .pending h2 { margin: 0 0 .5rem; font: 600 1.3rem/1.2 "Literata", Georgia, serif; color: var(--secondary); }
+  .pending ul { margin: 0; padding-left: 1.15rem; color: #e8e2d2; font-size: .9rem; }
+  .pending li + li { margin-top: .3rem; }
+  footer {
+    margin-top: 2.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .74rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .topic { transition: none; }
+    .topic:hover:not(.topic--seen) { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Muslim Plus · sessão de 31/10 a 01/11/2026</p>
+  <header>
+    <h1>Do P0 ao site,<br /><span>passando pelo Instagram</span></h1>
+    <p class="lede">Você pediu para implementar todas as sugestões P0, rodar os E2E, publicar a 1.2.0, criar o Instagram do app, migrar para o .com.br, produzir anúncios e colocar um site na VPS. Este recap mostra o que foi entregue, com prints, e o que ainda depende de você.</p>
+    <div class="chips">
+      <span class="chip"><b>1.2.0</b> no Play</span>
+      <span class="chip"><b>181</b> testes JVM</span>
+      <span class="chip"><b>30</b> E2E</span>
+      <span class="chip"><b>5</b> posts no Instagram</span>
+      <span class="chip">site <b>200</b> no subdomínio</span>
+      <span class="chip chip--progress" data-recap-progress hidden>0/0 vistos</span>
+    </div>
+  </header>
+
+  <section class="env">
+    <div class="env-card"><b>Site</b><code>muslimplus.faruk.dev.br</code> no ar · <code>muslimplus.com.br</code> em transição de DNS</div>
+    <div class="env-card"><b>Instagram</b><code>@muslimplus.com.br</code> · 5 posts · link no perfil</div>
+    <div class="env-card"><b>App</b>1.2.0 · interno e produção no Google Play</div>
+  </section>
+
+  <div class="topics">
+    <p class="topics-hint">Clique em um card para marcar como visto.</p>
+
+    <article class="topic" data-topic-id="pesquisa-p0">
+      <span class="status">Feito</span>
+      <h2>Pesquisa do Muslim Pro e plano P0</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Comparar o Muslim Pro com o Plus e transformar cada sugestão em uma task.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Muslim Pro 17.10.1 instalado pela Play Store e usado como visitante.</li>
+            <li>Relatório em <code>docs/research/2026-10-31-muslim-pro-17.10.1.md</code>.</li>
+            <li>Spec e plano em <code>docs/superpowers/{specs,plans}/2026-10-31-p0-experience-parity.md</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="hoje">
+      <span class="status">Feito + ajuste seu</span>
+      <h2>Hoje acionável</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Checklist das cinco orações. Depois você pediu para a linha inteira marcar e o verso do dia subir.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Anel 5/5, semana, sequência, marcar todas e check por oração.</li>
+            <li>Linha inteira marca; o sino só liga/desliga o adhan.</li>
+            <li>Verso do dia acima do rastreador.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-11-01/app-today.png" alt="Tela Hoje com o rastreador" loading="lazy" /><figcaption>Hoje com rastreador e lista</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="adhan">
+      <span class="status">Feito</span>
+      <h2>Adhan por oração e lembrete</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Silencioso por oração e aviso antes do chamado.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Lembrete de 5, 10, 15 ou 30 minutos, silencioso e separado do adhan.</li>
+            <li>Nove vozes mantidas; o sino do Hoje usa a mesma preferência.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="alcorao">
+      <span class="status">Feito</span>
+      <h2>Alcorão: setup, progresso e leitor</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Setup de tradução/meta, abas, temas, modo Página e mini-player.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Wizard de três passos, abas Leitura e Progresso.</li>
+            <li>Temas Moderno/Papel/Escuro, quatro fontes, tela ligada.</li>
+            <li>Mini-player com anterior/próximo e velocidade.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-11-01/app-reader.png" alt="Leitor no tema Papel" loading="lazy" /><figcaption>Leitor Papel, modo Página</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="qibla-onboarding">
+      <span class="status">Feito</span>
+      <h2>Qibla e onboarding</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Confiança na bússola e um onboarding mais claro.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Precisão do sensor, aviso de interferência e ajuda de calibração.</li>
+            <li>“De frente para Makkah” com tolerância de 5°.</li>
+            <li>Cartões de permissão e privacidade no onboarding.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-11-01/app-qibla.png" alt="Tela da Qibla em português" loading="lazy" /><figcaption>Qibla em português</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="release">
+      <span class="status">Feito</span>
+      <h2>Versão 1.2.0 publicada</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Rodar tudo, publicar e avisar os beta testers.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>181 testes JVM, 30 instrumentados, lint e build verdes.</li>
+            <li>AAB versionCode 7 assinado e enviado aos tracks interno e produção.</li>
+            <li>Notas em en-US e pt-BR; mensagem de WhatsApp em <code>docs/releases/1.2.0.md</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="instagram-migracao">
+      <span class="status">Feito · conta antiga pendente</span>
+      <h2>Instagram do app, agora no .com.br</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Criar o perfil, deixar tudo preenchido, publicar e migrar para o domínio .com.br.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>@muslimplus.com.br com avatar preto, bio “Baixe aqui 👇” e link do Google Play no campo Site.</li>
+            <li>5 posts com arte 1080×1080 e legendas sem iPhone.</li>
+            <li>@muslimplus.app.br aposentado: 0 posts e bio apontando para o .com.br.</li>
+            <li>A conta .app ainda não foi excluída: o site pede a senha atual do centro e as do cofre foram recusadas.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-11-01/instagram-profile.png" alt="Perfil do Instagram com cinco posts" loading="lazy" /><figcaption>5 posts no .com.br</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-11-01/instagram-bio.png" alt="Bio e link do Google Play no perfil" loading="lazy" /><figcaption>Bio e link clicável</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-11-01/app-retired.png" alt="Perfil .app com zero posts e bio de migração" loading="lazy" /><figcaption>.app aposentado</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="anuncios-cta">
+      <span class="status">Feito</span>
+      <h2>Quatro anúncios e o CTA “Baixe aqui”</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Mais quatro anúncios diferentes e um ícone “Baixe aqui” com seta para baixo, sem iPhone.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Posts de Qibla, adhan, Alcorão e privacidade, todos quadrados.</li>
+            <li>CTA em três formatos: quadrado, story e ícone 512.</li>
+            <li>Textos e geradores em <code>docs/instagram/</code> e <code>tools/instagram/</code>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-11-01/ads-sheet.jpg" alt="Quatro anúncios do Muslim Plus" loading="lazy" /><figcaption>4 anúncios</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-11-01/cta-square.png" alt="CTA Baixe aqui com seta para baixo" loading="lazy" /><figcaption>CTA quadrado</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-11-01/cta-story.png" alt="CTA Baixe aqui em formato story" loading="lazy" /><figcaption>Story com espaço para o link</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="site-vps">
+      <span class="status">No ar no subdomínio</span>
+      <h2>Site novo na VPS</h2>
+      <div class="blocks">
+        <div class="block"><b>Pedido</b><p>Fazer um site e publicar na sua VPS, no domínio muslimplus.com.br.</p></div>
+        <div class="block"><b>Entregue</b>
+          <ul class="clean">
+            <li>Landing com hero, seis recursos, prints reais, privacidade, FAQ e CTA.</li>
+            <li>Publicado em <code>/opt/muslimplus</code> na VPS; Caddy com bloco para o .com.br.</li>
+            <li><code>https://muslimplus.faruk.dev.br/</code> responde 200, com imagens e privacidade.</li>
+            <li>A zona DNS do .com.br foi salva (A apex e www → 92.112.177.249), mas o Registro.br está em transição de nameservers.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="shots">
+        <figure class="shot"><img src="assets/2026-11-01/site-desktop.png" alt="Página inicial do site no desktop" loading="lazy" /><figcaption>Site no desktop</figcaption></figure>
+        <figure class="shot"><img src="assets/2026-11-01/site-mobile.png" alt="Site no celular" loading="lazy" /><figcaption>Site no celular</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="topic" data-topic-id="verificacao">
+      <span class="status warn">Pendências</span>
+      <h2>Verificação e o que falta</h2>
+      <div class="blocks">
+        <div class="block"><b>Verificado</b>
+          <ul class="clean">
+            <li>181 testes JVM, 30 E2E, lint e build verdes; AAB assinado.</li>
+            <li>Play 1.2.0 em interno e produção.</li>
+            <li>Site 200 no subdomínio; Instagram com 5 posts e link no perfil.</li>
+          </ul>
+        </div>
+        <div class="block"><b>Pendente</b>
+          <ul class="clean">
+            <li>Excluir a conta @muslimplus.app.br: os posts já saíram e a bio aponta para o .com.br, mas a exclusão pede a senha do centro.</li>
+            <li>Aguardar a transição de DNS do muslimplus.com.br (~1h48). O Caddy emite o certificado sozinho.</li>
+            <li>Trocar a URL de privacidade do app para o .com.br na próxima versão (hoje aponta para o subdomínio).</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <section class="pending">
+    <h2>Ações suas</h2>
+    <ul>
+      <li><b>Apagar o .app:</b> troque para @muslimplus.app.br no app → Configurações → Conta → Excluir conta. Ou me passe a senha atual do centro que eu concluo.</li>
+      <li><b>Conferir o domínio:</b> quando o Registro.br terminar a transição, abra <code>https://muslimplus.com.br</code>. O Caddy já está configurado.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Muslim Plus · recap de 01/11/2026 · 1.2.0</span>
+    <span>Prints do próprio app, do Instagram e do site</span>
+  </footer>
+</div>
+<script>
+(function initRecapTopicSeen() {
+  const storageKey = (id) => `recap-seen:${location.pathname}:${id}`
+  const cards = Array.from(document.querySelectorAll('.topic[data-topic-id]'))
+  const counter = document.querySelector('[data-recap-progress]')
+
+  function updateCounter() {
+    if (!counter) return
+    const seen = cards.filter((c) => c.classList.contains('topic--seen')).length
+    counter.textContent = `${seen}/${cards.length} vistos`
+    counter.hidden = cards.length === 0
+  }
+
+  function setSeen(card, seen) {
+    const id = card.dataset.topicId
+    if (!id) return
+    card.classList.toggle('topic--seen', seen)
+    card.setAttribute('aria-pressed', seen ? 'true' : 'false')
+    if (seen) localStorage.setItem(storageKey(id), '1')
+    else localStorage.removeItem(storageKey(id))
+    updateCounter()
+  }
+
+  cards.forEach((card) => {
+    const id = card.dataset.topicId
+    if (localStorage.getItem(storageKey(id)) === '1') card.classList.add('topic--seen')
+    card.setAttribute('role', 'button')
+    card.setAttribute('tabindex', '0')
+    card.setAttribute('aria-pressed', card.classList.contains('topic--seen') ? 'true' : 'false')
+    card.setAttribute('aria-label', `${card.querySelector('h2')?.textContent ?? 'Tópico'} · marcar como visto`)
+
+    function toggle() { setSeen(card, !card.classList.contains('topic--seen')) }
+    card.addEventListener('click', toggle)
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        toggle()
+      }
+    })
+  })
+
+  updateCounter()
+})()
+</script>
+</body>
+</html>
