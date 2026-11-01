@@ -155,9 +155,8 @@ Manter as nove atuais, reclassificar duas como Fajr e acrescentar seis:
 | Cairo — Mohammed Al-Banna | dia | 2:35 | Azaan of World Mosques | PD Mark |
 | Madinah — Majed Al-Hamathani | dia | 3:39 | Adhan Notifications | PD Mark |
 
-Total: 15 gravações (7 normais + 5 de Fajr + as duas de Fajr que já existem,
-contando as 9 atuais). O áudio sai de ~12 MB para ~18 MB, convertendo as novas
-para mono 48 kbps.
+Total: 15 gravações (10 para o dia + 5 de Fajr, contando as 9 atuais). O áudio
+sai de ~12 MB para ~18 MB, convertendo as novas para mono 48 kbps.
 
 Opções que ficam de fora por enquanto:
 
