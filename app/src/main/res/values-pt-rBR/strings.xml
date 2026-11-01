@@ -65,6 +65,46 @@
     <string name="adhan_sound_aqsa">Al-Aqsa — Naji Qazzaz</string>
     <string name="adhan_sound_madinah_abdulaziz">Medina — Abdulaziz Bukhari</string>
     <string name="adhan_sound_makkah_khashoggi">Meca — Abdulrahman Khashoggi</string>
+
+    <!-- Vozes novas de 01/11/2026 -->
+    <string name="adhan_sound_qatami">Nasser Al-Qatami</string>
+    <string name="adhan_sound_qatar_imadi">Ahmed Al-Imadi</string>
+    <string name="adhan_sound_cairo_banna">Cairo — Mohammed Al-Banna</string>
+    <string name="adhan_sound_madinah_hamathani">Medina — Majed Al-Hamathani</string>
+    <string name="adhan_sound_cairo_shuaisha">Cairo — Shuaisha</string>
+    <string name="adhan_sound_ajman">Ajman</string>
+    <string name="adhan_sound_tunisia">Tunísia</string>
+    <string name="adhan_sound_oman">Omã</string>
+    <string name="adhan_sound_maghreb_mokhtar">Magreb — Mokhtar Hadj Slimane</string>
+    <string name="adhan_sound_fajr_makkah">Meca — Haram (Fajr)</string>
+    <string name="adhan_sound_fajr_cairo">Cairo (Fajr)</string>
+    <string name="adhan_sound_fajr_malaysia">Malásia (Fajr)</string>
+    <string name="adhan_sound_fajr_umm_al_qaiwain">Umm al-Qaiwain (Fajr)</string>
+
+    <string name="country_saudi_arabia">Arábia Saudita</string>
+    <string name="country_palestine">Palestina</string>
+    <string name="country_egypt">Egito</string>
+    <string name="country_uae">Emirados Árabes Unidos</string>
+    <string name="country_tunisia">Tunísia</string>
+    <string name="country_oman">Omã</string>
+    <string name="country_malaysia">Malásia</string>
+    <string name="country_algeria">Argélia</string>
+    <string name="country_qatar">Catar</string>
+
+    <string name="adhan_sound_default_title">Gravação padrão</string>
+    <string name="adhan_sound_default_hint">Usada em Dhuhr, Asr, Maghrib e Isha.</string>
+    <string name="adhan_sound_fajr_title">Gravação do Fajr</string>
+    <string name="adhan_sound_fajr_hint">O chamado do Fajr inclui “a oração é melhor que o sono”.</string>
+    <string name="adhan_sound_fajr_same">O Fajr usa a gravação padrão.</string>
+    <string name="adhan_sound_override">Usar uma gravação diferente no Fajr</string>
+    <string name="adhan_sound_override_hint">O Fajr é o único chamado com o tathwib.</string>
+    <string name="adhan_sound_change">Trocar</string>
+    <string name="adhan_sound_choose">Escolher gravação</string>
+    <string name="adhan_sound_choose_fajr">Escolher gravação do Fajr</string>
+    <string name="adhan_sound_selected">Selecionada</string>
+    <string name="adhan_sound_tathwib">Inclui “a oração é melhor que o sono”</string>
+    <string name="adhan_fajr_note">Sua gravação de Madinah é de Fajr. Ela agora toca no Fajr. Para o dia, escolha outra gravação.</string>
+    <string name="adhan_fajr_note_action">Entendi</string>
     <string name="adhan_preview">Ouvir</string>
     <string name="adhan_stop">Parar</string>
     <string name="adhan_volume_hint">O áudio usa o volume de alarme do aparelho.</string>
@@ -75,6 +115,9 @@
     <string name="adhan_playing">Tocando o chamado</string>
     <string name="adhan_channel">Chamado (adhan)</string>
     <string name="licenses_note_adhan_audio">Gravação do chamado (adhan) reproduzida no horário da oração.</string>
+
+    <string name="licenses_note_adhan_notifications">Gravações de adhan da coleção Adhan Notifications.</string>
+    <string name="licenses_note_flags">Bandeiras dos países na lista de adhan.</string>
     <string name="language_title">Idioma do app</string>
     <string name="language_system">Padrão do sistema</string>
     <string name="language_english">English</string>

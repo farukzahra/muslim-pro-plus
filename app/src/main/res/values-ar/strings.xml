@@ -65,6 +65,46 @@
     <string name="adhan_sound_aqsa">الأقصى — ناجي قزاز</string>
     <string name="adhan_sound_madinah_abdulaziz">المدينة — عبدالعزيز بخاري</string>
     <string name="adhan_sound_makkah_khashoggi">مكة — عبدالرحمن خاشقجي</string>
+
+    <!-- أصوات جديدة في 01/11/2026 -->
+    <string name="adhan_sound_qatami">ناصر القطامي</string>
+    <string name="adhan_sound_qatar_imadi">أحمد العمادي</string>
+    <string name="adhan_sound_cairo_banna">القاهرة — محمد البنا</string>
+    <string name="adhan_sound_madinah_hamathani">المدينة — ماجد الحمذاني</string>
+    <string name="adhan_sound_cairo_shuaisha">القاهرة — شعيشع</string>
+    <string name="adhan_sound_ajman">عجمان</string>
+    <string name="adhan_sound_tunisia">تونس</string>
+    <string name="adhan_sound_oman">عُمان</string>
+    <string name="adhan_sound_maghreb_mokhtar">المغرب — مختار حاج سليمان</string>
+    <string name="adhan_sound_fajr_makkah">مكة — الحرم (الفجر)</string>
+    <string name="adhan_sound_fajr_cairo">القاهرة (الفجر)</string>
+    <string name="adhan_sound_fajr_malaysia">ماليزيا (الفجر)</string>
+    <string name="adhan_sound_fajr_umm_al_qaiwain">أم القيوين (الفجر)</string>
+
+    <string name="country_saudi_arabia">السعودية</string>
+    <string name="country_palestine">فلسطين</string>
+    <string name="country_egypt">مصر</string>
+    <string name="country_uae">الإمارات العربية المتحدة</string>
+    <string name="country_tunisia">تونس</string>
+    <string name="country_oman">عُمان</string>
+    <string name="country_malaysia">ماليزيا</string>
+    <string name="country_algeria">الجزائر</string>
+    <string name="country_qatar">قطر</string>
+
+    <string name="adhan_sound_default_title">التسجيل الافتراضي</string>
+    <string name="adhan_sound_default_hint">يُستخدم في الظهر والعصر والمغرب والعشاء.</string>
+    <string name="adhan_sound_fajr_title">تسجيل الفجر</string>
+    <string name="adhan_sound_fajr_hint">أذان الفجر يتضمن «الصلاة خير من النوم».</string>
+    <string name="adhan_sound_fajr_same">يستخدم الفجر التسجيل الافتراضي.</string>
+    <string name="adhan_sound_override">استخدام تسجيل مختلف للفجر</string>
+    <string name="adhan_sound_override_hint">الفجر هو الأذان الوحيد الذي يحتوي على التثويب.</string>
+    <string name="adhan_sound_change">تغيير</string>
+    <string name="adhan_sound_choose">اختر التسجيل</string>
+    <string name="adhan_sound_choose_fajr">اختر تسجيل الفجر</string>
+    <string name="adhan_sound_selected">محدد</string>
+    <string name="adhan_sound_tathwib">يتضمن «الصلاة خير من النوم»</string>
+    <string name="adhan_fajr_note">تسجيل المدينة الخاص بك هو أذان فجر. أصبح الآن يُشغَّل في الفجر. للنهار، اختر تسجيلاً آخر.</string>
+    <string name="adhan_fajr_note_action">فهمت</string>
     <string name="adhan_preview">استماع</string>
     <string name="adhan_stop">إيقاف</string>
     <string name="adhan_volume_hint">يستخدم الصوت مستوى صوت المنبّه في الجهاز.</string>
@@ -75,6 +115,9 @@
     <string name="adhan_playing">جارٍ تشغيل الأذان</string>
     <string name="adhan_channel">الأذان</string>
     <string name="licenses_note_adhan_audio">تسجيل الأذان الذي يُشغَّل في وقت الصلاة.</string>
+
+    <string name="licenses_note_adhan_notifications">تسجيلات الأذان من مجموعة Adhan Notifications.</string>
+    <string name="licenses_note_flags">أعلام الدول في قائمة الأذان.</string>
     <string name="language_title">لغة التطبيق</string>
     <string name="language_system">لغة النظام الافتراضية</string>
     <string name="language_english">الإنجليزية</string>

@@ -1,6 +1,5 @@
 package com.farukzahra.muslimplus
 
-import androidx.compose.ui.test.assertIsOff
 import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
@@ -23,16 +22,21 @@ class AdhanScreenTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
 
     @Test
-    fun defaultsPersistAndChoicesAreSaved() {
+    fun defaultsPersistAndBothSoundsAreChosenInTheSheet() {
         val settings = ServiceLocator.settings
         val originalPrayers = runBlocking { settings.adhanPrayers.first() }
         val originalSound = runBlocking { settings.adhanSoundId.first() }
+        val originalFajrSound = runBlocking { settings.adhanFajrSoundId.first() }
+        val originalOverride = runBlocking { settings.adhanFajrOverride.first() }
         val originalRespect = runBlocking { settings.adhanRespectSilent.first() }
         val originalReminder = runBlocking { settings.adhanReminderMinutes.first() }
         runBlocking {
             settings.setOnboardingDone()
             settings.setAdhanPrayers(AdhanPolicy.defaultEnabled)
             settings.setAdhanSound(AdhanSound.default.id)
+            settings.setAdhanFajrSound(AdhanSound.defaultFajr.id)
+            settings.setAdhanFajrOverride(true)
+            settings.dismissAdhanFajrNotice()
             settings.setAdhanRespectSilent(false)
         }
         compose.activityRule.scenario.recreate()
@@ -48,19 +52,42 @@ class AdhanScreenTest {
                 compose.onAllNodesWithTag("adhan_fajr").fetchSemanticsNodes().isNotEmpty()
             }
 
-            compose.onNodeWithTag("adhan_fajr").assertIsOff()
-            compose.onNodeWithTag("adhan_dhuhr").assertIsOn()
-
-            compose.onNodeWithTag("adhan_fajr").performClick()
-            compose.waitUntil(5_000) {
-                runBlocking { Prayer.FAJR in ServiceLocator.settings.adhanPrayers.first() }
-            }
             compose.onNodeWithTag("adhan_fajr").assertIsOn()
+            compose.onNodeWithTag("adhan_dhuhr").assertIsOn()
+            compose.onNodeWithTag("adhan_default_card").assertExists()
+            compose.onNodeWithTag("adhan_fajr_card").assertExists()
+            compose.onNodeWithTag("adhan_fajr_notice").assertDoesNotExist()
 
-            compose.onNodeWithTag("adhan_sound_madinah-bukhari").performClick()
-            compose.waitUntil(5_000) {
-                runBlocking { ServiceLocator.settings.adhanSoundId.first() == "madinah-bukhari" }
+            compose.onNodeWithTag("adhan_change_default").performScrollTo().performClick()
+            compose.waitUntil(10_000) {
+                compose.onAllNodesWithTag("adhan_sound_option_makkah-mulla")
+                    .fetchSemanticsNodes().isNotEmpty()
             }
+            compose.onNodeWithTag("adhan_sound_option_makkah-mulla").performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { ServiceLocator.settings.adhanSoundId.first() == "makkah-mulla" }
+            }
+
+            compose.onNodeWithTag("adhan_change_fajr").performScrollTo().performClick()
+            compose.waitUntil(10_000) {
+                compose.onAllNodesWithTag("adhan_sound_option_fajr-makkah")
+                    .fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithTag("adhan_sound_option_fajr-makkah").performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { ServiceLocator.settings.adhanFajrSoundId.first() == "fajr-makkah" }
+            }
+
+            compose.onNodeWithTag("adhan_fajr_override").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { !ServiceLocator.settings.adhanFajrOverride.first() }
+            }
+            compose.onNodeWithTag("adhan_fajr_card").assertDoesNotExist()
+            compose.onNodeWithTag("adhan_fajr_override").performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { ServiceLocator.settings.adhanFajrOverride.first() }
+            }
+            compose.onNodeWithTag("adhan_fajr_card").assertExists()
 
             compose.onNodeWithTag("adhan_respect_silent").performScrollTo().performClick()
             compose.waitUntil(5_000) {
@@ -79,6 +106,8 @@ class AdhanScreenTest {
             runBlocking {
                 settings.setAdhanPrayers(originalPrayers)
                 settings.setAdhanSound(originalSound)
+                settings.setAdhanFajrSound(originalFajrSound)
+                settings.setAdhanFajrOverride(originalOverride)
                 settings.setAdhanRespectSilent(originalRespect)
                 settings.setAdhanReminderMinutes(originalReminder)
             }

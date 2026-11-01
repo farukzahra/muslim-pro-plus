@@ -141,9 +141,12 @@ oração. Nenhum código do app foi alterado.
 Decisão de 01/11/2026: modelo **padrão + Fajr**; catálogo com 22 vozes
 (“quanto mais melhor”); Fajr ligado por padrão e já setado com Madinah,
 Faisal Al-Na’man; reclassificar as duas gravações de Fajr; bandeira do país em
-cada voz. Spec proposto em
-[`specs/2026-11-01-adhan-fajr-e-catalogo.md`](specs/2026-11-01-adhan-fajr-e-catalogo.md),
-aguardando aprovação para abrir o plano e implementar.
+cada voz. Spec em
+[`specs/2026-11-01-adhan-fajr-e-catalogo.md`](specs/2026-11-01-adhan-fajr-e-catalogo.md)
+e plano em
+[`plans/2026-11-01-adhan-fajr.md`](plans/2026-11-01-adhan-fajr.md).
+Implementado e testado em 01/11/2026; versão 1.3.0 (versionCode 8)
+publicada nas trilhas interna e produção, com notas em pt-BR, en e ar.
 
 ## 10 vozes de muezzins — aguardando conferência dos nomes
 

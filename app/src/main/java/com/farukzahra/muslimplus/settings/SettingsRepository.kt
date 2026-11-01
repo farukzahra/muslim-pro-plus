@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.farukzahra.muslimplus.adhan.AdhanMigrationPlan
 import com.farukzahra.muslimplus.adhan.AdhanPolicy
 import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.location.CityCatalog
@@ -36,6 +37,9 @@ class SettingsRepository(
     private val dailyVerseVisibleKey = booleanPreferencesKey("daily_verse_visible")
     private val adhanPrayersKey = stringSetPreferencesKey("adhan_prayers")
     private val adhanSoundKey = stringPreferencesKey("adhan_sound")
+    private val adhanFajrSoundKey = stringPreferencesKey("adhan_fajr_sound")
+    private val adhanFajrOverrideKey = booleanPreferencesKey("adhan_fajr_override")
+    private val adhanFajrNoticeKey = booleanPreferencesKey("adhan_fajr_migration_notice")
     private val adhanRespectSilentKey = booleanPreferencesKey("adhan_respect_silent")
     private val adhanReminderKey = intPreferencesKey("adhan_reminder_minutes")
     private val quranSetupDoneKey = booleanPreferencesKey("quran_setup_done")
@@ -62,6 +66,12 @@ class SettingsRepository(
         context.dataStore.data.map { AdhanPolicy.sanitize(it[adhanPrayersKey]) }
     val adhanSoundId: Flow<String> =
         context.dataStore.data.map { it[adhanSoundKey] ?: AdhanSound.default.id }
+    val adhanFajrSoundId: Flow<String> =
+        context.dataStore.data.map { it[adhanFajrSoundKey] ?: AdhanSound.defaultFajr.id }
+    val adhanFajrOverride: Flow<Boolean> =
+        context.dataStore.data.map { it[adhanFajrOverrideKey] ?: true }
+    val adhanFajrNotice: Flow<Boolean> =
+        context.dataStore.data.map { it[adhanFajrNoticeKey] ?: false }
     val adhanRespectSilent: Flow<Boolean> =
         context.dataStore.data.map { it[adhanRespectSilentKey] ?: false }
     val dailyVerseVisible: Flow<Boolean> =
@@ -141,7 +151,39 @@ class SettingsRepository(
     }
 
     suspend fun setAdhanSound(id: String) {
-        context.dataStore.edit { it[adhanSoundKey] = id }
+        context.dataStore.edit { it[adhanSoundKey] = AdhanSound.findNormal(id).id }
+    }
+
+    suspend fun setAdhanFajrSound(id: String) {
+        context.dataStore.edit { it[adhanFajrSoundKey] = AdhanSound.findFajr(id).id }
+    }
+
+    suspend fun setAdhanFajrOverride(value: Boolean) {
+        context.dataStore.edit { it[adhanFajrOverrideKey] = value }
+    }
+
+    suspend fun dismissAdhanFajrNotice() {
+        context.dataStore.edit { it[adhanFajrNoticeKey] = false }
+    }
+
+    /**
+     * Ate a 1.2.0 as duas gravacoes de Madinah com tathwib podiam ser
+     * escolhidas como voz global. Na primeira abertura depois da atualizacao,
+     * elas passam para o Fajr e o dia volta ao classico, com um aviso unico.
+     */
+    suspend fun migrateAdhan() {
+        context.dataStore.edit { preferences ->
+            val plan = AdhanMigrationPlan.plan(
+                globalId = preferences[adhanSoundKey],
+                fajrId = preferences[adhanFajrSoundKey],
+            )
+            plan.globalId?.let { preferences[adhanSoundKey] = it }
+            plan.fajrId?.let { preferences[adhanFajrSoundKey] = it }
+            plan.override?.let { preferences[adhanFajrOverrideKey] = it }
+            if (plan.showNotice) {
+                preferences[adhanFajrNoticeKey] = true
+            }
+        }
     }
 
     suspend fun setAdhanRespectSilent(value: Boolean) {

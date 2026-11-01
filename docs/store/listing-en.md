@@ -65,10 +65,12 @@ Internet is used only to stream the verse audio.
 
 ## O que há de novo (até 500)
 
-First release (1.0.0).
+What's new in 1.3.0
 
-- Prayer times calculated on the device, 12 methods and per-prayer adjustments.
-- Qibla with compass, magnetic declination and distance to the Kaaba.
-- Quran with Arabic, transliteration and Portuguese/English translations.
-- Search, bookmarks, last read and verse audio.
-- English, Portuguese and Arabic. No account, no ads, no tracking.
+• 22 adhan voices with country flags and preview
+• Fajr has its own recording with "prayer is better than sleep"
+• Fajr is on by default, set to Madinah
+• New picker for the default voice and the Fajr voice
+• Fix: Fajr recordings no longer play at other prayers
+
+Always offline, no account, no ads.

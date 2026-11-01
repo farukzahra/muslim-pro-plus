@@ -7,6 +7,10 @@ import com.farukzahra.muslimplus.prayer.PrayerLogRepository
 import com.farukzahra.muslimplus.quran.QuranRepository
 import com.farukzahra.muslimplus.quran.ReaderStateRepository
 import com.farukzahra.muslimplus.settings.SettingsRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 object ServiceLocator {
     lateinit var cities: CityCatalog
@@ -17,6 +21,8 @@ object ServiceLocator {
 }
 
 class MuslimPlusApp : Application() {
+    private val appScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     override fun onCreate() {
         super.onCreate()
         // Catalogo em memoria (~3000 linhas) e carregado uma vez; SettingsRepository
@@ -26,6 +32,7 @@ class MuslimPlusApp : Application() {
         ServiceLocator.quran = QuranRepository(this)
         ServiceLocator.readerState = ReaderStateRepository(this)
         ServiceLocator.prayerLog = PrayerLogRepository(this)
+        appScope.launch { ServiceLocator.settings.migrateAdhan() }
         Notifications.ensureChannel(this)
     }
 }

@@ -67,10 +67,12 @@ A internet é usada apenas para transmitir o áudio dos versículos.
 
 ## O que há de novo (até 500)
 
-Primeira versão (1.0.0).
+Novidades da 1.3.0
 
-- Horários de oração calculados no aparelho, 12 métodos e ajuste por oração.
-- Qibla com bússola, declinação magnética e distância até a Caaba.
-- Alcorão com árabe, transliteração e tradução em português e inglês.
-- Busca, marcadores, última leitura e áudio por versículo.
-- Português, inglês e árabe. Sem conta, sem anúncios, sem rastreamento.
+• 22 vozes de adhan, com bandeira do país e prévia
+• Fajr com gravação própria e "a oração é melhor que o sono"
+• Fajr ligado por padrão, já com Madinah
+• Nova tela para escolher a voz padrão e a voz do Fajr
+• Correção: gravações de Fajr não tocam mais nas outras orações
+
+Sempre offline, sem conta e sem anúncios.

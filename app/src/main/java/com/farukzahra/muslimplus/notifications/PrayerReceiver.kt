@@ -51,7 +51,10 @@ class PrayerReceiver : BroadcastReceiver() {
         val settings = ServiceLocator.settings
         val enabled = settings.adhanPrayers.first()
         val respectSilent = settings.adhanRespectSilent.first()
-        val sound = AdhanSound.find(settings.adhanSoundId.first())
+        val global = AdhanSound.findNormal(settings.adhanSoundId.first())
+        val fajr = AdhanSound.findFajr(settings.adhanFajrSoundId.first())
+        val override = settings.adhanFajrOverride.first()
+        val sound = AdhanPolicy.resolve(prayer, global, fajr, override)
         if (AdhanPolicy.shouldPlay(prayer, enabled, respectSilent, ringerState(context))) {
             AdhanService.start(context, prayer, sound)
         }

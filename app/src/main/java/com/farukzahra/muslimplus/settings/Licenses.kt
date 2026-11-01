@@ -34,6 +34,8 @@ object Licenses {
     const val QURAN_API_URL = "https://quran.com/"
     const val ADHAN_CLASSIC_URL = "https://commons.wikimedia.org/wiki/File:Beautiful_adhan.ogg"
     const val ADHAN_WORLD_MOSQUES_URL = "https://archive.org/details/azaan-of-world-mosques_202608"
+    const val ADHAN_NOTIFICATIONS_URL = "https://archive.org/details/adhan.notifications"
+    const val FLAGS_URL = "https://flagcdn.com/"
 
     val all: List<LicenseEntry> = listOf(
         LicenseEntry(
@@ -89,6 +91,18 @@ object Licenses {
             license = "Public Domain Mark 1.0",
             url = ADHAN_WORLD_MOSQUES_URL,
             noteRes = R.string.licenses_note_adhan_audio,
+        ),
+        LicenseEntry(
+            name = "Adhan Notifications (archive.org)",
+            license = "Public Domain Mark 1.0",
+            url = ADHAN_NOTIFICATIONS_URL,
+            noteRes = R.string.licenses_note_adhan_notifications,
+        ),
+        LicenseEntry(
+            name = "Country flags (flagcdn.com)",
+            license = "Public domain (Wikimedia Commons)",
+            url = FLAGS_URL,
+            noteRes = R.string.licenses_note_flags,
         ),
     )
 }

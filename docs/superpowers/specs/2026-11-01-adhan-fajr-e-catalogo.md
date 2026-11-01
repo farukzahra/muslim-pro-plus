@@ -1,6 +1,6 @@
 # Adhan de Fajr, bandeiras e catálogo de 22 vozes
 
-Data: 01/11/2026. Status: **proposto; aguardando aprovação do spec**.
+Data: 01/11/2026. Status: **aprovado e implementado em 01/11/2026**.
 Pesquisa: [`docs/research/2026-11-01-adhan-fajr-concorrentes.md`](../../research/2026-11-01-adhan-fajr-concorrentes.md).
 Página de audição: [`docs/adhan-preview/index.html`](../../adhan-preview/index.html).
 

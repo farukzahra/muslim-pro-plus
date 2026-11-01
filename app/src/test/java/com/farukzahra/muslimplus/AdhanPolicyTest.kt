@@ -1,6 +1,7 @@
 package com.farukzahra.muslimplus
 
 import com.farukzahra.muslimplus.adhan.AdhanPolicy
+import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.adhan.RingerState
 import com.farukzahra.muslimplus.prayer.Prayer
 import org.junit.Assert.assertEquals
@@ -10,12 +11,12 @@ import org.junit.Test
 
 class AdhanPolicyTest {
     @Test
-    fun defaultLeavesFajrOffAndNeverIncludesSunrise() {
+    fun defaultIncludesAllFivePrayersAndNeverIncludesSunrise() {
         assertEquals(
-            setOf(Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA),
+            setOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA),
             AdhanPolicy.defaultEnabled,
         )
-        assertFalse(Prayer.FAJR in AdhanPolicy.defaultEnabled)
+        assertTrue(Prayer.FAJR in AdhanPolicy.defaultEnabled)
         assertFalse(Prayer.SUNRISE in AdhanPolicy.eligible)
     }
 
@@ -58,11 +59,37 @@ class AdhanPolicyTest {
 
     @Test
     fun disabledPrayerAndSunriseNeverPlay() {
-        val enabled = AdhanPolicy.defaultEnabled
+        val enabled = AdhanPolicy.eligible.toSet() - Prayer.FAJR
         assertFalse(AdhanPolicy.shouldPlay(Prayer.FAJR, enabled, false, RingerState.Normal))
         assertFalse(AdhanPolicy.shouldPlay(Prayer.SUNRISE, enabled, false, RingerState.Normal))
         assertFalse(
             AdhanPolicy.shouldPlay(Prayer.DHUHR, emptySet(), false, RingerState.Normal),
+        )
+    }
+
+    @Test
+    fun fajrUsesItsOwnSoundOnlyWhenOverrideIsOn() {
+        val global = AdhanSound.CLASSIC
+        val fajr = AdhanSound.FAJR_MAKKAH
+
+        assertEquals(fajr, AdhanPolicy.resolve(Prayer.FAJR, global, fajr, true))
+        assertEquals(global, AdhanPolicy.resolve(Prayer.DHUHR, global, fajr, true))
+        assertEquals(global, AdhanPolicy.resolve(Prayer.FAJR, global, fajr, false))
+    }
+
+    @Test
+    fun resolveFallsBackWhenTheSoundBelongsToTheWrongGroup() {
+        assertEquals(
+            AdhanSound.defaultFajr,
+            AdhanPolicy.resolve(Prayer.FAJR, AdhanSound.CLASSIC, AdhanSound.CLASSIC, true),
+        )
+        assertEquals(
+            AdhanSound.default,
+            AdhanPolicy.resolve(Prayer.DHUHR, AdhanSound.MADINAH_NAFMAN, AdhanSound.FAJR_MAKKAH, true),
+        )
+        assertEquals(
+            AdhanSound.default,
+            AdhanPolicy.resolve(Prayer.FAJR, AdhanSound.MADINAH_NAFMAN, AdhanSound.FAJR_MAKKAH, false),
         )
     }
 }

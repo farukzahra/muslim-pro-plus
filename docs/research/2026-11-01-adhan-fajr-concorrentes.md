@@ -1,6 +1,6 @@
 # Adhan de Fajr e catálogo de vozes — como os concorrentes fazem
 
-Data: 01/11/2026. Pesquisa e proposta. **Nada implementado no app.**
+Data: 01/11/2026. Pesquisa e decisão. **Implementado na 1.3.0** (versionCode 8).
 
 Página de audição: [`docs/adhan-preview/index.html`](../adhan-preview/index.html).
 
