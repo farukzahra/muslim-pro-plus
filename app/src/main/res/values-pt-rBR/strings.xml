@@ -245,7 +245,7 @@
     <string name="today_tracker_progress">%1$d de %2$d orações</string>
     <string name="today_tracker_streak">Sequência de %1$d dias</string>
     <string name="today_tracker_streak_one">Sequência de 1 dia</string>
-    <string name="today_tracker_streak_none">Marque suas orações para começar uma sequência</string>
+    <string name="today_tracker_streak_none">Marque uma oração para começar</string>
     <string name="today_tracker_done">Todas as orações marcadas</string>
     <string name="today_mark_all">Marcar todas</string>
     <string name="today_mark_prayer">Marcar %1$s como rezada</string>

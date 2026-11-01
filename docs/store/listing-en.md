@@ -65,12 +65,10 @@ Internet is used only to stream the verse audio.
 
 ## O que há de novo (até 500)
 
-What's new in 1.3.0
+What's new in 1.3.1
 
-• 22 adhan voices with country flags and preview
-• Fajr has its own recording with "prayer is better than sleep"
-• Fajr is on by default, set to Madinah
-• New picker for the default voice and the Fajr voice
-• Fix: Fajr recordings no longer play at other prayers
+• Fix for the prayer tracker card on narrow screens: title, ring and button now fit without squeezing the text
+• Shorter copy to start a streak
+• The 22 adhan voices and the dedicated Fajr recording remain
 
 Always offline, no account, no ads.

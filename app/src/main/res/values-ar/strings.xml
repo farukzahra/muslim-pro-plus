@@ -245,7 +245,7 @@
     <string name="today_tracker_progress">%1$d من %2$d صلوات</string>
     <string name="today_tracker_streak">سلسلة %1$d يومًا</string>
     <string name="today_tracker_streak_one">سلسلة يوم واحد</string>
-    <string name="today_tracker_streak_none">علّم صلواتك لبدء سلسلة</string>
+    <string name="today_tracker_streak_none">علّم صلاة لبدء السلسلة</string>
     <string name="today_tracker_done">تم تحديد جميع الصلوات</string>
     <string name="today_mark_all">تحديد الكل</string>
     <string name="today_mark_prayer">تحديد %1$s كصلاة أدّيتها</string>

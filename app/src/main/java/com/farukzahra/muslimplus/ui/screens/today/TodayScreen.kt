@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -58,6 +59,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LifecycleResumeEffect
@@ -261,22 +263,50 @@ private fun PrayerTracker(
             .padding(start = 16.dp, end = 12.dp, top = 16.dp, bottom = 14.dp)
             .testTag("tracker_card"),
     ) {
+        // Titulo e acao na mesma linha; o anel e o texto ficam abaixo, para o
+        // texto nao ser espremido entre o anel e o botao em telas estreitas.
         Row(verticalAlignment = Alignment.CenterVertically) {
-            ProgressRing(count = count, total = total, modifier = Modifier.size(64.dp))
-            Spacer(Modifier.width(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(R.string.today_tracker_title),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = scheme.secondary,
+            Text(
+                text = stringResource(R.string.today_tracker_title),
+                style = MaterialTheme.typography.labelLarge,
+                color = scheme.secondary,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f),
+            )
+            if (count < total) {
+                TextButton(
+                    onClick = onMarkAll,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                    modifier = Modifier.testTag("tracker_mark_all"),
+                ) {
+                    Text(
+                        text = stringResource(R.string.today_mark_all),
+                        maxLines = 1,
+                    )
+                }
+            } else {
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = stringResource(R.string.today_tracker_done),
+                    tint = scheme.primary,
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .size(24.dp)
+                        .testTag("tracker_done"),
                 )
+            }
+        }
+        Spacer(Modifier.height(10.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ProgressRing(count = count, total = total, modifier = Modifier.size(56.dp))
+            Spacer(Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = stringResource(R.string.today_tracker_progress, count, total),
                     style = MaterialTheme.typography.titleMedium,
                     color = scheme.onSurface,
-                    modifier = Modifier
-                        .padding(top = 2.dp)
-                        .testTag("tracker_progress"),
+                    modifier = Modifier.testTag("tracker_progress"),
                 )
                 Text(
                     text = if (streak > 0) {
@@ -296,26 +326,8 @@ private fun PrayerTracker(
                     modifier = Modifier.padding(top = 2.dp),
                 )
             }
-            if (count < total) {
-                TextButton(
-                    onClick = onMarkAll,
-                    modifier = Modifier.testTag("tracker_mark_all"),
-                ) {
-                    Text(stringResource(R.string.today_mark_all))
-                }
-            } else {
-                Icon(
-                    imageVector = Icons.Filled.Check,
-                    contentDescription = stringResource(R.string.today_tracker_done),
-                    tint = scheme.primary,
-                    modifier = Modifier
-                        .padding(horizontal = 12.dp)
-                        .size(24.dp)
-                        .testTag("tracker_done"),
-                )
-            }
         }
-        Spacer(Modifier.height(14.dp))
+        Spacer(Modifier.height(12.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()

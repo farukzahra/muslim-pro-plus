@@ -9,9 +9,9 @@ Passo a passo com os dados reais deste app. Tudo que está marcado como
 |---|---|
 | Pacote | `com.farukzahra.muslimplus` (permanente no Play) |
 | Nome exibido | Muslim Plus |
-| Versão | `versionName` 1.3.0 · `versionCode` 8 |
+| Versão | `versionName` 1.3.1 · `versionCode` 9 |
 | Android mínimo | 8.0 (API 26) · `targetSdk` 36 |
-| Bundle gerado | `app/build/outputs/bundle/release/app-release.aab`, 35.287.257 bytes (35,29 MB) |
+| Bundle gerado | `app/build/outputs/bundle/release/app-release.aab`, ~35,3 MB |
 | DEX do bundle | 4.187.992 bytes (4,19 MB) com R8; era 29,4 MB sem minificação |
 | Categoria | Lifestyle (alternativa: Books & Reference) |
 | Preço | Grátis, sem compras no app (nenhuma dependência de billing no build) |
@@ -57,7 +57,7 @@ python tools/store/check_store.py
 & "$env:JAVA_HOME\bin\jarsigner.exe" -verify -verbose -certs app\build\outputs\bundle\release\app-release.aab
 ```
 
-- [ ] `versionCode` maior que o da versão já publicada (hoje 7; este bundle é 8).
+- [ ] `versionCode` maior que o da versão já publicada (hoje 8; este bundle é 9).
 - [ ] `python tools/store/check_store.py` sem falhas (limites de texto,
       dimensões dos PNG, screenshots não vazias).
 

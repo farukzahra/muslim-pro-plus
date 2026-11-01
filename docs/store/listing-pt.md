@@ -67,12 +67,10 @@ A internet é usada apenas para transmitir o áudio dos versículos.
 
 ## O que há de novo (até 500)
 
-Novidades da 1.3.0
+Novidades da 1.3.1
 
-• 22 vozes de adhan, com bandeira do país e prévia
-• Fajr com gravação própria e "a oração é melhor que o sono"
-• Fajr ligado por padrão, já com Madinah
-• Nova tela para escolher a voz padrão e a voz do Fajr
-• Correção: gravações de Fajr não tocam mais nas outras orações
+• Correção no card do rastreador de orações em telas estreitas: título, anel e botão agora cabem sem esmagar o texto
+• Texto mais curto para começar uma sequência
+• As 22 vozes de adhan e o Fajr com gravação própria continuam
 
 Sempre offline, sem conta e sem anúncios.

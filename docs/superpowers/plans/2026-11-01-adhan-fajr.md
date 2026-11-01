@@ -21,6 +21,7 @@ Spec: [`specs/2026-11-01-adhan-fajr-e-catalogo.md`](../specs/2026-11-01-adhan-fa
 | 12 | Testes instrumentados: catálogo, tela e escolha nas duas folhas | Feito |
 | 13 | `test`, `lint`, `connectedDebugAndroidTest`, `install-local` | Feito |
 | 14 | Versão 1.3.0, notas e publicação | Feito |
+| 15 | Correção do card do rastreador em 360 dp e versão 1.3.1 | Feito |
 
 ## Evidências
 

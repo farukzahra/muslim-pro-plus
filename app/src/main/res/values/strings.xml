@@ -245,7 +245,7 @@
     <string name="today_tracker_progress">%1$d of %2$d prayers</string>
     <string name="today_tracker_streak">%1$d-day streak</string>
     <string name="today_tracker_streak_one">1-day streak</string>
-    <string name="today_tracker_streak_none">Mark your prayers to start a streak</string>
+    <string name="today_tracker_streak_none">Mark one prayer to start a streak</string>
     <string name="today_tracker_done">All prayers marked</string>
     <string name="today_mark_all">Mark all</string>
     <string name="today_mark_prayer">Mark %1$s as prayed</string>
