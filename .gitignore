@@ -36,6 +36,9 @@ __pycache__/
 !app/src/main/res/drawable-xxxhdpi/*.png
 # Prints próprios usados nos recaps de sessão
 !docs/session-recaps/**/*.png
+# Bandeiras do catálogo de adhan (flagcdn, domínio público)
+!docs/adhan-preview/flags/*.png
+!app/src/main/res/drawable-nodpi/*.png
 # Arte e print-fonte do Instagram
 !docs/instagram/**/*.png
 

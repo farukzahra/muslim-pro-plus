@@ -138,8 +138,12 @@ Achado: `adhan_madinah_nafman.mp3` e `adhan_madinah_bukhari.mp3` já são
 gravações de Fajr (têm o tathwib) e hoje podem ser escolhidas para qualquer
 oração. Nenhum código do app foi alterado.
 
-**Pergunta em aberto:** modelo “padrão + Fajr” (recomendado) ou cinco
-seletores por oração? Aguardando resposta antes de abrir spec/plano.
+Decisão de 01/11/2026: modelo **padrão + Fajr**; catálogo com 22 vozes
+(“quanto mais melhor”); Fajr ligado por padrão e já setado com Madinah,
+Faisal Al-Na’man; reclassificar as duas gravações de Fajr; bandeira do país em
+cada voz. Spec proposto em
+[`specs/2026-11-01-adhan-fajr-e-catalogo.md`](specs/2026-11-01-adhan-fajr-e-catalogo.md),
+aguardando aprovação para abrir o plano e implementar.
 
 ## 10 vozes de muezzins — aguardando conferência dos nomes
 

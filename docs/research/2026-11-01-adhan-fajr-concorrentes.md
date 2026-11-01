@@ -12,6 +12,14 @@ O pai do usuário pediu “um ou dois azan dizendo
 O usuário pediu mais tipos de adhan e quer decidir a configuração antes de
 implementar.
 
+## Decisões do usuário em 01/11/2026
+
+1. **Modelo:** “padrão + Fajr” aprovado.
+2. **Catálogo:** “quanto mais melhor”. Fechado em 22 vozes, 13 novas.
+3. **Fajr:** ligado por padrão e já setado com uma gravação de Fajr.
+4. **Correção:** reclassificar as duas gravações de Fajr agora.
+5. **Bandeira do país** em cada voz, como o Muslim Pro.
+
 ## Resposta curta
 
 1. O Fajr é o único adhan com o tathwib. Não é um “tipo” de voz: é uma
@@ -142,30 +150,54 @@ das cinco orações).
 
 ## Catálogo recomendado
 
-Manter as nove atuais, reclassificar duas como Fajr e acrescentar seis:
+Manter as nove atuais, reclassificar duas como Fajr e acrescentar treze. O
+catálogo final tem 22 vozes: 16 para o dia e 6 de Fajr.
 
-| Voz | Uso | Duração | Fonte | Licença |
+Novas:
+
+| Voz | Uso | Duração | País | Fonte |
 | --- | --- | --- | --- | --- |
-| Madinah — Faisal Al-Na’man | Fajr (já está no app) | 5:48 | Azaan of World Mosques | PD Mark |
-| Madinah — Essam Bukhari | Fajr (já está no app) | 5:25 | Azaan of World Mosques | PD Mark |
-| Makkah — Haram (Fajr) | Fajr novo | 3:35 | Azaan of World Mosques | PD Mark |
-| Cairo (Fajr) | Fajr novo | 4:07 | Azaan of World Mosques | PD Mark |
-| Malásia (Fajr) | Fajr novo | 3:19 | Azaan of World Mosques | PD Mark |
-| Kuwait — Nasser Al-Qatami | dia | 2:12 | Adhan Notifications | PD Mark |
-| Cairo — Mohammed Al-Banna | dia | 2:35 | Azaan of World Mosques | PD Mark |
-| Madinah — Majed Al-Hamathani | dia | 3:39 | Adhan Notifications | PD Mark |
+| Makkah — Haram (Fajr) | Fajr | 3:35 | Arábia Saudita | Azaan of World Mosques |
+| Cairo (Fajr) | Fajr | 4:07 | Egito | Azaan of World Mosques |
+| Malásia (Fajr) | Fajr | 3:19 | Malásia | Azaan of World Mosques |
+| Umm al-Qaiwain (Fajr) | Fajr | 3:10 | Emirados Árabes | Azaan of World Mosques |
+| Nasser Al-Qatami | dia | 2:12 | Arábia Saudita | Adhan Notifications |
+| Mohammed Al-Banna | dia | 2:35 | Egito | Azaan of World Mosques |
+| Majed Al-Hamathani | dia | 3:39 | Arábia Saudita | Adhan Notifications |
+| Cairo — Shuaisha | dia | 3:54 | Egito | Azaan of World Mosques |
+| Ajman | dia | 2:20 | Emirados Árabes | Azaan of World Mosques |
+| Tunísia | dia | 2:22 | Tunísia | Azaan of World Mosques |
+| Omã | dia | 2:33 | Omã | Azaan of World Mosques |
+| Mokhtar Hadj Slimane | dia | 3:15 | Argélia | Adhan Notifications |
+| Ahmed Al-Imadi | dia | 2:59 | Catar | Adhan Notifications |
 
-Total: 15 gravações (10 para o dia + 5 de Fajr, contando as 9 atuais). O áudio
-sai de ~12 MB para ~18 MB, convertendo as novas para mono 48 kbps.
+As nove atuais continuam: sete para o dia (clássico, três Makkah, Al-Aqsa,
+Abdulaziz Bukhari e Khashoggi) e duas de Fajr (Faisal Al-Na’man e Essam
+Bukhari).
 
-Opções que ficam de fora por enquanto:
+Total: 22 gravações, áudio de ~12 MB para ~26 MB, convertendo as novas para
+mono 48 kbps. As treze novas somam ~14 MB. A página mostra o catálogo completo.
+
+Ficam de fora, com motivo:
 
 - Mishary Alafasy e Al-Hosari: são recitadores, não muezzins.
-- Makkah Haram 1, 3 e 5: voz não identificada; a 5 tem bitrate de 36 kbps.
-- Cairo Shuaisha, Ajman, Tunísia, Omã, Mokhtar, Ziyaad Patel: bons candidatos
-  para uma segunda onda, sem espaço no orçamento atual.
+- Makkah Haram 1 e 3: voz não identificada; não acrescentam nome ao catálogo.
+- Makkah Haram 5: bitrate de 36 kbps, qualidade inferior.
+- Ziyaad Patel: nome veio do arquivo e não foi confirmado.
 - Madinah Fajr CC0: mesma voz da gravação já embarcada; serve como fonte de
   licença mais clara, mas não acrescenta voz.
+- Istambul, Bosnia, Turquia e outras do acervo: não foram avaliadas nesta
+  rodada.
+
+## Bandeiras
+
+O usuário pediu a bandeira do país em cada voz, como no Muslim Pro. A lista
+final usa nove bandeiras: Arábia Saudita, Palestina, Egito, Emirados Árabes,
+Tunísia, Omã, Malásia, Argélia e Catar. O adhan clássico não tem país e leva um
+ícone neutro.
+
+As imagens são de domínio público (flagcdn.com, baseadas na Wikimedia Commons)
+e entram como PNG pequeno em `res/drawable-nodpi/`. Nada de asset do Muslim Pro.
 
 ## Migração
 
@@ -175,12 +207,23 @@ voz global precisa de um caminho:
 1. Ler `adhan_sound`.
 2. Se for uma gravação marcada como Fajr, gravar essa gravação em
    `adhan_fajr_sound` e trocar `adhan_sound` para `classic`.
-3. Mostrar um aviso único na tela do adhan: “Sua gravação de Madinah é de Fajr;
+3. Ligar `adhan_fajr_override`.
+4. Mostrar um aviso único na tela do adhan: “Sua gravação de Madinah é de Fajr;
    ela agora toca no Fajr. Para o dia, escolha outra.”
-4. Não interromper um adhan que já está tocando.
+5. Não interromper um adhan que já está tocando.
 
 Sem essa migração, o usuário continua com o problema. Com ela, perde a voz
 global que tinha, mas ganha a voz certa no Fajr. O aviso explica.
+
+### Fajr ligado por padrão
+
+Decisão de 01/11/2026: o Fajr passa a vir ligado nas novas instalações, já com
+`adhan_fajr_sound = madinah-nafman` e `adhan_fajr_override = true`.
+
+Para quem já tem a chave `adhan_prayers` gravada, o conjunto salvo vence. Quem
+desligou o Fajr explicitamente continua com ele desligado. Quem nunca mexeu na
+tela do adhan recebe o novo padrão com o Fajr ligado. Isso precisa estar nas
+notas da versão, porque é uma mudança de comportamento audível.
 
 ## Testes que a implementação exige
 
@@ -195,18 +238,24 @@ global que tinha, mas ganha a voz certa no Fajr. O aviso explica.
 - `AdhanSoundTest`: cada novo `resId` existe em `res/raw`, ids únicos, todas as
   gravações de Fajr têm `tathwib = true` no metadado (teste de catálogo, não de
   áudio).
+- `AdhanSoundTest`: toda voz com país tem `flagRes` válido; o clássico usa o
+  ícone neutro; nenhuma bandeira falta nos 22 itens.
+- JVM: `AdhanPolicy.defaultEnabled` contém Fajr; o padrão do Fajr é
+  `madinah-nafman`; o override começa ligado.
 - `install-local.ps1` com `OK <serial>` no Pixel 6.
 
-## Decisões pendentes do usuário
+## Decisões aprovadas
 
-1. **Modelo:** padrão + Fajr (recomendado) ou cinco seletores por oração?
-2. **Fajr padrão:** Faisal Al-Na’man (5:48) ou Essam Bukhari (5:25)?
-3. **Tamanho:** acrescentar as seis novas (15 vozes, ~18 MB) ou só as duas de
-   Fajr (11 vozes, ~15 MB)?
-4. **Fajr ligado por padrão?** Hoje começa desligado. Manter desligado
-   (recomendado) ou ligar para novas instalações?
-5. **Corrigir as duas gravações de Fajr agora?** Recomendado. Se não, elas
-   continuam disponíveis para o dia e o problema permanece.
+1. **Modelo:** padrão + Fajr.
+2. **Fajr padrão:** Faisal Al-Na’man (5:48), que já está no app.
+3. **Tamanho:** quanto mais melhor. Fechado em 22 vozes, ~26 MB.
+4. **Fajr ligado por padrão:** sim, com a gravação de Fajr já setada.
+5. **Corrigir as duas gravações de Fajr:** sim, com migração e aviso.
+6. **Bandeiras:** sim, uma por país, no estilo do Muslim Pro.
+
+Falta apenas aprovar o spec em
+`docs/superpowers/specs/2026-11-01-adhan-fajr-e-catalogo.md` para começar o
+plano e o TDD.
 
 ## Fontes
 

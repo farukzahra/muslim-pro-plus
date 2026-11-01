@@ -142,6 +142,18 @@
   .tag.new { color: #9fc8ff; border-color: rgba(120,170,230,.35); background: rgba(120,170,230,.08); }
   .tag.warn { color: var(--danger); border-color: rgba(224,139,122,.4); background: rgba(224,139,122,.08); }
   .tag.rec { color: var(--green); border-color: rgba(67,197,150,.5); background: rgba(67,197,150,.12); }
+  .flag {
+    width: 22px; height: 15px; object-fit: cover; border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.4); flex: 0 0 auto;
+  }
+  .flag.none {
+    display: inline-grid; place-items: center; background: #1b332b;
+    color: var(--dim); font-size: 9px; box-shadow: none;
+  }
+  .name-line { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+  #global-choices { max-height: 390px; overflow-y: auto; padding-right: 6px; }
+  #global-choices::-webkit-scrollbar { width: 6px; }
+  #global-choices::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
 
   .finding {
     display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
@@ -355,8 +367,8 @@
     <div class="stats">
       <div class="stat"><b>9</b><span>vozes no app hoje</span></div>
       <div class="stat"><b>2</b><span>delas já são adhan de Fajr</span></div>
-      <div class="stat"><b>6</b><span>gravações novas recomendadas</span></div>
-      <div class="stat"><b>8</b><span>opções de Fajr no catálogo</span></div>
+      <div class="stat"><b>13</b><span>gravações novas</span></div>
+      <div class="stat"><b>22</b><span>vozes no total</span></div>
     </div>
   </div>
 </header>
@@ -605,11 +617,12 @@
     <div class="section-head">
       <div>
         <span class="kicker">O que entra</span>
-        <h2>Seis gravações novas, duas já no app</h2>
+        <h2>Treze gravações novas, duas já são Fajr</h2>
       </div>
       <p>
-        O pedido do pai cabe com duas opções de Fajr. A recomendação abaixo acrescenta três
-        vozes para o dia e três para o Fajr, mantendo o app abaixo de 20 MB de áudio.
+        A decisão foi “quanto mais melhor”. O catálogo final fica com 22 vozes: 16 para o dia
+        e 6 de Fajr. Só ficam de fora as que são de recitador, as sem nome confirmado e a de
+        qualidade baixa.
       </p>
     </div>
     <div class="shortlist">
@@ -617,31 +630,32 @@
         <h3 style="font-family:var(--sans);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Recomendado para a próxima versão</h3>
         <ol>
           <li><strong>Reclassificar</strong> Madinah — Faisal Al-Na’man e Madinah — Essam Bukhari como Fajr.</li>
-          <li><strong>Fajr Madinah</strong> já existe: a gravação do Faisal Al-Na’man que está no app.</li>
+          <li><strong>Fajr Madinah</strong> já existe: a gravação do Faisal Al-Na’man que está no app. Vira o padrão do Fajr.</li>
           <li><strong>Fajr Makkah</strong> — nova, 3:35, tathwib em 2:36. É a segunda opção do pai.</li>
           <li><strong>Fajr Cairo</strong> — nova, 4:07, tathwib em 3:11. Voz egípcia, para variar o catálogo.</li>
           <li><strong>Fajr Malásia</strong> — nova, 3:19, tathwib em 2:28. Alternativa suave para o Fajr.</li>
-          <li><strong>Dia:</strong> Nasser Al-Qatami (Kuwait), Mohammed Al-Banna (Cairo) e Majed Al-Hamathani (Madinah).</li>
+          <li><strong>Fajr Umm al-Qaiwain</strong> — nova, 3:10, tathwib em 2:26. Mais uma opção nos Emirados.</li>
+          <li><strong>Dia:</strong> Nasser Al-Qatami (Arábia Saudita), Mohammed Al-Banna (Cairo), Majed Al-Hamathani (Madinah), Cairo Shuaisha, Ajman, Tunísia, Omã, Mokhtar Hadj Slimane (Argélia) e Ahmed Al-Imadi (Catar).</li>
         </ol>
         <p class="dim" style="font-size:12px;margin-top:12px">
-          Total: 15 vozes (9 atuais + 6 novas). O usuário continua podendo desligar o adhan
-          por oração; o Fajr continua desligado por padrão, como decidido em 25/10.
+          Total: 22 vozes (9 atuais + 13 novas). O Fajr passa a vir ligado e já setado com
+          Madinah, Faisal Al-Na’man. O usuário continua podendo desligar o adhan por oração.
         </p>
       </div>
       <div class="size-box">
         <span class="tag">Tamanho do áudio</span>
-        <div class="big">≈ 18 MB</div>
-        <p>Hoje o conjunto ocupa cerca de 12 MB dentro do APK. As seis novas, convertidas para mono 48 kbps, somam cerca de 6 MB.</p>
+        <div class="big">≈ 26 MB</div>
+        <p>Hoje o conjunto ocupa cerca de 12 MB dentro do APK. As treze novas, convertidas para mono 48 kbps, somam cerca de 14 MB.</p>
         <div class="bar" aria-hidden="true">
-          <i class="now" style="width:66%"></i><i class="add" style="width:34%"></i>
+          <i class="now" style="width:46%"></i><i class="add" style="width:54%"></i>
         </div>
         <p class="mono" style="display:flex;justify-content:space-between;font-size:11px">
           <span><span style="color:var(--green)">■</span> atual 12 MB</span>
-          <span><span style="color:var(--gold)">■</span> novo +6 MB</span>
+          <span><span style="color:var(--gold)">■</span> novo +14 MB</span>
         </p>
         <p style="margin-top:14px">
-          Se o tamanho apertar, corte primeiro Cairo e Malásia: o pedido do pai fica atendido
-          só com Madinah + Makkah.
+          Se o tamanho apertar, corte primeiro Shuaisha, Omã e Imadi. O pedido do pai fica
+          atendido só com Madinah + Makkah.
         </p>
       </div>
     </div>
@@ -666,6 +680,7 @@
       <p><strong>Adhan Notifications</strong> — Nasser Al-Qatami, Majed Al-Hamathani, Mokhtar Hadj Slimane, Ahmed Al-Imadi e Mishary Alafasy (Fajr), marca de domínio público. <a href="https://archive.org/details/adhan.notifications" target="_blank" rel="noreferrer">archive.org</a>.</p>
       <p><strong>Madinah Fajr · Faisal Al-Na’man</strong> — vídeo CC0. <a href="https://archive.org/details/MadinahFajrAzan" target="_blank" rel="noreferrer">archive.org</a>.</p>
       <p><strong>Tathwib</strong> — “as-salatu khayrun min an-nawm” dito duas vezes depois de “hayya ‘ala al-falah” no adhan de Fajr. <a href="https://fiqh.islamonline.net/en/at-tathweeb-saying-prayer-is-better-than-sleep-in-the-morning-adhan/" target="_blank" rel="noreferrer">IslamOnline</a>.</p>
+      <p><strong>Bandeiras</strong> — imagens de domínio público do <a href="https://flagcdn.com/" target="_blank" rel="noreferrer">flagcdn.com</a>, baseadas nos arquivos da Wikimedia Commons.</p>
       <p class="dim">Nenhum áudio ou texto do Muslim Pro foi copiado. O material do APK serve só para comparar comportamento de produto, conforme a regra do repositório.</p>
     </div>
   </section>
@@ -762,10 +777,16 @@
     },
 
     {
-      id: 'qatami', name: 'Kuwait — Nasser Al-Qatami', place: 'Mesquita Grande do Kuwait', country: 'Kuwait',
+      id: 'qatami', name: 'Nasser Al-Qatami', place: 'Muezzin saudita', country: 'Arábia Saudita',
       cat: 'other', status: 'new', fajr: false, rec: true,
       file: 'Nasser_al_Qatami_Adhan.mp3', remote: NOTIF + 'Nasser_al_Qatami_Adhan.mp3', dur: 132.4,
-      license: 'Domínio público declarado', source: 'Adhan Notifications', note: 'Voz que faltava na lista original de 30/10.'
+      license: 'Domínio público declarado', source: 'Adhan Notifications', note: 'A lista original de 30/10 dizia Kuwait; a fonte o coloca na Arábia Saudita.'
+    },
+    {
+      id: 'imadi', name: 'Ahmed Al-Imadi', place: 'Muezzin', country: 'Catar',
+      cat: 'other', status: 'new', fajr: false, rec: true,
+      file: 'Ahmed_al_Imadi_Adhan.mp3', remote: NOTIF + 'Ahmed_al_Imadi_Adhan.mp3', dur: 179.3,
+      license: 'Domínio público declarado', source: 'Adhan Notifications'
     },
     {
       id: 'al-banna', name: 'Cairo — Mohammed Al-Banna', place: 'Cairo', country: 'Egito',
@@ -810,7 +831,7 @@
     },
     {
       id: 'fajr-umm', name: 'Umm al-Qaiwain (Fajr)', place: 'Umm al-Qaiwain', country: 'Emirados Árabes',
-      cat: 'other', status: 'new', fajr: true, rec: false,
+      cat: 'other', status: 'new', fajr: true, rec: true,
       file: 'AlFajr Umm alQaiwain.mp3', remote: PKG + encodeURIComponent('AlFajr Umm alQaiwain.mp3'), dur: 190.2,
       license: 'Domínio público declarado', source: 'Azaan of World Mosques',
       tathwib: [146, 155], note: 'Voz não identificada no arquivo.'
@@ -844,7 +865,7 @@
     },
     {
       id: 'shuaisha', name: 'Cairo — Shuaisha', place: 'Cairo', country: 'Egito',
-      cat: 'egypt', status: 'new', fajr: false, rec: false,
+      cat: 'egypt', status: 'new', fajr: false, rec: true,
       file: 'Cairo Shuaisha.mp3', remote: PKG + encodeURIComponent('Cairo Shuaisha.mp3'), dur: 234.1,
       license: 'Domínio público declarado', source: 'Azaan of World Mosques'
     },
@@ -857,25 +878,25 @@
     },
     {
       id: 'ajman', name: 'Ajman — Emirados Árabes', place: 'Ajman', country: 'Emirados Árabes',
-      cat: 'other', status: 'new', fajr: false, rec: false,
+      cat: 'other', status: 'new', fajr: false, rec: true,
       file: 'Ajman of UAE.mp3', remote: PKG + encodeURIComponent('Ajman of UAE.mp3'), dur: 140,
       license: 'Domínio público declarado', source: 'Azaan of World Mosques'
     },
     {
       id: 'tunisia', name: 'Tunísia', place: 'Mesquita não identificada', country: 'Tunísia',
-      cat: 'other', status: 'new', fajr: false, rec: false,
+      cat: 'other', status: 'new', fajr: false, rec: true,
       file: 'Tunisia.mp3', remote: PKG + encodeURIComponent('Tunisia.mp3'), dur: 142.1,
       license: 'Domínio público declarado', source: 'Azaan of World Mosques'
     },
     {
       id: 'oman', name: 'Omã', place: 'Mesquita não identificada', country: 'Omã',
-      cat: 'other', status: 'new', fajr: false, rec: false,
+      cat: 'other', status: 'new', fajr: false, rec: true,
       file: 'Oman.mp3', remote: PKG + encodeURIComponent('Oman.mp3'), dur: 152.6,
       license: 'Domínio público declarado', source: 'Azaan of World Mosques'
     },
     {
       id: 'mokhtar', name: 'Magreb — Mokhtar Hadj Slimane', place: '—', country: 'Argélia',
-      cat: 'other', status: 'new', fajr: false, rec: false,
+      cat: 'other', status: 'new', fajr: false, rec: true,
       file: 'Mokhtar_Hadj_Slimane_Adhan.mp3', remote: NOTIF + 'Mokhtar_Hadj_Slimane_Adhan.mp3', dur: 194.9,
       license: 'Domínio público declarado', source: 'Adhan Notifications'
     },
@@ -894,6 +915,24 @@
     { id: 'MAGHRIB', label: 'Maghrib' },
     { id: 'ISHA', label: 'Isha' }
   ];
+
+  const CC = {
+    'makkah-mulla': 'sa', 'makkah-hakim': 'sa', 'makkah-abdulmalik': 'sa',
+    'madinah-bukhari': 'sa', 'madinah-nafman': 'sa', 'madinah-abdulaziz': 'sa',
+    'makkah-khashoggi': 'sa', 'aqsa': 'ps', 'qatami': 'sa', 'imadi': 'qa',
+    'al-banna': 'eg', 'hamathani': 'sa', 'fajr-makkah': 'sa', 'fajr-cairo': 'eg',
+    'fajr-malaysia': 'my', 'fajr-madinah-cc0': 'sa', 'fajr-umm': 'ae',
+    'fajr-mishary': 'kw', 'makkah-1': 'sa', 'makkah-3': 'sa', 'makkah-5': 'sa',
+    'shuaisha': 'eg', 'hosari': 'eg', 'ajman': 'ae', 'tunisia': 'tn',
+    'oman': 'om', 'mokhtar': 'dz', 'ziyaad': 'za'
+  };
+
+  function flagImg(s) {
+    const cc = CC[s.id];
+    return cc
+      ? `<img class="flag" src="flags/${cc}.png" alt="" loading="lazy">`
+      : '<span class="flag none" aria-hidden="true">♪</span>';
+  }
 
   const byId = new Map(SOUNDS.map(s => [s.id, s]));
   const normal = SOUNDS.filter(s => !s.fajr);
@@ -1009,7 +1048,7 @@
     return `
       <article class="card ${s.fajr ? 'fajr' : ''}" data-id="${s.id}">
         <div>
-          <h4>${String(i + 1).padStart(2, '0')} · ${s.name}</h4>
+          <h4><span class="name-line">${flagImg(s)}<span>${String(i + 1).padStart(2, '0')} · ${s.name}</span></span></h4>
           <div class="where">${where || '—'} · ${s.license}</div>
           <div class="badges">${badges.join('')}</div>
           ${s.note ? `<p class="dim" style="font-size:11px;margin-top:9px">${s.note}</p>` : ''}
@@ -1091,7 +1130,7 @@
     return `
       <label class="choice ${s.fajr ? 'fajr' : ''}">
         <input type="radio" name="${group}" value="${s.id}" ${checked ? 'checked' : ''}>
-        <span><span class="name">${s.name}</span>
+        <span><span class="name"><span class="name-line">${flagImg(s)}${s.name}</span></span>
         <span class="meta">${[s.place, s.country].filter(Boolean).join(' · ') || s.source}</span></span>
         <span class="dur">${fmt(s.dur)}</span>
       </label>`;
@@ -1100,7 +1139,8 @@
   function renderConfig() {
     globalChoices.innerHTML = normal.filter(s => s.rec || s.id === state.globalId)
       .map(s => radio(s, 'global')).join('');
-    fajrChoices.innerHTML = fajr.map(s => radio(s, 'fajr', s.id === state.fajrId)).join('');
+    fajrChoices.innerHTML = fajr.filter(s => s.rec || s.id === state.fajrId)
+      .map(s => radio(s, 'fajr', s.id === state.fajrId)).join('');
     fajrChoices.style.opacity = state.fajrOverride ? '1' : '.35';
     fajrChoices.style.pointerEvents = state.fajrOverride ? 'auto' : 'none';
 
@@ -1121,7 +1161,7 @@
       const s = p.id === 'FAJR' ? fajrSound : g;
       return `
         <div class="prayer-row ${p.id === 'FAJR' ? 'fajr' : ''}">
-          <div><span class="p-name">${p.label}</span><span class="p-sound">${s.name}</span></div>
+          <div><span class="p-name">${p.label}</span><span class="p-sound"><span class="name-line">${flagImg(s)}${s.name}</span></span></div>
           <span class="dur mono">${fmt(s.dur)}</span>
         </div>`;
     }).join('') + `
