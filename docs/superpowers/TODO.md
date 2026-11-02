@@ -166,3 +166,23 @@ três testes instrumentados no Pixel 6.
 
 Referência de pesquisa: `old/docs/2026-10-23-comparacao-features-recitadores.md`.
 O legado serve somente à comparação; implementar com código, assets e textos próprios.
+
+## Funcionalidades pagas do Muslim Pro (adhan por oração)
+
+Pedido de 02/11/2026: implementar as funções pagas do Muslim Pro, com foco no
+adhan por oração, e publicar um comparativo Muslim Pro x Muslim Plus no
+Instagram.
+
+| Item | Estado |
+| --- | --- |
+| Captura da sheet por oração e da lista de sons no 17.10.1 | Feito em 02/11/2026 |
+| Pesquisa em `docs/research/2026-11-02-muslim-pro-paid-features.md` | Feito |
+| Spec `specs/2026-11-02-per-prayer-adhan.md` | Escrito, aguardando aprovação |
+| Plano `plans/2026-11-02-per-prayer-adhan.md` | Escrito, aguardando aprovação |
+| Implementação: som e lembrete por oração | Bloqueada até o spec ser aprovado |
+| Comparativo no Instagram | Só depois da 1.4.0 instalada |
+| Excluir a conta @muslimplus.app.br | Pendente: precisa da senha atual do centro |
+| `PRIVACY_URL` do app para muslimplus.com.br | Feito em 02/11/2026 |
+
+Decisões em aberto: alarme completo e repetição por dia ficam para a fase 2;
+publicar o comparativo so depois do recurso existir; exclusão do .app.
