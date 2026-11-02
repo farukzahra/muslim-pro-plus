@@ -32,7 +32,7 @@ import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.ui.components.openUrl
 
 /** Endereco publicado da politica; o gate de release exige HTTP 200. */
-const val PRIVACY_URL = "https://muslimplus.faruk.dev.br/privacy/"
+const val PRIVACY_URL = "https://muslimplus.com.br/privacy/"
 
 /**
  * Resumo de privacidade em uma tela: sem conta, sem ads, sem analytics e a

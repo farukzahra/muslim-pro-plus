@@ -27,7 +27,7 @@ KEY = Path(r"C:\repo\secrets\google-play\muslim-plus-service-account.json")
 SCOPES = ["https://www.googleapis.com/auth/androidpublisher"]
 
 CONTACT_EMAIL = "farukz@gmail.com"
-CONTACT_WEBSITE = "https://muslimplus.faruk.dev.br/"
+CONTACT_WEBSITE = "https://muslimplus.com.br/"
 
 # locale do Play -> arquivos que alimentam a ficha
 LISTINGS = {

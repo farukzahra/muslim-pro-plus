@@ -50,6 +50,6 @@ As páginas de privacidade (`/privacidade/`, `/privacy/`, `/ar/privacy/`) e o
 
 ## Próxima versão do app
 
-O `PRIVACY_URL` do app ainda aponta para
-`https://muslimplus.faruk.dev.br/privacy/`. Na próxima release, trocar para
-`https://muslimplus.com.br/privacy/`.
+O `PRIVACY_URL` do app aponta para `https://muslimplus.com.br/privacy/` desde
+02/11/2026. O endereço antigo (`muslimplus.faruk.dev.br`) continua respondendo
+como espelho, mas não é mais usado no app nem na ficha da loja.
