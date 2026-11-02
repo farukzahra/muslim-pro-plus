@@ -190,13 +190,13 @@
       <span class="chip"><b>181</b> testes JVM</span>
       <span class="chip"><b>30</b> E2E</span>
       <span class="chip"><b>5</b> posts no Instagram</span>
-      <span class="chip">site <b>200</b> no subdomínio</span>
+      <span class="chip">site <b>200</b> no domínio</span>
       <span class="chip chip--progress" data-recap-progress hidden>0/0 vistos</span>
     </div>
   </header>
 
   <section class="env">
-    <div class="env-card"><b>Site</b><code>muslimplus.faruk.dev.br</code> no ar · <code>muslimplus.com.br</code> em transição de DNS</div>
+    <div class="env-card"><b>Site</b><code>muslimplus.com.br</code> no ar com HTTPS · <code>www</code> redireciona</div>
     <div class="env-card"><b>Instagram</b><code>@muslimplus.com.br</code> · 5 posts · link no perfil</div>
     <div class="env-card"><b>App</b>1.2.0 · interno e produção no Google Play</div>
   </section>
@@ -344,7 +344,7 @@
     </article>
 
     <article class="topic" data-topic-id="site-vps">
-      <span class="status">No ar no subdomínio</span>
+      <span class="status">No ar</span>
       <h2>Site novo na VPS</h2>
       <div class="blocks">
         <div class="block"><b>Pedido</b><p>Fazer um site e publicar na sua VPS, no domínio muslimplus.com.br.</p></div>
@@ -352,8 +352,8 @@
           <ul class="clean">
             <li>Landing com hero, seis recursos, prints reais, privacidade, FAQ e CTA.</li>
             <li>Publicado em <code>/opt/muslimplus</code> na VPS; Caddy com bloco para o .com.br.</li>
-            <li><code>https://muslimplus.faruk.dev.br/</code> responde 200, com imagens e privacidade.</li>
-            <li>A zona DNS do .com.br foi salva (A apex e www → 92.112.177.249), mas o Registro.br está em transição de nameservers.</li>
+            <li><code>https://muslimplus.com.br/</code> responde 200, com imagens e privacidade.</li>
+            <li><code>www.muslimplus.com.br</code> redireciona 301 para o apex; certificados emitidos pelo Caddy.</li>
           </ul>
         </div>
       </div>
@@ -371,13 +371,12 @@
           <ul class="clean">
             <li>181 testes JVM, 30 E2E, lint e build verdes; AAB assinado.</li>
             <li>Play 1.2.0 em interno e produção.</li>
-            <li>Site 200 no subdomínio; Instagram com 5 posts e link no perfil.</li>
+            <li>Site 200 no domínio; Instagram com 5 posts e link no perfil.</li>
           </ul>
         </div>
         <div class="block"><b>Pendente</b>
           <ul class="clean">
             <li>Excluir a conta @muslimplus.app.br: os posts já saíram e a bio aponta para o .com.br, mas a exclusão pede a senha do centro.</li>
-            <li>Aguardar a transição de DNS do muslimplus.com.br (~1h48). O Caddy emite o certificado sozinho.</li>
             <li>Trocar a URL de privacidade do app para o .com.br na próxima versão (hoje aponta para o subdomínio).</li>
           </ul>
         </div>
@@ -389,7 +388,7 @@
     <h2>Ações suas</h2>
     <ul>
       <li><b>Apagar o .app:</b> troque para @muslimplus.app.br no app → Configurações → Conta → Excluir conta. Ou me passe a senha atual do centro que eu concluo.</li>
-      <li><b>Conferir o domínio:</b> quando o Registro.br terminar a transição, abra <code>https://muslimplus.com.br</code>. O Caddy já está configurado.</li>
+      <li><b>Conferir o domínio:</b> abra <code>https://muslimplus.com.br</code>. Apex e www já estão com HTTPS; o www redireciona para o apex.</li>
     </ul>
   </section>
 
