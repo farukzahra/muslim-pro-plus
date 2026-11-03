@@ -39,8 +39,8 @@ android {
         applicationId = "com.farukzahra.muslimplus"
         minSdk = 26
         targetSdk = 36
-        versionCode = 10
-        versionName = "1.4.0"
+        versionCode = 11
+        versionName = "1.4.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -125,6 +125,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons.core)
+implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)

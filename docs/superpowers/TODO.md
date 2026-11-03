@@ -186,3 +186,11 @@ Instagram.
 
 Decisões de 03/11/2026: alarme completo e repetição por dia entraram na 1.4.0;
 o comparativo só depois do recurso existir; a conta @muslimplus.app.br fica como está.
+
+## Ícones da barra inferior — 04/11/2026
+
+Pedido: usar os ícones do Muslim Pro para Alcorão, Qibla e afins. Os arquivos
+deles são desenho próprio e seguem protegidos, mesmo com o app gratuito, então
+não foram copiados. Decisão: trocar os quatro vetores caseiros pelos do conjunto
+**Material Symbols** (Apache 2.0), que cobre os mesmos símbolos e espelha o livro
+no árabe. Feito na 1.4.1 (versionCode 11).

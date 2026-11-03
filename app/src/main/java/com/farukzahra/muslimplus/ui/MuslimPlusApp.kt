@@ -1,4 +1,4 @@
-package com.farukzahra.muslimplus.ui
+﻿package com.farukzahra.muslimplus.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,7 +21,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.MenuBook
+import androidx.compose.material.icons.outlined.Explore
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.MoreHoriz
+import androidx.compose.material.icons.outlined.Mosque
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
@@ -102,7 +108,7 @@ fun MuslimPlusApp(
                             },
                             icon = {
                                 Icon(
-                                    painter = painterResource(iconRes(tab)),
+                                    imageVector = iconFor(tab),
                                     contentDescription = null,
                                 )
                             },
@@ -244,10 +250,11 @@ fun MuslimPlusApp(
 }
 }
 
-private fun iconRes(tab: Tab): Int = when (tab) {
-    Tab.TODAY -> R.drawable.tab_today
-    Tab.PRAYERS -> R.drawable.tab_prayers
-    Tab.QURAN -> R.drawable.tab_quran
-    Tab.QIBLA -> R.drawable.tab_qibla
-    Tab.MORE -> R.drawable.tab_more
+private fun iconFor(tab: Tab): ImageVector = when (tab) {
+    Tab.TODAY -> Icons.Outlined.Home
+    Tab.PRAYERS -> Icons.Outlined.Mosque
+    Tab.QURAN -> Icons.AutoMirrored.Outlined.MenuBook
+    Tab.QIBLA -> Icons.Outlined.Explore
+    Tab.MORE -> Icons.Outlined.MoreHoriz
 }
+
