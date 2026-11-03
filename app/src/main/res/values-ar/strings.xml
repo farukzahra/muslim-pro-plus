@@ -250,7 +250,7 @@
     <string name="today_mark_all">تحديد الكل</string>
     <string name="today_mark_prayer">تحديد %1$s كصلاة أدّيتها</string>
     <string name="today_unmark_prayer">إلغاء تحديد %1$s</string>
-    <string name="today_tracker_hint">اضغط على الصلاة لتحديد أنك أدّيتها. الجرس لإيقاف الأذان أو تشغيله فقط.</string>
+    <string name="today_tracker_hint">اضغط على الصلاة لتسجيلها. يفتح الجرس إعدادات الأذان لتلك الصلاة.</string>
     <string name="today_adhan_mute">إيقاف أذان %1$s</string>
     <string name="today_adhan_unmute">تشغيل أذان %1$s</string>
 
@@ -307,6 +307,26 @@
     <string name="adhan_reminder_off">إيقاف</string>
     <string name="adhan_reminder_minutes">%1$d دقيقة</string>
     <string name="notification_reminder">%1$s بعد %2$d دقيقة</string>
+
+    <!-- الأذان لكل صلاة (03/11/2026) -->
+    <string name="prayer_adhan_sheet_title">إعدادات الأذان لصلاة %1$s</string>
+    <string name="prayer_adhan_notify">تنبيه</string>
+    <string name="prayer_adhan_notify_hint">إظهار تنبيه هذه الصلاة</string>
+    <string name="prayer_adhan_alarm">منبه كامل</string>
+    <string name="prayer_adhan_alarm_hint">يعمل حتى في الوضع الصامت وبمستوى صوت المنبه</string>
+    <string name="prayer_adhan_repeats">التكرار</string>
+    <string name="prayer_adhan_repeats_all">كل يوم</string>
+    <string name="prayer_adhan_sound_row">صوت التنبيه</string>
+    <string name="prayer_adhan_reminder_row">تذكير قبل الأذان</string>
+    <string name="prayer_adhan_use_default_sound">استخدام الافتراضي (%1$s)</string>
+    <string name="prayer_adhan_use_default_reminder">استخدام الافتراضي (%1$s)</string>
+    <string name="prayer_adhan_inherits_default">افتراضي</string>
+    <string name="prayer_adhan_off">إيقاف</string>
+    <string name="prayer_adhan_save">حفظ</string>
+    <string name="prayer_adhan_close">إغلاق</string>
+    <string name="prayer_adhan_open">إعدادات الأذان لصلاة %1$s</string>
+    <string name="adhan_per_prayer_hint">يمكن لكل صلاة أن يكون لها صوتها وتذكيرها وأيامها.</string>
+    <string name="adhan_per_prayer_open">الإعداد لكل صلاة</string>
 
     <!-- القبلة: الدقة والمساعدة (31/10/2026) -->
     <string name="qibla_interference">تداخل مغناطيسي. ابتعد عن المعادن وارسم رقم 8.</string>

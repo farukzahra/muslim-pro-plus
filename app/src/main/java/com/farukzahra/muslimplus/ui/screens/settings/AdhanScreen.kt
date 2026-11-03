@@ -67,6 +67,7 @@ import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.notifications.PrayerScheduler
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerReminder
+import com.farukzahra.muslimplus.ui.screens.today.PrayerAdhanSheetHost
 import kotlinx.coroutines.launch
 
 private enum class SoundSheet { Default, Fajr }
@@ -96,6 +97,7 @@ fun AdhanScreen(onBack: () -> Unit) {
     val fajrSound = AdhanSound.findFajr(fajrId)
 
     var sheet by remember { mutableStateOf<SoundSheet?>(null) }
+    var perPrayer by remember { mutableStateOf<Prayer?>(null) }
     var player by remember { mutableStateOf<MediaPlayer?>(null) }
     var playingId by remember { mutableStateOf<String?>(null) }
 
@@ -203,6 +205,19 @@ fun AdhanScreen(onBack: () -> Unit) {
                         modifier = Modifier.testTag("adhan_${prayer.name.lowercase()}"),
                     )
                 }
+            }
+
+            Text(
+                text = stringResource(R.string.adhan_per_prayer_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 8.dp),
+            )
+            TextButton(
+                onClick = { perPrayer = prayers.minByOrNull { it.ordinal } ?: Prayer.FAJR },
+                modifier = Modifier.testTag("adhan_per_prayer"),
+            ) {
+                Text(stringResource(R.string.adhan_per_prayer_open))
             }
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
@@ -404,6 +419,10 @@ fun AdhanScreen(onBack: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }
+    }
+
+    perPrayer?.let { prayer ->
+        PrayerAdhanSheetHost(prayer = prayer, onDismiss = { perPrayer = null })
     }
 }
 

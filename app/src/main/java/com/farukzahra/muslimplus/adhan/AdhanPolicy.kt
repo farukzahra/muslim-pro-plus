@@ -1,6 +1,7 @@
 package com.farukzahra.muslimplus.adhan
 
 import com.farukzahra.muslimplus.prayer.Prayer
+import java.time.DayOfWeek
 
 /** Estado do toque do aparelho, sem depender de android.media. */
 enum class RingerState { Silent, Vibrate, Normal }
@@ -37,10 +38,27 @@ object AdhanPolicy {
         enabled: Set<Prayer>,
         respectSilent: Boolean,
         ringer: RingerState,
+        alarm: Boolean = false,
+        allowedDays: Set<DayOfWeek>? = null,
+        day: DayOfWeek? = null,
     ): Boolean {
         if (prayer !in eligible || prayer !in enabled) return false
-        return !respectSilent || ringer == RingerState.Normal
+        if (allowedDays != null && day != null && day !in allowedDays) return false
+        // Alarme completo por oração vence o "respeitar silencioso".
+        return alarm || !respectSilent || ringer == RingerState.Normal
     }
+
+    /**
+     * Voz efetiva da oração: a exceção dela quando existe e é válida, senão a
+     * regra global com a exceção do Fajr.
+     */
+    fun resolveFor(
+        prayer: Prayer,
+        global: AdhanSound,
+        fajr: AdhanSound,
+        fajrOverride: Boolean,
+        overrides: Map<Prayer, AdhanSound>,
+    ): AdhanSound = overrides[prayer] ?: resolve(prayer, global, fajr, fajrOverride)
 
     /**
      * O Fajr usa a gravacao propria quando o override esta ligado. As outras

@@ -5,7 +5,9 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import com.farukzahra.muslimplus.ServiceLocator
+import com.farukzahra.muslimplus.adhan.AdhanPolicy
 import com.farukzahra.muslimplus.prayer.NextPrayerResolver
+import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerMethod
 import com.farukzahra.muslimplus.prayer.PrayerReminder
 import java.time.Instant
@@ -31,8 +33,12 @@ class PrayerScheduler(private val context: Context) {
         val settings = ServiceLocator.settings
         val notifications = settings.notificationsEnabled.first()
         val hasAdhan = settings.adhanPrayers.first().isNotEmpty()
-        val reminderMinutes = settings.adhanReminderMinutes.first()
-        val wantsReminder = !PrayerReminder.isOff(reminderMinutes)
+        val globalMinutes = settings.adhanReminderMinutes.first()
+        val minuteOverrides = settings.adhanRemindersByPrayer.first()
+        val minutesFor = { prayer: Prayer ->
+            PrayerReminder.minutesFor(prayer, globalMinutes, minuteOverrides)
+        }
+        val wantsReminder = AdhanPolicy.eligible.any { !PrayerReminder.isOff(minutesFor(it)) }
         if (!notifications && !hasAdhan && !wantsReminder) {
             cancel()
             return
@@ -51,12 +57,19 @@ class PrayerScheduler(private val context: Context) {
         }
 
         val reminder = if (wantsReminder) {
-            PrayerReminder.next(Instant.now(), city, method, offsets, reminderMinutes)
+            PrayerReminder.next(Instant.now(), city, method, offsets, minutesFor)
         } else {
             null
         }
         if (reminder != null) {
-            setAlarm(reminder.at.toEpochMilli(), pendingIntent(reminder.prayer, reminder = true))
+            setAlarm(
+                reminder.at.toEpochMilli(),
+                pendingIntent(
+                    reminder.prayer,
+                    reminder = true,
+                    minutes = minutesFor(reminder.prayer),
+                ),
+            )
         } else {
             cancelReminder()
         }
@@ -87,12 +100,14 @@ class PrayerScheduler(private val context: Context) {
     }
 
     private fun pendingIntent(
-        prayer: com.farukzahra.muslimplus.prayer.Prayer?,
+        prayer: Prayer?,
         reminder: Boolean,
+        minutes: Int = -1,
     ): PendingIntent {
         val intent = Intent(context, PrayerReceiver::class.java)
         if (prayer != null) intent.putExtra(EXTRA_PRAYER, prayer.name)
         intent.putExtra(EXTRA_REMINDER, reminder)
+        if (minutes >= 0) intent.putExtra(EXTRA_REMINDER_MINUTES, minutes)
         return PendingIntent.getBroadcast(
             context,
             if (reminder) REMINDER_REQUEST_CODE else PRAYER_REQUEST_CODE,
@@ -104,6 +119,7 @@ class PrayerScheduler(private val context: Context) {
     companion object {
         const val EXTRA_PRAYER = "prayer"
         const val EXTRA_REMINDER = "reminder"
+        const val EXTRA_REMINDER_MINUTES = "reminder_minutes"
         const val PRAYER_REQUEST_CODE = 1001
         const val REMINDER_REQUEST_CODE = 1002
     }

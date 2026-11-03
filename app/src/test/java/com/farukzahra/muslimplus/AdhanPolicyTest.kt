@@ -4,6 +4,7 @@ import com.farukzahra.muslimplus.adhan.AdhanPolicy
 import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.adhan.RingerState
 import com.farukzahra.muslimplus.prayer.Prayer
+import java.time.DayOfWeek
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -75,6 +76,82 @@ class AdhanPolicyTest {
         assertEquals(fajr, AdhanPolicy.resolve(Prayer.FAJR, global, fajr, true))
         assertEquals(global, AdhanPolicy.resolve(Prayer.DHUHR, global, fajr, true))
         assertEquals(global, AdhanPolicy.resolve(Prayer.FAJR, global, fajr, false))
+    }
+
+    @Test
+    fun perPrayerOverrideWinsOverTheGlobalDefault() {
+        val overrides = mapOf(Prayer.MAGHRIB to AdhanSound.MAKKAH_MULLA)
+        assertEquals(
+            AdhanSound.MAKKAH_MULLA,
+            AdhanPolicy.resolveFor(
+                Prayer.MAGHRIB, AdhanSound.CLASSIC, AdhanSound.defaultFajr, true, overrides,
+            ),
+        )
+        assertEquals(
+            AdhanSound.CLASSIC,
+            AdhanPolicy.resolveFor(
+                Prayer.ASR, AdhanSound.CLASSIC, AdhanSound.defaultFajr, true, overrides,
+            ),
+        )
+    }
+
+    @Test
+    fun fajrOverrideStillWinsWhenThereIsNoExplicitEntry() {
+        assertEquals(
+            AdhanSound.FAJR_MAKKAH,
+            AdhanPolicy.resolveFor(
+                Prayer.FAJR,
+                AdhanSound.CLASSIC,
+                AdhanSound.FAJR_MAKKAH,
+                true,
+                emptyMap(),
+            ),
+        )
+    }
+
+    @Test
+    fun fullAlarmIgnoresSilentAndVibrate() {
+        val enabled = AdhanPolicy.defaultEnabled
+        assertTrue(
+            AdhanPolicy.shouldPlay(
+                Prayer.FAJR, enabled, respectSilent = true, RingerState.Silent, alarm = true,
+            ),
+        )
+        assertFalse(
+            AdhanPolicy.shouldPlay(
+                Prayer.FAJR, enabled, respectSilent = true, RingerState.Silent, alarm = false,
+            ),
+        )
+    }
+
+    @Test
+    fun prayerDoesNotPlayOnADayItDoesNotRepeat() {
+        val enabled = AdhanPolicy.defaultEnabled
+        val weekdays = setOf(
+            DayOfWeek.MONDAY,
+            DayOfWeek.TUESDAY,
+            DayOfWeek.WEDNESDAY,
+            DayOfWeek.THURSDAY,
+            DayOfWeek.FRIDAY,
+        )
+        assertTrue(
+            AdhanPolicy.shouldPlay(
+                Prayer.DHUHR, enabled, false, RingerState.Normal,
+                allowedDays = weekdays, day = DayOfWeek.MONDAY,
+            ),
+        )
+        assertFalse(
+            AdhanPolicy.shouldPlay(
+                Prayer.DHUHR, enabled, false, RingerState.Normal,
+                allowedDays = weekdays, day = DayOfWeek.SATURDAY,
+            ),
+        )
+        assertTrue(
+            AdhanPolicy.shouldPlay(
+                Prayer.DHUHR, enabled, false, RingerState.Normal,
+                allowedDays = null, day = DayOfWeek.SATURDAY,
+            ),
+        )
     }
 
     @Test

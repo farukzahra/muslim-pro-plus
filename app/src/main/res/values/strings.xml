@@ -250,7 +250,7 @@
     <string name="today_mark_all">Mark all</string>
     <string name="today_mark_prayer">Mark %1$s as prayed</string>
     <string name="today_unmark_prayer">Unmark %1$s</string>
-    <string name="today_tracker_hint">Tap a prayer to mark it as prayed. The bell only turns the call on or off.</string>
+    <string name="today_tracker_hint">Tap a prayer to mark it as prayed. The bell opens the call settings for that prayer.</string>
     <string name="today_adhan_mute">Turn off the call for %1$s</string>
     <string name="today_adhan_unmute">Turn on the call for %1$s</string>
 
@@ -307,6 +307,26 @@
     <string name="adhan_reminder_off">Off</string>
     <string name="adhan_reminder_minutes">%1$d min</string>
     <string name="notification_reminder">%1$s in %2$d minutes</string>
+
+    <!-- Adhan per prayer (03/11/2026) -->
+    <string name="prayer_adhan_sheet_title">%1$s notification settings</string>
+    <string name="prayer_adhan_notify">Notify</string>
+    <string name="prayer_adhan_notify_hint">Show the notification for this prayer</string>
+    <string name="prayer_adhan_alarm">Full alarm</string>
+    <string name="prayer_adhan_alarm_hint">Plays even in silent mode, at alarm volume</string>
+    <string name="prayer_adhan_repeats">Repeats</string>
+    <string name="prayer_adhan_repeats_all">Every day</string>
+    <string name="prayer_adhan_sound_row">Notification sound</string>
+    <string name="prayer_adhan_reminder_row">Pre-adhan reminder</string>
+    <string name="prayer_adhan_use_default_sound">Use default (%1$s)</string>
+    <string name="prayer_adhan_use_default_reminder">Use default (%1$s)</string>
+    <string name="prayer_adhan_inherits_default">Default</string>
+    <string name="prayer_adhan_off">Off</string>
+    <string name="prayer_adhan_save">Save</string>
+    <string name="prayer_adhan_close">Close</string>
+    <string name="prayer_adhan_open">Adhan settings for %1$s</string>
+    <string name="adhan_per_prayer_hint">Each prayer can use its own sound, reminder and days.</string>
+    <string name="adhan_per_prayer_open">Set per prayer</string>
 
     <!-- Qibla: precisão e ajuda (31/10/2026) -->
     <string name="qibla_interference">Magnetic interference. Move away from metal and draw a figure-8.</string>

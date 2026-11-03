@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import com.farukzahra.muslimplus.R
+import com.farukzahra.muslimplus.prayer.Prayer
 
 /**
  * Pais de origem da gravacao. A bandeira entra como PNG pequeno em
@@ -239,5 +240,12 @@ enum class AdhanSound(
         /** Id desconhecido ou de voz comum cai no padrao do Fajr. */
         fun findFajr(id: String?): AdhanSound =
             entries.find { it.id == id && it.fajrOnly } ?: defaultFajr
+
+        /**
+         * Voz válida para [prayer], ou `null` quando o id não existe, é de
+         * outra oração ou o grupo está trocado (tathwib fora do Fajr).
+         */
+        fun findFor(prayer: Prayer, id: String?): AdhanSound? =
+            entries.find { it.id == id && it.fajrOnly == (prayer == Prayer.FAJR) }
     }
 }

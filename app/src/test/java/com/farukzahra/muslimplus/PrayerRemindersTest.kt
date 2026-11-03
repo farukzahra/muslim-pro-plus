@@ -80,4 +80,43 @@ class PrayerRemindersTest {
         assertEquals(Prayer.FAJR, reminder?.prayer)
         assertEquals(date.plusDays(1), reminder!!.at.atZone(zone).toLocalDate())
     }
+
+    @Test
+    fun minutesPerPrayerOverrideTheGlobalValue() {
+        val overrides = mapOf(Prayer.FAJR to 30, Prayer.ISHA to PrayerReminder.OFF)
+        assertEquals(30, PrayerReminder.minutesFor(Prayer.FAJR, 5, overrides))
+        assertEquals(PrayerReminder.OFF, PrayerReminder.minutesFor(Prayer.ISHA, 5, overrides))
+        assertEquals(5, PrayerReminder.minutesFor(Prayer.DHUHR, 5, overrides))
+        assertEquals(
+            PrayerReminder.OFF,
+            PrayerReminder.minutesFor(Prayer.DHUHR, 5, mapOf(Prayer.DHUHR to 7)),
+        )
+    }
+
+    @Test
+    fun nextUsesTheMinutesOfEachPrayer() {
+        val fajr = PrayerEngine.schedule(
+            date, city.latitude, city.longitude, zone, PrayerMethod.MWL, PrayerOffsets.defaults,
+        ).timeOf(Prayer.FAJR)!!
+        val minutes = { prayer: Prayer -> if (prayer == Prayer.FAJR) 10 else 0 }
+
+        val reminder = PrayerReminder.next(
+            fajr.minusSeconds(3_600), city, PrayerMethod.MWL, PrayerOffsets.defaults, minutes,
+        )
+
+        assertEquals(Prayer.FAJR, reminder?.prayer)
+        // O motor recalcula o horário a cada chamada; diferenças de milissegundos
+        // fazem 599,998 s virarem 9 minutos inteiros. Compara com folga.
+        val gap = Duration.between(reminder!!.at, fajr).seconds
+        assertTrue("gap=$gap", gap in 598L..602L)
+    }
+
+    @Test
+    fun prayersTurnedOffDoNotProduceAReminder() {
+        assertNull(
+            PrayerReminder.next(
+                at(4, 0), city, PrayerMethod.MWL, PrayerOffsets.defaults, { PrayerReminder.OFF },
+            ),
+        )
+    }
 }

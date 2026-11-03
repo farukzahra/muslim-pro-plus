@@ -92,6 +92,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
     val locale = LocalConfiguration.current.locales[0]
     val showDailyVerse by ServiceLocator.settings.dailyVerseVisible.collectAsState(initial = true)
     val scope = rememberCoroutineScope()
+    var adhanSheetPrayer by remember { mutableStateOf<Prayer?>(null) }
 
     // Permissao de alarme exato pode ter mudado nas configuracoes do sistema.
     LifecycleResumeEffect(viewModel) {
@@ -165,9 +166,13 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
             done = state.done,
             adhanPrayers = state.adhanPrayers,
             onTogglePrayer = viewModel::togglePrayer,
-            onToggleAdhan = viewModel::toggleAdhan,
+            onOpenAdhan = { adhanSheetPrayer = it },
         )
         Spacer(Modifier.height(12.dp))
+    }
+
+    adhanSheetPrayer?.let { prayer ->
+        PrayerAdhanSheetHost(prayer = prayer, onDismiss = { adhanSheetPrayer = null })
     }
 }
 
@@ -591,7 +596,7 @@ private fun PrayerList(
     done: Set<Prayer>,
     adhanPrayers: Set<Prayer>,
     onTogglePrayer: (Prayer) -> Unit,
-    onToggleAdhan: (Prayer) -> Unit,
+    onOpenAdhan: (Prayer) -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -712,7 +717,7 @@ private fun PrayerList(
                 )
                 if (trackable) {
                     IconButton(
-                        onClick = { onToggleAdhan(prayer) },
+                        onClick = { onOpenAdhan(prayer) },
                         modifier = Modifier
                             .size(40.dp)
                             .testTag("prayer_bell_${prayer.name.lowercase()}"),
@@ -722,7 +727,7 @@ private fun PrayerList(
                                 if (adhanOn) R.drawable.ic_bell else R.drawable.ic_bell_off,
                             ),
                             contentDescription = stringResource(
-                                if (adhanOn) R.string.today_adhan_mute else R.string.today_adhan_unmute,
+                                R.string.prayer_adhan_open,
                                 stringResource(prayerLabel(prayer)),
                             ),
                             tint = if (adhanOn) scheme.primary else scheme.onSurfaceVariant.copy(alpha = 0.5f),

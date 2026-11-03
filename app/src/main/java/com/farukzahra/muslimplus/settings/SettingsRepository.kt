@@ -8,12 +8,14 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.farukzahra.muslimplus.adhan.AdhanMigrationPlan
+import com.farukzahra.muslimplus.adhan.AdhanOverrides
 import com.farukzahra.muslimplus.adhan.AdhanPolicy
 import com.farukzahra.muslimplus.adhan.AdhanSound
 import com.farukzahra.muslimplus.location.CityCatalog
 import com.farukzahra.muslimplus.prayer.Prayer
 import com.farukzahra.muslimplus.prayer.PrayerOffsets
 import com.farukzahra.muslimplus.prayer.PrayerReminder
+import java.time.DayOfWeek
 import java.time.ZoneId
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -42,6 +44,10 @@ class SettingsRepository(
     private val adhanFajrNoticeKey = booleanPreferencesKey("adhan_fajr_migration_notice")
     private val adhanRespectSilentKey = booleanPreferencesKey("adhan_respect_silent")
     private val adhanReminderKey = intPreferencesKey("adhan_reminder_minutes")
+    private val adhanSoundByPrayerKey = stringPreferencesKey("adhan_sound_by_prayer")
+    private val adhanReminderByPrayerKey = stringPreferencesKey("adhan_reminder_by_prayer")
+    private val adhanAlarmByPrayerKey = stringPreferencesKey("adhan_alarm_by_prayer")
+    private val adhanRepeatsByPrayerKey = stringPreferencesKey("adhan_repeats_by_prayer")
     private val quranSetupDoneKey = booleanPreferencesKey("quran_setup_done")
     private val quranGoalMinutesKey = intPreferencesKey("quran_goal_minutes")
     private val readerThemeKey = stringPreferencesKey("reader_theme")
@@ -96,6 +102,16 @@ class SettingsRepository(
         context.dataStore.data.map { preferences ->
             PrayerReminder.sanitize(preferences[adhanReminderKey])
         }
+
+    /** Exceções por oração; ausência da oração = herda o global. */
+    val adhanSoundsByPrayer: Flow<Map<Prayer, AdhanSound>> =
+        context.dataStore.data.map { AdhanOverrides.decodeSounds(it[adhanSoundByPrayerKey]) }
+    val adhanRemindersByPrayer: Flow<Map<Prayer, Int>> =
+        context.dataStore.data.map { AdhanOverrides.decodeReminders(it[adhanReminderByPrayerKey]) }
+    val adhanAlarmByPrayer: Flow<Set<Prayer>> =
+        context.dataStore.data.map { AdhanOverrides.decodeAlarm(it[adhanAlarmByPrayerKey]) }
+    val adhanRepeatsByPrayer: Flow<Map<Prayer, Set<DayOfWeek>>> =
+        context.dataStore.data.map { AdhanOverrides.decodeRepeats(it[adhanRepeatsByPrayerKey]) }
 
     /** `null` = wizard do Alcorão ainda não foi visto nem pulado. */
     val quranSetupDone: Flow<Boolean?> =
@@ -192,6 +208,30 @@ class SettingsRepository(
 
     suspend fun setAdhanReminderMinutes(minutes: Int) {
         context.dataStore.edit { it[adhanReminderKey] = PrayerReminder.sanitize(minutes) }
+    }
+
+    suspend fun setAdhanSoundsByPrayer(overrides: Map<Prayer, AdhanSound>) {
+        context.dataStore.edit {
+            it[adhanSoundByPrayerKey] = AdhanOverrides.encodeSounds(overrides)
+        }
+    }
+
+    suspend fun setAdhanRemindersByPrayer(overrides: Map<Prayer, Int>) {
+        context.dataStore.edit {
+            it[adhanReminderByPrayerKey] = AdhanOverrides.encodeReminders(overrides)
+        }
+    }
+
+    suspend fun setAdhanAlarmByPrayer(prayers: Set<Prayer>) {
+        context.dataStore.edit {
+            it[adhanAlarmByPrayerKey] = AdhanOverrides.encodeAlarm(prayers)
+        }
+    }
+
+    suspend fun setAdhanRepeatsByPrayer(overrides: Map<Prayer, Set<DayOfWeek>>) {
+        context.dataStore.edit {
+            it[adhanRepeatsByPrayerKey] = AdhanOverrides.encodeRepeats(overrides)
+        }
     }
 
     /** Grava a conclusão tanto no "Começar" quanto no "Pular" do wizard. */

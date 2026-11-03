@@ -250,7 +250,7 @@
     <string name="today_mark_all">Marcar todas</string>
     <string name="today_mark_prayer">Marcar %1$s como rezada</string>
     <string name="today_unmark_prayer">Desmarcar %1$s</string>
-    <string name="today_tracker_hint">Toque na oração para marcar que rezou. O sino só liga ou desliga o chamado.</string>
+    <string name="today_tracker_hint">Toque na oração para marcar que rezou. O sino abre os ajustes do chamado daquela oração.</string>
     <string name="today_adhan_mute">Desligar o chamado de %1$s</string>
     <string name="today_adhan_unmute">Ligar o chamado de %1$s</string>
 
@@ -307,6 +307,26 @@
     <string name="adhan_reminder_off">Desligado</string>
     <string name="adhan_reminder_minutes">%1$d min</string>
     <string name="notification_reminder">%1$s em %2$d minutos</string>
+
+    <!-- Adhan por oração (03/11/2026) -->
+    <string name="prayer_adhan_sheet_title">Aviso de %1$s</string>
+    <string name="prayer_adhan_notify">Notificar</string>
+    <string name="prayer_adhan_notify_hint">Mostrar a notificação desta oração</string>
+    <string name="prayer_adhan_alarm">Alarme completo</string>
+    <string name="prayer_adhan_alarm_hint">Toca mesmo no modo silencioso, no volume de alarme</string>
+    <string name="prayer_adhan_repeats">Repetir</string>
+    <string name="prayer_adhan_repeats_all">Todos os dias</string>
+    <string name="prayer_adhan_sound_row">Som da notificação</string>
+    <string name="prayer_adhan_reminder_row">Lembrete antes do adhan</string>
+    <string name="prayer_adhan_use_default_sound">Usar padrão (%1$s)</string>
+    <string name="prayer_adhan_use_default_reminder">Usar padrão (%1$s)</string>
+    <string name="prayer_adhan_inherits_default">Padrão</string>
+    <string name="prayer_adhan_off">Desligado</string>
+    <string name="prayer_adhan_save">Salvar</string>
+    <string name="prayer_adhan_close">Fechar</string>
+    <string name="prayer_adhan_open">Ajustes do adhan de %1$s</string>
+    <string name="adhan_per_prayer_hint">Cada oração pode ter som, lembrete e dias próprios.</string>
+    <string name="adhan_per_prayer_open">Ajustar por oração</string>
 
     <!-- Qibla: precisão e ajuda (31/10/2026) -->
     <string name="qibla_interference">Interferência magnética. Afaste-se de metal e faça um 8 no ar.</string>

@@ -86,22 +86,6 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch { prayerLog.setAll(current.date, done = true) }
     }
 
-    /**
-     * Liga/desliga o adhan daquela oração na própria linha do Hoje. É a mesma
-     * preferência usada pelo agendador, então o sino e a tela de Chamado nunca
-     * divergem. Reagenda porque o alarme pode não existir quando o adhan era o
-     * único motivo de agendar.
-     */
-    fun toggleAdhan(prayer: Prayer) {
-        if (prayer !in com.farukzahra.muslimplus.adhan.AdhanPolicy.eligible) return
-        val current = _state.value?.adhanPrayers ?: return
-        val next = if (prayer in current) current - prayer else current + prayer
-        viewModelScope.launch {
-            settings.setAdhanPrayers(next)
-            PrayerScheduler(getApplication()).reschedule()
-        }
-    }
-
     init {
         viewModelScope.launch {
             val configFlow = combine(

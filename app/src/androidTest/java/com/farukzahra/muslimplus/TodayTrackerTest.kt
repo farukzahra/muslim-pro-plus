@@ -73,13 +73,25 @@ class TodayTrackerTest {
                 runBlocking { log.days.first()[today].orEmpty() },
             )
 
-            // O sino desliga e religa a mesma preferência usada pelo agendador.
+            // O sino abre a sheet por oração; desligar Notificar e salvar
+            // desliga a mesma preferência usada pelo agendador.
             compose.onNodeWithTag("prayer_bell_isha").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithTag("prayer_adhan_notify").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithTag("prayer_adhan_notify").performClick()
+            compose.onNodeWithTag("prayer_adhan_save").performClick()
             compose.waitUntil(5_000) {
                 runBlocking { Prayer.ISHA !in settings.adhanPrayers.first() }
             }
             assertTrue(runBlocking { Prayer.ISHA !in settings.adhanPrayers.first() })
-            compose.onNodeWithTag("prayer_bell_isha").performClick()
+
+            compose.onNodeWithTag("prayer_bell_isha").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithTag("prayer_adhan_notify").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithTag("prayer_adhan_notify").performClick()
+            compose.onNodeWithTag("prayer_adhan_save").performClick()
             compose.waitUntil(5_000) {
                 runBlocking { Prayer.ISHA in settings.adhanPrayers.first() }
             }
