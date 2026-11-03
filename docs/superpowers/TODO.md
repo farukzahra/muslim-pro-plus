@@ -177,12 +177,12 @@ Instagram.
 | --- | --- |
 | Captura da sheet por oração e da lista de sons no 17.10.1 | Feito em 02/11/2026 |
 | Pesquisa em `docs/research/2026-11-02-muslim-pro-paid-features.md` | Feito |
-| Spec `specs/2026-11-02-per-prayer-adhan.md` | Escrito, aguardando aprovação |
-| Plano `plans/2026-11-02-per-prayer-adhan.md` | Escrito, aguardando aprovação |
-| Implementação: som e lembrete por oração | Bloqueada até o spec ser aprovado |
+| Spec `specs/2026-11-02-per-prayer-adhan.md` | Aprovado e implementado em 03/11/2026 |
+| Plano `plans/2026-11-02-per-prayer-adhan.md` | Aprovado e implementado em 03/11/2026 |
+| Implementação: som, lembrete, alarme e repetição por oração | Feito em 03/11/2026 na 1.4.0; publicação aguarda autorização |
 | Comparativo no Instagram | Só depois da 1.4.0 instalada |
-| Excluir a conta @muslimplus.app.br | Pendente: precisa da senha atual do centro |
+| Excluir a conta @muslimplus.app.br | Decidido em 03/11/2026: fica aposentada como está |
 | `PRIVACY_URL` do app para muslimplus.com.br | Feito em 02/11/2026 |
 
-Decisões em aberto: alarme completo e repetição por dia ficam para a fase 2;
-publicar o comparativo so depois do recurso existir; exclusão do .app.
+Decisões de 03/11/2026: alarme completo e repetição por dia entraram na 1.4.0;
+o comparativo só depois do recurso existir; a conta @muslimplus.app.br fica como está.

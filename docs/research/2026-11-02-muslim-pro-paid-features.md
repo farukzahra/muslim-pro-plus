@@ -126,8 +126,8 @@ brasileira ou do Play Console antes de publicar qualquer número.
 | Preço | assinatura (a confirmar em BRL) | zero |
 | Anúncios | sim, e o Premium tira | nenhum |
 | Conta | obrigatória para o adhan pago | nenhuma |
-| Adhan por oração | sim, com som, alarme completo e repetição por dia | sim para ligar/desligar; som por oração entra na próxima versão |
-| Lembrete antes da oração | None/15/20/30 por oração | 5/10/15/30 global, por oração na próxima versão |
+| Adhan por oração | sim, com som, alarme completo e repetição por dia | sim, com som, alarme completo e repetição por dia desde a 1.4.0 |
+| Lembrete antes da oração | None/15/20/30 por oração | 5/10/15/30 por oração desde a 1.4.0 |
 | Alcorão offline | completo no Premium | completo, sempre |
 | Qibla | sim | sim, com calibração |
 | Coleta de dados | app declara coleta de local e dados pessoais | nenhum backend, sem analytics |
