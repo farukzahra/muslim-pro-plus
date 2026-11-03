@@ -12,6 +12,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.DarkMode
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Gavel
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.SystemUpdate
+import androidx.compose.material.icons.outlined.TextFields
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -23,8 +32,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
@@ -36,7 +45,7 @@ import com.farukzahra.muslimplus.update.UpdateCardState
 /** Os destinos da grade do Mais, na ordem em que aparecem. */
 private data class MoreItem(
     val labelRes: Int,
-    val iconRes: Int,
+    val icon: ImageVector,
     val onClick: () -> Unit,
     val supporting: String? = null,
     val testTag: String? = null,
@@ -65,24 +74,24 @@ fun MoreScreen(
 ) {
     var showDonate by remember { mutableStateOf(false) }
     val items = listOf(
-        MoreItem(R.string.more_settings, R.drawable.ic_more_settings, onSettingsClick),
-        MoreItem(R.string.more_language, R.drawable.ic_more_language, onLanguageClick),
+        MoreItem(R.string.more_settings, Icons.Outlined.Settings, onSettingsClick),
+        MoreItem(R.string.more_language, Icons.Outlined.Language, onLanguageClick),
         MoreItem(
             R.string.more_quran_display,
-            R.drawable.ic_more_quran_display,
+            Icons.Outlined.TextFields,
             onQuranDisplayClick,
         ),
-        MoreItem(R.string.more_theme, R.drawable.ic_more_theme, onThemeClick),
-        MoreItem(R.string.more_licenses, R.drawable.ic_more_licenses, onLicensesClick),
+        MoreItem(R.string.more_theme, Icons.Outlined.DarkMode, onThemeClick),
+        MoreItem(R.string.more_licenses, Icons.Outlined.Gavel, onLicensesClick),
         MoreItem(
             R.string.more_about,
-            R.drawable.ic_more_about,
+            Icons.Outlined.Info,
             onAboutClick,
             supporting = stringResource(R.string.about_version, BuildConfig.VERSION_NAME),
         ),
         MoreItem(
             R.string.more_updates,
-            R.drawable.ic_more_update,
+            Icons.Outlined.SystemUpdate,
             onClick = when (updateCard) {
                 UpdateCardState.Available -> onUpdateClick
                 UpdateCardState.ReadyToInstall -> onRestartClick
@@ -93,7 +102,7 @@ fun MoreScreen(
         ),
         MoreItem(
             R.string.more_donate,
-            R.drawable.ic_more_donate,
+            Icons.Outlined.Favorite,
             onClick = { showDonate = true },
             supporting = stringResource(R.string.donate_supporting),
             testTag = "more_donate",
@@ -154,7 +163,7 @@ private fun MoreCard(item: MoreItem) {
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Icon(
-                painter = painterResource(item.iconRes),
+                imageVector = item.icon,
                 contentDescription = label,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(26.dp),
