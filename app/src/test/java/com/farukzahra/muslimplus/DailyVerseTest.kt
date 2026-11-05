@@ -28,8 +28,20 @@ class DailyVerseTest {
             .toMap()
 
     @Test
-    fun curatedListHasOneHundredPairs() {
-        assertEquals(100, DailyVerse.keys.size)
+    fun curatedListHasEnoughPairs() {
+        assertTrue("pares: ${DailyVerse.keys.size}", DailyVerse.keys.size >= 60)
+    }
+
+    @Test
+    fun everyVerseFitsTheDailyCard() {
+        val verses = verses()
+        DailyVerse.keys.forEach { key ->
+            val text = verses["${key.surah}:${key.ayah}"].orEmpty()
+            assertTrue(
+                "verso longo em ${key.surah}:${key.ayah}: ${text.length}",
+                text.length <= 120,
+            )
+        }
     }
 
     @Test

@@ -9,11 +9,13 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.farukzahra.muslimplus.settings.LanguageRepository
 import java.util.Locale
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExternalResource
@@ -91,6 +93,16 @@ class AppNavigationTest {
         awaitText(ctx.getString(R.string.more_settings))
         // Compartilhar existe na grade; o clique abre o chooser do sistema.
         compose.onNodeWithTag("more_share").assertExists()
+        // Regra: o texto de apoio tem que caber dentro do cartão. Altura fixa
+        // cortava a segunda linha ("Mandar o link da Play Store").
+        listOf("more_share", "more_donate").forEach { tag ->
+            compose.onNodeWithTag(tag).performScrollTo()
+            val card = compose.onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
+            val support = compose.onNodeWithTag("${tag}_supporting", useUnmergedTree = true)
+                .fetchSemanticsNode().boundsInRoot
+            assertTrue("$tag corta o texto de apoio", support.bottom <= card.bottom)
+            assertTrue("$tag corta o texto de apoio na lateral", support.right <= card.right)
+        }
 
         // Volta para Hoje: a aba continua funcional depois de passar por todas.
         compose.onNodeWithText(ctx.getString(R.string.tab_today)).performClick()

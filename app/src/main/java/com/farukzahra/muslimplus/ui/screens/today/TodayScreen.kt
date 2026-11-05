@@ -581,6 +581,8 @@ private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit) {
                 fontSize = 20.sp,
                 lineHeight = 36.sp,
                 textAlign = TextAlign.Start,
+                maxLines = 8,
+                overflow = TextOverflow.Ellipsis,
                 style = TextStyle(
                     color = scheme.onSurface,
                     textDirection = TextDirection.Rtl,
@@ -608,7 +610,7 @@ private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit) {
                 .padding(top = 10.dp, bottom = 2.dp, end = 10.dp)
                 .testTag("daily_verse_divider"),
             thickness = 1.dp,
-            color = scheme.outline.copy(alpha = 0.5f),
+            color = scheme.onSurface.copy(alpha = 0.14f),
         )
         translations.forEach {
             Text(

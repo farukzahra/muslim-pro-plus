@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -40,6 +40,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.farukzahra.muslimplus.AppLinks
 import com.farukzahra.muslimplus.BuildConfig
@@ -169,7 +170,7 @@ private fun MoreCard(item: MoreItem) {
     val label = stringResource(item.labelRes)
     val cardModifier = Modifier
         .fillMaxWidth()
-        .height(124.dp)
+        .heightIn(min = 124.dp)
     Card(
         modifier = (if (item.testTag != null) cardModifier.testTag(item.testTag) else cardModifier)
             .clickable(role = Role.Button, onClick = item.onClick),
@@ -179,9 +180,9 @@ private fun MoreCard(item: MoreItem) {
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(14.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             Icon(
                 imageVector = item.icon,
@@ -195,13 +196,20 @@ private fun MoreCard(item: MoreItem) {
                     style = MaterialTheme.typography.titleMedium,
                     maxLines = 2,
                     textAlign = TextAlign.Start,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 item.supporting?.let { supporting ->
                     Text(
                         text = supporting,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = if (item.testTag != null) {
+                            Modifier.testTag("${item.testTag}_supporting")
+                        } else {
+                            Modifier
+                        },
                     )
                 }
             }
