@@ -41,6 +41,9 @@ class QuranReaderSettingsTest {
             settings.setReaderFont(ReaderFont.MEDIUM)
             settings.setReaderMode(ReaderMode.LIST)
             settings.setReaderKeepScreenOn(false)
+            // O leitor abre na última leitura; fixa 1:1 para não depender do
+            // estado deixado por outra sessão no mesmo emulador.
+            ServiceLocator.readerState.saveLastRead(1, 1)
         }
         compose.activityRule.scenario.recreate()
         val context = compose.activity

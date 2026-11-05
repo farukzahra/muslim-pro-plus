@@ -2,6 +2,8 @@ package com.farukzahra.muslimplus.location
 
 import android.content.Context
 import java.text.Normalizer
+import java.time.Instant
+import java.time.ZoneId
 import java.util.Locale
 import kotlin.math.asin
 import kotlin.math.cos
@@ -76,8 +78,19 @@ class CityCatalog(cities: List<City>) {
     }
 
     /** Maior cidade do fuso, para o padrao quando nao ha cidade salva. */
-    fun defaultForZone(zoneId: String): City? =
-        cities.filter { it.zoneId == zoneId }.maxByOrNull { it.population }
+    fun defaultForZone(zoneId: String): City? {
+        cities.filter { it.zoneId == zoneId }.maxByOrNull { it.population }?.let { return it }
+        // Fuso fora do catalogo (GMT de emulador, por exemplo): cai na maior
+        // cidade com o mesmo deslocamento atual, em vez da primeira da lista.
+        val zone = runCatching { ZoneId.of(zoneId) }.getOrNull() ?: return null
+        val offset = zone.rules.getOffset(Instant.now())
+        return cities
+            .filter { city ->
+                runCatching { ZoneId.of(city.zoneId).rules.getOffset(Instant.now()) }
+                    .getOrNull() == offset
+            }
+            .maxByOrNull { it.population }
+    }
 
     /**
      * Cidade mais proxima de uma coordenada (distancia haversine).

@@ -2,6 +2,7 @@ package com.farukzahra.muslimplus
 
 import com.farukzahra.muslimplus.location.CityCatalog
 import java.io.File
+import java.time.Instant
 import java.time.ZoneId
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -68,6 +69,16 @@ class CityCatalogTest {
     @Test
     fun zoneWithoutCitiesHasNoDefault() {
         assertNull(catalog.defaultForZone("Nowhere/Nothing"))
+    }
+
+    @Test
+    fun zoneOutsideTheCatalogFallsBackToTheSameOffset() {
+        // GMT de emulador: antes caía na primeira cidade (Shanghai, +8h).
+        val city = requireNotNull(catalog.defaultForZone("GMT"))
+        assertEquals(
+            ZoneId.of("GMT").rules.getOffset(Instant.now()),
+            ZoneId.of(city.zoneId).rules.getOffset(Instant.now()),
+        )
     }
 
     @Test

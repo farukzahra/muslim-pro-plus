@@ -8,7 +8,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -25,6 +24,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -81,6 +81,7 @@ import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.format.TextStyle as JavaTextStyle
+import java.time.temporal.ChronoField
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -103,13 +104,10 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
     val dateText = remember(state.date, locale) {
         state.date.format(DateTimeFormatter.ofPattern("EEEE, d MMMM", locale))
     }
-    val hijriText = remember(state.date, state.hijriOffset, locale) {
-        runCatching {
-            val hijri = HijrahDate.from(state.date.plusDays(state.hijriOffset.toLong()))
-            hijri.format(
-                DateTimeFormatter.ofPattern("d MMMM y", locale).withChronology(hijri.chronology),
-            )
-        }.getOrDefault("")
+    // Mês hijri vem dos nossos recursos: o ICU devolve "Jumada I" em inglês
+    // mesmo com o app em português, e a mistura de idioma quebrava a leitura.
+    val hijri = remember(state.date, state.hijriOffset) {
+        runCatching { HijrahDate.from(state.date.plusDays(state.hijriOffset.toLong())) }.getOrNull()
     }
 
     Column(
@@ -119,7 +117,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
     ) {
         Header(
             dateText = dateText.replaceFirstChar { it.titlecase(locale) },
-            hijriText = hijriText,
+            hijriText = hijri,
             city = state.city.name,
             next = state.next,
             nextAt = state.nextAt ?: state.tomorrowFajr,
@@ -179,7 +177,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
 @Composable
 private fun Header(
     dateText: String,
-    hijriText: String,
+    hijriText: HijrahDate?,
     city: String,
     next: Prayer?,
     nextAt: Instant?,
@@ -188,6 +186,14 @@ private fun Header(
     locale: Locale,
 ) {
     val scheme = MaterialTheme.colorScheme
+    val hijriLine = hijriText?.let { hijri ->
+        stringResource(
+            R.string.hijri_date,
+            hijri.get(ChronoField.DAY_OF_MONTH),
+            stringResource(hijriMonthLabel(hijri.get(ChronoField.MONTH_OF_YEAR))),
+            hijri.get(ChronoField.YEAR),
+        )
+    }.orEmpty()
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -200,11 +206,11 @@ private fun Header(
         Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 26.dp)) {
             Text(
                 text = dateText,
-                style = MaterialTheme.typography.labelLarge,
-                color = scheme.onSurfaceVariant,
+                style = MaterialTheme.typography.titleMedium,
+                color = scheme.onSurface,
             )
             Text(
-                text = stringResource(R.string.today_hijri_city, hijriText, city),
+                text = stringResource(R.string.today_hijri_city, hijriLine, city),
                 style = MaterialTheme.typography.bodyMedium,
                 color = scheme.onSurfaceVariant,
             )
@@ -248,6 +254,21 @@ private fun Header(
  * O botão "marcar todas" some quando o dia já está completo.
  */
 @Composable
+private fun hijriMonthLabel(month: Int): Int = when (month) {
+    1 -> R.string.hijri_month_1
+    2 -> R.string.hijri_month_2
+    3 -> R.string.hijri_month_3
+    4 -> R.string.hijri_month_4
+    5 -> R.string.hijri_month_5
+    6 -> R.string.hijri_month_6
+    7 -> R.string.hijri_month_7
+    8 -> R.string.hijri_month_8
+    9 -> R.string.hijri_month_9
+    10 -> R.string.hijri_month_10
+    11 -> R.string.hijri_month_11
+    else -> R.string.hijri_month_12
+}
+@Composable
 private fun PrayerTracker(
     date: LocalDate,
     done: Set<Prayer>,
@@ -270,36 +291,45 @@ private fun PrayerTracker(
     ) {
         // Titulo e acao na mesma linha; o anel e o texto ficam abaixo, para o
         // texto nao ser espremido entre o anel e o botao em telas estreitas.
+        // A acao tem sempre o mesmo tamanho, com botao ou check, e o titulo
+        // nunca quebra: o card nao pode mudar de altura ao marcar/desmarcar.
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = stringResource(R.string.today_tracker_title),
                 style = MaterialTheme.typography.labelLarge,
                 color = scheme.secondary,
-                maxLines = 2,
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .testTag("tracker_title"),
             )
-            if (count < total) {
-                TextButton(
-                    onClick = onMarkAll,
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
-                    modifier = Modifier.testTag("tracker_mark_all"),
-                ) {
-                    Text(
-                        text = stringResource(R.string.today_mark_all),
-                        maxLines = 1,
+            Box(
+                modifier = Modifier.size(40.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                if (count < total) {
+                    IconButton(
+                        onClick = onMarkAll,
+                        modifier = Modifier.testTag("tracker_mark_all"),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.DoneAll,
+                            contentDescription = stringResource(R.string.today_mark_all),
+                            tint = scheme.primary,
+                            modifier = Modifier.size(22.dp),
+                        )
+                    }
+                } else {
+                    Icon(
+                        imageVector = Icons.Filled.Check,
+                        contentDescription = stringResource(R.string.today_tracker_done),
+                        tint = scheme.primary,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .testTag("tracker_done"),
                     )
                 }
-            } else {
-                Icon(
-                    imageVector = Icons.Filled.Check,
-                    contentDescription = stringResource(R.string.today_tracker_done),
-                    tint = scheme.primary,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .size(24.dp)
-                        .testTag("tracker_done"),
-                )
             }
         }
         Spacer(Modifier.height(10.dp))
@@ -348,14 +378,19 @@ private fun PrayerTracker(
                 )
             }
         }
-        if (count == 0) {
-            Spacer(Modifier.height(8.dp))
-            Text(
-                text = stringResource(R.string.today_tracker_hint),
-                style = MaterialTheme.typography.bodySmall,
-                color = scheme.onSurfaceVariant,
-                modifier = Modifier.testTag("tracker_hint"),
-            )
+        Spacer(Modifier.height(8.dp))
+        // Espaço reservado sempre: some a dica, mas o card não muda de altura.
+        Box(modifier = Modifier.fillMaxWidth().height(32.dp)) {
+            if (count == 0) {
+                Text(
+                    text = stringResource(R.string.today_tracker_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = scheme.onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.testTag("tracker_hint"),
+                )
+            }
         }
     }
 }

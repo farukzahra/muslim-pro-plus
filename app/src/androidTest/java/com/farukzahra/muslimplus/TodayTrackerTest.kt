@@ -63,11 +63,21 @@ class TodayTrackerTest {
                 progress() == context.getString(R.string.today_tracker_progress, 2, 5)
             }
 
-            compose.onNodeWithTag("tracker_mark_all").performScrollTo().performClick()
+            compose.onNodeWithTag("tracker_mark_all").performScrollTo()
+            val titleBefore = compose.onNodeWithTag("tracker_title")
+                .assertIsDisplayed()
+                .fetchSemanticsNode().boundsInRoot
+            val cardBefore = compose.onNodeWithTag("tracker_card").fetchSemanticsNode().boundsInRoot
+            compose.onNodeWithTag("tracker_mark_all").performClick()
             compose.waitUntil(5_000) {
                 progress() == context.getString(R.string.today_tracker_progress, 5, 5)
             }
             compose.onNodeWithTag("tracker_done").performScrollTo().assertIsDisplayed()
+            // Regra do card: marcar/desmarcar não pode mudar a altura nem o
+            // título de lugar. Antes o "marcar todas" virava check e o texto
+            // ganhava uma linha a mais.
+            assertEquals(titleBefore, compose.onNodeWithTag("tracker_title").fetchSemanticsNode().boundsInRoot)
+            assertEquals(cardBefore, compose.onNodeWithTag("tracker_card").fetchSemanticsNode().boundsInRoot)
             assertEquals(
                 Prayer.values().toSet() - Prayer.SUNRISE,
                 runBlocking { log.days.first()[today].orEmpty() },

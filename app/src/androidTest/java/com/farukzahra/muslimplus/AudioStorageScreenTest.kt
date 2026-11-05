@@ -1,6 +1,7 @@
 package com.farukzahra.muslimplus
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -33,6 +34,12 @@ class AudioStorageScreenTest {
         compose.onNodeWithText(context.getString(R.string.audio_storage_title)).performScrollTo().performClick()
         val originalReciter = runBlocking { ServiceLocator.settings.quranReciterId.first() }
         val reciter = QuranReciters.all[1]
+        // O recitador agora fica no cartão do topo; a lista abre em uma folha.
+        compose.waitUntil { compose.onAllNodesWithTag("reciter_change").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("reciter_change").performClick()
+        compose.waitUntil {
+            compose.onAllNodesWithTag("reciter_${reciter.id}").fetchSemanticsNodes().isNotEmpty()
+        }
         compose.onNodeWithTag("reciter_${reciter.id}").performScrollTo().performClick()
         compose.waitUntil { runBlocking { ServiceLocator.settings.quranReciterId.first() } == reciter.id }
         val offline = QuranAudioStore(context, reciter).let { it.prepareDir(1); it.fileFor(1, 1) }

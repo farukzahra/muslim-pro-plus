@@ -129,6 +129,8 @@ class AppNavigationTest {
 
     @Test
     fun abreAlFatihahEMostraPrimeiroVerso() {
+        // Sem isso o leitor abre na última leitura e o verso 1 fica fora da tela.
+        runBlocking { ServiceLocator.readerState.saveLastRead(1, 1) }
         val ctx = compose.activity
         compose.onNodeWithText(ctx.getString(R.string.tab_quran)).performClick()
         awaitText(AL_FATIHAH)
@@ -145,6 +147,7 @@ class AppNavigationTest {
 
     @Test
     fun dialogoDeCamadasDoLeitorAbre() {
+        runBlocking { ServiceLocator.readerState.saveLastRead(1, 1) }
         val ctx = compose.activity
         compose.onNodeWithText(ctx.getString(R.string.tab_quran)).performClick()
         awaitText(AL_FATIHAH)

@@ -30,6 +30,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.outlined.RecordVoiceOver
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -81,6 +82,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.farukzahra.muslimplus.R
+import com.farukzahra.muslimplus.ServiceLocator
 import com.farukzahra.muslimplus.quran.Verse
 import com.farukzahra.muslimplus.quran.VerseRef
 import com.farukzahra.muslimplus.settings.ReaderFont
@@ -89,6 +91,7 @@ import com.farukzahra.muslimplus.settings.ReaderPrefs
 import com.farukzahra.muslimplus.settings.ReaderTheme
 import com.farukzahra.muslimplus.ui.components.BookmarkFilled
 import com.farukzahra.muslimplus.ui.components.BookmarkOutline
+import com.farukzahra.muslimplus.ui.screens.settings.ReciterPickerSheet
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -164,6 +167,8 @@ fun QuranReaderScreen(
     val mode by viewModel.readerMode.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
     var showOptions by remember { mutableStateOf(false) }
+    var showVoices by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
     val snackbarHostState = remember { SnackbarHostState() }
     val palette = paletteFor(theme)
@@ -185,6 +190,19 @@ fun QuranReaderScreen(
         snapshotFlow { listState.firstVisibleItemIndex }
             .distinctUntilChanged()
             .collect { index -> state.verses.getOrNull(index)?.let(viewModel::onVerseVisible) }
+    }
+
+    // A lista acompanha o verso que está tocando, como karaokê.
+    LaunchedEffect(playback.surah, playback.ayah, playback.playing, mode, state.verses) {
+        if (mode != ReaderMode.LIST) return@LaunchedEffect
+        val index = ReaderFollow.targetIndex(
+            verses = state.verses,
+            surah = state.surah?.id,
+            playingSurah = playback.surah,
+            playingAyah = playback.ayah,
+            playing = playback.playing,
+        ) ?: return@LaunchedEffect
+        listState.animateScrollToItem(index)
     }
 
     // Avisa o fim do download (o progresso em si fica no topo).
@@ -253,6 +271,15 @@ fun QuranReaderScreen(
                     }
                 },
                 actions = {
+                    IconButton(
+                        onClick = { showVoices = true },
+                        modifier = Modifier.testTag("reader_change_voice"),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.RecordVoiceOver,
+                            contentDescription = stringResource(R.string.audio_change_voice),
+                        )
+                    }
                     DownloadAction(
                         state = download,
                         onDownload = viewModel::downloadAudio,
@@ -302,7 +329,11 @@ fun QuranReaderScreen(
                         onToggleAudio = { viewModel.onVerseAudio(verse) },
                         layer = { layerMode -> viewModel.layer(layerMode, verse) },
                     )
-                    HorizontalDivider(color = palette.outline.copy(alpha = 0.4f))
+                    HorizontalDivider(
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp),
+                        thickness = 1.dp,
+                        color = palette.outline.copy(alpha = 0.55f),
+                    )
                 }
             }
 
@@ -342,6 +373,18 @@ fun QuranReaderScreen(
                 onAudioSettings()
             },
             onClose = { showOptions = false },
+        )
+    }
+
+    if (showVoices) {
+        ReciterPickerSheet(
+            selectedId = reciter?.id ?: com.farukzahra.muslimplus.quran.audio.QuranReciters.default.id,
+            sizes = emptyMap(),
+            onPick = { voice ->
+                showVoices = false
+                scope.launch { ServiceLocator.settings.setQuranReciterId(voice.id) }
+            },
+            onDismiss = { showVoices = false },
         )
     }
 }
@@ -398,6 +441,18 @@ private fun VersePager(
         snapshotFlow { pager.currentPage }
             .distinctUntilChanged()
             .collect { index -> state.verses.getOrNull(index)?.let(onVerseVisible) }
+    }
+
+    // No modo Página a virada também segue o áudio.
+    LaunchedEffect(playback.surah, playback.ayah, playback.playing, state.verses) {
+        val index = ReaderFollow.targetIndex(
+            verses = state.verses,
+            surah = state.surah?.id,
+            playingSurah = playback.surah,
+            playingAyah = playback.ayah,
+            playing = playback.playing,
+        ) ?: return@LaunchedEffect
+        pager.animateScrollToPage(index)
     }
     Column(modifier = modifier.testTag("reader_pager")) {
         HorizontalPager(
