@@ -89,7 +89,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
-fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
+fun TodayScreen(
+    viewModel: TodayViewModel = viewModel(),
+    onOpenVerse: (Int, Int) -> Unit = { _, _ -> },
+) {
     val state = viewModel.state.collectAsState().value ?: return
     val locale = LocalConfiguration.current.locales[0]
     val showDailyVerse by ServiceLocator.settings.dailyVerseVisible.collectAsState(initial = true)
@@ -135,6 +138,7 @@ fun TodayScreen(viewModel: TodayViewModel = viewModel()) {
                 onHide = {
                     scope.launch { ServiceLocator.settings.setDailyVerseVisible(false) }
                 },
+                onOpen = onOpenVerse,
             )
         } else {
             TextButton(
@@ -514,7 +518,7 @@ private fun ExactAlarmBanner() {
 }
 
 @Composable
-private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit) {
+private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit, onOpen: (Int, Int) -> Unit) {
     val modes by ServiceLocator.settings.quranModes.collectAsState(initial = setOf("ar"))
     var refreshIndex by rememberSaveable(date) { mutableStateOf(0) }
     val index = DailyVerse.indexFor(date) + refreshIndex
@@ -617,18 +621,31 @@ private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit) {
                 text = it,
                 fontSize = 15.sp,
                 color = scheme.onSurface,
+                maxLines = 5,
+                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(top = 6.dp),
             )
         }
-        Text(
-            text = stringResource(R.string.verse_reference, current.surah, current.ayah),
-            style = MaterialTheme.typography.bodySmall,
-            color = scheme.onSurfaceVariant,
-            modifier = Modifier
-                .align(Alignment.End)
-                .padding(top = 8.dp, end = 10.dp)
-                .testTag("daily_verse_reference"),
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            TextButton(
+                onClick = { onOpen(current.surah, current.ayah) },
+                modifier = Modifier.testTag("daily_verse_open"),
+            ) {
+                Text(stringResource(R.string.daily_verse_open))
+            }
+            Spacer(Modifier.weight(1f))
+            Text(
+                text = stringResource(R.string.verse_reference, current.surah, current.ayah),
+                style = MaterialTheme.typography.bodySmall,
+                color = scheme.onSurfaceVariant,
+                modifier = Modifier
+                    .padding(end = 10.dp)
+                    .testTag("daily_verse_reference"),
+            )
+        }
     }
 }
 

@@ -151,6 +151,7 @@
     <string name="hijri_month_12">Dhu al-Hijjah</string>
     <string name="daily_verse_label">Verso do dia</string>
     <string name="daily_verse_refresh">Outro verso</string>
+    <string name="daily_verse_open">Ler no Alcorão</string>
     <string name="daily_verse_hide">Ocultar verso do dia</string>
     <string name="daily_verse_show">Mostrar verso do dia</string>
     <string name="settings_daily_verse">Verso do dia</string>

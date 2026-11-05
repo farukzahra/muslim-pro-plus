@@ -151,6 +151,7 @@
     <string name="hijri_month_12">ذو الحجة</string>
     <string name="daily_verse_label">آية اليوم</string>
     <string name="daily_verse_refresh">آية أخرى</string>
+    <string name="daily_verse_open">اقرأ في القرآن</string>
     <string name="daily_verse_hide">إخفاء آية اليوم</string>
     <string name="daily_verse_show">إظهار آية اليوم</string>
     <string name="settings_daily_verse">آية اليوم</string>

@@ -29,19 +29,15 @@ class DailyVerseTest {
 
     @Test
     fun curatedListHasEnoughPairs() {
-        assertTrue("pares: ${DailyVerse.keys.size}", DailyVerse.keys.size >= 60)
+        assertTrue("pares: ${DailyVerse.keys.size}", DailyVerse.keys.size >= 100)
     }
 
     @Test
-    fun everyVerseFitsTheDailyCard() {
-        val verses = verses()
-        DailyVerse.keys.forEach { key ->
-            val text = verses["${key.surah}:${key.ayah}"].orEmpty()
-            assertTrue(
-                "verso longo em ${key.surah}:${key.ayah}: ${text.length}",
-                text.length <= 120,
-            )
-        }
+    fun famousLongVersesStayInTheRotation() {
+        val pairs = DailyVerse.keys.map { it.surah to it.ayah }
+        // Ayat al-Kursi e a Luz: longos de propósito, o card corta e abre o leitor.
+        assertTrue((2 to 255) in pairs)
+        assertTrue((24 to 35) in pairs)
     }
 
     @Test

@@ -170,7 +170,11 @@ fun MuslimPlusApp(
             Tab.entries.forEach { tab ->
                 composable(tab.route) {
                     when (tab) {
-                        Tab.TODAY -> TodayScreen()
+                        Tab.TODAY -> TodayScreen(
+                    onOpenVerse = { surah, ayah ->
+                        navController.navigate(quranReaderRoute(surah, ayah))
+                    },
+                )
                         Tab.PRAYERS -> PrayersScreen()
                         Tab.QURAN -> QuranListScreen(
                             onOpenSurah = { surah -> navController.navigate(quranReaderRoute(surah)) },

@@ -151,6 +151,7 @@
     <string name="hijri_month_12">Dhu al-Hijjah</string>
     <string name="daily_verse_label">Verse of the day</string>
     <string name="daily_verse_refresh">Another verse</string>
+    <string name="daily_verse_open">Read in the Quran</string>
     <string name="daily_verse_hide">Hide verse of the day</string>
     <string name="daily_verse_show">Show verse of the day</string>
     <string name="settings_daily_verse">Verse of the day</string>

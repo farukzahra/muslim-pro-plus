@@ -3,6 +3,7 @@ package com.farukzahra.muslimplus
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -19,6 +20,27 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class TodayVerseTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+
+    @Test
+    fun verseOfTheDayOpensTheReaderAtThatVerse() {
+        val settings = ServiceLocator.settings
+        runBlocking {
+            settings.setOnboardingDone()
+            settings.setQuranModes(setOf("ar", "pt-BR"))
+            settings.setDailyVerseVisible(true)
+        }
+        compose.activityRule.scenario.recreate()
+        val context = compose.activity
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithTag("daily_verse_card").fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithTag("daily_verse_open").performScrollTo().performClick()
+        // O leitor tem o botão de exibição; a lista não.
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithContentDescription(context.getString(R.string.quran_display))
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+    }
 
     @Test
     fun cardScrollsRefreshesAndCanBeHidden() {
