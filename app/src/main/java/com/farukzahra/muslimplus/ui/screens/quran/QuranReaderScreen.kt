@@ -25,6 +25,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
@@ -305,6 +306,7 @@ fun QuranReaderScreen(
                     onToggle = viewModel::togglePlayback,
                     onNext = viewModel::nextVerse,
                     onSpeed = viewModel::cycleSpeed,
+                    onVoice = { showVoices = true },
                 )
             }
         },
@@ -542,6 +544,7 @@ private fun MiniPlayer(
     onToggle: () -> Unit,
     onNext: () -> Unit,
     onSpeed: () -> Unit,
+    onVoice: () -> Unit,
 ) {
     Surface(
         color = palette.surface,
@@ -599,14 +602,28 @@ private fun MiniPlayer(
                         tint = if (playback.hasNext) palette.text else palette.muted.copy(alpha = 0.4f),
                     )
                 }
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = reciterName,
-                        style = MaterialTheme.typography.labelMedium,
-                        color = palette.text,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clickable(onClick = onVoice)
+                        .testTag("mini_player_voice"),
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = reciterName,
+                            style = MaterialTheme.typography.labelMedium,
+                            color = palette.text,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.weight(1f, fill = false),
+                        )
+                        Icon(
+                            imageVector = Icons.Filled.ArrowDropDown,
+                            contentDescription = stringResource(R.string.audio_change_voice),
+                            tint = palette.accent,
+                            modifier = Modifier.size(16.dp),
+                        )
+                    }
                     Text(
                         text = stringResource(
                             R.string.quran_audio_now_playing,

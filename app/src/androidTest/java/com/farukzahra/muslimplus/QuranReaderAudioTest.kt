@@ -41,6 +41,16 @@ class QuranReaderAudioTest {
                 compose.onAllNodesWithText(voice.reciter).fetchSemanticsNodes().isNotEmpty()
             }
             compose.onAllNodesWithText(voice.reciter)[0].assertIsDisplayed()
+            // A voz abre em um toque, direto do leitor, na mesma folha da tela de áudio.
+            val other = QuranReciters.all.first { it.id != voice.id }
+            compose.onNodeWithTag("reader_change_voice").performClick()
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithTag("reciter_${other.id}").fetchSemanticsNodes().isNotEmpty()
+            }
+            compose.onNodeWithTag("reciter_${other.id}").performScrollTo().performClick()
+            compose.waitUntil(5_000) {
+                runBlocking { ServiceLocator.settings.quranReciterId.first() } == other.id
+            }
             compose.onNodeWithContentDescription(context.getString(R.string.quran_display)).performClick()
             compose.onNodeWithText(context.getString(R.string.audio_storage_title))
                 .performScrollTo()
