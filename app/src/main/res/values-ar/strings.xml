@@ -24,6 +24,9 @@
     <string name="about_support_title">ادعم المشروع</string>
     <string name="about_support_body">إذا ساعدك Muslim Plus يمكنك دعمه عبر Pix أو Buy me a coffee. فقط إن أردت.</string>
     <string name="about_pix_copied">تم نسخ مفتاح Pix</string>
+    <string name="more_share">مشاركة التطبيق</string>
+    <string name="more_share_supporting">أرسل رابط المتجر إلى صديق</string>
+    <string name="share_message">Muslim Plus — مواقيت الصلاة والقرآن والقبلة، دون اتصال وبلا إعلانات.\n%1$s</string>
     <string name="more_donate">ادعم المشروع</string>
     <string name="donate_supporting">مجاني دائمًا</string>
     <string name="donate_body">صُمم Muslim Plus ليبقى مجانيًا: بلا حساب أو إعلانات أو تتبع. إذا أردت المساعدة في استمراره، استخدم Pix أو Buy me a coffee. فقط إن أردت.</string>

@@ -6,6 +6,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -88,6 +89,8 @@ class AppNavigationTest {
 
         compose.onNodeWithText(ctx.getString(R.string.tab_more)).performClick()
         awaitText(ctx.getString(R.string.more_settings))
+        // Compartilhar existe na grade; o clique abre o chooser do sistema.
+        compose.onNodeWithTag("more_share").assertExists()
 
         // Volta para Hoje: a aba continua funcional depois de passar por todas.
         compose.onNodeWithText(ctx.getString(R.string.tab_today)).performClick()

@@ -24,6 +24,9 @@
     <string name="about_support_title">Apoie o projeto</string>
     <string name="about_support_body">Se o Muslim Plus te ajuda, você pode apoiar com Pix ou Buy me a coffee. Só se quiser.</string>
     <string name="about_pix_copied">Chave Pix copiada</string>
+    <string name="more_share">Compartilhar o app</string>
+    <string name="more_share_supporting">Mandar o link da Play Store</string>
+    <string name="share_message">Muslim Plus — horários de oração, Alcorão e Qibla, offline e sem anúncios.\n%1$s</string>
     <string name="more_donate">Apoie o projeto</string>
     <string name="donate_supporting">Sempre gratuito</string>
     <string name="donate_body">O Muslim Plus é feito para ser sempre gratuito: sem conta, anúncios ou rastreamento. Se quiser ajudar a manter o projeto, use Pix ou Buy me a coffee. Só se quiser.</string>

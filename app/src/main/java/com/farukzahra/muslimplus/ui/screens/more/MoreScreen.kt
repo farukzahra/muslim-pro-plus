@@ -19,6 +19,7 @@ import androidx.compose.material.icons.outlined.Gavel
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.SystemUpdate
 import androidx.compose.material.icons.outlined.TextFields
 import androidx.compose.material3.Card
@@ -31,13 +32,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import android.content.Intent
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.farukzahra.muslimplus.AppLinks
 import com.farukzahra.muslimplus.BuildConfig
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.update.UpdateCardState
@@ -73,6 +77,8 @@ fun MoreScreen(
     onCheckUpdate: () -> Unit = {},
 ) {
     var showDonate by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    val shareText = stringResource(R.string.share_message, AppLinks.PLAY_URL)
     val items = listOf(
         MoreItem(R.string.more_settings, Icons.Outlined.Settings, onSettingsClick),
         MoreItem(R.string.more_language, Icons.Outlined.Language, onLanguageClick),
@@ -99,6 +105,21 @@ fun MoreScreen(
             },
             supporting = updateStatus(updateCard, updatePercent),
             testTag = "more_updates",
+        ),
+        MoreItem(
+            R.string.more_share,
+            Icons.Outlined.Share,
+            onClick = {
+                val send = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_TEXT, shareText)
+                }
+                context.startActivity(
+                    Intent.createChooser(send, context.getString(R.string.more_share)),
+                )
+            },
+            supporting = stringResource(R.string.more_share_supporting),
+            testTag = "more_share",
         ),
         MoreItem(
             R.string.more_donate,
