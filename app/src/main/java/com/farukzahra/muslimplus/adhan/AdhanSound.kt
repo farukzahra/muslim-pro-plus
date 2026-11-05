@@ -23,6 +23,12 @@ enum class AdhanCountry(
     MALAYSIA(R.string.country_malaysia, R.drawable.flag_my),
     ALGERIA(R.string.country_algeria, R.drawable.flag_dz),
     QATAR(R.string.country_qatar, R.drawable.flag_qa),
+    KUWAIT(R.string.country_kuwait, R.drawable.flag_kw),
+    YEMEN(R.string.country_yemen, R.drawable.flag_ye),
+    IRAN(R.string.country_iran, R.drawable.flag_ir),
+    NORTH_MACEDONIA(R.string.country_north_macedonia, R.drawable.flag_mk),
+    SUDAN(R.string.country_sudan, R.drawable.flag_sd),
+    IRAQ(R.string.country_iraq, R.drawable.flag_iq),
 }
 
 /**

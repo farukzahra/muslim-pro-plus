@@ -37,6 +37,8 @@ class TodayVerseTest {
             compose.waitUntil(10_000) {
                 compose.onAllNodesWithTag("daily_verse_card").fetchSemanticsNodes().isNotEmpty()
             }
+            // O verso e a tradução ficam separados pela mesma barra do leitor.
+            compose.onNodeWithTag("daily_verse_divider").assertExists()
 
             val firstReference = referenceText()
             compose.onNodeWithTag("daily_verse_refresh").performClick()

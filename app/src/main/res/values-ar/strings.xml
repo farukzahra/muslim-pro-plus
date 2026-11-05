@@ -90,6 +90,12 @@
     <string name="country_malaysia">ماليزيا</string>
     <string name="country_algeria">الجزائر</string>
     <string name="country_qatar">قطر</string>
+    <string name="country_kuwait">الكويت</string>
+    <string name="country_yemen">اليمن</string>
+    <string name="country_iran">إيران</string>
+    <string name="country_north_macedonia">مقدونيا الشمالية</string>
+    <string name="country_sudan">السودان</string>
+    <string name="country_iraq">العراق</string>
 
     <string name="adhan_sound_default_title">التسجيل الافتراضي</string>
     <string name="adhan_sound_default_hint">يُستخدم في الظهر والعصر والمغرب والعشاء.</string>

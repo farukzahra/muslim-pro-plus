@@ -90,6 +90,12 @@
     <string name="country_malaysia">Malaysia</string>
     <string name="country_algeria">Algeria</string>
     <string name="country_qatar">Qatar</string>
+    <string name="country_kuwait">Kuwait</string>
+    <string name="country_yemen">Yemen</string>
+    <string name="country_iran">Iran</string>
+    <string name="country_north_macedonia">North Macedonia</string>
+    <string name="country_sudan">Sudan</string>
+    <string name="country_iraq">Iraq</string>
 
     <string name="adhan_sound_default_title">Default recording</string>
     <string name="adhan_sound_default_hint">Used for Dhuhr, Asr, Maghrib and Isha.</string>

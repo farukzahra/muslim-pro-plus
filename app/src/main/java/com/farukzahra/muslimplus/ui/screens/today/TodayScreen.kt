@@ -25,6 +25,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DoneAll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -597,17 +598,25 @@ private fun DailyVerseCard(date: LocalDate, onHide: () -> Unit) {
                 )
             }
         }
-        listOf("pt-BR", "en").forEach { locale ->
-            if (locale in modes) {
-                layers[locale]?.takeIf { it.isNotBlank() }?.let {
-                    Text(
-                        text = it,
-                        fontSize = 15.sp,
-                        color = scheme.onSurface,
-                        modifier = Modifier.padding(top = 6.dp),
-                    )
-                }
-            }
+        // Barra entre o verso e a tradução, no mesmo traço do leitor.
+        val translations = listOf("pt-BR", "en").mapNotNull { locale ->
+            if (locale in modes) layers[locale]?.takeIf { it.isNotBlank() } else null
+        }
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp, bottom = 2.dp, end = 10.dp)
+                .testTag("daily_verse_divider"),
+            thickness = 1.dp,
+            color = scheme.outline.copy(alpha = 0.5f),
+        )
+        translations.forEach {
+            Text(
+                text = it,
+                fontSize = 15.sp,
+                color = scheme.onSurface,
+                modifier = Modifier.padding(top = 6.dp),
+            )
         }
         Text(
             text = stringResource(R.string.verse_reference, current.surah, current.ayah),

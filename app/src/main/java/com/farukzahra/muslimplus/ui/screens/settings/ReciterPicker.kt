@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.format.Formatter
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -25,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.quran.audio.QuranReciter
 import com.farukzahra.muslimplus.quran.audio.QuranReciters
+import com.farukzahra.muslimplus.ui.components.CountryFlag
 
 /**
  * Lista de vozes em uma folha, com qualidade e espaço já baixado. É a mesma
@@ -70,7 +73,13 @@ fun ReciterPickerSheet(
                             )
                         },
                         leadingContent = {
-                            RadioButton(selected = voice.id == selectedId, onClick = null)
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(selected = voice.id == selectedId, onClick = null)
+                                CountryFlag(
+                                    country = voice.country,
+                                    modifier = Modifier.padding(start = 4.dp, end = 8.dp),
+                                )
+                            }
                         },
                         modifier = Modifier
                             .testTag("reciter_${voice.id}")
