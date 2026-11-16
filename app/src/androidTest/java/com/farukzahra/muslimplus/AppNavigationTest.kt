@@ -95,7 +95,7 @@ class AppNavigationTest {
         compose.onNodeWithTag("more_share").assertExists()
         // Regra: o texto de apoio tem que caber dentro do cartão. Altura fixa
         // cortava a segunda linha ("Mandar o link da Play Store").
-        listOf("more_share", "more_donate").forEach { tag ->
+        listOf("more_share", "more_donate", "more_contact").forEach { tag ->
             compose.onNodeWithTag(tag).performScrollTo()
             val card = compose.onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
             val support = compose.onNodeWithTag("${tag}_supporting", useUnmergedTree = true)

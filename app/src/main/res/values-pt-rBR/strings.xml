@@ -34,6 +34,18 @@
     <string name="donate_pix_title">Pix</string>
     <string name="donate_bmac_title">Buy me a coffee</string>
     <string name="donate_bmac_action">Abrir</string>
+    <string name="more_contact">Fale conosco</string>
+    <string name="more_contact_supporting">Mandar uma sugestão</string>
+    <string name="contact_title">Fale conosco</string>
+    <string name="contact_body">Escreva sua sugestão, reclamação ou ideia. A mensagem abre no seu app de e-mail para você revisar antes de enviar.</string>
+    <string name="contact_hint">Sua mensagem</string>
+    <string name="contact_counter">%1$d/%2$d</string>
+    <string name="contact_details_note">Vão junto o nome e a versão do app, a versão do Android e o modelo do aparelho.</string>
+    <string name="contact_send">Enviar</string>
+    <string name="contact_copy_email">Copiar e-mail</string>
+    <string name="contact_copied">E-mail copiado</string>
+    <string name="contact_failed">Nenhum app de e-mail encontrado. Copie o endereço e escreva de onde quiser.</string>
+    <string name="contact_subject">Muslim Plus %1$s · sugestão</string>
     <string name="action_close">Fechar</string>
     <string name="more_updates">Atualizações</string>
     <string name="update_available_title">Tem atualização disponível</string>
@@ -370,4 +382,9 @@
     <string name="onboarding_privacy_title">Privado por padrão</string>
     <string name="onboarding_privacy_body">Sem conta, sem anúncios, sem rastreamento. Ajustes, marcadores e downloads ficam neste aparelho.</string>
     <string name="onboarding_notifications_why">Um lembrete em cada horário de oração. Negar só remove a notificação; os horários continuam funcionando.</string>
+    <!-- Qibla: rosa dos ventos (16/11/2026) -->
+    <string name="qibla_compass_north">N</string>
+    <string name="qibla_compass_east">L</string>
+    <string name="qibla_compass_south">S</string>
+    <string name="qibla_compass_west">O</string>
 </resources>

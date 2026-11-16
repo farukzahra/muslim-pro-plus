@@ -34,6 +34,18 @@
     <string name="donate_pix_title">Pix</string>
     <string name="donate_bmac_title">Buy me a coffee</string>
     <string name="donate_bmac_action">فتح</string>
+    <string name="more_contact">اتصل بنا</string>
+    <string name="more_contact_supporting">أرسل اقتراحًا</string>
+    <string name="contact_title">اتصل بنا</string>
+    <string name="contact_body">اكتب اقتراحك أو ملاحظتك أو فكرتك. تُفتح الرسالة في تطبيق البريد لديك لتراجعها قبل الإرسال.</string>
+    <string name="contact_hint">رسالتك</string>
+    <string name="contact_counter">%1$d/%2$d</string>
+    <string name="contact_details_note">تُرسل مع الرسالة نسخة التطبيق وإصدار أندرويد وطراز الجهاز.</string>
+    <string name="contact_send">إرسال</string>
+    <string name="contact_copy_email">نسخ البريد</string>
+    <string name="contact_copied">تم نسخ البريد</string>
+    <string name="contact_failed">لا يوجد تطبيق بريد. انسخ العنوان واكتب من أي مكان تريد.</string>
+    <string name="contact_subject">Muslim Plus %1$s · اقتراح</string>
     <string name="action_close">إغلاق</string>
     <string name="more_updates">التحديثات</string>
     <string name="update_available_title">يتوفر تحديث</string>
@@ -370,4 +382,9 @@
     <string name="onboarding_privacy_title">خصوصية بالتصميم</string>
     <string name="onboarding_privacy_body">لا حساب، لا إعلانات، لا تتبع. الإعدادات والعلامات والتنزيلات تبقى على هذا الجهاز.</string>
     <string name="onboarding_notifications_why">تذكير في كل وقت صلاة. الرفض يلغي الإشعار فقط؛ تبقى أوقات الصلاة تعمل.</string>
+    <!-- Qibla: rosa dos ventos (16/11/2026) -->
+    <string name="qibla_compass_north">شمال</string>
+    <string name="qibla_compass_east">شرق</string>
+    <string name="qibla_compass_south">جنوب</string>
+    <string name="qibla_compass_west">غرب</string>
 </resources>

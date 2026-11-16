@@ -18,6 +18,7 @@ import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Gavel
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.SystemUpdate
@@ -78,6 +79,7 @@ fun MoreScreen(
     onCheckUpdate: () -> Unit = {},
 ) {
     var showDonate by remember { mutableStateOf(false) }
+    var showContact by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val shareText = stringResource(R.string.share_message, AppLinks.PLAY_URL)
     val items = listOf(
@@ -129,6 +131,13 @@ fun MoreScreen(
             supporting = stringResource(R.string.donate_supporting),
             testTag = "more_donate",
         ),
+        MoreItem(
+            R.string.more_contact,
+            Icons.Outlined.MailOutline,
+            onClick = { showContact = true },
+            supporting = stringResource(R.string.more_contact_supporting),
+            testTag = "more_contact",
+        ),
     )
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -151,6 +160,7 @@ fun MoreScreen(
     }
 
     if (showDonate) DonateDialog(onDismiss = { showDonate = false })
+    if (showContact) ContactDialog(onDismiss = { showContact = false })
 }
 
 @Composable

@@ -12,4 +12,9 @@ class AppLinksTest {
             AppLinks.PLAY_URL.substringBefore("?id="),
         )
     }
+
+    @Test
+    fun contactEmailIsTheProjectAddress() {
+        assertEquals("farukz@gmail.com", AppLinks.CONTACT_EMAIL)
+    }
 }

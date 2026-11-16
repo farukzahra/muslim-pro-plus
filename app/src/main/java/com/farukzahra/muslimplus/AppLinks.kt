@@ -7,4 +7,7 @@ package com.farukzahra.muslimplus
 object AppLinks {
     const val PACKAGE = "com.farukzahra.muslimplus"
     const val PLAY_URL = "https://play.google.com/store/apps/details?id=$PACKAGE"
+
+    /** Contato do projeto, usado no Sobre e no Fale conosco. */
+    const val CONTACT_EMAIL = "farukz@gmail.com"
 }

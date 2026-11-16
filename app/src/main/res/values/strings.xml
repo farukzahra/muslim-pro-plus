@@ -34,6 +34,18 @@
     <string name="donate_pix_title">Pix</string>
     <string name="donate_bmac_title">Buy me a coffee</string>
     <string name="donate_bmac_action">Open</string>
+    <string name="more_contact">Contact us</string>
+    <string name="more_contact_supporting">Send a suggestion</string>
+    <string name="contact_title">Contact us</string>
+    <string name="contact_body">Write your suggestion, complaint or idea. It opens in your email app so you can review before sending.</string>
+    <string name="contact_hint">Your message</string>
+    <string name="contact_counter">%1$d/%2$d</string>
+    <string name="contact_details_note">The app name and version, the Android version and the device model go with the message.</string>
+    <string name="contact_send">Send</string>
+    <string name="contact_copy_email">Copy email</string>
+    <string name="contact_copied">Email copied</string>
+    <string name="contact_failed">No email app found. Copy the address and write from wherever you want.</string>
+    <string name="contact_subject">Muslim Plus %1$s · contact</string>
     <string name="action_close">Close</string>
     <string name="more_updates">Updates</string>
     <string name="update_available_title">Update available</string>
@@ -370,4 +382,9 @@
     <string name="onboarding_privacy_title">Private by design</string>
     <string name="onboarding_privacy_body">No account, no ads, no tracking. Settings, bookmarks and downloads stay on this device.</string>
     <string name="onboarding_notifications_why">A reminder at each prayer time. Denying it only removes the notification; prayer times keep working.</string>
+    <!-- Qibla: rosa dos ventos (16/11/2026) -->
+    <string name="qibla_compass_north">N</string>
+    <string name="qibla_compass_east">E</string>
+    <string name="qibla_compass_south">S</string>
+    <string name="qibla_compass_west">W</string>
 </resources>

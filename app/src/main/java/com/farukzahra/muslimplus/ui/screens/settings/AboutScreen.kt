@@ -23,12 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.farukzahra.muslimplus.AppLinks
 import com.farukzahra.muslimplus.BuildConfig
 import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.ui.components.SupportOptions
 import com.farukzahra.muslimplus.ui.components.openUrl
 
-const val CONTACT_EMAIL = "farukz@gmail.com"
 const val PIX_KEY = "e6ac082e-a1f8-48b0-b38e-87be149abe52"
 
 /**
@@ -84,10 +84,10 @@ fun AboutScreen(
             HorizontalDivider()
             ListItem(
                 headlineContent = { Text(stringResource(R.string.about_contact)) },
-                supportingContent = { Text(CONTACT_EMAIL) },
+                supportingContent = { Text(AppLinks.CONTACT_EMAIL) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { openUrl(context, "mailto:$CONTACT_EMAIL") },
+                    .clickable { openUrl(context, "mailto:${AppLinks.CONTACT_EMAIL}") },
             )
             HorizontalDivider()
             ListItem(
