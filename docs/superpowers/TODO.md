@@ -42,7 +42,7 @@ qualquer envio. Spec em
 | Abas Leitura e Progresso, minutos lidos e sequência | Feito em 31/10/2026 |
 | Temas do leitor, tamanho do texto e modo Página | Feito em 31/10/2026 |
 | Mini-player com anterior/próximo e velocidade | Feito em 31/10/2026 |
-| Qibla com precisão, interferência e ajuda de calibração | Feito em 31/10/2026 |
+| Qibla com precisão, interferência e ajuda de calibração | Feito em 31/10/2026; mostrador girando com o rumo e rumo calculado por vetores em 16/11/2026 ([correção](specs/2026-11-16-qibla-bussola.md)) |
 | Cartões de permissão e privacidade no onboarding | Feito em 31/10/2026 |
 | Envio do AAB 1.2.0 ao Play | Feito em 31/10/2026: versionCode 7 em interno e produção, notas em en-US e pt-BR |
 
