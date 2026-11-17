@@ -4,9 +4,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -84,20 +85,22 @@ fun MoreScreen(
     val context = LocalContext.current
     val shareText = stringResource(R.string.share_message, AppLinks.PLAY_URL)
     val items = listOf(
-        MoreItem(R.string.more_settings, Icons.Outlined.Settings, onSettingsClick),
-        MoreItem(R.string.more_language, Icons.Outlined.Language, onLanguageClick),
+        MoreItem(R.string.more_settings, Icons.Outlined.Settings, onSettingsClick, testTag = "more_settings"),
+        MoreItem(R.string.more_language, Icons.Outlined.Language, onLanguageClick, testTag = "more_language"),
         MoreItem(
             R.string.more_quran_display,
             Icons.Outlined.TextFields,
             onQuranDisplayClick,
+            testTag = "more_quran_display",
         ),
-        MoreItem(R.string.more_theme, Icons.Outlined.DarkMode, onThemeClick),
-        MoreItem(R.string.more_licenses, Icons.Outlined.Gavel, onLicensesClick),
+        MoreItem(R.string.more_theme, Icons.Outlined.DarkMode, onThemeClick, testTag = "more_theme"),
+        MoreItem(R.string.more_licenses, Icons.Outlined.Gavel, onLicensesClick, testTag = "more_licenses"),
         MoreItem(
             R.string.more_about,
             Icons.Outlined.Info,
             onAboutClick,
             supporting = stringResource(R.string.about_version, BuildConfig.VERSION_NAME),
+            testTag = "more_about",
         ),
         MoreItem(
             R.string.more_updates,
@@ -190,7 +193,10 @@ private fun MoreCard(item: MoreItem) {
     val label = stringResource(item.labelRes)
     val cardModifier = Modifier
         .fillMaxWidth()
-        .heightIn(min = 124.dp)
+        // Altura fixa: todos os cartões da grade têm o mesmo tamanho. Título e
+        // texto de apoio reservam duas linhas cada, então não há corte nem
+        // desalinhamento entre um cartão e outro.
+        .height(156.dp)
     Card(
         modifier = (if (item.testTag != null) cardModifier.testTag(item.testTag) else cardModifier)
             .clickable(role = Role.Button, onClick = item.onClick),
@@ -214,6 +220,7 @@ private fun MoreCard(item: MoreItem) {
                 Text(
                     text = label,
                     style = MaterialTheme.typography.titleMedium,
+                    minLines = 2,
                     maxLines = 2,
                     textAlign = TextAlign.Start,
                     overflow = TextOverflow.Ellipsis,
@@ -223,6 +230,7 @@ private fun MoreCard(item: MoreItem) {
                         text = supporting,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        minLines = 2,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                         modifier = if (item.testTag != null) {
@@ -231,7 +239,7 @@ private fun MoreCard(item: MoreItem) {
                             Modifier
                         },
                     )
-                }
+                } ?: Spacer(Modifier.height(32.dp))
             }
         }
     }

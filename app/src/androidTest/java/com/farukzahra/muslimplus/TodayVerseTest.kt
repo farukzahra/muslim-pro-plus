@@ -66,7 +66,7 @@ class TodayVerseTest {
             compose.onNodeWithTag("daily_verse_refresh").performClick()
             compose.waitUntil(5_000) { referenceText() != firstReference }
 
-            compose.onNodeWithText(context.getString(R.string.prayer_isha))
+            compose.onNodeWithTag("prayer_row_isha")
                 .performScrollTo()
                 .assertIsDisplayed()
 

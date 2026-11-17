@@ -15,6 +15,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.farukzahra.muslimplus.settings.LanguageRepository
 import java.util.Locale
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -93,10 +94,18 @@ class AppNavigationTest {
         awaitText(ctx.getString(R.string.more_settings))
         // Compartilhar existe na grade; o clique abre o chooser do sistema.
         compose.onNodeWithTag("more_share").assertExists()
-        // Regra: o texto de apoio tem que caber dentro do cartão. Altura fixa
-        // cortava a segunda linha ("Mandar o link da Play Store").
+        // Regra: todos os cartões da grade têm a mesma altura e o texto de apoio
+        // fica dentro do cartão. Altura variável desalinhava as colunas.
+        val cards = listOf(
+            "more_settings", "more_language", "more_quran_display", "more_theme",
+            "more_licenses", "more_about", "more_updates", "more_share",
+            "more_donate", "more_contact",
+        )
+        val heights = cards.associateWith { tag ->
+            compose.onNodeWithTag(tag).performScrollTo().fetchSemanticsNode().boundsInRoot.height
+        }
+        assertEquals("alturas diferentes: $heights", 1, heights.values.toSet().size)
         listOf("more_share", "more_donate", "more_contact").forEach { tag ->
-            compose.onNodeWithTag(tag).performScrollTo()
             val card = compose.onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
             val support = compose.onNodeWithTag("${tag}_supporting", useUnmergedTree = true)
                 .fetchSemanticsNode().boundsInRoot
