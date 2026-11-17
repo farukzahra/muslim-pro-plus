@@ -141,6 +141,11 @@ Continua pendente só no Play Console: a declaração de **Data safety**, que n�
 tem API e precisa ser preenchida à mão. Roteiro em
 `docs/releases/1.5.1-data-safety.md`.
 
+Preenchida em 17/11/2026 pelo browser (conta `faruk.dev.br@gmail.com`): mensagem
+do Fale conosco como "Outras mensagens no app", coletada e compartilhada,
+opcional, finalidade de funcionalidade do app, com link de exclusão e política
+em `muslimplus.com.br/privacy/`.
+
 ## Fora de escopo
 
 - Endpoint HTTP, fila de mensagens, resposta automática.
