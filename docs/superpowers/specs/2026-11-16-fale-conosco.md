@@ -120,23 +120,30 @@ Testes novos: `ContactRequestTest` (6 casos JVM) e, no instrumentado,
 `emailFallbackThatWorksClosesTheDialog`, com `ContactSender` fake e
 `CompletableDeferred` segurando o estado de envio.
 
-## Pendências abertas por esta revisão
+## Textos de privacidade atualizados (17/11/2026)
 
-O dono pediu para **não alterar textos existentes**. Ficam registrados:
+O dono autorizou corrigir o que estava desatualizado depois da publicação da
+1.5.0:
 
-- `contact_body` ainda diz "A mensagem abre no seu app de e-mail para você
-  revisar antes de enviar". Com envio direto, a mensagem sai sem abrir o app.
-- `about_description` e `privacy_*` continuam dizendo "offline" e "nada é
-  enviado". A ação do Fale conosco faz POST para `api.web3forms.com`.
-- A política de privacidade publicada (`PRIVACY_URL`) não menciona o Web3Forms
-  nem o endereço `farukz@gmail.com` como destino.
-- A conta Web3Forms tem limite gratuito mensal; se estourar, só o fallback por
-  e-mail funciona.
-- O envio real de teste de 17/11/2026 chegou a `farukz@gmail.com`.
+- `contact_body` passa a dizer que a mensagem vai direto pelo app e que o app
+  de e-mail é o fallback.
+- `about_description` e `privacy_no_ads` deixam de dizer que nada é
+  compartilhado; agora apontam que só a mensagem do Fale conosco sai do
+  aparelho.
+- Nova `privacy_contact` na tela Privacidade (`privacy_contact`): o que vai
+  junto (texto, versão, Android, modelo, idioma), o Web3Forms como caminho e o
+  aviso de que a mensagem chega sem o e-mail de quem escreveu.
+- Página publicada em `muslimplus.com.br/privacy/`, `/privacidade/` e
+  `/ar/privacy/` atualizada com a seção de contato, o Web3Forms no
+  compartilhamento e o direito de pedir exclusão da mensagem por e-mail.
+
+Continua pendente só no Play Console: a declaração de **Data safety**, que não
+tem API e precisa ser preenchida à mão. Roteiro em
+`docs/releases/1.5.1-data-safety.md`.
 
 ## Fora de escopo
 
 - Endpoint HTTP, fila de mensagens, resposta automática.
 - Envio de logs, prints ou anexos.
 - Rich text, markdown ou emoji picker.
-- Publicação no Play ou push: pedido explícito de deixar local.
+

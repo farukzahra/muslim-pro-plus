@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -75,6 +76,13 @@ fun PrivacyScreen(onBack: () -> Unit) {
                 text = stringResource(R.string.privacy_no_ads),
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(vertical = 6.dp),
+            )
+            Text(
+                text = stringResource(R.string.privacy_contact),
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier
+                    .padding(vertical = 6.dp)
+                    .testTag("privacy_contact"),
             )
             Text(
                 text = stringResource(R.string.privacy_location),

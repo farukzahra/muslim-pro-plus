@@ -37,7 +37,7 @@
     <string name="more_contact">Fale conosco</string>
     <string name="more_contact_supporting">Mandar uma sugestão</string>
     <string name="contact_title">Fale conosco</string>
-    <string name="contact_body">Escreva sua sugestão, reclamação ou ideia. A mensagem abre no seu app de e-mail para você revisar antes de enviar.</string>
+    <string name="contact_body">Escreva sua sugestão, reclamação ou ideia. A mensagem vai direto para a gente pelo app. Se o envio falhar, dá para usar seu app de e-mail.</string>
     <string name="contact_hint">Sua mensagem</string>
     <string name="contact_counter">%1$d/%2$d</string>
     <string name="contact_details_note">Vão junto o nome e a versão do app, a versão do Android e o modelo do aparelho.</string>
@@ -238,7 +238,7 @@
     <string name="more_privacy">Privacidade</string>
     <string name="settings_hijri_hint">Um dia antes, padrão ou um dia depois</string>
     <string name="settings_notifications_hint">Um lembrete em cada horário de oração</string>
-    <string name="about_description">Horários de oração, Qibla e Alcorão offline no seu aparelho. Sem conta, sem anúncios, sem rastreamento.</string>
+    <string name="about_description">Horários de oração, Qibla e Alcorão offline no seu aparelho. Sem conta, sem anúncios, sem rastreamento. Só sai do aparelho a mensagem que você envia pelo Fale conosco.</string>
     <string name="about_contact">Contato</string>
     <string name="licenses_intro">Dados e bibliotecas usados no app. Toque em um item para abrir a página da licença.</string>
     <string name="licenses_note_tanzil">Texto árabe do Alcorão</string>
@@ -249,7 +249,8 @@
     <string name="licenses_note_helmi_nasr">Tradução em português, via API do Quran.com</string>
     <string name="licenses_note_pickthall">Tradução em inglês, via API do Quran.com</string>
     <string name="privacy_no_account">Sem conta. O app funciona sem cadastro e não guarda nada na nuvem.</string>
-    <string name="privacy_no_ads">Sem anúncios e sem analytics. Nada é vendido ou compartilhado.</string>
+    <string name="privacy_no_ads">Sem anúncios e sem analytics. Nada é vendido. A única coisa que sai do aparelho é a mensagem que você escolhe enviar pelo Fale conosco.</string>
+    <string name="privacy_contact">Fale conosco: a mensagem que você escreve, a versão do app, a versão do Android, o modelo do aparelho e o idioma vão para o nosso e-mail pelo Web3Forms. Usamos esses dados só para ler e responder você. A mensagem chega sem o seu e-mail, então escreva no texto como podemos falar com você se quiser resposta.</string>
     <string name="privacy_location">A localização só serve para escolher a cidade mais próxima dos horários de oração e da Qibla. Fica no seu aparelho e não é enviada a lugar nenhum.</string>
     <string name="privacy_local_data">Preferências, marcadores e áudios baixados ficam no aparelho e somem quando você desinstala o app.</string>
     <string name="privacy_open_policy">Abrir política completa</string>

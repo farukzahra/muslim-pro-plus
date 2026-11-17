@@ -24,6 +24,7 @@ import com.farukzahra.muslimplus.ui.screens.more.ContactMessage
 import com.farukzahra.muslimplus.ui.screens.more.ContactSender
 import com.farukzahra.muslimplus.ui.screens.more.ContactSentDialog
 import com.farukzahra.muslimplus.ui.screens.more.contactEmailIntent
+import com.farukzahra.muslimplus.ui.screens.settings.PrivacyScreen
 import com.farukzahra.muslimplus.ui.theme.MuslimPlusTheme
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
@@ -128,7 +129,10 @@ class ContactDialogIsolatedTest {
         val body = payload.orEmpty()
         assertTrue("payload sem a mensagem: $body", body.contains("\"message\":\"sugestão para o app"))
         assertTrue("payload sem botcheck: $body", body.contains("\"botcheck\":false"))
-        assertTrue("payload sem versao: $body", body.contains("\"version\":\"1.4.8 ("))
+        assertTrue(
+            "payload sem versao: $body",
+            body.contains("\"version\":\"${BuildConfig.VERSION_NAME} ("),
+        )
     }
 
     @Test
@@ -207,6 +211,22 @@ class ContactDialogIsolatedTest {
         }
         compose.onNodeWithTag("contact_use_email").performClick()
         compose.onNodeWithTag("contact_dialog").assertDoesNotExist()
+    }
+}
+
+/** O resumo de privacidade precisa citar o Fale conosco depois do envio direto. */
+@RunWith(AndroidJUnit4::class)
+class PrivacyScreenTest {
+    @get:Rule val compose = createComposeRule()
+
+    @Test
+    fun summaryMentionsTheContactForm() {
+        compose.setContent {
+            MuslimPlusTheme { PrivacyScreen(onBack = {}) }
+        }
+
+        compose.onNodeWithTag("privacy_contact").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Web3Forms", substring = true).assertExists()
     }
 }
 

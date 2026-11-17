@@ -37,7 +37,7 @@
     <string name="more_contact">Contact us</string>
     <string name="more_contact_supporting">Send a suggestion</string>
     <string name="contact_title">Contact us</string>
-    <string name="contact_body">Write your suggestion, complaint or idea. It opens in your email app so you can review before sending.</string>
+    <string name="contact_body">Write your suggestion, complaint or idea. It goes straight to us from the app. If the send fails, you can still use your email app.</string>
     <string name="contact_hint">Your message</string>
     <string name="contact_counter">%1$d/%2$d</string>
     <string name="contact_details_note">The app name and version, the Android version and the device model go with the message.</string>
@@ -238,7 +238,7 @@
     <string name="more_privacy">Privacy</string>
     <string name="settings_hijri_hint">One day earlier, default or one day later</string>
     <string name="settings_notifications_hint">A reminder at each prayer time</string>
-    <string name="about_description">Prayer times, Qibla and the Quran offline on your device. No account, no ads, no tracking.</string>
+    <string name="about_description">Prayer times, Qibla and the Quran offline on your device. No account, no ads, no tracking. Only a contact message you send leaves the device.</string>
     <string name="about_contact">Contact</string>
     <string name="licenses_intro">Data and libraries used in the app. Tap an entry to open the license page.</string>
     <string name="licenses_note_tanzil">Quran text (Arabic)</string>
@@ -249,7 +249,8 @@
     <string name="licenses_note_helmi_nasr">Portuguese translation, via the Quran.com API</string>
     <string name="licenses_note_pickthall">English translation, via the Quran.com API</string>
     <string name="privacy_no_account">No account. The app works without sign-up and stores nothing in the cloud.</string>
-    <string name="privacy_no_ads">No ads and no analytics. Nothing is sold or shared.</string>
+    <string name="privacy_no_ads">No ads and no analytics. Nothing is sold. The only thing that leaves the device is a message you choose to send through Contact us.</string>
+    <string name="privacy_contact">Contact us: the message you write, the app version, the Android version, the device model and the language go to our email through Web3Forms. We use them only to read and answer you. The message arrives without your email, so include a way to reach you if you want a reply.</string>
     <string name="privacy_location">Location is used only to pick the nearest city for prayer times and Qibla. It stays on your device and is never sent anywhere.</string>
     <string name="privacy_local_data">Settings, bookmarks and downloaded audio stay on your device and are removed when you uninstall the app.</string>
     <string name="privacy_open_policy">Open full policy</string>

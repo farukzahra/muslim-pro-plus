@@ -37,7 +37,7 @@
     <string name="more_contact">اتصل بنا</string>
     <string name="more_contact_supporting">أرسل اقتراحًا</string>
     <string name="contact_title">اتصل بنا</string>
-    <string name="contact_body">اكتب اقتراحك أو ملاحظتك أو فكرتك. تُفتح الرسالة في تطبيق البريد لديك لتراجعها قبل الإرسال.</string>
+    <string name="contact_body">اكتب اقتراحك أو ملاحظتك أو فكرتك. تُرسل الرسالة إلينا مباشرة من التطبيق. وإذا تعذر الإرسال يمكنك استخدام تطبيق البريد.</string>
     <string name="contact_hint">رسالتك</string>
     <string name="contact_counter">%1$d/%2$d</string>
     <string name="contact_details_note">تُرسل مع الرسالة نسخة التطبيق وإصدار أندرويد وطراز الجهاز.</string>
@@ -238,7 +238,7 @@
     <string name="more_privacy">الخصوصية</string>
     <string name="settings_hijri_hint">قبل يوم أو الافتراضي أو بعده</string>
     <string name="settings_notifications_hint">تذكير عند كل وقت صلاة</string>
-    <string name="about_description">مواقيت الصلاة والقبلة والقرآن دون اتصال على جهازك. بلا حساب ولا إعلانات ولا تتبّع.</string>
+    <string name="about_description">مواقيت الصلاة والقبلة والقرآن دون اتصال على جهازك. بلا حساب ولا إعلانات ولا تتبّع. لا يخرج من الجهاز إلا الرسالة التي ترسلها عبر اتصل بنا.</string>
     <string name="about_contact">التواصل</string>
     <string name="licenses_intro">البيانات والمكتبات المستخدمة في التطبيق. اضغط على عنصر لفتح صفحة الترخيص.</string>
     <string name="licenses_note_tanzil">النص العربي للقرآن</string>
@@ -249,7 +249,8 @@
     <string name="licenses_note_helmi_nasr">ترجمة برتغالية عبر واجهة Quran.com</string>
     <string name="licenses_note_pickthall">ترجمة إنجليزية عبر واجهة Quran.com</string>
     <string name="privacy_no_account">بلا حساب. يعمل التطبيق دون تسجيل ولا يحفظ شيئًا في السحابة.</string>
-    <string name="privacy_no_ads">بلا إعلانات ولا تحليلات. لا يُباع أي شيء ولا يُشارك.</string>
+    <string name="privacy_no_ads">بلا إعلانات ولا تحليلات. لا نبيع أي شيء. الشيء الوحيد الذي يخرج من الجهاز هو الرسالة التي تختار إرسالها عبر اتصل بنا.</string>
+    <string name="privacy_contact">اتصل بنا: الرسالة التي تكتبها ونسخة التطبيق وإصدار أندرويد وطراز الجهاز واللغة تُرسل إلى بريدنا عبر Web3Forms. نستخدمها فقط لقراءة رسالتك والرد عليك. تصل الرسالة دون بريدك الإلكتروني، فاكتب وسيلة للتواصل معك إن أردت ردًا.</string>
     <string name="privacy_location">يُستخدم الموقع فقط لاختيار أقرب مدينة لمواقيت الصلاة والقبلة. يبقى على جهازك ولا يُرسل إلى أي مكان.</string>
     <string name="privacy_local_data">تبقى الإعدادات والعلامات المرجعية والصوتيات المنزّلة على جهازك وتُحذف عند إزالة التطبيق.</string>
     <string name="privacy_open_policy">فتح السياسة كاملة</string>
