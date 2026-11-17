@@ -24,6 +24,12 @@ val releaseAlias = releaseSecret("muslimplus.alias", "MUSLIMPLUS_ALIAS")
 val releaseStorePassword = releaseSecret("muslimplus.storePassword", "MUSLIMPLUS_STORE_PASSWORD")
 val releaseKeyPassword = releaseSecret("muslimplus.keyPassword", "MUSLIMPLUS_KEY_PASSWORD")
 
+// Chave do Web3Forms (Fale conosco). local.properties manda; env serve de
+// fallback para CI. O cofre fica em C:\repo\secrets\projects\web3forms.env.
+// Sem chave o envio direto falha e o dialogo cai no fallback de e-mail, entao
+// o build continua valido em qualquer maquina.
+val web3formsAccessKey = releaseSecret("web3forms.accessKey", "WEB3FORMS_ACCESS_KEY") ?: ""
+
 val releaseKeystoreFile = releaseKeystore?.let { rootProject.file(it) }
 val releaseSigningReady = releaseKeystoreFile != null &&
     releaseKeystoreFile.exists() &&
@@ -42,6 +48,7 @@ android {
         versionCode = 18
         versionName = "1.4.8"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "WEB3FORMS_ACCESS_KEY", "\"$web3formsAccessKey\"")
     }
 
     signingConfigs {

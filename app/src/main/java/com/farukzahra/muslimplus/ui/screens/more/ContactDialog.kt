@@ -3,7 +3,6 @@ package com.farukzahra.muslimplus.ui.screens.more
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material3.AlertDialog
@@ -25,6 +25,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -40,49 +41,29 @@ import androidx.core.net.toUri
 import com.farukzahra.muslimplus.AppLinks
 import com.farukzahra.muslimplus.BuildConfig
 import com.farukzahra.muslimplus.R
-import java.util.Locale
 import kotlinx.coroutines.launch
 
 /**
- * Intent do Fale conosco. `ACTION_SENDTO` com esquema `mailto` garante que so
- * clientes de e-mail aparecem, sem apps de mensagem no meio.
+ * Intent do fallback por e-mail. `ACTION_SENDTO` com esquema `mailto` garante
+ * que so clientes de e-mail aparecem, sem apps de mensagem no meio.
  */
 fun contactEmailIntent(subject: String, body: String, email: String = AppLinks.CONTACT_EMAIL): Intent =
     Intent(Intent.ACTION_SENDTO, ContactMessage.mailto(email, subject, body).toUri())
 
 /**
- * Dados tecnicos que vao junto do texto do usuario. O dialogo avisa que eles
- * seguem na mensagem; servem para reproduzir um problema sem precisar perguntar.
- */
-fun contactDetails(
-    appName: String,
-    versionName: String,
-    versionCode: Int,
-    device: String = Build.MODEL,
-    android: String = Build.VERSION.RELEASE,
-    language: String = Locale.getDefault().toLanguageTag(),
-): List<String> = listOf(
-    "$appName $versionName ($versionCode)",
-    "Android $android · $device",
-    language,
-)
-
-/**
- * Abre o app de e-mail com assunto e corpo prontos.
- *
- * Devolve `false` quando nao ha cliente de e-mail (ou ele nao abre), para o
- * dialogo mostrar o endereco e o botao de copiar em vez de perder a mensagem.
+ * Abre o app de e-mail com assunto e corpo prontos. Devolve `false` quando nao
+ * ha cliente de e-mail (ou ele nao abre), para o dialogo mostrar o endereco e
+ * o botao de copiar em vez de perder a mensagem.
  */
 fun sendContactEmail(context: Context, message: String): Boolean {
-    val subject = context.getString(R.string.contact_subject, BuildConfig.VERSION_NAME)
     val details = contactDetails(
         appName = context.getString(R.string.app_name),
         versionName = BuildConfig.VERSION_NAME,
         versionCode = BuildConfig.VERSION_CODE,
     )
     val intent = contactEmailIntent(
-        subject = subject,
-        body = ContactMessage.body(message, details),
+        subject = context.getString(R.string.contact_subject, BuildConfig.VERSION_NAME),
+        body = ContactMessage.body(message, details.signature()),
     )
     if (intent.resolveActivity(context.packageManager) == null) return false
     val chooser = Intent.createChooser(intent, context.getString(R.string.contact_send))
@@ -90,26 +71,55 @@ fun sendContactEmail(context: Context, message: String): Boolean {
     return runCatching { context.startActivity(chooser) }.isSuccess
 }
 
+/** Estados do envio direto pela API. */
+private enum class SendState { Idle, Sending, Error }
+
 /**
- * Dialogo do Fale conosco: campo multilinha simples (sem rich text, que
- * exigiria biblioteca e conversao para HTML sem ganho para uma sugestao).
+ * Dialogo do Fale conosco: campo multilinha simples, envio direto pelo
+ * Web3Forms e fallback por e-mail quando a API falha ou nao ha app de e-mail.
  *
- * [onSend] existe para o teste E2E: recebe o texto e devolve se o envio
- * funcionou. Sem ele, abre o app de e-mail do aparelho.
+ * [sender] e [sendEmail] existem para o teste trocar rede e intent por fakes.
+ * Sem eles, usa a API real e o cliente de e-mail do aparelho.
  */
 @Composable
 fun ContactDialog(
     onDismiss: () -> Unit,
-    onSend: ((String) -> Boolean)? = null,
+    onSent: () -> Unit = onDismiss,
+    sender: ContactSender? = null,
+    sendEmail: ((String) -> Boolean)? = null,
 ) {
     val context = LocalContext.current
     val clipboard = LocalClipboard.current
     val scope = rememberCoroutineScope()
-    val send = onSend ?: { message -> sendContactEmail(context, message) }
+    val activeSender = sender ?: remember { Web3FormsContactSender(BuildConfig.WEB3FORMS_ACCESS_KEY) }
+    val emailSender = sendEmail ?: { message -> sendContactEmail(context, message) }
     var text by rememberSaveable { mutableStateOf("") }
-    var failed by rememberSaveable { mutableStateOf(false) }
+    var sendState by remember { mutableStateOf(SendState.Idle) }
+    var emailMissing by rememberSaveable { mutableStateOf(false) }
     val copied = stringResource(R.string.contact_copied)
-    val canSend = ContactMessage.isValid(text)
+    val sending = sendState == SendState.Sending
+    val failed = sendState == SendState.Error
+    val canSend = ContactMessage.isValid(text) && !sending
+
+    fun submit() {
+        if (sending) return
+        emailMissing = false
+        sendState = SendState.Sending
+        val details = contactDetails(
+            appName = context.getString(R.string.app_name),
+            versionName = BuildConfig.VERSION_NAME,
+            versionCode = BuildConfig.VERSION_CODE,
+        )
+        val payload = ContactRequest.json(
+            details = details,
+            accessKey = BuildConfig.WEB3FORMS_ACCESS_KEY,
+            subject = context.getString(R.string.contact_subject, BuildConfig.VERSION_NAME),
+            message = ContactMessage.body(text, details.signature()),
+        )
+        scope.launch {
+            if (activeSender.send(payload)) onSent() else sendState = SendState.Error
+        }
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -135,8 +145,10 @@ fun ContactDialog(
                     value = text,
                     onValueChange = {
                         text = ContactMessage.limit(it)
-                        failed = false
+                        if (failed) sendState = SendState.Idle
+                        emailMissing = false
                     },
+                    enabled = !sending,
                     modifier = Modifier
                         .fillMaxWidth()
                         .testTag("contact_field"),
@@ -160,6 +172,20 @@ fun ContactDialog(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 if (failed) {
+                    Text(
+                        text = stringResource(R.string.contact_send_failed),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.testTag("contact_send_failed"),
+                    )
+                    TextButton(
+                        onClick = { if (emailSender(text)) onSent() else emailMissing = true },
+                        modifier = Modifier.testTag("contact_use_email"),
+                    ) {
+                        Text(stringResource(R.string.contact_use_email))
+                    }
+                }
+                if (emailMissing) {
                     Text(
                         text = stringResource(R.string.contact_failed),
                         style = MaterialTheme.typography.bodySmall,
@@ -207,10 +233,16 @@ fun ContactDialog(
         confirmButton = {
             TextButton(
                 enabled = canSend,
-                onClick = { if (send(text)) onDismiss() else failed = true },
+                onClick = { submit() },
                 modifier = Modifier.testTag("contact_send"),
             ) {
-                Text(stringResource(R.string.contact_send))
+                Text(
+                    text = when {
+                        sending -> stringResource(R.string.contact_sending)
+                        failed -> stringResource(R.string.contact_retry)
+                        else -> stringResource(R.string.contact_send)
+                    },
+                )
             }
         },
         dismissButton = {
@@ -219,6 +251,37 @@ fun ContactDialog(
                 modifier = Modifier.testTag("contact_cancel"),
             ) {
                 Text(stringResource(R.string.action_cancel))
+            }
+        },
+    )
+}
+
+/** Confirmacao depois do envio direto; substitui o antigo "abriu o e-mail". */
+@Composable
+fun ContactSentDialog(onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        modifier = Modifier.testTag("contact_sent_dialog"),
+        icon = {
+            Icon(
+                imageVector = Icons.Outlined.CheckCircle,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+            )
+        },
+        title = { Text(stringResource(R.string.contact_sent_title)) },
+        text = {
+            Text(
+                text = stringResource(R.string.contact_sent_body),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        },
+        confirmButton = {
+            TextButton(
+                onClick = onDismiss,
+                modifier = Modifier.testTag("contact_sent_ok"),
+            ) {
+                Text(stringResource(R.string.action_ok))
             }
         },
     )

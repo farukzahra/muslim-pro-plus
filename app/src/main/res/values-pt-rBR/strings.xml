@@ -46,6 +46,12 @@
     <string name="contact_copied">E-mail copiado</string>
     <string name="contact_failed">Nenhum app de e-mail encontrado. Copie o endereço e escreva de onde quiser.</string>
     <string name="contact_subject">Muslim Plus %1$s · sugestão</string>
+    <string name="contact_sending">Enviando…</string>
+    <string name="contact_retry">Tentar de novo</string>
+    <string name="contact_use_email">Usar app de e-mail</string>
+    <string name="contact_send_failed">Não foi possível enviar agora. Verifique a conexão e tente de novo.</string>
+    <string name="contact_sent_title">Mensagem enviada</string>
+    <string name="contact_sent_body">Obrigado pela sugestão. A gente lê tudo.</string>
     <string name="action_close">Fechar</string>
     <string name="more_updates">Atualizações</string>
     <string name="update_available_title">Tem atualização disponível</string>

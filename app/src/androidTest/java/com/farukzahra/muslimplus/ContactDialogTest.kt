@@ -11,17 +11,23 @@ import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.farukzahra.muslimplus.ui.screens.more.ContactDialog
 import com.farukzahra.muslimplus.ui.screens.more.ContactMessage
+import com.farukzahra.muslimplus.ui.screens.more.ContactSender
+import com.farukzahra.muslimplus.ui.screens.more.ContactSentDialog
 import com.farukzahra.muslimplus.ui.screens.more.contactEmailIntent
 import com.farukzahra.muslimplus.ui.theme.MuslimPlusTheme
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
+import java.util.concurrent.atomic.AtomicInteger
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -31,10 +37,9 @@ import org.junit.runner.RunWith
 /**
  * Caminho real: grade do Mais -> cartao Fale conosco -> dialogo.
  *
- * O envio nao e clicado aqui porque abriria o app de e-mail do aparelho e
- * tiraria o app do primeiro plano. O caminho de envio e testado em
- * [ContactDialogIsolatedTest], com callback injetado, e o intent em
- * [ContactIntentTest].
+ * O envio nao e clicado aqui porque bate na API de verdade. Os estados de envio
+ * sao testados em [ContactDialogIsolatedTest], com sender fake, e o fallback de
+ * e-mail em [ContactIntentTest].
  */
 @RunWith(AndroidJUnit4::class)
 class ContactDialogTest {
@@ -66,61 +71,146 @@ class ContactDialogTest {
     }
 }
 
-/** Dialogo isolado, com o envio trocado por callback: cobre sucesso e fallback. */
+/** Dialogo isolado, com rede e e-mail trocados por fakes. */
 @RunWith(AndroidJUnit4::class)
 class ContactDialogIsolatedTest {
     @get:Rule val compose = createComposeRule()
 
+    private val context get() = InstrumentationRegistry.getInstrumentation().targetContext
+
+    private fun text(id: Int, vararg args: Any): String = context.getString(id, *args)
+
     @Test
-    fun sendFailureKeepsTheTextAndOffersTheEmailToCopy() {
+    fun sendingDisablesTheButtonAndSuccessClosesWithConfirmation() {
         var shown by mutableStateOf(true)
-        compose.setContent {
-            MuslimPlusTheme {
-                if (shown) {
-                    ContactDialog(onDismiss = { shown = false }, onSend = { false })
-                }
-            }
+        var sent by mutableStateOf(false)
+        val gate = CompletableDeferred<Boolean>()
+        var payload: String? = null
+        val sender = ContactSender {
+            payload = it
+            gate.await()
         }
 
-        compose.onNodeWithTag("contact_field").performTextInput("minha sugestão")
-        compose.onNodeWithTag("contact_send").performClick()
-
-        compose.onNodeWithTag("contact_dialog").assertIsDisplayed()
-        compose.onNodeWithTag("contact_failed").assertIsDisplayed()
-        compose.onNodeWithTag("contact_email").assertTextEquals(AppLinks.CONTACT_EMAIL)
-        compose.onNodeWithTag("contact_copy_email").assertExists().performClick()
-        // Copiar nao pode fechar o dialogo nem perder o texto ja escrito.
-        compose.onNodeWithTag("contact_dialog").assertIsDisplayed()
-        compose.onNodeWithTag("contact_field").assertTextContains("minha sugestão")
-    }
-
-    @Test
-    fun sendSuccessPassesTheWrittenTextAndCloses() {
-        var shown by mutableStateOf(true)
-        var received: String? = null
         compose.setContent {
             MuslimPlusTheme {
                 if (shown) {
                     ContactDialog(
                         onDismiss = { shown = false },
-                        onSend = {
-                            received = it
-                            true
+                        onSent = {
+                            shown = false
+                            sent = true
+                        },
+                        sender = sender,
+                    )
+                }
+                if (sent) ContactSentDialog(onDismiss = { sent = false })
+            }
+        }
+
+        compose.onNodeWithTag("contact_field").performTextInput("sugestão para o app")
+        compose.onNodeWithTag("contact_send").performClick()
+
+        compose.onNodeWithTag("contact_dialog").assertIsDisplayed()
+        compose.onNodeWithTag("contact_send")
+            .assertIsNotEnabled()
+            .assertTextEquals(text(R.string.contact_sending))
+
+        gate.complete(true)
+        compose.waitUntil(timeoutMillis = 5_000) {
+            compose.onAllNodesWithTag("contact_dialog").fetchSemanticsNodes().isEmpty()
+        }
+
+        compose.onNodeWithTag("contact_dialog").assertDoesNotExist()
+        compose.onNodeWithTag("contact_sent_dialog").assertIsDisplayed()
+        compose.onNodeWithTag("contact_sent_ok").performClick()
+        compose.onNodeWithTag("contact_sent_dialog").assertDoesNotExist()
+
+        val body = payload.orEmpty()
+        assertTrue("payload sem a mensagem: $body", body.contains("\"message\":\"sugestão para o app"))
+        assertTrue("payload sem botcheck: $body", body.contains("\"botcheck\":false"))
+        assertTrue("payload sem versao: $body", body.contains("\"version\":\"1.4.8 ("))
+    }
+
+    @Test
+    fun errorKeepsTheTextAndOffersRetryAndEmail() {
+        var shown by mutableStateOf(true)
+        val sends = AtomicInteger(0)
+        val emails = AtomicInteger(0)
+        val sender = ContactSender {
+            sends.incrementAndGet()
+            false
+        }
+
+        compose.setContent {
+            MuslimPlusTheme {
+                if (shown) {
+                    ContactDialog(
+                        onDismiss = { shown = false },
+                        onSent = { shown = false },
+                        sender = sender,
+                        sendEmail = {
+                            emails.incrementAndGet()
+                            false
                         },
                     )
                 }
             }
         }
 
-        compose.onNodeWithTag("contact_field").performTextInput("sugestão enviada")
+        compose.onNodeWithTag("contact_field").performTextInput("minha sugestão")
         compose.onNodeWithTag("contact_send").performClick()
+        compose.waitUntil(timeoutMillis = 5_000) {
+            compose.onAllNodesWithTag("contact_send_failed").fetchSemanticsNodes().isNotEmpty()
+        }
 
-        assertEquals("sugestão enviada", received)
+        assertEquals(1, sends.get())
+        compose.onNodeWithTag("contact_send_failed").assertIsDisplayed()
+        compose.onNodeWithTag("contact_field").assertTextContains("minha sugestão")
+        compose.onNodeWithTag("contact_send")
+            .assertIsEnabled()
+            .assertTextEquals(text(R.string.contact_retry))
+
+        // Sem app de e-mail, o endereco e o botao de copiar aparecem.
+        compose.onNodeWithTag("contact_use_email").performClick()
+        assertEquals(1, emails.get())
+        compose.onNodeWithTag("contact_dialog").assertIsDisplayed()
+        compose.onNodeWithTag("contact_failed").assertIsDisplayed()
+        compose.onNodeWithTag("contact_email").assertTextEquals(AppLinks.CONTACT_EMAIL)
+        compose.onNodeWithTag("contact_copy_email").assertExists().performClick()
+
+        // Tentar de novo volta para a API, sem perder o texto.
+        compose.onNodeWithTag("contact_send").performClick()
+        compose.waitUntil(timeoutMillis = 5_000) { sends.get() == 2 }
+        compose.onNodeWithTag("contact_dialog").assertIsDisplayed()
+    }
+
+    @Test
+    fun emailFallbackThatWorksClosesTheDialog() {
+        var shown by mutableStateOf(true)
+        compose.setContent {
+            MuslimPlusTheme {
+                if (shown) {
+                    ContactDialog(
+                        onDismiss = { shown = false },
+                        onSent = { shown = false },
+                        sender = ContactSender { false },
+                        sendEmail = { true },
+                    )
+                }
+            }
+        }
+
+        compose.onNodeWithTag("contact_field").performTextInput("manda por e-mail")
+        compose.onNodeWithTag("contact_send").performClick()
+        compose.waitUntil(timeoutMillis = 5_000) {
+            compose.onAllNodesWithTag("contact_use_email").fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithTag("contact_use_email").performClick()
         compose.onNodeWithTag("contact_dialog").assertDoesNotExist()
     }
 }
 
-/** O intent precisa sair como e-mail puro, com assunto e corpo ja codificados. */
+/** O fallback por e-mail precisa sair como e-mail puro, com corpo codificado. */
 @RunWith(AndroidJUnit4::class)
 class ContactIntentTest {
     @Test

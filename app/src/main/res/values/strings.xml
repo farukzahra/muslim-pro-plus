@@ -46,6 +46,12 @@
     <string name="contact_copied">Email copied</string>
     <string name="contact_failed">No email app found. Copy the address and write from wherever you want.</string>
     <string name="contact_subject">Muslim Plus %1$s · contact</string>
+    <string name="contact_sending">Sending…</string>
+    <string name="contact_retry">Try again</string>
+    <string name="contact_use_email">Use email app</string>
+    <string name="contact_send_failed">Could not send right now. Check your connection and try again.</string>
+    <string name="contact_sent_title">Message sent</string>
+    <string name="contact_sent_body">Thanks for the suggestion. We read every message.</string>
     <string name="action_close">Close</string>
     <string name="more_updates">Updates</string>
     <string name="update_available_title">Update available</string>

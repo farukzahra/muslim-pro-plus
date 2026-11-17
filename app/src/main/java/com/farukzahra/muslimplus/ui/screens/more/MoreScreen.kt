@@ -80,6 +80,7 @@ fun MoreScreen(
 ) {
     var showDonate by remember { mutableStateOf(false) }
     var showContact by remember { mutableStateOf(false) }
+    var showContactSent by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val shareText = stringResource(R.string.share_message, AppLinks.PLAY_URL)
     val items = listOf(
@@ -160,7 +161,16 @@ fun MoreScreen(
     }
 
     if (showDonate) DonateDialog(onDismiss = { showDonate = false })
-    if (showContact) ContactDialog(onDismiss = { showContact = false })
+    if (showContact) {
+        ContactDialog(
+            onDismiss = { showContact = false },
+            onSent = {
+                showContact = false
+                showContactSent = true
+            },
+        )
+    }
+    if (showContactSent) ContactSentDialog(onDismiss = { showContactSent = false })
 }
 
 @Composable

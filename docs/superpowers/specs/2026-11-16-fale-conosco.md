@@ -79,6 +79,61 @@ onde a pessoa escreve a sugestão e envia para a gente.
 - Verificação local: `gradlew test lint assembleDebug` e
   `scripts/install-local.ps1` no emulador.
 
+## Envio direto pelo Web3Forms (17/11/2026)
+
+Revisão pedida pelo dono: o `mailto:` obriga a pessoa a ter app de e-mail e
+expõe o endereço dela como remetente. O envio passa a ser direto pela API do
+Web3Forms, com o `mailto:` virando fallback.
+
+Decisões:
+
+1. **Chave fora do repo.** `WEB3FORMS_ACCESS_KEY` mora em
+   `C:\repo\secrets\projects\web3forms.env`. O build lê
+   `web3forms.accessKey` do `local.properties` (gitignored) e cai em
+   `WEB3FORMS_ACCESS_KEY` no CI; entra em `BuildConfig.WEB3FORMS_ACCESS_KEY`.
+   Sem chave o envio devolve `false` e o diálogo oferece o e-mail, então o build
+   continua válido em qualquer máquina. A chave é pública por design (vai no
+   APK) e deve ser rotacionada se houver spam.
+2. **POST** em `https://api.web3forms.com/submit`, JSON em UTF-8, `Accept:
+   application/json`, timeouts de 10 s. Sucesso só com HTTP 200 e
+   `"success": true` no corpo; qualquer outra coisa vira erro na tela.
+3. **Payload** (`ContactRequest.json`): `access_key`, `subject`
+   (`Muslim Plus <versão> · sugestão`), `from_name` `Muslim Plus`, `message`
+   (texto + assinatura), `app`, `version` (`1.4.8 (18)`), `android`, `device`,
+   `language`, `botcheck: false`. JSON escrito à mão, com escape testado: aspas,
+   barra invertida, quebra de linha, tab e controles.
+4. **Estados** `Idle` / `Sending` / `Error`. Enviando: campo e botão
+   desabilitados, rótulo `Enviando…`. Sucesso: fecha o diálogo e abre
+   `ContactSentDialog` (`contact_sent_dialog`). Erro: mantém o texto, mostra
+   `contact_send_failed`, o botão vira `Tentar de novo` e aparece
+   `Usar app de e-mail`.
+5. **Fallback em dois níveis.** `Usar app de e-mail` abre o `mailto:`; se não
+   houver cliente, o bloco existente com o endereço e `Copiar e-mail` aparece.
+6. **Internet.** `android.permission.INTERNET` já estava no manifesto desde o
+   áudio do Alcorão; nada a adicionar.
+7. **Falha de rede não perde o texto.** O campo nunca é limpo no erro e o
+   `rememberSaveable` segura o conteúdo em rotação.
+
+Testes novos: `ContactRequestTest` (6 casos JVM) e, no instrumentado,
+`sendingDisablesTheButtonAndSuccessClosesWithConfirmation`,
+`errorKeepsTheTextAndOffersRetryAndEmail`,
+`emailFallbackThatWorksClosesTheDialog`, com `ContactSender` fake e
+`CompletableDeferred` segurando o estado de envio.
+
+## Pendências abertas por esta revisão
+
+O dono pediu para **não alterar textos existentes**. Ficam registrados:
+
+- `contact_body` ainda diz "A mensagem abre no seu app de e-mail para você
+  revisar antes de enviar". Com envio direto, a mensagem sai sem abrir o app.
+- `about_description` e `privacy_*` continuam dizendo "offline" e "nada é
+  enviado". A ação do Fale conosco faz POST para `api.web3forms.com`.
+- A política de privacidade publicada (`PRIVACY_URL`) não menciona o Web3Forms
+  nem o endereço `farukz@gmail.com` como destino.
+- A conta Web3Forms tem limite gratuito mensal; se estourar, só o fallback por
+  e-mail funciona.
+- O envio real de teste de 17/11/2026 chegou a `farukz@gmail.com`.
+
 ## Fora de escopo
 
 - Endpoint HTTP, fila de mensagens, resposta automática.
