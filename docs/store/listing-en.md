@@ -5,30 +5,41 @@ what's new 500) are checked by `python tools/store/check_store.py`.
 
 ## Título (até 30)
 
-Muslim Plus: prayers & Quran
+Prayer times, Qibla & Quran
 
 ## Descrição curta (até 80)
 
-Prayer times, Qibla and the Quran on your device. No account, no ads.
+Prayer times, Qibla and the Quran offline. No account, no ads, no tracking.
 
 ## Descrição completa (até 4.000)
 
-Muslim Plus brings prayer times, Qibla and the Quran together in an app that
-works without an account, without ads and without tracking. Prayer times are
-calculated on the device and the Quran text ships with the app, so airplane
-mode does not break the essentials.
+Prayer times calculated on your device, the full Quran to read and listen to,
+and a Qibla compass. No account, no ads and no tracking: the essentials work in
+airplane mode.
 
 PRAYER TIMES
-- Local calculation, no API: 12 methods (MWL, ISNA, Egypt, Karachi, Makkah,
-  Dubai, Moonsighting Committee, Turkey, Tehran, Kuwait, Qatar and Singapore).
+- Calculated on the device, no server in the loop: 12 methods (MWL, ISNA, Egypt,
+  Karachi, Makkah, Dubai, Moonsighting Committee, Turkey, Tehran, Kuwait, Qatar
+  and Singapore).
+- 3,000 cities with coordinates and their own time zone: times follow the city,
+  not the device's zone. Pick a city by hand or use device location.
 - Adjust each prayer from −30 to +30 minutes.
 - High latitudes handled with the twilight angle rule.
 - Today tab with a countdown to the next prayer and the day's list; the whole
   month table is on the Prayers tab.
-- Pick a city by hand or use the device location. 3,000 cities with coordinates
-  and their own time zone: times follow the city, not the device's zone.
-- One reminder at each prayer time. If Android does not allow exact alarms, the
-  app tells you reminders may be a few minutes late.
+
+ADHAN
+- One reminder at each prayer time, with 22 adhan voices and a dedicated Fajr
+  recording.
+- Full alarm plays even in silent mode, at alarm volume.
+- Pre-adhan reminder from 5 to 30 minutes before.
+- If Android does not allow exact alarms, the app tells you reminders may be a
+  few minutes late.
+
+PRAYER TRACKER
+- Mark each prayer and follow the daily ring.
+- Week view on the card and a streak of consecutive days.
+- The bell on each row opens that prayer's own settings.
 
 QIBLA
 - Compass using the rotation sensor and magnetic declination correction.
@@ -37,12 +48,13 @@ QIBLA
   why.
 
 QURAN
-- 114 surahs and 6,236 verses with the Uthmani text offline.
+- 114 surahs and 6,236 verses with the Uthmani text built in, no download.
 - Toggleable layers: Arabic, transliteration, Portuguese (Helmi Nasr) and
   English (Pickthall) translation.
 - Search by surah and by verse, bookmarks and "continue where you stopped".
 - Verse audio (Mishary Alafasy) with lock screen controls. Stream it or download
   the surah and listen offline.
+- Reading theme, text size and page mode.
 
 PRIVACY
 - No sign-up, no login, no account. Nothing is sent to a server of ours.
@@ -65,10 +77,10 @@ Internet is used only to stream the verse audio.
 
 ## O que há de novo (até 500)
 
-What's new in 1.3.1
+What's new in 1.5.2
 
-• Fix for the prayer tracker card on narrow screens: title, ring and button now fit without squeezing the text
-• Shorter copy to start a streak
-• The 22 adhan voices and the dedicated Fajr recording remain
+• More screen cards now share the same height
+• Short text no longer tilts the column
+• Prayer tracker with a streak of days
 
 Always offline, no account, no ads.

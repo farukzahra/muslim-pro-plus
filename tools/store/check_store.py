@@ -29,8 +29,24 @@ LISTING_FIELDS = {
 }
 
 SCREENSHOTS = {
-    "pt": ["01-hoje.png", "02-oracoes.png", "03-leitor-alcorao.png", "04-qibla.png"],
-    "en": ["01-today.png", "02-prayers.png", "03-quran-reader.png", "04-qibla.png"],
+    "pt": [
+        "01-today.png",
+        "02-reader.png",
+        "03-qibla.png",
+        "04-tracker.png",
+        "05-adhan.png",
+        "06-prayers.png",
+        "07-privacy.png",
+    ],
+    "en": [
+        "01-today.png",
+        "02-reader.png",
+        "03-qibla.png",
+        "04-tracker.png",
+        "05-adhan.png",
+        "06-prayers.png",
+        "07-privacy.png",
+    ],
 }
 
 PROBLEMS: list[str] = []
@@ -120,7 +136,7 @@ def check_not_blank(im: Image.Image, label: str) -> None:
 
 
 def main() -> int:
-    for locale in ("pt", "en"):
+    for locale in ("pt", "en", "ar"):
         check_listing(locale)
 
     check_image(STORE / "icon-512.png", (512, 512))

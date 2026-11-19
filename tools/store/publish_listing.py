@@ -36,20 +36,33 @@ LISTINGS = {
         "feature": "feature-graphic-en.png",
         "screenshots": [
             "screenshots/en/01-today.png",
-            "screenshots/en/02-prayers.png",
-            "screenshots/en/03-quran-reader.png",
-            "screenshots/en/04-qibla.png",
+            "screenshots/en/02-reader.png",
+            "screenshots/en/03-qibla.png",
+            "screenshots/en/04-tracker.png",
+            "screenshots/en/05-adhan.png",
+            "screenshots/en/06-prayers.png",
+            "screenshots/en/07-privacy.png",
         ],
     },
     "pt-BR": {
         "text": "listing-pt.md",
         "feature": "feature-graphic-pt.png",
         "screenshots": [
-            "screenshots/pt/01-hoje.png",
-            "screenshots/pt/02-oracoes.png",
-            "screenshots/pt/03-leitor-alcorao.png",
-            "screenshots/pt/04-qibla.png",
+            "screenshots/pt/01-today.png",
+            "screenshots/pt/02-reader.png",
+            "screenshots/pt/03-qibla.png",
+            "screenshots/pt/04-tracker.png",
+            "screenshots/pt/05-adhan.png",
+            "screenshots/pt/06-prayers.png",
+            "screenshots/pt/07-privacy.png",
         ],
+    },
+    # Ficha em arabe sem imagens proprias: a Play mostra as imagens do idioma
+    # padrao (en-US) quando o idioma nao tem nenhuma.
+    "ar": {
+        "text": "listing-ar.md",
+        "feature": None,
+        "screenshots": [],
     },
 }
 
@@ -109,6 +122,8 @@ def upload(svc, edit_id: str, language: str, image_type: str, path: Path) -> Non
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--apply", action="store_true", help="grava no Play (sem isso, so mostra)"
@@ -150,7 +165,7 @@ def main() -> int:
                     },
                 ).execute()
                 print("  texto gravado")
-                if not args.skip_images:
+                if not args.skip_images and spec.get("feature"):
                     svc.edits().images().deleteall(
                         packageName=PACKAGE,
                         editId=edit_id,

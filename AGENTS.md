@@ -28,6 +28,11 @@ Emuladores de teste: `Pixel6`. Use o serial que aparecer em `adb devices`
 (`emulator-5554` ou `emulator-5556`); o `install-local.ps1` cobre todos os
 conectados.
 
+**Emulador sempre sem som.** Nunca subir com áudio: o adhan toca no
+alto-falante da máquina durante testes e capturas. Use
+`.\scripts\start-emulator.ps1` (já passa `-no-audio`); ao chamar o `emulator.exe`
+na mão, incluir `-no-audio`.
+
 ## Estrutura
 
 ```
