@@ -65,6 +65,13 @@ class QuranReaderSettingsTest {
                 compose.onAllNodesWithTag("reader_sheet").fetchSemanticsNodes().isNotEmpty()
             }
 
+            // Áudio e armazenamento é a primeira opção da folha.
+            val audioTop = compose.onNodeWithTag("reader_audio_settings")
+                .fetchSemanticsNode().boundsInRoot.top
+            val themeTop = compose.onNodeWithTag("reader_theme_paper")
+                .fetchSemanticsNode().boundsInRoot.top
+            assertTrue("áudio deve vir antes do tema", audioTop < themeTop)
+
             compose.onNodeWithTag("reader_theme_paper").performClick()
             compose.waitUntil(5_000) {
                 runBlocking { settings.readerTheme.first() == ReaderTheme.PAPER }

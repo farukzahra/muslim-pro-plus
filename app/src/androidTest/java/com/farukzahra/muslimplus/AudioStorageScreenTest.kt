@@ -40,6 +40,11 @@ class AudioStorageScreenTest {
         compose.waitUntil {
             compose.onAllNodesWithTag("reciter_${reciter.id}").fetchSemanticsNodes().isNotEmpty()
         }
+        // Toda voz traz uma amostra embarcada tocável antes de escolher.
+        check(
+            compose.onAllNodesWithTag("reciter_preview_${reciter.id}")
+                .fetchSemanticsNodes().isNotEmpty(),
+        )
         compose.onNodeWithTag("reciter_${reciter.id}").performScrollTo().performClick()
         compose.waitUntil { runBlocking { ServiceLocator.settings.quranReciterId.first() } == reciter.id }
         val offline = QuranAudioStore(context, reciter).let { it.prepareDir(1); it.fileFor(1, 1) }

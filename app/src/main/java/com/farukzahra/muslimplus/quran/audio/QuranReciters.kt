@@ -1,5 +1,7 @@
 package com.farukzahra.muslimplus.quran.audio
 
+import androidx.annotation.RawRes
+import com.farukzahra.muslimplus.R
 import com.farukzahra.muslimplus.adhan.AdhanCountry
 import com.farukzahra.muslimplus.quran.VerseRef
 
@@ -16,6 +18,7 @@ data class QuranReciter(
     val folder: String,
     val bitrateKbps: Int,
     val country: AdhanCountry? = null,
+    @RawRes val previewRes: Int,
 ) : QuranAudioSource {
     init {
         require(id.matches(Regex("[a-z0-9]+(?:-[a-z0-9]+)*")))
@@ -34,33 +37,33 @@ object QuranReciters {
 
     /** Pastas verificadas com HEAD em `001001.mp3` (05/11/2026). */
     val all: List<QuranReciter> = listOf(
-        QuranReciter("alafasy-128", "Mishary Alafasy", "Alafasy_128kbps", 128, AdhanCountry.KUWAIT),
-        QuranReciter("sudais-192", "Abdurrahmaan As-Sudais", "Abdurrahmaan_As-Sudais_192kbps", 192, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("husary-128", "Mahmoud Khalil Al-Husary", "Husary_128kbps", 128, AdhanCountry.EGYPT),
-        QuranReciter("shaatree-128", "Abu Bakr Ash-Shaatree", "Abu_Bakr_Ash-Shaatree_128kbps", 128, AdhanCountry.YEMEN),
-        QuranReciter("abdulbasit-murattal-192", "Abdul Basit (Murattal)", "Abdul_Basit_Murattal_192kbps", 192, AdhanCountry.EGYPT),
-        QuranReciter("abdulbasit-mujawwad-128", "Abdul Basit (Mujawwad)", "Abdul_Basit_Mujawwad_128kbps", 128, AdhanCountry.EGYPT),
-        QuranReciter("ayyoub-128", "Muhammad Ayyoub", "Muhammad_Ayyoub_128kbps", 128, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("minshawy-murattal-128", "Al-Minshawi (Murattal)", "Minshawy_Murattal_128kbps", 128, AdhanCountry.EGYPT),
-        QuranReciter("minshawy-mujawwad-192", "Al-Minshawi (Mujawwad)", "Minshawy_Mujawwad_192kbps", 192, AdhanCountry.EGYPT),
-        QuranReciter("hudhaify-128", "Ali Al-Hudhaify", "Hudhaify_128kbps", 128, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("ghamadi-40", "Saad Al-Ghamdi", "Ghamadi_40kbps", 40, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("dussary-128", "Yasser Ad-Dussary", "Yasser_Ad-Dussary_128kbps", 128, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("qatami-128", "Nasser Al-Qatami", "Nasser_Alqatami_128kbps", 128, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("shuraym-128", "Saud Ash-Shuraym", "Saood_ash-Shuraym_128kbps", 128, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("jibreel-128", "Muhammad Jibreel", "Muhammad_Jibreel_128kbps", 128, AdhanCountry.EGYPT),
-        QuranReciter("budair-128", "Salah Al-Budair", "Salah_Al_Budair_128kbps", 128, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("basfar-192", "Abdullah Basfar", "Abdullah_Basfar_192kbps", 192, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("rifai-192", "Hani Ar-Rifai", "Hani_Rifai_192kbps", 192, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("jaber-64", "Ali Jaber", "Ali_Jaber_64kbps", 64, AdhanCountry.SAUDI_ARABIA),
-        QuranReciter("abbad-64", "Fares Abbad", "Fares_Abbad_64kbps", 64, AdhanCountry.YEMEN),
-        QuranReciter("alili-128", "Aziz Alili", "Aziz_Alili_128kbps", 128, AdhanCountry.NORTH_MACEDONIA),
-        QuranReciter("parhizgar-48", "Parhizgar", "Parhizgar_48kbps", 48, AdhanCountry.IRAN),
-        QuranReciter("tablawy-128", "Mohammad Al-Tablaway", "Mohammad_al_Tablaway_128kbps", 128, AdhanCountry.EGYPT),
-        QuranReciter("ismail-48", "Mustafa Ismail", "Mustafa_Ismail_48kbps", 48, AdhanCountry.EGYPT),
-        QuranReciter("abdulkareem-128", "Muhammad AbdulKareem", "Muhammad_AbdulKareem_128kbps", 128, AdhanCountry.SUDAN),
-        QuranReciter("sowaid-64", "Ayman Sowaid", "Ayman_Sowaid_64kbps", 64, AdhanCountry.IRAQ),
-        QuranReciter("neana-128", "Ahmed Neana", "Ahmed_Neana_128kbps", 128, AdhanCountry.KUWAIT),
+        QuranReciter("alafasy-128", "Mishary Alafasy", "Alafasy_128kbps", 128, AdhanCountry.KUWAIT, R.raw.quran_preview_alafasy_128),
+        QuranReciter("sudais-192", "Abdurrahmaan As-Sudais", "Abdurrahmaan_As-Sudais_192kbps", 192, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_sudais_192),
+        QuranReciter("husary-128", "Mahmoud Khalil Al-Husary", "Husary_128kbps", 128, AdhanCountry.EGYPT, R.raw.quran_preview_husary_128),
+        QuranReciter("shaatree-128", "Abu Bakr Ash-Shaatree", "Abu_Bakr_Ash-Shaatree_128kbps", 128, AdhanCountry.YEMEN, R.raw.quran_preview_shaatree_128),
+        QuranReciter("abdulbasit-murattal-192", "Abdul Basit (Murattal)", "Abdul_Basit_Murattal_192kbps", 192, AdhanCountry.EGYPT, R.raw.quran_preview_abdulbasit_murattal_192),
+        QuranReciter("abdulbasit-mujawwad-128", "Abdul Basit (Mujawwad)", "Abdul_Basit_Mujawwad_128kbps", 128, AdhanCountry.EGYPT, R.raw.quran_preview_abdulbasit_mujawwad_128),
+        QuranReciter("ayyoub-128", "Muhammad Ayyoub", "Muhammad_Ayyoub_128kbps", 128, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_ayyoub_128),
+        QuranReciter("minshawy-murattal-128", "Al-Minshawi (Murattal)", "Minshawy_Murattal_128kbps", 128, AdhanCountry.EGYPT, R.raw.quran_preview_minshawy_murattal_128),
+        QuranReciter("minshawy-mujawwad-192", "Al-Minshawi (Mujawwad)", "Minshawy_Mujawwad_192kbps", 192, AdhanCountry.EGYPT, R.raw.quran_preview_minshawy_mujawwad_192),
+        QuranReciter("hudhaify-128", "Ali Al-Hudhaify", "Hudhaify_128kbps", 128, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_hudhaify_128),
+        QuranReciter("ghamadi-40", "Saad Al-Ghamdi", "Ghamadi_40kbps", 40, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_ghamadi_40),
+        QuranReciter("dussary-128", "Yasser Ad-Dussary", "Yasser_Ad-Dussary_128kbps", 128, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_dussary_128),
+        QuranReciter("qatami-128", "Nasser Al-Qatami", "Nasser_Alqatami_128kbps", 128, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_qatami_128),
+        QuranReciter("shuraym-128", "Saud Ash-Shuraym", "Saood_ash-Shuraym_128kbps", 128, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_shuraym_128),
+        QuranReciter("jibreel-128", "Muhammad Jibreel", "Muhammad_Jibreel_128kbps", 128, AdhanCountry.EGYPT, R.raw.quran_preview_jibreel_128),
+        QuranReciter("budair-128", "Salah Al-Budair", "Salah_Al_Budair_128kbps", 128, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_budair_128),
+        QuranReciter("basfar-192", "Abdullah Basfar", "Abdullah_Basfar_192kbps", 192, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_basfar_192),
+        QuranReciter("rifai-192", "Hani Ar-Rifai", "Hani_Rifai_192kbps", 192, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_rifai_192),
+        QuranReciter("jaber-64", "Ali Jaber", "Ali_Jaber_64kbps", 64, AdhanCountry.SAUDI_ARABIA, R.raw.quran_preview_jaber_64),
+        QuranReciter("abbad-64", "Fares Abbad", "Fares_Abbad_64kbps", 64, AdhanCountry.YEMEN, R.raw.quran_preview_abbad_64),
+        QuranReciter("alili-128", "Aziz Alili", "Aziz_Alili_128kbps", 128, AdhanCountry.NORTH_MACEDONIA, R.raw.quran_preview_alili_128),
+        QuranReciter("parhizgar-48", "Parhizgar", "Parhizgar_48kbps", 48, AdhanCountry.IRAN, R.raw.quran_preview_parhizgar_48),
+        QuranReciter("tablawy-128", "Mohammad Al-Tablaway", "Mohammad_al_Tablaway_128kbps", 128, AdhanCountry.EGYPT, R.raw.quran_preview_tablawy_128),
+        QuranReciter("ismail-48", "Mustafa Ismail", "Mustafa_Ismail_48kbps", 48, AdhanCountry.EGYPT, R.raw.quran_preview_ismail_48),
+        QuranReciter("abdulkareem-128", "Muhammad AbdulKareem", "Muhammad_AbdulKareem_128kbps", 128, AdhanCountry.SUDAN, R.raw.quran_preview_abdulkareem_128),
+        QuranReciter("sowaid-64", "Ayman Sowaid", "Ayman_Sowaid_64kbps", 64, AdhanCountry.IRAQ, R.raw.quran_preview_sowaid_64),
+        QuranReciter("neana-128", "Ahmed Neana", "Ahmed_Neana_128kbps", 128, AdhanCountry.KUWAIT, R.raw.quran_preview_neana_128),
     )
 
     val default: QuranReciter get() = all.first()

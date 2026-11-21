@@ -684,7 +684,7 @@ private fun ReaderSettingsSheet(
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = stringResource(R.string.quran_display),
+                    text = stringResource(R.string.more_settings),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.weight(1f),
                 )
@@ -695,6 +695,37 @@ private fun ReaderSettingsSheet(
                     Text(stringResource(R.string.action_ok))
                 }
             }
+
+            // Áudio e armazenamento vem primeiro: é a decisão que a pessoa
+            // mais toma ao abrir a engrenagem dentro de uma surata.
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = onAudioSettings)
+                    .testTag("reader_audio_settings")
+                    .padding(vertical = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.RecordVoiceOver,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+                Text(
+                    text = stringResource(R.string.audio_storage_title),
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 14.dp),
+                )
+                Icon(
+                    imageVector = Icons.Filled.KeyboardArrowRight,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+
+            HorizontalDivider(color = scheme.outlineVariant.copy(alpha = 0.4f))
 
             SheetLabel(stringResource(R.string.quran_reader_theme))
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -707,6 +738,8 @@ private fun ReaderSettingsSheet(
                     )
                 }
             }
+
+            HorizontalDivider(color = scheme.outlineVariant.copy(alpha = 0.4f))
 
             SheetLabel(stringResource(R.string.quran_reader_text))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -725,6 +758,8 @@ private fun ReaderSettingsSheet(
                     )
                 }
             }
+
+            HorizontalDivider(color = scheme.outlineVariant.copy(alpha = 0.4f))
 
             SheetLabel(stringResource(R.string.quran_reader_mode))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -747,6 +782,11 @@ private fun ReaderSettingsSheet(
                     )
                 }
             }
+
+            HorizontalDivider(
+                modifier = Modifier.padding(top = 16.dp),
+                color = scheme.outlineVariant.copy(alpha = 0.4f),
+            )
 
             Row(
                 modifier = Modifier
@@ -800,15 +840,6 @@ private fun ReaderSettingsSheet(
                 color = scheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 4.dp),
             )
-
-            TextButton(
-                onClick = onAudioSettings,
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .testTag("reader_audio_settings"),
-            ) {
-                Text(stringResource(R.string.audio_storage_title))
-            }
         }
     }
 }

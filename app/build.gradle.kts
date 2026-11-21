@@ -45,8 +45,8 @@ android {
         applicationId = "com.farukzahra.muslimplus"
         minSdk = 26
         targetSdk = 36
-        versionCode = 21
-        versionName = "1.5.2"
+        versionCode = 22
+        versionName = "1.6.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "WEB3FORMS_ACCESS_KEY", "\"$web3formsAccessKey\"")
     }

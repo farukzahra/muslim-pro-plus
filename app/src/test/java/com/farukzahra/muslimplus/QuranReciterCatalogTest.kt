@@ -24,6 +24,18 @@ class QuranReciterCatalogTest {
     }
 
     @Test
+    fun everyVoiceHasABundledPreview() {
+        assertTrue(
+            "voz sem amostra: ${QuranReciters.all.filter { it.previewRes == 0 }.map { it.id }}",
+            QuranReciters.all.all { it.previewRes != 0 },
+        )
+        assertEquals(
+            QuranReciters.all.size,
+            QuranReciters.all.map { it.previewRes }.toSet().size,
+        )
+    }
+
+    @Test
     fun urlUsesTheVoiceFolder() {
         assertEquals(
             "https://everyayah.com/data/Hudhaify_128kbps/001001.mp3",
